@@ -4,12 +4,15 @@ import subprocess
 
 directory = ""
 result_file= ""
+timeout = 1000
 
-def main(dir_name):
+def main(dir_name, arg_timeout):
     global directory
     global result_file
+    global timeout
     directory = dir_name
     result_file = directory + "/" + "results.txt"
+    timeout = arg_timeout
     try:
         os.remove(result_file)
     except OSError:
@@ -20,7 +23,8 @@ def main(dir_name):
 def process_files(files):
     for f in files:
         f_path = directory + "/" + f
-        z3_command = ["z3", "--t:1000", f_path]
+        timeout_arg = "--t:" + str(timeout)
+        z3_command = ["z3", timeout_arg, f_path]
         result_object = subprocess.run(z3_command, stdout=subprocess.PIPE)
         result_string = result_object.stdout.decode('utf-8')
         with open(result_file, "a") as myfile:
@@ -28,4 +32,4 @@ def process_files(files):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2])
