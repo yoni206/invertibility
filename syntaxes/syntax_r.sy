@@ -1,0 +1,13 @@
+((Start (BitVec 4) (
+     s
+     t
+     #x0
+     #x8 ; min_val
+     #x7 ; max_val
+     (bvneg  Start)
+     (bvnot  Start)
+     (bvand  Start Start)
+     (bvor   Start Start)
+     (bvxor  Start Start)
+   ))
+)

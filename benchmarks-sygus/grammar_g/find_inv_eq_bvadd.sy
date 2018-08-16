@@ -1,0 +1,57 @@
+(set-logic BV)
+
+(synth-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4)
+  ((Start (BitVec 4) (
+     s
+     t
+     #x0
+     #x8 ; min_val
+     #x7 ; max_val
+     (bvneg  Start)
+     (bvnot  Start)
+     (bvadd  Start Start)
+     (bvsub  Start Start)
+     (bvand  Start Start)
+     (bvlshr Start Start)
+     (bvor   Start Start)
+     (bvshl  Start Start)
+   ))
+))
+
+(declare-var s (BitVec 4))
+(declare-var t (BitVec 4))
+(define-fun udivtotal ((a (_ BitVec 4)) (b (_ BitVec 4))) (_ BitVec 4)
+  (ite (= b #x0) #xF (bvudiv a b))
+)
+(define-fun uremtotal ((a (_ BitVec 4)) (b (_ BitVec 4))) (_ BitVec 4)
+  (ite (= b #x0) a (bvurem a b))
+)
+(define-fun case ((x (BitVec 4)) (s (BitVec 4)) (t (BitVec 4))) Bool
+(= (bvadd (inv s t) s) t)
+)
+(constraint
+  (=> 
+    true
+    (case s s t)
+;   (and
+;    (case #x0 s t)
+;    (case #x1 s t)
+;    (case #x2 s t)
+;    (case #x3 s t)
+;    (case #x4 s t)
+;    (case #x5 s t)
+;    (case #x6 s t)
+;    (case #x7 s t)
+;    (case #x8 s t)
+;    (case #x9 s t)
+;    (case #xA s t)
+;    (case #xB s t)
+;    (case #xC s t)
+;    (case #xD s t)
+;    (case #xE s t)
+;    (case #xF s t)
+;   )
+  )
+)
+
+(check-synth)
