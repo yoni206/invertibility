@@ -1,0 +1,2 @@
+unsat
+(define-fun SC ((s (BitVec 4)) (t (BitVec 4))) Bool (not (= (bvor (bvshl #b0111 s) t) #b0000)))

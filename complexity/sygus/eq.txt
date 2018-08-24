@@ -1,0 +1,2 @@
+unsat
+(define-fun SC ((s (BitVec 4)) (t (BitVec 4))) Bool (= (bvand (bvshl (bvnot #b0000) s) t) t))
