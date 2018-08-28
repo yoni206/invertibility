@@ -3,11 +3,11 @@
 (declare-fun b () Int)
 (declare-fun c () Int)
  
-(declare-fun F (Int Int) Int) ;(F(a,b) = a^b)
-(define-fun F_IS_OK ((a Int)) Bool (and (>= a 0) (= (F a 0) 1) (forall ((i Int))  (=> (and (> i 0)) (= (F a i) (* (F a (- i 1)) a))))  ) )
+(declare-fun pow (Int Int) Int) ;(pow(a,b) = a^b)
+(define-fun pow_is_ok ((a Int) (b Int)) Bool (and (>= a 0) (>= b 0) (= (pow a 0) 1) (forall ((i Int))  (=> (and (> i 0) (<= i b)) (= (pow a i) (* (pow a (- i 1)) a))))  ) )
 
-(assert (not (= (F 2 10) 1023)))
-(check-sat (F_IS_OK 2))
+(assert (not (= (pow 2 10) 1024)))
+(check-sat-assuming ((pow_is_ok 2 10)))
 
 ;(assert (not (forall ((x Int)) (> x (F 2 x)))))
 ;(check-sat (F_IS_OK 2))

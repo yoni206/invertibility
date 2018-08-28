@@ -1,1 +1,4 @@
 cvc4 --tlimit 100000 --nl-ext --fmf-fun-rlv:cvc4 --tlimit 100000 --nl-ext --cbqi-all:z3 --t:100000
+int_check_eq_bvshl0_rtl.smt2:unknown:unknown:unknown
+int_check_bvule_bvshl1_ltr.smt2:unknown:unknown:unknown
+int_check_bvult_bvudiv0_rtl.smt2:unsat:unknown:unknown
