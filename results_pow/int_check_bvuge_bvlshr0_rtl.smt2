@@ -30,12 +30,12 @@
 (declare-fun k () Int)
 (declare-fun s () Int)
 (declare-fun t () Int)
-
+(declare-fun x () Int)
 (define-fun assertion_ltr () Bool (not (left_to_right k s t)))
 (define-fun assertion_rtl () Bool (not (right_to_left k s t)))
 
-(assert assertion_rtl)
+(assert (and (range_assumptions k s t)  (in_range k x) (l k x s t) (not (SC k s t)) ))
 
 (check-sat)
-
+(get-value (k s t x (intlshr k x s) (divtotal k x (pow 2 s)) (pow 2 3)))
 
