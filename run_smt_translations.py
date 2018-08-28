@@ -2,14 +2,7 @@ import sys
 import os
 import subprocess
 
-directory = ""
-result_file= ""
-timeout = 1000
-
 def main(dir_name, arg_timeout):
-    global directory
-    global result_file
-    global timeout
     directory = dir_name
     result_file = directory + "/" + "results.txt"
     timeout = arg_timeout
@@ -18,9 +11,9 @@ def main(dir_name, arg_timeout):
     except OSError:
         pass
     files = os.listdir(directory)
-    process_files(files)
+    process_files(files, directory, result_file, timeout)
 
-def process_files(files):
+def process_files(files, directory, result_file, timeout):
     for f in files:
         f_path = directory + "/" + f
         z3_timeout_arg = "--t:" + str(timeout)

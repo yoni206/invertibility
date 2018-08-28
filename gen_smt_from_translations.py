@@ -32,10 +32,10 @@ def process_lines(lines):
 
 def process_line(line):
     name, orig_l, orig_SC, new_l, new_SC = line.split(",")
-    assert1 = "(assert (not hypothesis1))"
-    assert2 = "(assert (not hypothesis2))"
-    ltr_content = substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assert1 })
-    rtl_content = substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assert2 })
+    assertion_ltr = "assertion_ltr"
+    assertion_rtl = "assertion_rtl"
+    ltr_content = substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion_ltr})
+    rtl_content = substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion_rtl })
     ltr_fname = name + "_ltr.smt2"
     rtl_fname = name + "_rtl.smt2"
     write_content_to_file(ltr_content, ltr_fname)
