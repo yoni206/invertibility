@@ -1,20 +1,24 @@
 import sys
 import os
 
-with open("definitions.txt") as f:
-    definitions = f.readlines()
 directory = ""
+template = ""
+l_PH = "<l>"
+SC_PH = "<SC>"
+assertion_PH = "<assertion>"
 
 
-def main(path, dir_name):
+def main(csv_path, dir_name, template_path):
     global directory
+    global template
     directory = dir_name
     if os.path.exists(directory):
         print('directory exists, aborting')
         return
     os.makedirs(directory)
-
-    with open(path) as f:
+    with open(template_path, 'r') as myfile:
+        template = myfile.read()
+    with open(csv_path) as f:
         lines = f.readlines()
     lines = filter_lines(lines)
     process_lines(lines)
@@ -28,26 +32,21 @@ def process_lines(lines):
 
 def process_line(line):
     name, orig_l, orig_SC, new_l, new_SC = line.split(",")
-    l_def = " ".join(["(define-fun l ((n Int) (x Int) (s Int) (t Int)) Bool", new_l, ")"])
-    SC_def = " ".join(["(define-fun SC ((n Int) (s Int) (t Int)) Bool", new_SC, ")"])
-    logic_def = "(set-logic NIA)"
-    divtotal_def = "(define-fun divtotal ((n Int) (a Int) (b Int)) Int (ite (= b 0) (- n 1) (div a b) ))"
-    modtotal_def = "(define-fun modtotal ((a Int) (b Int)) Int (ite (= b 0) a (mod a b)))"
     assert1 = "(assert (not hypothesis1))"
     assert2 = "(assert (not hypothesis2))"
-    check_sat = "(check-sat)"
-    shared_prefix = []
-    shared_prefix.extend( [logic_def, divtotal_def, modtotal_def, l_def, SC_def])
-    shared_prefix.extend(definitions)
-    shared_prefix_txt = "\n".join(shared_prefix)
-
+    ltr_content = substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assert1 })
+    rtl_content = substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assert2 })
     ltr_fname = name + "_ltr.smt2"
     rtl_fname = name + "_rtl.smt2"
-    ltr_content = "\n".join([shared_prefix_txt,assert1,check_sat])
-    rtl_content = "\n".join([shared_prefix_txt,assert2,check_sat])
-
     write_content_to_file(ltr_content, ltr_fname)
     write_content_to_file(rtl_content, rtl_fname)
+
+def substitute(string, substitutions):
+    result = string
+    for old, new in substitutions.items():
+        result = result.replace(old, new)
+    return result
+
 
 def write_content_to_file(content, path):
     f = open(directory + "/" + path, "w")
@@ -55,4 +54,7 @@ def write_content_to_file(content, path):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    csv = sys.argv[1]
+    result_dir = sys.argv[2]
+    template = sys.argv[3]
+    main(csv, result_dir, template)
