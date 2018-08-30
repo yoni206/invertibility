@@ -9,8 +9,8 @@
 (define-fun intlshr ((k Int) (a Int) (b Int)) Int (intmodtotal k (intudivtotal k a (pow 2 b)) (pow 2 k)))
 (define-fun intneg ((k Int) (a Int)) Int (- (pow 2 k) a))
 (define-fun intconcat ((k Int) (m Int) (a Int) (b Int)) Int (+ (* a (pow 2 m)) b))
-(define-fun intadd ((k Int) (a Int) (b Int) ) Int (+ a b))
-(define-fun intmul ((k Int) (a Int) (b Int)) Int (* a b))
+(define-fun intadd ((k Int) (a Int) (b Int) ) Int (intmodtotal k (+ a b) (pow 2 k)))
+(define-fun intmul ((k Int) (a Int) (b Int)) Int (intmodtotal k (* a b) (pow 2 k)))
 (define-fun intmax ((k Int)) Int (- (pow 2 k) 1))
 (define-fun intmin ((k Int)) Int 0)
 
@@ -22,8 +22,8 @@
 (define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (pow 2 k))))
 (define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
 
-(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (l k x s t)))))
-(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (l k x s t))) (SC k s t) ))
+(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (l k x s t)))))
+(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (l k x s t))) (SC k s t) ))
 
 
 (declare-fun k () Int)

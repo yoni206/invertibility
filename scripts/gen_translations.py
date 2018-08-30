@@ -28,9 +28,9 @@ substitutions = {
     "(_ bv0 4)":"0",
     "(_ bv1 4)":"1",
     "(_ bv4 4)":"k",
-    "(bvnot (_ bv0 4))":"(- (pow 2 k) 1)",
-    "max":"intmax k",
-    "min":"intmin k"
+    "(bvnot (_ bv0 4))":"(intmax k)",
+    "max":"(intmax k)",
+    "min":"(intmin k)"
 }
 
 def main(dir_of_SC_verification, generated_file_path):
