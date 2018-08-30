@@ -15,7 +15,7 @@ def main(dir_of_syntaxes, dir_of_SC_verification, generated_smt_dir):
     os.makedirs(generated_smt_dir)
     syntaxes = generate_syntaxes(dir_of_syntaxes) #name-to-real-syntax
     make_syntaxes_dirs(generated_smt_dir, syntaxes.keys())
-    l_name_to_l_sc = utils.map_l_to_sc(dir_of_SC_verification, "find_inv") #file_name -> <l,sc>
+    l_name_to_l_sc = utils.map_l_to_sc(dir_of_SC_verification, "find_inv", True) #file_name -> <l,sc>
     generate_smts(syntaxes, l_name_to_l_sc, generated_smt_dir)
 
 def make_syntaxes_dirs(generated_smt_dir, syntaxes_names):

@@ -21,14 +21,14 @@ substitutions = {
     "bvashr":None,
     "bvadd":"intadd k",
     "bvmul":"intmul k",
-    "modtotal":"intmodtotal k",
+    "uremtotal":"intmodtotal k",
     "udivtotal":"intudivtotal k",
     "bvconcat":"intconcat k1 k2",
     "extract":None,
     "(_ bv0 4)":"0",
     "(_ bv1 4)":"1",
     "(_ bv4 4)":"k",
-    "(bvnot (_ bv0 4))":"k-1",
+    "(bvnot (_ bv0 4))":"(- (pow 2 k) 1)",
     "max":"intmax k",
     "min":"intmin k"
 }
