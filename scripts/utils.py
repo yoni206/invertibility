@@ -33,7 +33,9 @@ def get_l_SC_from_file(path):
 
 def substitute(string, substitutions):
     result = string
-    for old, new in substitutions.items():
+    keys = sorted(substitutions.keys(), key=len, reverse=True)
+    for old in keys:
+        new = substitutions[old]
         if new is not None:
             result = result.replace(old, new)
         else:

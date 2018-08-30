@@ -1,6 +1,7 @@
 import sys
 import os
 import utils
+import re
 
 substitutions = {
     "bvult":"<",
@@ -25,6 +26,9 @@ substitutions = {
     "bvconcat":"intconcat k1 k2",
     "extract":None,
     "(_ bv0 4)":"0",
+    "(_ bv1 4)":"1",
+    "(_ bv4 4)":"k",
+    "(bvnot (_ bv0 4))":"k-1",
     "max":"intmax k",
     "min":"intmin k"
 }
@@ -52,11 +56,64 @@ def make_substitutions(l_name_to_l_sc):
     for name in l_name_to_l_sc.keys():
         l, sc = l_name_to_l_sc[name]
         l = utils.substitute(l, substitutions)
+        #some side conditions include a big disjunction. This should be transform to existential
+        if "bv2" in sc:
+            sc = replace_disj_with_exists(sc)
         sc = utils.substitute(sc, substitutions)
-
         if l is not None and sc is not None:
             result[name] = [l,sc]
     return result
+
+def replace_disj_with_exists(sc):
+    assert(sc.startswith("(or"))
+    assert(sc.count("(_ bv") == 5)
+    insert_i = re.sub(r'\(_ bv\d 4\)','i',"(or  (bvuge (bvshl s (_ bv0 4)) t) (bvuge (bvshl s (_ bv1 4)) t) (bvuge (bvshl s (_ bv2 4)) t) (bvuge (bvshl s (_ bv3 4)) t) (bvuge (bvshl s (_ bv4 4)) t))")
+    matrix = get_matrix(insert_i)
+    return "(exists ((i Int)) (and (>= i 0) (<= i k) " + matrix + "))"
+
+def get_matrix(s):
+    assert(s.startswith("(or"))
+    body = s[3:-1].strip()
+    parens = find_parens(body)
+    all_disjuncts_same(body, parens)
+    i,j = list(parens.items())[0]
+    return body[i:j+1]
+
+def all_disjuncts_same(s, parens):
+    expressions = []
+    i = 0
+    while (i != -1):
+        start = i
+        end = parens[i]
+        assert(start<end)
+        subs = s[start:end+1]
+        expressions.append(subs)
+        distance = s[end:].find("(")
+        if distance == -1:
+            i = -1
+        else:
+            i =  distance + end
+
+    for i in range(0, len(expressions)):
+        for j in range(i+1, len(expressions)):
+            assert (expressions[i] == expressions[j])
+
+def find_parens(s):
+    toret = {}
+    pstack = []
+
+    for i, c in enumerate(s):
+        if c == '(':
+            pstack.append(i)
+        elif c == ')':
+            if len(pstack) == 0:
+                raise IndexError("No matching closing parens at: " + str(i))
+            toret[pstack.pop()] = i
+
+    if len(pstack) > 0:
+        raise IndexError("No matching opening parens at: " + str(pstack.pop()))
+
+    return toret
 
 if __name__ == "__main__":
     dir_of_SC_verification = sys.argv[1]
