@@ -32,16 +32,64 @@ def get_l_SC_from_file(path, x_to_inv):
     assert (actual_sc != "" and actual_l != "")
     return [actual_l, actual_sc]
 
-def substitute(string, substitutions):
-    result = string
+#escape is used to avoid double-substitutions
+#make sure it does not occur in string nor in substitutions
+#e.g.if string = aa and substitutions =  {'a->ab', 'b->c'}
+#the desired result of this function is abab, and not acac.
+def substitute(string, substitutions, escape='@'):
     keys = sorted(substitutions.keys(), key=len, reverse=True)
-    for old in keys:
-        new = substitutions[old]
+    keys_to_escaped_keys = escape_keys(keys, escape)
+    local_substitutions = get_local_substitutions(substitutions, keys_to_escaped_keys)
+    local_string = get_local_string(string, keys_to_escaped_keys)
+    result = local_string
+    for old in local_substitutions.keys():
+        new = local_substitutions[old]
         if new is not None:
             result = result.replace(old, new)
         else:
             if old in result:
                 return None
     return result
+
+
+
+
+def get_file_or_dir_name_no_ext(path):
+    full_name = path.split("/")[-1]
+    if "." in full_name:
+        assert(full_name.count(".") == 1)
+        result = full_name.split(".")[0]
+    else:
+        result = full_name
+    return result
+#HELPER FUNCTIONS
+
+
+def escape_keys(keys, escape):
+    #all prefixes should have the same length
+    digits = len(str(len(keys)))
+    i = 0
+    sorted_keys = sorted(keys, key=len, reverse=True)
+    result = {}
+    for key in sorted_keys:
+        result[key] = escape + str(i).zfill(digits) + escape
+        i = i+1
+    return result
+
+def get_local_substitutions(substitutions, keys_to_escaped_keys):
+    result = {}
+    keys = sorted(substitutions.keys(), key=len, reverse=True)
+    for key in keys:
+        new_key = keys_to_escaped_keys[key]
+        result[new_key] = substitutions[key]
+    return result
+
+def get_local_string(string, keys_to_escaped_keys):
+    result = string
+    keys = sorted(keys_to_escaped_keys.keys(), key=len, reverse=True)
+    for key in keys:
+        result = result.replace(key, keys_to_escaped_keys[key])
+    return result
+
 
 

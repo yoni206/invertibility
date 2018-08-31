@@ -1,7 +1,7 @@
 (set-logic UFNIA)
 
 (declare-fun pow (Int Int) Int) ;(pow a b) = a^b
-(define-fun pow_is_ok ((a Int) (b Int)) Bool (and (>= a 0) (>= b 0) (= (pow a 0) 1) (= (pow a 1) a) (= (pow 1 b) 1) (=> (and (> a 1) (> b 1)) (and (> (pow a b) a) (= (pow a b) (* (pow a (- b 1)) a)) ))  ) )
+(define-fun pow_is_ok ((a Int) (b Int)) Bool (and (>= a 0) (>= b 0) (= (pow 0 1) 0) (= (pow 1 1) 1) (= (pow 1 0) 1) (= (pow a 0) 1) (= (pow a 1) a) (= (pow 1 b) 1) (=> (and (> a 1) (> b 1)) (and (> (pow a b) a) (= (pow a b) (* (pow a (- b 1)) a)) ))  ) )
 
 (define-fun intudivtotal ((k Int) (a Int) (b Int)) Int (ite (= b 0) (- (pow 2 k) 1) (div a b) ))
 (define-fun intmodtotal ((k Int) (a Int) (b Int)) Int (ite (= b 0) a (mod a b)))
