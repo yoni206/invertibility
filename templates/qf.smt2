@@ -14,6 +14,50 @@
 (define-fun intmax ((k Int)) Int (- (pow 2 k) 1))
 (define-fun intmin ((k Int)) Int 0)
 
+
+
+
+(declare-fun intor (Int Int Int) Int)
+(declare-fun intand (Int Int Int) Int)
+
+(define-fun or_is_ok ((k Int) (i Int)) Bool 
+(and
+    (=>
+      (and
+        (>= i 0)
+        (<= i (intmax k)) 
+      )
+      (and
+        (= (intor k 0 i) i)
+        (= (intor k i 0) i)
+        (= (intor k (intmax k) i) (intmax k))
+        (= (intor k i (intmax k)) (intmax k))
+      )
+    )
+))
+
+
+
+(define-fun and_is_ok ((k Int) (i Int)) Bool 
+(and
+    (=>
+      (and
+        (>= i 0)
+        (<= i (intmax k)) 
+      )
+      (and
+        (= (intor k 0 i) 0)
+        (= (intor k i 0) 0)
+        (= (intor k (intmax k) i) i)
+        (= (intor k i (intmax k)) i)
+      )
+    )
+))
+
+
+
+
+
 (define-fun l ((k Int) (x Int) (s Int) (t Int)) Bool <l>)
 (define-fun SC ((k Int) (s Int) (t Int)) Bool <SC>
 )
@@ -21,8 +65,8 @@
 (define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (pow 2 k))))
 (define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
 
-(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (l k x s t)))))
-(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (l k x s t))) (SC k s t) ))
+(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (and_is_ok k x) (or_is_ok k x) (l k x s t)))))
+(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (and_is_ok k x) (or_is_ok k x) (l k x s t))) (SC k s t) ))
 
 
 (declare-fun k () Int)
@@ -39,6 +83,10 @@
 
 (assert (range_assumptions k s t))
 (assert (and (pow_is_ok 2 k) (pow_is_ok 2 s) (pow_is_ok 2 t)))
+
+(assert (and (and_is_ok k s) (or_is_ok k s)))
+(assert (and (and_is_ok k t) (or_is_ok k t)))
+
 (assert <assertion>)
 
 (check-sat)

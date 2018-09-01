@@ -11,8 +11,77 @@
 (define-fun intconcat ((k Int) (m Int) (a Int) (b Int)) Int (+ (* a (pow 2 m)) b))
 (define-fun intadd ((k Int) (a Int) (b Int) ) Int (intmodtotal k (+ a b) (pow 2 k)))
 (define-fun intmul ((k Int) (a Int) (b Int)) Int (intmodtotal k (* a b) (pow 2 k)))
+
+
 (define-fun intmax ((k Int)) Int (- (pow 2 k) 1))
 (define-fun intmin ((k Int)) Int 0)
+(declare-fun intor (Int Int Int) Int)
+(declare-fun intand (Int Int Int) Int)
+
+(define-fun or_is_ok ((k Int)) Bool 
+(and
+  (forall ((i Int) (j Int))
+    (=>
+      (and
+        (>= i 0)
+        (>= j 0)
+        (<= i (intmax k)) 
+        (<= j (intmax k)) 
+      )
+      (and
+        (>= (intor k i j) 0)
+        (<= (intor k i j) (intmax k))
+      )
+    )
+  )
+  (forall ((i Int))
+    (=>
+      (and
+        (>= i 0)
+        (<= i (intmax k)) 
+      )
+      (and
+        (= (intor k 0 i) i)
+        (= (intor k i 0) i)
+        (= (intor k (intmax k) i) (intmax k))
+        (= (intor k i (intmax k)) (intmax k))
+      )
+    )
+  )
+))
+
+
+(define-fun and_is_ok ((k Int)) Bool 
+(and
+  (forall ((i Int) (j Int))
+    (=>
+      (and
+        (>= i 0)
+        (>= j 0)
+        (<= i (intmax k)) 
+        (<= j (intmax k)) 
+      )
+      (and
+        (>= (intand k i j) 0)
+        (<= (intand k i j) (intmax k))
+      )
+    )
+  )
+  (forall ((i Int))
+    (=>
+      (and
+        (>= i 0)
+        (<= i (intmax k)) 
+      )
+      (and
+        (= (intand k 0 i) 0)
+        (= (intand k i 0) 0)
+        (= (intand k (intmax k) i) i)
+        (= (intand k i (intmax k)) i)
+      )
+    )
+  )
+))
 
 (define-fun l ((k Int) (x Int) (s Int) (t Int)) Bool <l>)
 (define-fun SC ((k Int) (s Int) (t Int)) Bool <SC>
@@ -39,6 +108,7 @@
 
 (assert (range_assumptions k s t))
 (assert (and (pow_is_ok 2 k) (pow_is_ok 2 s) (pow_is_ok 2 t)))
+(assert (and (and_is_ok k) (or_is_ok k)))
 (assert <assertion>)
 
 (check-sat)

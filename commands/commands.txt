@@ -1,4 +1,5 @@
-cvc4 --tlimit 1000 --nl-ext
-cvc4 --tlimit 1000 --nl-ext --fmf-fun-rlv 
-cvc4 --tlimit 1000 --nl-ext --cbqi-all
-z3 --t:1000
+cvc4 --tlimit 100000
+cvc4 --tlimit 100000 --nl-ext
+cvc4 --tlimit 100000 --nl-ext --fmf-fun-rlv 
+cvc4 --tlimit 100000 --nl-ext --cbqi-all
+z3 --t:100000
