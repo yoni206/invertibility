@@ -12,26 +12,26 @@ substitutions = {
     "bvsgt":None,
     "bvsle":None,
     "bvsge":None,
-    "bvnot":None,
-    "bvsub":None,
+    "bvnot":"intnot k",
+    "bvsub":"intsub k",
     "bvneg":"intneg k",
     "bvand":"intand k",
     "bvor":"intor k",
     "bvshl":"intshl k",
     "bvlshr":"intlshr k",
-    "bvashr":None,
+    "bvashr":"intashr k",
     "bvadd":"intadd k",
     "bvmul":"intmul k",
     "uremtotal":"intmodtotal k",
     "udivtotal":"intudivtotal k",
     "bvconcat":"intconcat k1 k2",
-    "extract":None,
+#    "extract":"intextract k",
     "(_ bv0 4)":"0",
     "(_ bv1 4)":"1",
     "(_ bv4 4)":"k",
     "(bvnot (_ bv0 4))":"(intmax k)",
-    "max":"(intmax k)",
-    "min":"(intmin k)"
+    "max":"(intmaxs k)",
+    "min":"(intmins k)"
 }
 
 def main(dir_of_SC_verification, generated_file_path):
