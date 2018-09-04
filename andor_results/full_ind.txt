@@ -41,31 +41,6 @@ int_check_ne_bvor_rtl.smt2:unknown:unknown:unknown:unknown:sat
 int_check_bvule_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_ne_bvlshr0_ltr.smt2:unknown:unknown:unknown:unknown:sat
 int_check_bvult_bvand_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_eq_bvurem1_ltr.smt2:(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_ltr.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_ltr.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_ltr.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_ltr.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "line 88 column 83: unknown function/constant bvsub")
-(error "line 95 column 70: unknown function/constant SC")
-(error "line 96 column 138: unknown function/constant SC")
-(error "line 105 column 59: unknown function/constant left_to_right")
-(error "line 106 column 59: unknown function/constant right_to_left")
-(error "line 107 column 67: unknown function/constant left_to_right")
-(error "line 108 column 67: unknown function/constant right_to_left")
-(error "line 114 column 8: unknown constant assertion_ltr_ind")
-sat
 int_check_eq_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvuge_bvshl1_rtl.smt2:unknown:unknown:unknown:unknown:unknown
 int_check_bvugt_bvand_rtl.smt2:unknown:unknown:unknown:unknown:sat
@@ -92,31 +67,6 @@ int_check_bvult_bvlshr1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvuge_bvudiv0_ltr.smt2:unknown:unknown:unknown:unknown:sat
 int_check_bvult_bvor_ltr.smt2:unknown:unknown:unknown:unknown:sat
 int_check_bvuge_bvand_rtl.smt2:unknown:unknown:unknown:unknown:sat
-int_check_eq_bvurem1_rtl.smt2:(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_rtl.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_rtl.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_rtl.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_eq_bvurem1_rtl.smt2:88.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "line 88 column 83: unknown function/constant bvsub")
-(error "line 95 column 70: unknown function/constant SC")
-(error "line 96 column 138: unknown function/constant SC")
-(error "line 105 column 59: unknown function/constant left_to_right")
-(error "line 106 column 59: unknown function/constant right_to_left")
-(error "line 107 column 67: unknown function/constant left_to_right")
-(error "line 108 column 67: unknown function/constant right_to_left")
-(error "line 114 column 8: unknown constant assertion_rtl_ind")
-sat
 int_check_ne_bvmul_ltr.smt2:unknown:unknown:unknown:unknown:sat
 int_check_bvugt_bvurem1_rtl.smt2:unknown:unknown:unsat:unknown:unsat
 int_check_ne_bvurem0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
@@ -155,85 +105,3 @@ int_check_bvule_bvurem1_ltr.smt2:unknown:unknown:unknown:unknown:sat
 int_check_bvule_bvadd_ltr.smt2:unknown:unknown:unknown:unknown:unknown
 int_check_bvugt_bvudiv1_ltr.smt2:unknown:unknown:unsat:unknown:unsat
 int_check_eq_bvadd_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_ne_bvneg_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvult_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvmul_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_ne_bvlshr0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_ne_bvurem1_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvule_bvmul_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvult_bvneg_ltr.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_bvuge_bvlshr0_ltr.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_bvule_bvurem0_ltr.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_ne_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvlshr1_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_ne_bvshl0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_bvuge_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvand_rtl.smt2:unknown:unknown:unknown:unknown:sat
-int_check_eq_bvlshr1_rtl.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_eq_bvudiv0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_bvuge_bvor_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_ne_bvmul_rtl.smt2:unknown:unknown:unsat:unknown:unsat
-int_check_ne_bvand_rtl.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvule_bvshl1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvurem1_rtl.smt2:(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_rtl.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_rtl.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_rtl.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_rtl.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "line 88 column 87: unknown function/constant bvsub")
-(error "line 95 column 70: unknown function/constant SC")
-(error "line 96 column 138: unknown function/constant SC")
-(error "line 105 column 59: unknown function/constant left_to_right")
-(error "line 106 column 59: unknown function/constant right_to_left")
-(error "line 107 column 67: unknown function/constant left_to_right")
-(error "line 108 column 67: unknown function/constant right_to_left")
-(error "line 114 column 8: unknown constant assertion_rtl_ind")
-sat
-int_check_bvugt_bvshl1_ltr.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_bvule_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvlshr0_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvult_bvlshr1_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvuge_bvurem1_ltr.smt2:(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_ltr.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_ltr.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_ltr.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/full_ind/int_check_bvuge_bvurem1_ltr.smt2:88.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "line 88 column 87: unknown function/constant bvsub")
-(error "line 95 column 70: unknown function/constant SC")
-(error "line 96 column 138: unknown function/constant SC")
-(error "line 105 column 59: unknown function/constant left_to_right")
-(error "line 106 column 59: unknown function/constant right_to_left")
-(error "line 107 column 67: unknown function/constant left_to_right")
-(error "line 108 column 67: unknown function/constant right_to_left")
-(error "line 114 column 8: unknown constant assertion_ltr_ind")
-sat
-int_check_bvule_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvudiv1_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_eq_bvlshr0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
-int_check_bvuge_bvshl1_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvugt_bvand_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_bvult_bvlshr0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvudiv0_ltr.smt2:unknown:unknown:unknown:unknown:sat
-int_check_ne_bvlshr1_rtl.smt2:unknown:unknown:unknown:unknown:unknown

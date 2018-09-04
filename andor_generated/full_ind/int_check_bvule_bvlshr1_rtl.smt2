@@ -15,7 +15,6 @@
 
 (define-fun intmax ((k Int)) Int (- (pow 2 k) 1))
 (define-fun intmin ((k Int)) Int 0)
-
 (declare-fun intor (Int Int Int) Int)
 (declare-fun intand (Int Int Int) Int)
 

@@ -1,239 +1,139 @@
 cvc4 --tlimit 100000:cvc4 --tlimit 100000 --nl-ext:cvc4 --tlimit 100000 --nl-ext --fmf-fun-rlv:cvc4 --tlimit 100000 --nl-ext --cbqi-all:z3 --t:100000
-int_check_eq_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvshl1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_eq_bvshl0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_bvule_bvshl1_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvuge_bvor_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvudiv0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvudiv0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvadd_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvult_bvudiv0_rtl.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvudiv0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvadd_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvule_bvurem1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvmul_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvult_bvmul_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvult_bvshl1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvor_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvneg_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvor_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvudiv0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvudiv1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvor_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvule_bvor_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvule_bvneg_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvor_rtl.smt2:unknown:unknown:sat:sat:sat
+int_check_bvugt_bvudiv0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvudiv1_rtl.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvor_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvult_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_ne_bvudiv0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvlshr1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvlshr0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_ne_bvlshr1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvshl0_rtl.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvuge_bvlshr0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
 int_check_bvule_bvlshr0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvor_rtl.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvule_bvor_rtl.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvult_bvurem1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_ne_bvudiv1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvule_bvmul_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvlshr1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvurem0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvuge_bvlshr1_rtl.smt2:unknown:unknown:unsat:unknown:unknown
+int_check_ne_bvurem0_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvule_bvand_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvurem1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvadd_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvlshr0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvneg_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvadd_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvult_bvurem1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvuge_bvadd_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvule_bvlshr0_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_eq_bvneg_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvult_bvadd_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_eq_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvudiv1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvudiv1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvlshr1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_eq_bvudiv1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvuge_bvudiv1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvlshr1_rtl.smt2:unknown:unknown:unsat:unknown:unknown
 int_check_bvugt_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_ne_bvor_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvule_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvlshr0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvand_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvurem1_ltr.smt2:(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_ltr.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_ltr.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_ltr.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_ltr.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "line 62 column 83: unknown function/constant bvsub")
-(error "line 69 column 70: unknown function/constant SC")
-(error "line 70 column 169: unknown function/constant SC")
-(error "line 79 column 59: unknown function/constant left_to_right")
-(error "line 80 column 59: unknown function/constant right_to_left")
-(error "line 81 column 67: unknown function/constant left_to_right")
-(error "line 82 column 67: unknown function/constant right_to_left")
-(error "line 91 column 8: unknown constant assertion_ltr_ind")
-unsat
+int_check_ne_bvlshr0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvult_bvand_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_eq_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvshl1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvand_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvneg_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvand_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvuge_bvshl1_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_bvugt_bvand_rtl.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvneg_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvand_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvugt_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvor_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_eq_bvor_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvult_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvurem1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvshl0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvshl1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvudiv0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvand_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvshl1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvshl1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvmul_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvadd_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvurem0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvand_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvshl1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvlshr1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvugt_bvurem1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvult_bvshl0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvshl1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvuge_bvudiv0_rtl.smt2:sat:sat:sat:sat:sat
+int_check_bvuge_bvand_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvult_bvshl1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvshl1_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_bvugt_bvmul_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvadd_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvult_bvurem0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvule_bvand_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvshl1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvlshr1_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvule_bvlshr1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvult_bvlshr1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvudiv0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvor_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvand_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvurem1_rtl.smt2:(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_rtl.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_rtl.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_rtl.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_eq_bvurem1_rtl.smt2:62.66: Symbol 'bvsub' not declared as a variable
-
-  ...t) (s Int) (t Int)) Bool (>= (intand k (bvsub (intadd k t t) s) s) t)
-                                             ^
-"):(error "line 62 column 83: unknown function/constant bvsub")
-(error "line 69 column 70: unknown function/constant SC")
-(error "line 70 column 169: unknown function/constant SC")
-(error "line 79 column 59: unknown function/constant left_to_right")
-(error "line 80 column 59: unknown function/constant right_to_left")
-(error "line 81 column 67: unknown function/constant left_to_right")
-(error "line 82 column 67: unknown function/constant right_to_left")
-(error "line 91 column 8: unknown constant assertion_rtl_ind")
-unsat
-int_check_ne_bvmul_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvurem1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvuge_bvudiv0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvult_bvor_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvuge_bvand_rtl.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvmul_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvugt_bvurem1_rtl.smt2:unknown:unknown:unsat:unknown:unsat
 int_check_ne_bvurem0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvshl0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvshl0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_eq_bvshl0_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvugt_bvshl0_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_ne_bvshl1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvand_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvlshr1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvor_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvneg_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvand_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_eq_bvand_rtl.smt2:sat:sat:sat:sat:sat
+int_check_bvuge_bvlshr1_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvugt_bvor_rtl.smt2:unknown:unknown:sat:sat:sat
+int_check_bvuge_bvneg_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvand_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvult_bvurem0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvor_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_ne_bvor_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvuge_bvshl0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
 int_check_bvuge_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvult_bvmul_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvuge_bvudiv1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvmul_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvshl0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvshl1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvshl0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvugt_bvmul_rtl.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvule_bvshl0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvshl1_rtl.smt2:unknown:unknown:sat:unknown:unknown
+int_check_ne_bvshl0_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvule_bvurem0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvshl0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvlshr1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvlshr0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvuge_bvshl0_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvugt_bvlshr1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvult_bvlshr0_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_ne_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvor_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvurem1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvudiv0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvudiv1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvmul_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvmul_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvudiv0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvmul_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvurem1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvadd_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvudiv1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvadd_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvneg_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvult_bvor_rtl.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvurem1_rtl.smt2:unknown:unknown:unsat:unknown:unsat
+int_check_eq_bvudiv0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvudiv1_rtl.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvuge_bvmul_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvuge_bvmul_rtl.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvudiv0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_eq_bvmul_rtl.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvule_bvurem1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvule_bvadd_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvugt_bvudiv1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvadd_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvneg_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvult_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvmul_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvlshr0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvurem1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvmul_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvneg_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvlshr0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvurem0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_eq_bvmul_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvlshr0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_ne_bvurem1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvule_bvmul_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvult_bvneg_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_bvuge_bvlshr0_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvule_bvurem0_ltr.smt2:unknown:unknown:sat:unknown:unknown
 int_check_ne_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvule_bvlshr1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvshl0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvule_bvlshr1_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_ne_bvshl0_rtl.smt2:unknown:unknown:unknown:unknown:sat
 int_check_bvuge_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvand_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvlshr1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvudiv0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvor_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvult_bvand_rtl.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvlshr1_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_eq_bvudiv0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_bvuge_bvor_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_ne_bvmul_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_ne_bvand_rtl.smt2:unsat:unsat:unsat:unsat:unsat
 int_check_bvule_bvshl1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvurem1_rtl.smt2:(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_rtl.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_rtl.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_rtl.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_rtl.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "line 62 column 87: unknown function/constant bvsub")
-(error "line 69 column 70: unknown function/constant SC")
-(error "line 70 column 169: unknown function/constant SC")
-(error "line 79 column 59: unknown function/constant left_to_right")
-(error "line 80 column 59: unknown function/constant right_to_left")
-(error "line 81 column 67: unknown function/constant left_to_right")
-(error "line 82 column 67: unknown function/constant right_to_left")
-(error "line 91 column 8: unknown constant assertion_rtl_ind")
-unsat
-int_check_bvugt_bvshl1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvugt_bvshl1_ltr.smt2:unknown:unknown:sat:unknown:unknown
 int_check_bvule_bvneg_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvlshr0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvlshr1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvurem1_ltr.smt2:(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_ltr.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_ltr.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_ltr.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "Parse Error: andor_generated/qf_ind/int_check_bvuge_bvurem1_ltr.smt2:62.70: Symbol 'bvsub' not declared as a variable
-
-  ...s Int) (t Int)) Bool (or (>= (intand k (bvsub (intadd k t t) s) s) t) ...
-                                             ^
-"):(error "line 62 column 87: unknown function/constant bvsub")
-(error "line 69 column 70: unknown function/constant SC")
-(error "line 70 column 169: unknown function/constant SC")
-(error "line 79 column 59: unknown function/constant left_to_right")
-(error "line 80 column 59: unknown function/constant right_to_left")
-(error "line 81 column 67: unknown function/constant left_to_right")
-(error "line 82 column 67: unknown function/constant right_to_left")
-(error "line 91 column 8: unknown constant assertion_ltr_ind")
-unsat
+int_check_eq_bvlshr0_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvult_bvlshr1_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvule_bvadd_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvudiv1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_eq_bvlshr0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvuge_bvshl1_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvugt_bvand_ltr.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_ne_bvudiv1_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_eq_bvlshr0_rtl.smt2:unknown:unknown:unknown:unknown:unknown
+int_check_bvuge_bvshl1_ltr.smt2:unknown:unknown:sat:unknown:unknown
+int_check_bvugt_bvand_ltr.smt2:unknown:unknown:sat:unknown:sat
 int_check_bvult_bvlshr0_rtl.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_bvult_bvudiv0_ltr.smt2:unsat:unsat:unsat:unsat:unsat
-int_check_ne_bvlshr1_rtl.smt2:unsat:unsat:unsat:unsat:unsat
+int_check_bvult_bvudiv0_ltr.smt2:unknown:unknown:sat:unknown:sat
+int_check_ne_bvlshr1_rtl.smt2:unknown:unknown:unsat:unknown:unsat
