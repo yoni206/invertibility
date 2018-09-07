@@ -60,6 +60,9 @@ def write_content_to_file(content, filename, d):
     f.write(content)
 
 if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        print('arg1: csv file\narg2: generated files dir\narg3: template file')
+        exit(1)
     csv = sys.argv[1]
     result_dir = sys.argv[2]
     template = sys.argv[3]

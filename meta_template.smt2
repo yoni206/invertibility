@@ -234,7 +234,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; what to prove            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (and_or_are_ok k x) (l k x s t)))))
+
+;on the left-to-right direction, we do not demand pow, and and or to be ok w.r.t x. If the implication without these requirement is valid, then so is the implication with the "right" pow, and and or.
+;The same holds for right-to-left, but then this information might be useful for the solver, so we keep it
+
+(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (l k x s t)))))
 (define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (and_or_are_ok k x) (l k x s t))) (SC k s t) ))
 
 (declare-fun k () Int)

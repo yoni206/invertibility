@@ -117,6 +117,9 @@ def find_parens(s):
     return toret
 
 if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print('arg1: dir of sc verification\narg2: generated csv path')
+        sys.exit(1)
     dir_of_SC_verification = sys.argv[1]
     generated_file_path = sys.argv[2]
     main(dir_of_SC_verification, generated_file_path)

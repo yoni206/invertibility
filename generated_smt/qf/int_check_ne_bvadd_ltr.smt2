@@ -95,6 +95,7 @@
 ;complete axiomatization of bitwise or
 (define-fun or_is_ok_full ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int)) 
 (and
+  (= (intor_dec 1 a b) (intor_helper (lsb k a) (lsb k b)))
   (=>           
     (and 
       (> m 1)
@@ -105,13 +106,13 @@
       (<= b (intmax k))
     )
     (and
-      (= (intor_dec 1 a b) (intor_helper (lsb k a) (lsb k b)))
       (= (intor_dec m a b) (+ (intor_dec (- m 1) a b) (* (pow 2 (- m 1)) (intor_helper (bitof k (- m 1) a) (bitof k (- m 1) b)))))
     )))))
 
 ;partial axiomatization of bitwise or, with quantifiers
 (define-fun or_is_ok_partial ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int)) 
 (and
+  (= (intor_dec 1 a b) (intor_helper (lsb k a) (lsb k b)))
   (=>           
     (and 
       (> m 1)
@@ -122,7 +123,6 @@
       (<= b (intmax k))
     )
     (and
-      (= (intor_dec 1 a b) (intor_helper (lsb k a) (lsb k b)))
       (>= (intor_dec m a b) 0) 
       (<= (intor_dec m a b ) (intmax k)) 
       (>= (intor_dec m a b) a) 
@@ -161,6 +161,7 @@
 ;complete axiomatization of bitwise and
 (define-fun and_is_ok_full ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int)) 
 (and
+  (= (intand_dec 1 a b) (intand_helper (lsb k a) (lsb k b)))
   (=>           
     (and 
       (> m 1)
@@ -171,13 +172,13 @@
       (<= b (intmax k))
     )
     (and
-      (= (intand_dec 1 a b) (intand_helper (lsb k a) (lsb k b)))
       (= (intand_dec m a b) (+ (intand_dec (- m 1) a b) (* (pow 2 (- m 1)) (intand_helper (bitof k (- m 1) a) (bitof k (- m 1) b)))))
     )))))
 
 ;partial axiomatization of bitwise and, with quantifiers
 (define-fun and_is_ok_partial ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int)) 
 (and
+  (= (intand_dec 1 a b) (intand_helper (lsb k a) (lsb k b)))
   (=>           
     (and 
       (> m 1)
@@ -188,7 +189,6 @@
       (<= b (intmax k))
     )
     (and
-      (= (intand_dec 1 a b) (intand_helper (lsb k a) (lsb k b)))
       (>= (intand_dec m a b) 0) 
       (<= (intand_dec m a b ) (intmax k)) 
       (<= (intand_dec m a b) a) 
@@ -235,7 +235,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; what to prove            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (and_or_are_ok k x) (l k x s t)))))
+(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (l k x s t)))))
 (define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (pow_is_ok 2 x) (and_or_are_ok k x) (l k x s t))) (SC k s t) ))
 
 (declare-fun k () Int)
@@ -250,7 +250,7 @@
 
 (assert (range_assumptions k s t))
 (assert (and (pow_is_ok 2 k) (pow_is_ok 2 s) (pow_is_ok 2 t)))
-(assert (and (and_or_are_ok k s) (and_or_are_ok k t)))
+(assert (and (and_or_are_ok k s) (and_or_are_ok k t) ))
 (assert assertion_ltr)
 
 (check-sat)
@@ -262,10 +262,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;alternative final commands for analyzing sat instances of rtl
-;(declare-fun x0 () Int)
-;(assert (range_assumptions k s t))
-;(assert (and (pow_is_ok 2 k) (pow_is_ok 2 s) (pow_is_ok 2 t)))
-;(assert (and (in_range k x0) (pow_is_ok 2 x0) (l k x0 s t) (not (SC k s t))))
-;(check-sat)
-;(get-value (k s t x0))
+(get-value (k s t (distinct (intadd k 1 s) t) (in_range k 1) (pow_is_ok 2 1) (and_is_ok k 1) (intand_dec k 1 1) ))

@@ -56,6 +56,9 @@ def save_smt(smt, generated_smt_dir, syntax_name, l_name):
     smt_file.close()
 
 if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        print('arg1: dir of syntaxes\narg2: dir of SC verification\narg3: dir of generated smt files')
+        sys.exit(1)
     dir_of_syntaxes = sys.argv[1]
     dir_of_SC_verification = sys.argv[2]
     generated_smt_dir = sys.argv[3]

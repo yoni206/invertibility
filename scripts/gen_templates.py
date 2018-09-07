@@ -50,6 +50,9 @@ def write_content_to_file(content, filename, d):
     f.write(content)
 
 if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print('arg1: templates dir\narg2: meta template file')
+        exit(1)
     templates_dir = sys.argv[1]
     meta_template_file = sys.argv[2]
     main(templates_dir, meta_template_file)

@@ -59,6 +59,9 @@ def aggregate_values(values):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("arg1: output file\narg2: results_dir")
+        sys.exit(1)
     output_file = sys.argv[1]
     results_dir = sys.argv[2]
     main(output_file, results_dir)
