@@ -6,7 +6,7 @@ import multiprocessing as mp
 
 def main(dir_path, commands_txt_file, results_dir):
     dir_name = utils.get_file_or_dir_name_no_ext(dir_path)
-    if not os.exists(results_dir):
+    if not os.path.exists(results_dir):
         print('results dir does not exist' )
     result_file = results_dir + "/" + dir_name + ".txt"
     try:
@@ -22,24 +22,31 @@ def main(dir_path, commands_txt_file, results_dir):
         rf.write("\n")
     process_files(files, dir_path, result_file, commands)
 
+
 def process_files(files, directory, result_file, commands):
     pool = mp.Pool()
-    handler = lambda results: write_to_file(results, result_file, commands)
     process_file_for_commands = lambda f_path: process_file(f_path, commands)
     for f in files:
         f_path = directory + "/" + f
-        pool.apply_async(process_file_for_commands, args = (f_path,), callback = handler)
+        pool.apply_async(process_file,
+            args = (f_path,commands,result_file,f,), callback = handler, error_callback = error_handler)
     pool.close()
     pool.join()
 
-def write_to_file(results, result_file, commands):
+def handler(tup): #tup = (results, result_file,commands)
+    write_to_file(tup[0], tup[1], tup[2], tup[3])
+
+def error_handler(arg):
+    print('fail', arg)
+
+def write_to_file(results, result_file, commands,f):
         line = f + ":"
         line = line + ":".join([results[command] for command in commands])
         with open(result_file, "a") as myfile:
             myfile.write(line)
             myfile.write("\n")
 
-def process_file(f_path, commands):
+def process_file(f_path, commands, result_file,f):
     results = {}
     for command in commands:
         full_command = command + " " + f_path
@@ -47,7 +54,7 @@ def process_file(f_path, commands):
         result_string = result_object.stdout.decode('utf-8').strip()
         results[command] = result_string
         print(command, f_path, ": ", result_string)
-    return results
+    return (results,result_file,commands,f,)
 
 
 if __name__ == "__main__":
