@@ -3,31 +3,31 @@ import os
 import utils
 
 replacements = {"rec":
-                    {"<pow>": "pow_def",
+                    {"<two_to_the>": "two_to_the_def",
                      "<intor>": "intor_def",
                      "<intand>": "intand_def",
-                     "<pow_is_ok>": "pow_is_ok_rec",
+                     "<two_to_the_is_ok>": "two_to_the_is_ok_rec",
                      "<or_is_ok>": "or_is_ok_rec",
                      "<and_is_ok>": "and_is_ok_rec"},
                 "full":
-                    {"<pow>": "pow_dec",
+                    {"<two_to_the>": "two_to_the_dec",
                      "<intor>": "intor_dec",
                      "<intand>": "intand_dec",
-                     "<pow_is_ok>": "pow_is_ok_full",
+                     "<two_to_the_is_ok>": "two_to_the_is_ok_full",
                      "<or_is_ok>": "or_is_ok_full",
                      "<and_is_ok>": "and_is_ok_full"},
                 "partial":
-                    {"<pow>": "pow_dec",
+                    {"<two_to_the>": "two_to_the_dec",
                      "<intor>": "intor_dec",
                      "<intand>": "intand_dec",
-                     "<pow_is_ok>": "pow_is_ok_partial",
+                     "<two_to_the_is_ok>": "two_to_the_is_ok_partial",
                      "<or_is_ok>": "or_is_ok_partial",
                      "<and_is_ok>": "and_is_ok_partial"},
                 "qf":
-                    {"<pow>": "pow_dec",
+                    {"<two_to_the>": "two_to_the_dec",
                      "<intor>": "intor_dec",
                      "<intand>": "intand_dec",
-                     "<pow_is_ok>": "pow_is_ok_qf",
+                     "<two_to_the_is_ok>": "two_to_the_is_ok_qf",
                      "<or_is_ok>": "or_is_ok_qf",
                      "<and_is_ok>": "and_is_ok_qf"},
                 }

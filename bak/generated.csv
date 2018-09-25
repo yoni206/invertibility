@@ -1,0 +1,94 @@
+int_check_ne_bvudiv1, (distinct (udivtotal s x) t),true, (distinct (intudivtotal k s x) t),true
+int_check_bvugt_bvshl0, (bvugt (bvshl x s) t),(bvult t (bvshl (bvnot (_ bv0 4)) s)), (> (intshl k x s) t),(< t (intshl k (intmax k) s))
+int_check_eq_bvlshr1, (= (bvlshr s x) t),(or  (= (bvlshr s (_ bv0 4)) t) (= (bvlshr s (_ bv1 4)) t) (= (bvlshr s (_ bv2 4)) t) (= (bvlshr s (_ bv3 4)) t) (= (bvlshr s (_ bv4 4)) t)), (= (intlshr k s x) t),(exists ((i Int)) (and (>= i 0) (<= i k) (>= (intshl k s i) t)))
+int_check_eq_bvmul, (= (bvmul x s) t),(= (bvand (bvor (bvneg s) s) t) t), (= (intmul k x s) t),(= (intand k (intor k (intneg k s) s) t) t)
+int_check_bvuge_bvor, (bvuge (bvor x s) t),true, (>= (intor k x s) t),true
+int_check_bvule_bvashr1, (bvule (bvashr s x) t),(or (bvult s min) (bvuge t s)), (<= (intashr k s x) t),(or (< s (intmins k)) (>= t s))
+int_check_bvult_bvor, (bvult (bvor x s) t),(bvult s t), (< (intor k x s) t),(< s t)
+int_check_ne_bvurem0, (distinct (uremtotal x s) t),(or (distinct s (_ bv1 4)) (distinct t (_ bv0 4))), (distinct (intmodtotal k x s) t),(or (distinct s 1) (distinct t 0))
+int_check_bvuge_bvashr1, (bvuge (bvashr s x) t),(not (and (bvult s (bvnot s)) (bvult s t))), (>= (intashr k s x) t),(not (and (< s (intnot k s)) (< s t)))
+int_check_bvugt_bvurem0, (bvugt (uremtotal x s) t),(bvult t (bvnot (bvneg s))), (> (intmodtotal k x s) t),(< t (intnot k (intneg k s)))
+int_check_eq_bvneg, (= (bvneg x) t),true, (= (intneg k x) t),true
+int_check_bvule_bvashr0, (bvule (bvashr x s) t),true, (<= (intashr k x s) t),true
+int_check_bvuge_bvshl0, (bvuge (bvshl x s) t),(bvuge (bvshl (bvnot (_ bv0 4)) s) t), (>= (intshl k x s) t),(>= (intshl k (intmax k) s) t)
+int_check_ne_bvneg, (distinct (bvneg x) t),true, (distinct (intneg k x) t),true
+int_check_bvuge_bvlshr0, (bvuge (bvlshr x s) t),(= (bvlshr (bvshl t s) s) t), (>= (intlshr k x s) t),(= (intlshr k (intshl k t s) s) t)
+int_check_bvuge_bvshl1, (bvuge (bvshl s x) t),(or  (bvuge (bvshl s (_ bv0 4)) t) (bvuge (bvshl s (_ bv1 4)) t) (bvuge (bvshl s (_ bv2 4)) t) (bvuge (bvshl s (_ bv3 4)) t) (bvuge (bvshl s (_ bv4 4)) t)), (>= (intshl k s x) t),(exists ((i Int)) (and (>= i 0) (<= i k) (>= (intshl k s i) t)))
+int_check_bvuge_bvlshr1, (bvuge (bvlshr s x) t),(bvuge s t), (>= (intlshr k s x) t),(>= s t)
+int_check_bvuge_bvurem1, (bvuge (uremtotal s x) t),(or (bvuge (bvand (bvsub (bvadd t t) s) s) t) (bvult t s)), (>= (intmodtotal k s x) t),(or (>= (intand k (intsub k (intadd k t t) s) s) t) (< t s))
+int_check_bvuge_bvurem0, (bvuge (uremtotal x s) t),(bvuge (bvnot (bvneg s)) t), (>= (intmodtotal k x s) t),(>= (intnot k (intneg k s)) t)
+int_check_bvult_bvneg, (bvult (bvneg x) t),(distinct t (_ bv0 4)), (< (intneg k x) t),(distinct t 0)
+int_check_eq_bvudiv1, (= (udivtotal s x) t),(= (udivtotal s (udivtotal s t)) t), (= (intudivtotal k s x) t),(= (intudivtotal k s (intudivtotal k s t)) t)
+int_check_eq_bvadd, (= (bvadd x s) t),true, (= (intadd k x s) t),true
+int_check_bvult_bvudiv0, (bvult (udivtotal x s) t),(and (bvult (_ bv0 4) s) (bvult (_ bv0 4) t)), (< (intudivtotal k x s) t),(and (< 0 s) (< 0 t))
+int_check_eq_bvshl0, (= (bvshl x s) t),(= (bvshl (bvlshr t s) s) t), (= (intshl k x s) t),(= (intshl k (intlshr k t s) s) t)
+int_check_bvule_bvlshr0, (bvule (bvlshr x s) t),true, (<= (intlshr k x s) t),true
+int_check_bvugt_bvurem1, (bvugt (uremtotal s x) t),(bvult t s), (> (intmodtotal k s x) t),(< t s)
+int_check_bvule_bvor, (bvule (bvor x s) t),(bvuge t s), (<= (intor k x s) t),(>= t s)
+int_check_eq_bvurem0, (= (uremtotal x s) t),(not (bvult (bvnot (bvneg s)) t)), (= (intmodtotal k x s) t),(not (< (intnot k (intneg k s)) t))
+int_check_bvule_bvshl0, (bvule (bvshl x s) t),true, (<= (intshl k x s) t),true
+int_check_bvugt_bvudiv0, (bvugt (udivtotal x s) t),(bvugt (udivtotal (bvnot (_ bv0 4)) s) t), (> (intudivtotal k x s) t),(> (intudivtotal k (intmax k) s) t)
+int_check_bvult_bvlshr1, (bvult (bvlshr s x) t),(distinct t (_ bv0 4)), (< (intlshr k s x) t),(distinct t 0)
+int_check_eq_bvnot, (= (bvnot x) t),true, (= (intnot k x) t),true
+int_check_bvugt_bvlshr0, (bvugt (bvlshr x s) t),(bvult t (bvlshr (bvnot s) s)), (> (intlshr k x s) t),(< t (intlshr k (intnot k s) s))
+int_check_ne_bvashr0, (distinct (bvashr x s) t),true, (distinct (intashr k x s) t),true
+int_check_bvuge_bvudiv1, (bvuge (udivtotal s x) t),true, (>= (intudivtotal k s x) t),true
+int_check_bvule_bvshl1, (bvule (bvshl s x) t),true, (<= (intshl k s x) t),true
+int_check_bvule_bvudiv1, (bvule (udivtotal s x) t),(bvult (_ bv0 4) (bvor (bvnot s) t)), (<= (intudivtotal k s x) t),(< 0 (intor k (intnot k s) t))
+int_check_bvult_bvurem0, (bvult (uremtotal x s) t),(distinct t (_ bv0 4)), (< (intmodtotal k x s) t),(distinct t 0)
+int_check_ne_bvadd, (distinct (bvadd x s) t),true, (distinct (intadd k x s) t),true
+int_check_bvugt_bvand, (bvugt (bvand x s) t),(bvult t s), (> (intand k x s) t),(< t s)
+int_check_ne_bvor, (distinct (bvor x s) t),(or (distinct s (bvnot (_ bv0 4))) (distinct t (bvnot (_ bv0 4)))), (distinct (intor k x s) t),(or (distinct s (intmax k)) (distinct t (intmax k)))
+int_check_bvule_bvneg, (bvule (bvneg x) t),true, (<= (intneg k x) t),true
+int_check_bvuge_bvneg, (bvuge (bvneg x) t),true, (>= (intneg k x) t),true
+int_check_bvuge_bvand, (bvuge (bvand x s) t),(not (bvult s t)), (>= (intand k x s) t),(not (< s t))
+int_check_bvult_bvurem1, (bvult (uremtotal s x) t),(distinct t (_ bv0 4)), (< (intmodtotal k s x) t),(distinct t 0)
+int_check_bvugt_bvadd, (bvugt (bvadd x s) t),(distinct t (bvnot (_ bv0 4))), (> (intadd k x s) t),(distinct t (intmax k))
+int_check_ne_bvnot, (distinct (bvnot x) t),true, (distinct (intnot k x) t),true
+int_check_ne_bvashr1, (distinct (bvashr s x) t),(and (or (not (= t (_ bv0 4))) (not (= s (_ bv0 4)))) (or (not (= t (bvnot (_ bv0 4)))) (not (= s (bvnot (_ bv0 4)))))), (distinct (intashr k s x) t),(and (or (not (= t 0)) (not (= s 0))) (or (not (= t (intmax k))) (not (= s (intmax k)))))
+int_check_bvult_bvand, (bvult (bvand x s) t),(distinct t (_ bv0 4)), (< (intand k x s) t),(distinct t 0)
+int_check_eq_bvudiv0, (= (udivtotal x s) t),(= (udivtotal (bvmul s t) s) t), (= (intudivtotal k x s) t),(= (intudivtotal k (intmul k s t) s) t)
+int_check_ne_bvlshr1, (distinct (bvlshr s x) t),(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4))), (distinct (intlshr k s x) t),(or (distinct s 0) (distinct t 0))
+int_check_eq_bvor, (= (bvor x s) t),(= (bvor t s) t), (= (intor k x s) t),(= (intor k t s) t)
+int_check_bvugt_bvashr0, (bvugt (bvashr x s) t),(bvult t (bvnot (_ bv0 4))), (> (intashr k x s) t),(< t (intmax k))
+int_check_ne_bvshl0, (distinct (bvshl x s) t),(or (distinct t (_ bv0 4)) (bvult s (_ bv4 4))), (distinct (intshl k x s) t),(or (distinct t 0) (< s k))
+int_check_bvuge_bvudiv0, (bvuge (udivtotal x s) t),(= (bvand (udivtotal (bvmul s t) t) s) s), (>= (intudivtotal k x s) t),(= (intand k (intudivtotal k (intmul k s t) t) s) s)
+int_check_bvult_bvashr0, (bvult (bvashr x s) t),(distinct t (_ bv0 4)), (< (intashr k x s) t),(distinct t 0)
+int_check_ne_bvlshr0, (distinct (bvlshr x s) t),(or (distinct t (_ bv0 4)) (bvult s (_ bv4 4))), (distinct (intlshr k x s) t),(or (distinct t 0) (< s k))
+int_check_bvule_bvlshr1, (bvule (bvlshr s x) t),true, (<= (intlshr k s x) t),true
+int_check_bvult_bvudiv1, (bvult (udivtotal s x) t),(and (bvult (_ bv0 4) (bvnot (bvand (bvneg t) s))) (bvult (_ bv0 4) t)), (< (intudivtotal k s x) t),(and (< 0 (intnot k (intand k (intneg k t) s))) (< 0 t))
+int_check_bvule_bvand, (bvule (bvand x s) t),true, (<= (intand k x s) t),true
+int_check_bvule_bvmul, (bvule (bvmul x s) t),true, (<= (intmul k x s) t),true
+int_check_bvugt_bvudiv1, (bvugt (udivtotal s x) t),(bvult t (bvnot (_ bv0 4))), (> (intudivtotal k s x) t),(< t (intmax k))
+int_check_bvugt_bvor, (bvugt (bvor x s) t),(bvult t (bvnot (_ bv0 4))), (> (intor k x s) t),(< t (intmax k))
+int_check_bvult_bvshl0, (bvult (bvshl x s) t),(distinct t (_ bv0 4)), (< (intshl k x s) t),(distinct t 0)
+int_check_bvule_bvurem0, (bvule (uremtotal x s) t),true, (<= (intmodtotal k x s) t),true
+int_check_bvule_bvudiv0, (bvule (udivtotal x s) t),(not (bvult (bvor s t) (bvnot (bvneg s)))), (<= (intudivtotal k x s) t),(not (< (intor k s t) (intnot k (intneg k s))))
+int_check_bvugt_bvmul, (bvugt (bvmul x s) t),(bvult t (bvor (bvneg s) s)), (> (intmul k x s) t),(< t (intor k (intneg k s) s))
+int_check_eq_bvashr1, (= (bvashr s x) t),(or  (= (bvashr s (_ bv0 4)) t) (= (bvashr s (_ bv1 4)) t) (= (bvashr s (_ bv2 4)) t) (= (bvashr s (_ bv3 4)) t) (= (bvashr s (_ bv4 4)) t)), (= (intashr k s x) t),(exists ((i Int)) (and (>= i 0) (<= i k) (>= (intshl k s i) t)))
+int_check_eq_bvshl1, (= (bvshl s x) t),(or  (= (bvshl s (_ bv0 4)) t) (= (bvshl s (_ bv1 4)) t) (= (bvshl s (_ bv2 4)) t) (= (bvshl s (_ bv3 4)) t) (= (bvshl s (_ bv4 4)) t)), (= (intshl k s x) t),(exists ((i Int)) (and (>= i 0) (<= i k) (>= (intshl k s i) t)))
+int_check_ne_bvand, (distinct (bvand x s) t),(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4))), (distinct (intand k x s) t),(or (distinct s 0) (distinct t 0))
+int_check_ne_bvudiv0, (distinct (udivtotal x s) t),(or (distinct s (_ bv0 4)) (distinct t (bvnot (_ bv0 4)))), (distinct (intudivtotal k x s) t),(or (distinct s 0) (distinct t (intmax k)))
+int_check_bvule_bvurem1, (bvule (uremtotal s x) t),true, (<= (intmodtotal k s x) t),true
+int_check_bvuge_bvadd, (bvuge (bvadd x s) t),true, (>= (intadd k x s) t),true
+int_check_bvugt_bvlshr1, (bvugt (bvlshr s x) t),(bvult t s), (> (intlshr k s x) t),(< t s)
+int_check_ne_bvshl1, (distinct (bvshl s x) t),(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4))), (distinct (intshl k s x) t),(or (distinct s 0) (distinct t 0))
+int_check_bvult_bvlshr0, (bvult (bvlshr x s) t),(distinct t (_ bv0 4)), (< (intlshr k x s) t),(distinct t 0)
+int_check_bvuge_bvmul, (bvuge (bvmul x s) t),(not (bvult (bvor (bvneg s) s) t)), (>= (intmul k x s) t),(not (< (intor k (intneg k s) s) t))
+int_check_ne_bvmul, (distinct (bvmul x s) t),(or (distinct t (_ bv0 4)) (distinct s (_ bv0 4))), (distinct (intmul k x s) t),(or (distinct t 0) (distinct s 0))
+int_check_bvult_bvmul, (bvult (bvmul x s) t),(distinct t (_ bv0 4)), (< (intmul k x s) t),(distinct t 0)
+int_check_bvugt_bvneg, (bvugt (bvneg x) t),(distinct t (bvnot (_ bv0 4))), (> (intneg k x) t),(distinct t (intmax k))
+int_check_bvugt_bvnot, (bvugt (bvnot x) t),(distinct t (bvnot (_ bv0 4))), (> (intnot k x) t),(distinct t (intmax k))
+int_check_eq_bvashr0, (= (bvashr x s) t),(and (=> (bvult s (_ bv4 4)) (= (bvashr (bvshl t s) s) t)) (=> (bvuge s (_ bv4 4)) (or (= t (bvnot (_ bv0 4))) (= t (_ bv0 4))))), (= (intashr k x s) t),(and (=> (< s k) (= (intashr k (intshl k t s) s) t)) (=> (>= s k) (or (= t (intmax k)) (= t 0))))
+int_check_ne_bvurem1, (distinct (uremtotal s x) t),(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4))), (distinct (intmodtotal k s x) t),(or (distinct s 0) (distinct t 0))
+int_check_bvugt_bvshl1, (bvugt (bvshl s x) t),(or  (bvugt (bvshl s (_ bv0 4)) t) (bvugt (bvshl s (_ bv1 4)) t) (bvugt (bvshl s (_ bv2 4)) t) (bvugt (bvshl s (_ bv3 4)) t) (bvugt (bvshl s (_ bv4 4)) t)), (> (intshl k s x) t),(exists ((i Int)) (and (>= i 0) (<= i k) (>= (intshl k s i) t)))
+int_check_bvule_bvnot, (bvule (bvnot x) t),true, (<= (intnot k x) t),true
+int_check_bvult_bvnot, (bvult (bvnot x) t),(distinct t (_ bv0 4)), (< (intnot k x) t),(distinct t 0)
+int_check_bvult_bvshl1, (bvult (bvshl s x) t),(distinct t (_ bv0 4)), (< (intshl k s x) t),(distinct t 0)
+int_check_eq_bvlshr0, (= (bvlshr x s) t),(= (bvlshr (bvshl t s) s) t), (= (intlshr k x s) t),(= (intlshr k (intshl k t s) s) t)
+int_check_bvule_bvadd, (bvule (bvadd x s) t),true, (<= (intadd k x s) t),true
+int_check_bvult_bvadd, (bvult (bvadd x s) t),(distinct t (_ bv0 4)), (< (intadd k x s) t),(distinct t 0)
+int_check_eq_bvurem1, (= (uremtotal s x) t),(bvuge (bvand (bvsub (bvadd t t) s) s) t), (= (intmodtotal k s x) t),(>= (intand k (intsub k (intadd k t t) s) s) t)
+int_check_bvuge_bvashr0, (bvuge (bvashr x s) t),true, (>= (intashr k x s) t),true
+int_check_eq_bvand, (= (bvand x s) t),(= (bvand t s) t), (= (intand k x s) t),(= (intand k t s) t)
+int_check_bvuge_bvnot, (bvuge (bvnot x) t),true, (>= (intnot k x) t),true

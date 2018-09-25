@@ -50,10 +50,10 @@ def process_file(f_path, commands, result_file,f):
     results = {}
     for command in commands:
         full_command = command + " " + f_path
+        print("running: ", command, f_path) 
         result_object = subprocess.run(full_command.split(), stdout=subprocess.PIPE)
         result_string = result_object.stdout.decode('utf-8').strip()
         results[command] = result_string
-        print(command, f_path, ": ", result_string)
     return (results,result_file,commands,f,)
 
 

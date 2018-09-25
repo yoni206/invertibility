@@ -30,6 +30,7 @@ def write_to_file(results, output_file):
             myfile.write('\n')
 
 def process_file(f, results):
+    print('panda ', f)
     with open(f, 'r') as myfile:
         lines = [l.strip() for l in myfile.readlines()]
     #ignore title
@@ -53,7 +54,6 @@ def aggregate_values(values):
         return 'unsat'
     if 'sat' in values:
         return 'sat'
-    print('panda ', values)
     assert 'unknown' in values
     return 'unknown'
 
