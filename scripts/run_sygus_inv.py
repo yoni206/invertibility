@@ -34,6 +34,9 @@ def process_files(files):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("arg1: dir of smt files\narg2: timeout")
+        sys.exit(1)
     directory = sys.argv[1]
     timeout = sys.argv[2]
     main(directory, timeout)

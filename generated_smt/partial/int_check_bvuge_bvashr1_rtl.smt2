@@ -25,7 +25,7 @@
 (define-fun two_to_the_is_ok_qf ((b Int)) Bool (and (= (two_to_the 0) 1) (= (two_to_the 1) 2) (= (two_to_the 2) 4) (=> (and (> b 2)) (and (> (two_to_the b) 4) (= (two_to_the b) (* (two_to_the (- b 1)) 2)) ))  ) )
 
 ;trivial axiomatization of power, in case the recursive definition is used
-(define-fun two_to_the_is_ok_rec ((a Int) (b Int) ) Bool true)
+(define-fun two_to_the_is_ok_rec ((b Int) ) Bool true)
 
 ;choose version of power properties
 (define-fun two_to_the_is_ok ((b Int)) Bool (two_to_the_is_ok_partial b))
