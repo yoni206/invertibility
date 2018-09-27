@@ -4,9 +4,12 @@ import subprocess
 import utils
 import run_commands_on_dir
 
+SKIP_LIST = ["rec_ind"]
+
 def main(dir_of_dirs_path, commands_txt_file, results_dir):
     dirs = os.listdir(dir_of_dirs_path)
-    for directory in dirs:
+
+    for directory in [d for d in dirs if d not in SKIP_LIST]:
         d = dir_of_dirs_path + "/" + directory
         run_commands_on_dir.main(d, commands_txt_file, results_dir)
 

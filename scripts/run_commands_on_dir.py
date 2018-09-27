@@ -4,6 +4,8 @@ import subprocess
 import utils
 import multiprocessing as mp
 
+DELIMITER = ";"
+
 def main(dir_path, commands_txt_file, results_dir):
     dir_name = utils.get_file_or_dir_name_no_ext(dir_path)
     if not os.path.exists(results_dir):
@@ -18,7 +20,9 @@ def main(dir_path, commands_txt_file, results_dir):
     commands = [x.strip() for x in commands]
     files = os.listdir(dir_path)
     with open(result_file, 'w') as rf:
-        rf.write(":".join(commands))
+        rf.write("filename")
+        rf.write(DELIMITER)
+        rf.write(DELIMITER.join(commands))
         rf.write("\n")
     process_files(files, dir_path, result_file, commands)
 
@@ -40,8 +44,8 @@ def error_handler(arg):
     print('fail', arg)
 
 def write_to_file(results, result_file, commands,f):
-        line = f + ":"
-        line = line + ":".join([results[command] for command in commands])
+        line = f + DELIMITER
+        line = line + DELIMITER.join([results[command] for command in commands])
         with open(result_file, "a") as myfile:
             myfile.write(line)
             myfile.write("\n")
@@ -49,9 +53,11 @@ def write_to_file(results, result_file, commands,f):
 def process_file(f_path, commands, result_file,f):
     results = {}
     for command in commands:
-        full_command = command + " " + f_path
+        full_command = "time " + command + " " + f_path
         print("running: ", command, f_path) 
-        result_object = subprocess.run(full_command.split(), stdout=subprocess.PIPE)
+        result_object = subprocess.run(full_command.split(), stdout=subprocess.PIPE, stderr = subprocess.PIPE)
+        err_string = result_object.stderr.decode('utf-8').strip()
+        print(err_string)
         result_string = result_object.stdout.decode('utf-8').strip()
         results[command] = result_string
     return (results,result_file,commands,f,)

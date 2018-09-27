@@ -64,7 +64,13 @@
 (define-fun intmul ((k Int) (a Int) (b Int)) Int (intmodtotal k (* a b) (two_to_the k)))
 (define-fun intsub ((k Int) (a Int) (b Int)) Int (intadd k a (intneg k b)))
 
-
+;signed business
+;Given an integer x s.t. 0<= x <= (2^k)-1, x can be represented by a bitvector v, so that x is the unsigned interpretation of v. now, v also has a signed interpretation, call it y. Then (unsigned_to_signed k x)=y.
+(define-fun unsigned_to_signed ((k Int) (x Int)) Int (- (* 2 (intextract k (- k 2) 0 x)) x))
+(define-fun intslt ((k Int) (a Int) (b Int)) Bool (< (unsigned_to_signed k a) (unsigned_to_signed k b)) )
+(define-fun intsgt ((k Int) (a Int) (b Int)) Bool (> (unsigned_to_signed k a) (unsigned_to_signed k b)) )
+(define-fun intsle ((k Int) (a Int) (b Int)) Bool (<= (unsigned_to_signed k a) (unsigned_to_signed k b)) )
+(define-fun intsge ((k Int) (a Int) (b Int)) Bool (>= (unsigned_to_signed k a) (unsigned_to_signed k b)) )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;    utility functions for and/or  ;
@@ -213,7 +219,9 @@
 (define-fun intand ((k Int) (a Int) (b Int)) Int (intand_dec k a b))
 (define-fun and_is_ok ((k Int) (a Int)) Bool (and_is_ok_partial k a))
 
-(define-fun and_or_are_ok ((k Int) (a Int)) Bool (and (and_is_ok k a) (or_is_ok k a)))
+;in this file, l and SC don't use intand nor intor. Therefore, there is no point in verifying that these functions satisfy their axiomatizations.
+;(define-fun and_or_are_ok ((k Int) (a Int)) Bool (and (and_is_ok k a) (or_is_ok k a)))
+(define-fun and_or_are_ok ((k Int) (a Int) ) Bool true)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

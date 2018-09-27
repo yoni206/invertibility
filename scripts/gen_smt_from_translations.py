@@ -5,6 +5,11 @@ import utils
 l_PH = "<l>"
 SC_PH = "<SC>"
 assertion_PH = "<assertion>"
+AND_OP = "intand"
+OR_OP = "intor"
+AND_OR_ARE_OK_DEF_PREFIX = "(define-fun and_or_are_ok"
+AND_OR_ARE_OK_TRIVIAL = "(define-fun and_or_are_ok ((k Int) (a Int) ) Bool true)"
+AND_OR_COMMENT = ";in this file, l and SC don't use intand nor intor. Therefore, there is no point in verifying that these functions satisfy their axiomatizations."
 
 def main(csv_path, dir_name, template_path):
     template_name = get_name_no_ext(template_path)
@@ -47,13 +52,38 @@ def process_line(line, directory, template, ind):
         assertion_ltr = assertion_ltr + "_ind"
         assertion_rtl = assertion_rtl + "_ind"
         d = d + "_ind"
-    ltr_content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion_ltr})
-    rtl_content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion_rtl })
+    ltr_content = generate_content(template, new_l, new_SC, assertion_ltr)
+    rtl_content = generate_content(template, new_l, new_SC, assertion_rtl)
     ltr_fname = name + "_ltr.smt2"
     rtl_fname = name + "_rtl.smt2"
     write_content_to_file(ltr_content, ltr_fname, d)
     write_content_to_file(rtl_content, rtl_fname, d)
 
+def generate_content(template, new_l, new_SC, assertion):
+    content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion})
+    if (not uses_and_or(new_l)) and (not uses_and_or(new_SC)):
+        content = try_to_eliminate_and_or(content)
+    return content
+
+def uses_and_or(formula):
+    return (AND_OP in formula) or (OR_OP in formula)
+
+def try_to_eliminate_and_or(content):
+    lines = content.splitlines()
+    index = get_andor_dec_index(lines)
+    result = content
+    lines[index] = ";" + lines[index]
+    lines.insert(index, AND_OR_COMMENT)
+    lines.insert(index+2, AND_OR_ARE_OK_TRIVIAL)
+    result = "\n".join(lines)
+    return result
+
+def get_andor_dec_index(lines):
+    indexes = [i for i in range(0, len(lines)-1) if lines[i].startswith(AND_OR_ARE_OK_DEF_PREFIX)]
+    if len(indexes) == 1:
+        return indexes[0]
+    else:
+        assert(False)
 
 def write_content_to_file(content, filename, d):
     f = open(d + "/" + filename, "w")
