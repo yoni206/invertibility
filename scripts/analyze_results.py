@@ -62,7 +62,6 @@ def write_to_file(results, output_file):
             myfile.write('\n')
 
 def process_file(f, results, stats):
-    #print('panda ', f)
     with open(f, 'r') as myfile:
         lines = [l.strip() for l in myfile.readlines()]
     #ignore title
@@ -84,7 +83,8 @@ def add_to_stats(stats, f, values, title_line):
     increment(stats, f, TOTAL, value)
 
 def increment(stats, f, command, value):
-    stats[f][command][value] += 1
+    if value != '':
+        stats[f][command][value] += 1
 
 def add_to_results(results, filename, d, values):
     value = aggregate_values(values)

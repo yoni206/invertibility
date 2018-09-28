@@ -53,11 +53,9 @@ def write_to_file(results, result_file, commands,f):
 def process_file(f_path, commands, result_file,f):
     results = {}
     for command in commands:
-        full_command = "time " + command + " " + f_path
+        full_command = command + " " + f_path
         print("running: ", command, f_path) 
-        result_object = subprocess.run(full_command.split(), stdout=subprocess.PIPE, stderr = subprocess.PIPE)
-        err_string = result_object.stderr.decode('utf-8').strip()
-        print(err_string)
+        result_object = subprocess.run(full_command.split(), stdout=subprocess.PIPE)
         result_string = result_object.stdout.decode('utf-8').strip()
         results[command] = result_string
     return (results,result_file,commands,f,)
