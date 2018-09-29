@@ -7,7 +7,7 @@ SC_PH = "<SC>"
 assertion_PH = "<assertion>"
 AND_OP = "intand"
 OR_OP = "intor"
-AND_OR_ARE_OK_DEF_PREFIX = "(define-fun and_or_are_ok"
+AND_OR_ARE_OK_DEF_PREFIX = "(define-fun and_or_are_ok "
 AND_OR_ARE_OK_TRIVIAL = "(define-fun and_or_are_ok ((k Int) (a Int) ) Bool true)"
 AND_OR_COMMENT = ";in this file, l and SC don't use intand nor intor. Therefore, there is no point in verifying that these functions satisfy their axiomatizations."
 
