@@ -1,7 +1,7 @@
-cvc4 --tlimit 50000
-cvc4 --tlimit 50000 --nl-ext-tplanes
-cvc4 --tlimit 50000 --nl-ext-tplanes --fmf-fun-rlv 
-cvc4 --tlimit 50000 --nl-ext-tplanes --cbqi-all
-cvc4 --tlimit 50000 --cbqi-all
-cvc4 --tlimit 50000 --fmf-fun-rlv 
-z3 --t:50000
+cvc4 
+cvc4 --nl-ext-tplanes
+cvc4 --nl-ext-tplanes --fmf-fun-rlv 
+cvc4 --nl-ext-tplanes --cbqi-all
+cvc4 --cbqi-all
+cvc4 --fmf-fun-rlv 
+z3 

@@ -75,7 +75,7 @@ def replace_disj_with_exists(sc):
 def get_matrix(s):
     assert(s.startswith("(or"))
     body = s[3:-1].strip()
-    parens = find_parens(body)
+    parens = utils.find_parens(body)
     all_disjuncts_same(body, parens)
     i,j = list(parens.items())[0]
     return body[i:j+1]
@@ -99,22 +99,6 @@ def all_disjuncts_same(s, parens):
         for j in range(i+1, len(expressions)):
             assert (expressions[i] == expressions[j])
 
-def find_parens(s):
-    toret = {}
-    pstack = []
-
-    for i, c in enumerate(s):
-        if c == '(':
-            pstack.append(i)
-        elif c == ')':
-            if len(pstack) == 0:
-                raise IndexError("No matching closing parens at: " + str(i))
-            toret[pstack.pop()] = i
-
-    if len(pstack) > 0:
-        raise IndexError("No matching opening parens at: " + str(pstack.pop()))
-
-    return toret
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
