@@ -4,7 +4,9 @@ import subprocess
 import utils
 import run_commands_on_dir
 
-SKIP_LIST = ["rec_ind"]
+#skip list - don't run benchmarks from these directores
+#SKIP_LIST = ["rec_ind"]
+SKIP_LIST = []
 
 
 def clear_log():

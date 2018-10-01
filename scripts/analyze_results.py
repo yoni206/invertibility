@@ -38,10 +38,12 @@ def init_stats(results_dir):
                 stats[path][command]["sat"] = 0
                 stats[path][command]["unsat"] = 0
                 stats[path][command]["unknown"] = 0
+                stats[path][command]["timeout"] = 0
             stats[path][TOTAL] = {}
             stats[path][TOTAL]["sat"] = 0
             stats[path][TOTAL]["unsat"] = 0
             stats[path][TOTAL]["unknown"] = 0
+            stats[path][TOTAL]["timeout"] = 0
     return stats
 
 def write_to_file(results, output_file):
@@ -97,12 +99,14 @@ def aggregate_values(values):
     if 'unsat' in values and 'sat' in values:
         print('some solver has a bug!!!')
         assert(False)
-    if 'unsat' in values:
+    elif 'unsat' in values:
         return 'unsat'
-    if 'sat' in values:
+    elif 'sat' in values:
         return 'sat'
-    if 'unknown' in values:
+    elif 'unknown' in values:
         return 'unknown'
+    elif 'timeout' in values:
+        return 'timeout'
     else:
         print('panda ', values)
         assert(False)

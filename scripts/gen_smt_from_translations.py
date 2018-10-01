@@ -11,7 +11,12 @@ AND_OR_ARE_OK_DEF_PREFIX = "(define-fun and_or_are_ok "
 AND_OR_ARE_OK_TRIVIAL = "(define-fun and_or_are_ok ((k Int) (a Int) ) Bool true)"
 AND_OR_COMMENT = ";in this file, l and SC don't use intand nor intor. Therefore, there is no point in verifying that these functions satisfy their axiomatizations."
 
-def main(csv_path, dir_name, template_path):
+
+def main(csv_path, dir_name, templates_dir):
+    #TODO work on all files in templates_dir
+    Assert(False)
+
+def work_on_template(csv_path, dir_name, template_path):
     template_name = get_name_no_ext(template_path)
     directory = dir_name + "/" + template_name
     if os.path.exists(directory):
@@ -91,7 +96,7 @@ def write_content_to_file(content, filename, d):
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print('arg1: csv file\narg2: generated files dir\narg3: template file')
+        print('arg1: csv file\narg2: generated files dir\narg3: templates dir')
         exit(1)
     csv = sys.argv[1]
     result_dir = sys.argv[2]

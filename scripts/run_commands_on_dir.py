@@ -52,14 +52,23 @@ def write_to_file(results, result_file, commands,f):
             myfile.write(line)
             myfile.write("\n")
 
+def yices_or_mathsat_cmd(command):
+    return "yices-smt2 " in command or "mathsat " in command
+
+def qf_dir(path):
+    return "/qf/" in path
 
 def get_result(command, f_path, timeout):
         full_command = command + " " + f_path
         print("running: ", command, f_path) 
         start = time.time()
         try:
-            result_object = subprocess.run(full_command.split(), stdout=subprocess.PIPE, timeout=int(timeout))
-            result_string = result_object.stdout.decode('utf-8').strip()
+            #yices and mathsat should only run on qf.
+            if yices_or_mathsat_cmd(command) and (not qf_dir(f_path)):
+                result_string = "skip"
+            else:
+                result_object = subprocess.run(full_command.split(), stdout=subprocess.PIPE, timeout=int(timeout))
+                result_string = result_object.stdout.decode('utf-8').strip()
         except subprocess.TimeoutExpired:
             result_string = "timeout"
         end = time.time()
@@ -81,7 +90,8 @@ def process_file(f_path, commands, result_file,f, timeout):
 
 if __name__ == "__main__":
     if len(sys.argv) < 5:
-        print('arg1: dir of dirs path\narg2: commands file\narg3: results dir\narg4: timeout')
+        print('arg1: dir path\narg2: commands file\narg3: results dir\narg4: timeout')
+        exit(1)
     dir_path = sys.argv[1]
     commands = sys.argv[2]
     results_dir = sys.argv[3]
