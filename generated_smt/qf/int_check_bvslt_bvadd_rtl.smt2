@@ -1,4 +1,4 @@
-(set-logic QF_UFNIA)
+(set-logic UFNIA)
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;    power definitions  ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;

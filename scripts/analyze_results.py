@@ -15,7 +15,25 @@ def main(output_file, results_dir):
     for f in os.listdir(results_dir):
         process_file(results_dir + "/" + f, results, stats)
     print_stats(stats)
+    print_totals(results)
     write_to_file(results, output_file)
+
+def name_of_ic(s):
+    return "_".join((s.split("_"))[0:4])
+
+def print_totals(results):
+    proved_formulas = set([f for f in results if "unsat" in [d for [c,d] in results[f].items()] ])
+    proved_formulas_ltr = set([name_of_ic(l) for l in proved_formulas if name_of_ic(l)+"_ltr.smt2" in proved_formulas]) 
+    proved_formulas_rtl = set([name_of_ic(l) for l in proved_formulas if name_of_ic(l)+"_rtl.smt2" in proved_formulas]) 
+    proved_ics = proved_formulas_ltr.intersection(proved_formulas_rtl)
+    proved_only_ltr = proved_formulas_ltr - proved_formulas_rtl
+    proved_only_rtl = proved_formulas_rtl - proved_formulas_ltr
+    print("\n")
+    print("total formulas proved: ", len(proved_formulas))
+    print("only ltr: ", len(proved_only_ltr))
+    print("only rtl: ", len(proved_only_rtl))
+    print("total ics proved (both ltr and rtl): ", len(proved_ics))
+    
 
 def print_stats(stats):
     for f in stats:
@@ -39,11 +57,13 @@ def init_stats(results_dir):
                 stats[path][command]["unsat"] = 0
                 stats[path][command]["unknown"] = 0
                 stats[path][command]["timeout"] = 0
+                stats[path][command]["skip"] = 0
             stats[path][TOTAL] = {}
             stats[path][TOTAL]["sat"] = 0
             stats[path][TOTAL]["unsat"] = 0
             stats[path][TOTAL]["unknown"] = 0
             stats[path][TOTAL]["timeout"] = 0
+            stats[path][TOTAL]["skip"] = 0
     return stats
 
 def write_to_file(results, output_file):

@@ -5,7 +5,7 @@ import utils
 SYNTAX_PH = "<syntax>"
 L_PH = "<l>"
 SC_PH = "<SC>"
-TEMPLATE_PATH = "templates/template.sy"
+TEMPLATE_PATH = "template.sy"
 with open(TEMPLATE_PATH, 'r') as myfile: TEMPLATE=myfile.read()
 
 def main(dir_of_syntaxes, dir_of_SC_verification, generated_smt_dir):
