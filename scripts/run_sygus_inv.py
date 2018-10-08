@@ -74,6 +74,7 @@ def error_handler(arg):
 def process_file(dirname, f, timeout):
         f_path = dirname + "/" + f
         cvc4_command = ["cvc4", f_path]
+        print("running ", f_path)
         try: 
             cvc4_result_object = subprocess.run(cvc4_command, stdout=subprocess.PIPE, timeout=int(timeout))
             cvc4_result_string = cvc4_result_object.stdout.decode('utf-8').strip()

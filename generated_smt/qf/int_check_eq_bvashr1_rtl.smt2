@@ -7,7 +7,7 @@
 
 
 ;declaration that will be axiomatized
-(declare-fun two_to_the_dec (Int) Int) 
+(declare-fun two_to_the_dec (Int) Int)
 
 ;choose your power!
 (define-fun two_to_the ((b Int)) Int (two_to_the_dec b))
@@ -44,7 +44,7 @@
 (define-fun intmodtotal ((k Int) (a Int) (b Int)) Int (ite (= b 0) a (mod a b)))
 
 
-;bvneg and bvnot 
+;bvneg and bvnot
 (define-fun intneg ((k Int) (a Int)) Int (intmodtotal k (- (two_to_the k) a) (two_to_the k)))
 (define-fun intnot ((k Int) (a Int)) Int (- (intmax k) a))
 
@@ -52,7 +52,7 @@
 (define-fun intmins ((k Int)) Int (two_to_the (- k 1)))
 (define-fun intmaxs ((k Int)) Int (intnot k (intmins k)))
 
-;extract 
+;extract
 (define-fun intextract ((k Int) (i Int) (j Int) (a Int)) Int (mod (div a (two_to_the j)) (two_to_the (+ (- i j) 1))))
 
 ;easy translations
@@ -107,13 +107,13 @@
 
 
 ;partial axiomatization of bitwise or - quantifier free
-(define-fun or_is_ok_qf ((k Int) (a Int) ) Bool 
+(define-fun or_is_ok_qf ((k Int) (a Int) ) Bool
 (and
-        (= (intor k 0 a) a)
-        (= (intor k a 0) a)
-        (= (intor k (intmax k) a) (intmax k))
-        (= (intor k a (intmax k)) (intmax k))
-    )
+(= (intor k 0 a) a)
+(= (intor k a 0) a)
+(= (intor k (intmax k) a) (intmax k))
+(= (intor k a (intmax k)) (intmax k))
+)
 )
 
 
@@ -144,13 +144,13 @@
 
 
 ;partial axiomatization of bitwise and - quantifier free
-(define-fun and_is_ok_qf ((k Int) (a Int) ) Bool 
+(define-fun and_is_ok_qf ((k Int) (a Int) ) Bool
 (and
-        (= (intand k 0 a) 0)
-        (= (intand k a 0) 0)
-        (= (intand k (intmax k) a) a)
-        (= (intand k a (intmax k)) a)
-    )
+(= (intand k 0 a) 0)
+(= (intand k a 0) 0)
+(= (intand k (intmax k) a) a)
+(= (intand k a (intmax k)) a)
+)
 )
 
 ;trivial axiomatization for bitwise and - for when recursive definition is used
@@ -187,30 +187,41 @@
 (define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (two_to_the k))))
 (define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
 
+;;;;;;;;;;;;;;;;;;;;;;;
+;more place-holders   ;
+;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; what to prove            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;on the left-to-right direction, we do not demand pow, and and or to be ok w.r.t x. If the implication without these requirement is valid, then so is the implication with the "right" pow, and and or.
-;The same holds for right-to-left, but then this information might be useful for the solver, so we keep it
-
 
 
 
 (declare-fun k () Int)
 (declare-fun s () Int)
-(declare-fun x () Int)
 (declare-fun t () Int)
 
+;skolemized x for the right-to-left direction
+(declare-fun x0 () Int)
 
-(define-fun assertion_rtl () Bool (and (in_range k x) (two_to_the_is_ok x) (and_or_are_ok k x) (l k x s t) (not (SC k s t)) ))
+
+
+;It is better to directly negate right_to_left in order to avoid quantification
+(define-fun not_right_to_left ((k Int) (s Int) (t Int)) Bool (and (l k x0 s t) (not (SC k s t))))
+
+
+
+(define-fun assertion_rtl () Bool (not_right_to_left k s t))
 
 
 
 
 (assert (range_assumptions k s t))
-(assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)))
-(assert (and (and_or_are_ok k s) (and_or_are_ok k t)))
+(assert (in_range k x0))
+(assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)  ))
+(assert (two_to_the_is_ok x0))
+(assert (and (and_or_are_ok k s) (and_or_are_ok k t) ))
+(assert (and_or_are_ok k x0))
 
 
 
@@ -218,19 +229,3 @@
 (assert assertion_rtl)
 
 (check-sat)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;         stuff            ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;alternative final commands for analyzing sat instances of rtl
-;(declare-fun x0 () Int)
-;(assert (range_assumptions k s t))
-;(assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)))
-;(assert (and (and_or_are_ok k s) (and_or_are_ok k t)))
-;(assert (and (in_range k x0) (two_to_the_is_ok x0) (and_or_are_ok k x0) (l k x0 s t) (not (SC k s t))))
-;(check-sat)
-;(get-value (k s t x0))

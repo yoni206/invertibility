@@ -31,7 +31,11 @@ substitutions = {
     "(_ bv4 4)":"k",
     "(bvnot (_ bv0 4))":"(intmax k)",
     "max":"(intmaxs k)",
-    "min":"(intmins k)"
+    "min":"(intmins k)",
+    "#b1000":"(intmins k)",
+    "#b0000":"0",
+    "#b0111":"(intmaxs k)",
+    "(BitVec 4)":"Int"
 }
 
 def main(dir_of_SC_verification, generated_file_path):

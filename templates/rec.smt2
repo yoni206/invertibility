@@ -19,7 +19,23 @@
 (define-fun two_to_the_is_ok_full ((b Int)) Bool (and (= (two_to_the 0) 1) (forall ((i Int)) (=> (and (> i 0) (<= i b)) (= (two_to_the i) (* (two_to_the (- i 1)) 2)))) ))
 
 ;approximate axiomatization of power, with bounded quantifiers
-(define-fun two_to_the_is_ok_partial ((b Int)) Bool (and  (= (two_to_the 0) 1) (= (two_to_the 1) 2) (= (two_to_the 2) 4) (forall ((i Int) (j Int)) (=> (and (>= i 0) (>= j 0) (<= i b) (<= j b)) (and (=> (<= i j) (<= (two_to_the i) (two_to_the j))) (=> (< i j) (< (two_to_the i) (two_to_the j))))))))
+(define-fun two_to_the_is_ok_partial ((b Int)) Bool 
+  (and  
+    (= (two_to_the 0) 1) 
+    (= (two_to_the 1) 2) 
+    (= (two_to_the 2) 4) 
+    (forall ((i Int) (j Int)) 
+      (=> 
+	(and (>= i 0) (>= j 0) (<= i b) (<= j b)) 
+	(and 
+ 	  (=> (<= i j) (<= (two_to_the i) (two_to_the j))) ;weak monotinicity
+	  (=> (< i j) (< (two_to_the i) (two_to_the j))) ;strong monotinicity
+	  (forall ((x Int)) (=> (>= x 0) (=> (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0) (< i j)))) ;fun fact
+	)
+      )
+    )
+  )
+)
 
 ;approximate axiomatization of power, no quantifers
 (define-fun two_to_the_is_ok_qf ((b Int)) Bool (and (= (two_to_the 0) 1) (= (two_to_the 1) 2) (= (two_to_the 2) 4) (=> (and (> b 2)) (and (> (two_to_the b) 4) (= (two_to_the b) (* (two_to_the (- b 1)) 2)) ))  ) )
@@ -255,29 +271,42 @@
 (define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (two_to_the k))))
 (define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
 
+;;;;;;;;;;;;;;;;;;;;;;;
+;more place-holders   ;
+;;;;;;;;;;;;;;;;;;;;;;;
+(define-fun l_part ((k Int) (s Int) (t Int)) Bool <l_part>)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; what to prove            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;on the left-to-right direction, we do not demand pow, and and or to be ok w.r.t x. If the implication without these requirement is valid, then so is the implication with the "right" pow, and and or.
-;The same holds for right-to-left, but then this information might be useful for the solver, so we keep it
 
-(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (exists ((x Int)) (and (in_range k x) (l k x s t)))))
-(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (two_to_the_is_ok x) (and_or_are_ok k x) (l k x s t))) (SC k s t) ))
 
 (declare-fun k () Int)
 (declare-fun s () Int)
 (declare-fun t () Int)
 
+;skolemized x for the right-to-left direction
+(declare-fun x0 () Int)
+
+(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (l_part k s t)))
+(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (two_to_the_is_ok x) (and_or_are_ok k x) (l k x s t))) (SC k s t) ))
+;It is better to directly negate right_to_left in order to avoid quantification
+(define-fun not_right_to_left ((k Int) (s Int) (t Int)) Bool (and (l k x0 s t) (not (SC k s t))))
+
+
 (define-fun assertion_ltr () Bool (not (left_to_right k s t)))
-(define-fun assertion_rtl () Bool (not (right_to_left k s t)))
+(define-fun assertion_rtl () Bool (not_right_to_left k s t))
 (define-fun assertion_ltr_ind () Bool (not (=> (left_to_right k s t) (left_to_right (+ k 1) s t))))
 (define-fun assertion_rtl_ind () Bool (not (=> (right_to_left k s t) (right_to_left (+ k 1) s t))))
 
 
 (assert (range_assumptions k s t))
-(assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)))
-(assert (and (and_or_are_ok k s) (and_or_are_ok k t)))
+(assert (in_range k x0))
+(assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)  ))
+(assert (two_to_the_is_ok x0))
+(assert (and (and_or_are_ok k s) (and_or_are_ok k t) ))
+(assert (and_or_are_ok k x0))
 
 (assert two_to_the_is_ok_unbounded)
 (assert and_or_are_ok_unbounded)
@@ -285,19 +314,3 @@
 (assert <assertion>)
 
 (check-sat)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;         stuff            ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;alternative final commands for analyzing sat instances of rtl
-;(declare-fun x0 () Int)
-;(assert (range_assumptions k s t))
-;(assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)))
-;(assert (and (and_or_are_ok k s) (and_or_are_ok k t)))
-;(assert (and (in_range k x0) (two_to_the_is_ok x0) (and_or_are_ok k x0) (l k x0 s t) (not (SC k s t))))
-;(check-sat)
-;(get-value (k s t x0))
