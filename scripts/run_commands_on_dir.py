@@ -31,7 +31,7 @@ def main(dir_path, commands_txt_file, results_dir, timeout):
     with open(commands_txt_file, 'r') as f:
         commands = f.readlines()
     commands = [x.strip() for x in commands]
-    files = os.listdir(dir_path)
+    files = [f for f in os.listdir(dir_path) if f.endswith(".smt2")]
     with open(result_file, 'w') as rf:
         rf.write("filename")
         rf.write(DELIMITER)

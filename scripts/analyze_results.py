@@ -10,14 +10,104 @@ def main(output_file, results_dir):
         os.remove(output_file)
     except OSError:
         pass
-    results = {}
-    stats = init_stats(results_dir)
+    #all encodings, all configurations
+    complete_results = {}
+    print("\n")
     for f in os.listdir(results_dir):
-        process_file(results_dir + "/" + f, results, stats)
+        process_file(results_dir + "/" + f, complete_results)
+    results, stats = gen_results_and_stats(complete_results)
     print_stats(stats)
     print_totals(results)
+    print_redundents(complete_results)
     write_to_file(results, output_file)
 
+def get_encodings_and_configurations(complete_results):
+    #infer encodings and configs by the first entry
+    first_filename = list(complete_results.keys())[0]
+    encodings = complete_results[first_filename].keys()
+    encodings = sorted(list(encodings))
+    first_encoding = encodings[0]
+    configurations = complete_results[first_filename][first_encoding].keys()
+    configurations = sorted(list(configurations))
+    return encodings, configurations
+
+def get_red_encodings(redundents, encodings, configurations):
+    result = []
+    for enc in encodings:
+        red = True
+        for conf in configurations:
+            if [enc, conf] not in redundents:
+                red = False
+        if red:
+            result.append(enc)
+    return result
+
+
+def get_red_configs(redundents, encodings, configurations):
+    result = []
+    for conf in configurations:
+        red = True
+        for enc in encodings:
+            if [enc, conf] not in redundents:
+                red = False
+        if red:
+            result.append(conf)
+    return result
+
+def print_redundents(complete_results):
+    print("\n")
+    encodings, configurations = get_encodings_and_configurations(complete_results)
+    redundents = []
+    for enc in encodings:
+        for config in configurations:
+            if is_redundent(enc, config, complete_results):
+                redundents.append([enc, config])
+    redundent_encodings = get_red_encodings(redundents, encodings, configurations)
+    redundent_configs = get_red_configs(redundents, encodings, configurations)
+    if redundents:
+        print("The followings pairs were redundent:")
+        print(redundents)
+        if redundent_encodings:
+            print("\n")
+            print("The following encodings were redundent:")
+            print(redundent_encodings)
+        if redundent_configs:
+            print("\n")
+            print("The following configs were redundent:")
+            print(redundent_configs)
+
+    else: 
+        print("nothing was redundent")
+
+def copy_without(complete_results, enc, config):
+    encodings, configurations = get_encodings_and_configurations(complete_results)
+    complete_results_without = {}
+    for filename in complete_results:
+        complete_results_without[filename] = {}
+        for encoding in encodings:
+            complete_results_without[filename][encoding] = {}
+            for conf in configurations:
+                if encoding != enc or conf != config:
+                    complete_results_without[filename][encoding][conf] = complete_results[filename][encoding][conf]
+    return complete_results_without
+
+def proved(filename, complete_results):
+    values = []
+    for enc in complete_results[filename].keys():
+        for conf in complete_results[filename][enc].keys():
+            values.append(complete_results[filename][enc][conf])
+    is_proved = "unsat" in values
+    return is_proved
+
+def is_redundent(enc, config, complete_results):
+    proved_with = set([filename for filename in complete_results.keys() if proved(filename, complete_results)])
+    complete_results_without = copy_without(complete_results, enc, config)
+    proved_without = set([filename for filename in complete_results.keys() if proved(filename, complete_results_without)])
+    benefit = proved_with - proved_without
+    if benefit:
+        one_benefit = sorted(list(benefit))[0]
+    return len(benefit) == 0
+    
 def name_of_ic(s):
     return "_".join((s.split("_"))[0:4])
 
@@ -43,27 +133,23 @@ def print_stats(stats):
                 print(command, ": ", stats[f][command]["unsat"])
         print(TOTAL, ": :", stats[f][TOTAL]["unsat"])
 
-def init_stats(results_dir):
+def init_stats(encodings, configurations):
     stats = {}
-    for f in os.listdir(results_dir):
-        path = results_dir + "/" + f
-        stats[path] = {}
-        with open(path, 'r') as myfile:
-            lines = [l.strip() for l in myfile.readlines()]
-            titles = lines[0].split(DELIMITER)
-            for command in titles[1:]:
-                stats[path][command] = {}
-                stats[path][command]["sat"] = 0
-                stats[path][command]["unsat"] = 0
-                stats[path][command]["unknown"] = 0
-                stats[path][command]["timeout"] = 0
-                stats[path][command]["skip"] = 0
-            stats[path][TOTAL] = {}
-            stats[path][TOTAL]["sat"] = 0
-            stats[path][TOTAL]["unsat"] = 0
-            stats[path][TOTAL]["unknown"] = 0
-            stats[path][TOTAL]["timeout"] = 0
-            stats[path][TOTAL]["skip"] = 0
+    for enc in encodings:
+        stats[enc] = {}
+        for config in configurations:
+            stats[enc][config] = {}
+            stats[enc][config]["sat"] = 0
+            stats[enc][config]["unsat"] = 0
+            stats[enc][config]["unknown"] = 0
+            stats[enc][config]["timeout"] = 0
+            stats[enc][config]["skip"] = 0
+        stats[enc][TOTAL] = {}
+        stats[enc][TOTAL]["sat"] = 0
+        stats[enc][TOTAL]["unsat"] = 0
+        stats[enc][TOTAL]["unknown"] = 0
+        stats[enc][TOTAL]["timeout"] = 0
+        stats[enc][TOTAL]["skip"] = 0
     return stats
 
 def write_to_file(results, output_file):
@@ -83,20 +169,46 @@ def write_to_file(results, output_file):
             myfile.write(line)
             myfile.write('\n')
 
-def process_file(f, results, stats):
+def process_file(f, complete_results):
     with open(f, 'r') as myfile:
         lines = [l.strip() for l in myfile.readlines()]
+    configurations_line = lines[0]
+    #ignore smt2-filename
+    configurations = configurations_line.split(DELIMITER)[1:]
     #ignore title
     for line in lines[1:]:
         cells = line.split(DELIMITER)
         filename = cells[0]
         values = cells[1:]
-        add_to_results(results, filename, f, values)
-        add_to_stats(stats, f, values, lines[0])
+        add_to_complete_results(complete_results, filename, f, values, configurations)
 
-def add_to_stats(stats, f, values, title_line):
+def gen_results_and_stats(complete_results):
+    encodings, configurations = get_encodings_and_configurations(complete_results)
+    #init
+    stats = init_stats(encodings, configurations)
+    results = {}
+    
+    #fill
+    for filename in complete_results:
+        for encoding in encodings:
+            values = [complete_results[filename][encoding][config] for config in configurations]
+            add_to_results(results, filename, encoding, values)
+            add_to_stats(stats, encoding, values, configurations)
+    return results, stats
+
+def add_to_complete_results(complete_results, filename, f, values, configurations):
+    for i in range(0, len(configurations)):
+        config = configurations[i]
+        value = values[i]
+        if filename not in complete_results:
+            complete_results[filename] = {}
+        if f not in complete_results[filename]:
+            complete_results[filename][f] = {}
+        complete_results[filename][f][config] = value
+
+def add_to_stats(stats, f, values, configurations):
     #take commands (filename not needed
-    commands = title_line.split(';')[1:]
+    commands = configurations
     assert(len(commands) == len(values))
     length = len(commands)
     for i in range(0, length):
@@ -127,6 +239,8 @@ def aggregate_values(values):
         return 'unknown'
     elif 'timeout' in values:
         return 'timeout'
+    elif 'skip' in values:
+        return 'skip'
     else:
         print('panda ', values)
         assert(False)
