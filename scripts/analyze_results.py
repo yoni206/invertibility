@@ -6,7 +6,7 @@ import utils
 TOTAL = "total"
 DELIMITER = ";"
 
-def main(output_file, results_dir):
+def main(output_file, results_dir, sygus_results_file):
     try:
         os.remove(output_file)
     except OSError:
@@ -18,10 +18,39 @@ def main(output_file, results_dir):
         process_file(results_dir + "/" + f, complete_results)
     save_complete_csv(complete_results, output_file)
     results, stats = gen_results_and_stats(complete_results)
+    save_short_csv(results, output_file, sygus_results_file)
     print_stats(stats)
     print_totals(results)
     print_redundents(complete_results)
     write_to_file(results, output_file)
+
+def save_short_csv(results, output_file, sygus_results_file):
+    csv_path = utils.get_file_or_dir_name_no_ext(output_file) + "_short.csv"
+    title_line = "filename,inv,ltr,rtl"
+    content_lines = []
+    problem_names = sorted(list(set([filename[0:-len("_rtl.smt2")] for filename in results])))
+    for problem in problem_names:
+        ltr_results = [results[problem + "_ltr.smt2"][enc] for enc in results[problem + "_ltr.smt2"].keys()]
+        ltr_result = "unsat" in ltr_results
+        rtl_results = [results[problem + "_rtl.smt2"][enc] for enc in results[problem + "_rtl.smt2"].keys()]
+        rtl_result = "unsat" in rtl_results
+        inv = do_we_have_inverse(problem, sygus_results_file)
+        line = str(problem) + "," + str(inv) + "," + str(ltr_result) + "," + str(rtl_result)
+        content_lines.append(line)
+    lines = [title_line]
+    lines.extend(content_lines)
+    utils.save_lines_to_file(lines, csv_path)
+
+def do_we_have_inverse(problem, sygus_result_path):
+    with open(sygus_result_path, "r") as f:
+        inverse_results = f.readlines()
+        sygus_name = problem
+        sygus_name = sygus_name.replace("int_check", "find_inv")
+        sygus_name = sygus_name.replace("_ltr.smt2", "4bit.smt2")
+        sygus_name = sygus_name.replace("_rtl.smt2", "4bit.smt2")
+        line = utils.get_line_starting_with(inverse_results, sygus_name)
+        has_inv = "define-fun" in line
+        return has_inv
 
 def save_complete_csv(complete_results, output_file):
     csv_path = utils.get_file_or_dir_name_no_ext(output_file) + "_complete.csv"
@@ -272,8 +301,9 @@ def aggregate_values(values):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print("arg1: output file\narg2: results_dir")
+        print("arg1: output file\narg2: results_dir\narg3: sygus results file")
         sys.exit(1)
     output_file = sys.argv[1]
     results_dir = sys.argv[2]
-    main(output_file, results_dir)
+    sygus_results_file = sys.argv[3]
+    main(output_file, results_dir, sygus_results_file)
