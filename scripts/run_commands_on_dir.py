@@ -1,3 +1,4 @@
+import traceback
 import sys
 import os
 import subprocess
@@ -6,20 +7,12 @@ import multiprocessing as mp
 import time
 
 DELIMITER = ";"
-SC_PREFIX = "(define-fun SC"
-USUAL_LOGIC = "(set-logic UFNIA)"
+
+
 QF_LOGIC = "(set-logic QF_UFNIA)"
-TMP_DIR_FOR_YICES_AND_MATHSAT = "/home/yoniz/tmp/inv"
-tmp_path = ""
 
 def main(dir_path, commands_txt_file, results_dir, timeout):
-    global tmp_path
     dir_name = utils.get_file_or_dir_name_no_ext(dir_path)
-    tmp_path = TMP_DIR_FOR_YICES_AND_MATHSAT + "/" + dir_name
-    if os.path.exists(tmp_path):
-        print('run: rm -rf '+ TMP_DIR_FOR_YICES_AND_MATHSAT + "/*")
-        exit(1)
-    os.mkdir(tmp_path)
     if not os.path.exists(results_dir):
         print('results dir does not exist' )
         exit(1)
@@ -31,7 +24,7 @@ def main(dir_path, commands_txt_file, results_dir, timeout):
     with open(commands_txt_file, 'r') as f:
         commands = f.readlines()
     commands = [x.strip() for x in commands]
-    files = [f for f in os.listdir(dir_path) if f.endswith(".smt2")]
+    files = [f for f in os.listdir(dir_path) if f.endswith(".smt2") or f.endswith(".sy")]
     with open(result_file, 'w') as rf:
         rf.write("filename")
         rf.write(DELIMITER)
@@ -52,8 +45,10 @@ def process_files(files, directory, result_file, commands, timeout):
 def handler(tup): #tup = (results, result_file,commands)
     write_to_file(tup[0], tup[1], tup[2], tup[3])
 
-def error_handler(arg):
+def error_handler(e):
     print('fail!!!! check why!')
+    traceback.print_exception(type(e), e, e.__traceback__)
+    exit(1)
 
 def write_to_file(results, result_file, commands,f):
         line = f + DELIMITER
@@ -81,44 +76,28 @@ def run(full_command, timeout):
             result_string = "timeout"
         return result_string
 
-def sc_has_exists(path):
-    with open(path, 'r') as f:
-        lines = f.readlines()
-    sc_line = get_sc_line(lines)
-    return "exists" in sc_line
 
-def get_sc_line(lines):
-    candidates = [l for l in lines if l.startswith(SC_PREFIX)]
-    assert(len(candidates) == 1)
-    return candidates[0]
 
-def further_massage_for_yices_and_mathsat(path):
-    name = utils.get_file_or_dir_name_no_ext(path)
-    result_path = tmp_path +  "/" + name + "_tmp.smt2"
-    with open(path, 'r') as f:
+def qf_logic(f_path):
+    with open(f_path) as f:
         lines = f.readlines()
-    assert(lines[0].strip() == USUAL_LOGIC)
-    lines[0] = QF_LOGIC
-    with open(result_path, 'w') as g:
-        g.write("\n".join(lines))
-        g.write("\n")
-    return result_path
+    lines = [l.strip() for l in lines]
+    logic_line = lines[0]
+    return logic_line == QF_LOGIC
 
 
 def get_result(command, f_path, timeout):
-        print("running: ", command, f_path) 
+        full_command = command + " " + f_path
         start = time.time()
         #yices and mathsat should only run on qf rtl.
         if (yices_or_mathsat_cmd(command)):
-            if (qf_dir(f_path) and rtl_path(f_path) and (not sc_has_exists(f_path))):
-                tmp_path = further_massage_for_yices_and_mathsat(f_path)
-                full_command = command + " " + tmp_path
+            if (qf_dir(f_path) and qf_logic(f_path)):
+                print("running: ", full_command)
                 result_string = run(full_command, timeout)
-                #os.remove(tmp_path)
             else:
                 result_string = "skip"
         else:
-            full_command = command + " " + f_path
+            print("running: ", full_command)
             result_string = run(full_command, timeout)
         end = time.time()
         log_time(start, end, command + " " + f_path, result_string)

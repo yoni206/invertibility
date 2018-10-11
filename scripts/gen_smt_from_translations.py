@@ -14,16 +14,17 @@ SC_PH = "<SC>"
 assertion_PH = "<assertion>"
 AND_OP = "intand"
 OR_OP = "intor"
+USUAL_LOGIC = "(set-logic UFNIA)"
+QF_LOGIC = "(set-logic QF_UFNIA)"
 AND_OR_ARE_OK_DEF_PREFIX = "(define-fun and_or_are_ok "
 AND_OR_ARE_OK_TRIVIAL = "(define-fun and_or_are_ok ((k Int) (a Int) ) Bool true)"
 AND_OR_COMMENT = ";in this file, l and SC don't use intand nor intor. Therefore, there is no point in verifying that these functions satisfy their axiomatizations."
 T_FUN_DEC = "(declare-fun t () Int)"
 RTL_DEF_PREF = "(define-fun assertion_rtl () Bool"
-L_PART_DEF_PREF = "(define-fun l_part ((k Int) (s Int) (t Int))"
+L_PART_PREFIX = "(define-fun l_part"
+SC_PREFIX = "(define-fun SC"
 QUANT_REC_PREFIXES = ["\(define-fun-rec", 
-                      "\(define-fun left_to_right", 
                       "\(define-fun right_to_left", 
-                      "\(define-fun assertion_ltr", 
                       "\(define-fun assertion_ltr_ind",
                       "\(define-fun assertion_rtl_ind",
                       "\(define-fun two_to_the_is_ok_unbounded",
@@ -153,6 +154,8 @@ def generate_content_ltr(name,template, new_l, new_SC, inverses, directory, ind)
     content = add_extra_definitions_to_content(content, extra_definitions)
     if (not uses_and_or(new_l)) and (not uses_and_or(new_SC)):
         content = try_to_eliminate_and_or(content)
+    if is_qf(assertion, directory):
+        content = massage_qf(content)
     content = remove_rtl_stuff(content)
     return content
 
@@ -180,7 +183,7 @@ def remove_lines_with(content, stuff):
 def add_extra_definitions_to_content(content, extra_detinitions):
     lines = content.splitlines()
     lines = [line.strip() for line in lines]
-    index_of_l_part_def = index_of_line_starting_with(lines, L_PART_DEF_PREF)
+    index_of_l_part_def = index_of_line_starting_with(lines, L_PART_PREFIX)
     for definition in extra_detinitions:
         lines.insert(index_of_l_part_def, definition)
     return "\n".join(lines)
@@ -198,16 +201,41 @@ def generate_content_rtl(name, template, new_l, new_SC, directory, ind):
     if (not uses_and_or(new_l)) and (not uses_and_or(new_SC)):
         content = try_to_eliminate_and_or(content)
     if is_qf(assertion, directory):
-        content = massage_qf_rtl(content)
+        content = massage_qf(content)
     content = remove_ltr_stuff(content)
     return content
 
 def is_qf(assertion, directory):
     return directory.endswith("qf")
 
-def massage_qf_rtl(content):
+def massage_qf(content):
         content = get_rid_of_quants_and_recs(content)
+        content = change_logic_if_possible(content)
         return content
+
+
+def has_l_part_with_exists(content):
+    lines = [l.strip() for l in content.split("\n")]
+    l_part_lines = utils.get_lines_starting_with(lines, L_PART_PREFIX)
+    if (len(l_part_lines) == 0):
+        return False
+    else:
+        l_part_line = utils.get_line_starting_with(lines, L_PART_PREFIX)
+        return "exists" in l_part_line
+
+def change_logic_if_possible(content):
+    lines = content.splitlines()
+    lines = [l.strip() for l in lines]
+    assert(lines[0].strip() == USUAL_LOGIC)
+    if (not sc_has_exists(content)) and (not has_l_part_with_exists(content)):
+        lines[0] = QF_LOGIC
+    result = "\n".join(lines)
+    return result
+
+def sc_has_exists(content):
+    lines = [l.strip() for l in content.split("\n")]
+    sc_line = utils.get_line_starting_with(lines, SC_PREFIX)
+    return "exists" in sc_line
 
 def get_rid_of_quants_and_recs(template):
     template = get_rid_of_commands(QUANT_REC_PREFIXES, template)

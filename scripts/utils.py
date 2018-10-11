@@ -114,3 +114,14 @@ def find_parens(s):
         raise IndexError("No matching opening parens at: " + str(pstack.pop()))
 
     return toret
+
+
+def get_lines_starting_with(lines, pref):
+    candidates = [l for l in lines if l.startswith(pref)]
+    return candidates
+
+def get_line_starting_with(lines, pref):
+    candidates = get_lines_starting_with(lines, pref)
+    if (len(candidates) != 1):
+        assert(False)
+    return candidates[0]

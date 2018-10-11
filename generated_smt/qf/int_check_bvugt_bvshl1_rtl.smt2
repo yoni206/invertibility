@@ -205,10 +205,8 @@
 (declare-fun x0 () Int)
 
 
-
 ;It is better to directly negate right_to_left in order to avoid quantification
 (define-fun not_right_to_left ((k Int) (s Int) (t Int)) Bool (and (l k x0 s t) (not (SC k s t))))
-
 
 
 (define-fun assertion_rtl () Bool (not_right_to_left k s t))

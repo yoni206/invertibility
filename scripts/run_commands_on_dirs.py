@@ -19,11 +19,6 @@ def main(dir_of_dirs_path, commands_txt_file, results_dir, timeout):
     #clear time log
     clear_log()
     dirs = os.listdir(dir_of_dirs_path)
-    
-    if os.path.exists(run_commands_on_dir.TMP_DIR_FOR_YICES_AND_MATHSAT):
-        print('run: rm -rf '+ run_commands_on_dir.TMP_DIR_FOR_YICES_AND_MATHSAT)
-        exit(1)
-    os.mkdir(run_commands_on_dir.TMP_DIR_FOR_YICES_AND_MATHSAT)
 
     for directory in [d for d in dirs if d not in SKIP_LIST]:
         d = dir_of_dirs_path + "/" + directory
