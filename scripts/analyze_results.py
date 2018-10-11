@@ -29,7 +29,7 @@ def save_complete_csv(complete_results, output_file):
     #all possible combinations
     combinations = [[enc, conf] for enc in sorted(encodings) for conf in sorted(configurations)]
     combinations_as_strings = [enc + "_" + conf for enc in sorted(encodings) for conf in sorted(configurations)] 
-    title_line = "filename" + ",".join(combinations_as_strings)
+    title_line = "filename" + "," + ",".join(combinations_as_strings)
     content_lines = []
     for filename in complete_results:
         results = []
