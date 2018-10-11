@@ -28,7 +28,7 @@ def save_complete_csv(complete_results, output_file):
     encodings, configurations = get_encodings_and_configurations(complete_results)
     #all possible combinations
     combinations = [[enc, conf] for enc in sorted(encodings) for conf in sorted(configurations)]
-    combinations_as_strings = [enc + conf for enc in sorted(encodings) for conf in sorted(configurations)] 
+    combinations_as_strings = [enc + "_" + conf for enc in sorted(encodings) for conf in sorted(configurations)] 
     title_line = "filename" + ",".join(combinations_as_strings)
     content_lines = []
     for filename in complete_results:
