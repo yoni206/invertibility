@@ -55,8 +55,8 @@
 (assert assertion_ltr)
 
 ;new cool lemma: 2^k-1 is never even, as long as k>0
-(assert (distinct (- (two_to_the k) 1) (* 2 t)))
-;(assert (forall ((x Int)) (=> (> x 0) (distinct (- (two_to_the k) 1) (* 2 x))) ))
+;(assert (distinct (- (two_to_the k) 1) (* 2 t)))
+(assert (forall ((x Int)) (=> (>= x 0) (distinct (- (two_to_the k) 1) (* 2 x))) ))
 ;(assert (forall ((k0 Int)) (=> (>= k0 1) (distinct (- (two_to_the k0) 1) (* 2 t) ))))
 
 
