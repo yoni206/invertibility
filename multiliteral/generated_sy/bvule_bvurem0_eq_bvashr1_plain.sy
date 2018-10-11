@@ -1,0 +1,80 @@
+(set-logic BV)
+
+(define-fun max () (_ BitVec 4) (_ bv7 4))
+(define-fun min () (_ BitVec 4) (_ bv8 4))
+
+(define-fun udivtotal ((a (_ BitVec 4)) (b (_ BitVec 4))) (_ BitVec 4)
+  (ite (= b #x0) #xF (bvudiv a b))
+)
+(define-fun uremtotal ((a (_ BitVec 4)) (b (_ BitVec 4))) (_ BitVec 4)
+  (ite (= b #x0) a (bvurem a b))
+)
+
+(define-fun l1 ((x (BitVec 4)) (s (BitVec 4)) (t (BitVec 4))) Bool  (bvule (uremtotal x s) t))
+(define-fun l2 ((x (BitVec 4)) (s (BitVec 4)) (t (BitVec 4))) Bool  (= (bvashr s x) t))
+(define-fun SC1 ((s (_ BitVec 4)) (t (_ BitVec 4)) ) Bool true )
+(define-fun SC2 ((s (_ BitVec 4)) (t (_ BitVec 4)) ) Bool (or  (= (bvashr s (_ bv0 4)) t) (= (bvashr s (_ bv1 4)) t) (= (bvashr s (_ bv2 4)) t) (= (bvashr s (_ bv3 4)) t) (= (bvashr s (_ bv4 4)) t)) )
+
+(define-fun l ((x (BitVec 4)) (s1 (BitVec 4)) (s2 (BitVec 4)) (t1 (BitVec 4)) (t2 (BitVec 4))) Bool (and (l1 x s1 t1) (l2 x s2 t2)))
+
+(synth-fun SC ((s1 (BitVec 4)) (s2 (BitVec 4)) (t1 (BitVec 4)) (t2 (BitVec 4))) Bool
+  ((Start Bool (
+     true
+     false
+     (not Start)
+     (and Start Start)
+     (or Start Start)
+     (SC1 StartBv StartBv)
+     (SC2 StartBv StartBv)
+     (= StartBv StartBv)
+   ))
+   (StartBv (BitVec 4) (
+     s1
+     s2
+     t1
+     t2
+     x1
+     x2
+     #x0  ; unsigned min_val
+     #xF ; unsigned max_val
+     #x8  ; signed min_val
+     #x7  ; signed max_val
+   ))
+))
+
+(declare-var s1 (BitVec 4))
+(declare-var s2 (BitVec 4))
+(declare-var t1 (BitVec 4))
+(declare-var t2 (BitVec 4))
+(declare-var x1 (BitVec 4)) ;helper variable
+(declare-var x2 (BitVec 4)) ;helper variable
+
+
+
+(constraint
+  (=> 
+    true
+    (=
+       (or
+        (l #x0 s1 s2 t1 t2)
+        (l #x1 s1 s2 t1 t2)
+        (l #x2 s1 s2 t1 t2)
+        (l #x3 s1 s2 t1 t2)
+        (l #x4 s1 s2 t1 t2)
+        (l #x5 s1 s2 t1 t2)
+        (l #x6 s1 s2 t1 t2)
+        (l #x7 s1 s2 t1 t2)
+        (l #x8 s1 s2 t1 t2)
+        (l #x9 s1 s2 t1 t2)
+        (l #xA s1 s2 t1 t2)
+        (l #xB s1 s2 t1 t2)
+        (l #xC s1 s2 t1 t2)
+        (l #xD s1 s2 t1 t2)
+        (l #xE s1 s2 t1 t2)
+        (l #xF s1 s2 t1 t2)
+       )
+       (SC s1 s2 t1 t2)
+  ))
+)
+
+(check-synth)
