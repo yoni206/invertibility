@@ -1,6 +1,7 @@
 import sys
 import os
 import subprocess
+import utils
 
 TOTAL = "total"
 DELIMITER = ";"
@@ -15,11 +16,34 @@ def main(output_file, results_dir):
     print("\n")
     for f in os.listdir(results_dir):
         process_file(results_dir + "/" + f, complete_results)
+    save_complete_csv(complete_results, output_file)
     results, stats = gen_results_and_stats(complete_results)
     print_stats(stats)
     print_totals(results)
     print_redundents(complete_results)
     write_to_file(results, output_file)
+
+def save_complete_csv(complete_results, output_file):
+    csv_path = utils.get_file_or_dir_name_no_ext(output_file) + "_complete.csv"
+    encodings, configurations = get_encodings_and_configurations(complete_results)
+    #all possible combinations
+    combinations = [[enc, conf] for enc in sorted(encodings) for conf in sorted(configurations)]
+    combinations_as_strings = [enc + conf for enc in sorted(encodings) for conf in sorted(configurations)] 
+    title_line = "filename" + ",".join(combinations_as_strings)
+    content_lines = []
+    for filename in complete_results:
+        results = []
+        for combination in combinations:
+            enc = combination[0]
+            conf = combination[1]
+            result = complete_results[filename][enc][conf]
+            results.append(result)
+        line = filename + "," + ",".join(results)
+        content_lines.append(line)
+    lines = [title_line]
+    lines.extend(content_lines)
+    utils.save_lines_to_file(lines, csv_path)
+
 
 def get_encodings_and_configurations(complete_results):
     #infer encodings and configs by the first entry
