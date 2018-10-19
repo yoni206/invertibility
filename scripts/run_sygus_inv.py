@@ -9,17 +9,17 @@ def main(dir_name, arg_timeout, output_path):
     directory = dir_name
     result_file = output_path
     timeout = arg_timeout
-    try:
-        os.remove(result_file)
-    except OSError:
-        pass
     dirs = os.listdir(directory)
-    results = {}
+    #in order to not re-run stuff that we already found
+    if os.path.exists(result_file):
+        results = get_results_from_file(result_file)
+    else:
+        results = init_results
     for d in dirs:
-        process_dir(directory + "/" + d, timeout)
+        process_dir(directory + "/" + d, timeout, results)
     #each directory now has a "results.txt file.
     #we analyze it.
-    results = analyze_results(directory, dirs)
+    results = {}
     write_results_to_file(dirs, results, result_file)
 
 def write_results_to_file(dirs, results, result_file):
@@ -32,32 +32,9 @@ def write_results_to_file(dirs, results, result_file):
             
         f.close()
 
-def analyze_results(main_dir, subdirs):
-    results = {}
-    for d in subdirs:
-        with open(main_dir + "/" + d + "/results.txt", "r") as f:
-            raw_results = f.readlines()
-        for line in raw_results:
-            line = line.strip()
-            splitted_line = line.split(DELIMITER)
-            filename, result = splitted_line[0], splitted_line[1]
-            if result == "unsat":
-                fun = splitted_line[2]
-            else:
-                fun = "unknown"
-            if filename not in results:
-                results[filename] = {}
-            results[filename][d] = fun
-    return results
-
-
-def process_dir(d, timeout):
-    try:
-        os.remove(d + "/results.txt")
-    except OSError:
-        pass
+def process_dir(d, timeout, results):
     files = os.listdir(d)
-    process_files(d, files, timeout)
+    process_files(d, files, timeout, results)
 
 def process_files(dirname, files, timeout):
     pool = mp.Pool()

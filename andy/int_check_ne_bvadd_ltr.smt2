@@ -53,10 +53,11 @@
 (assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)  ))
 (assert two_to_the_is_ok_unbounded)
 (assert assertion_ltr)
-
+(declare-fun dummy (Int) Bool)
+(assert (dummy t))
 ;new cool lemma: 2^k-1 is never even, as long as k>0
 ;(assert (distinct (- (two_to_the k) 1) (* 2 t)))
-(assert (forall ((x Int)) (=> (>= x 0) (distinct (- (two_to_the k) 1) (* 2 x))) ))
+(assert (forall ((x Int)) (! (=> (>= x 0) (and (dummy x) (distinct (- (two_to_the k) 1) (* 2 x)))) :pattern ((dummy x))) ))
 ;(assert (forall ((k0 Int)) (=> (>= k0 1) (distinct (- (two_to_the k0) 1) (* 2 t) ))))
 
 
