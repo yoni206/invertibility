@@ -258,6 +258,13 @@ def add_to_complete_results(complete_results, filename, f, values, configuration
         if f not in complete_results[filename]:
             complete_results[filename][f] = {}
         complete_results[filename][f][config] = value
+        check_if_there_is_a_problem(f, config, value, filename)
+
+def check_if_there_is_a_problem(encoding, configuration, value, filename):
+    if value == "sat":
+        if "full" in encoding or "rec" in encoding:
+            print("serious problem! ", configuration, filename, encoding, value)
+
 
 def add_to_stats(stats, f, values, configurations):
     #take commands (filename not needed

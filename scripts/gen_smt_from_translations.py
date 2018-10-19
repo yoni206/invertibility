@@ -6,7 +6,7 @@ from gen_translations import substitutions
 FIND_INV = "find_inv"
 SYGUS_SUFFIX = "_4bit.sy"
 INT_CHECK = "int_check"
-EXISTENTIAL_L = "(exists ((x Int)) (l k x s t))"
+EXISTENTIAL_L = "(exists ((x Int)) (and (everything_is_ok_for k x) (in_range k x) (instantiate_me x) (l k x s t)))"
 DELIMITER = ";"
 l_part_PH = "<l_part>"
 l_PH = "<l>"
@@ -16,36 +16,27 @@ AND_OP = "intand"
 OR_OP = "intor"
 USUAL_LOGIC = "(set-logic UFNIA)"
 QF_LOGIC = "(set-logic QF_UFNIA)"
-AND_OR_ARE_OK_DEF_PREFIX = "(define-fun and_or_are_ok "
-AND_OR_ARE_OK_TRIVIAL = "(define-fun and_or_are_ok ((k Int) (a Int) ) Bool true)"
-AND_OR_COMMENT = ";in this file, l and SC don't use intand nor intor. Therefore, there is no point in verifying that these functions satisfy their axiomatizations."
-T_FUN_DEC = "(declare-fun t () Int)"
-RTL_DEF_PREF = "(define-fun assertion_rtl () Bool"
+AND_IS_OK_FOR_DELETION = "and_is_ok"
+OR_IS_OK_FOR_DELETION = "or_is_ok"
 L_PART_PREFIX = "(define-fun l_part"
 SC_PREFIX = "(define-fun SC"
-QUANT_REC_PREFIXES = ["\(define-fun-rec", 
-                      "\(define-fun right_to_left", 
-                      "\(define-fun assertion_ltr_ind",
-                      "\(define-fun assertion_rtl_ind",
-                      "\(define-fun two_to_the_is_ok_unbounded",
-                      "\(define-fun and_or_are_ok_unbounded",
-                      "\(assert two_to_the_is_ok_unbounded", 
-                      "\(assert and_or_are_ok_unbounded", 
-                      "\(define-fun two_to_the_is_ok_full", 
-                      "\(define-fun two_to_the_is_ok_partial",
-                      "\(define-fun or_is_ok_full",
-                      "\(define-fun or_is_ok_partial",
-                      "\(define-fun and_is_ok_full",
-                      "\(define-fun and_is_ok_partial",]
-
-
+BEGIN_LTR_SECTION = ";<BEGIN_LTR>"
+END_LTR_SECTION = ";<END_LTR>"
+BEGIN_RTL_SECTION = ";<BEGIN_RTL>"
+END_RTL_SECTION = ";<END_RTL>"
+AND_OK_ASSERTION = "(assert (and_is_ok k))"
+OR_OK_ASSERTION = "(assert (or_is_ok k))"
+DEFINE_FUN_PREFIX_REGEX = "\\(define-fun "
+DEFINE_FUN_REC_PREFIX_REGEX = "\\(define-fun-rec "
+DEFINE_FUN_PREFIX = "(define-fun "
+DEFINE_FUN_REC_PREFIX = "(define-fun-rec "
 def main(csv_path, dir_name, templates_dir, inverses_file):
     files = os.listdir(templates_dir)
     for f in files:
         work_on_template(csv_path, dir_name, templates_dir + "/" + f, inverses_file)
 
 def work_on_template(csv_path, dir_name, template_path, inverses_file):
-    template_name = get_name_no_ext(template_path)
+    template_name = utils.get_file_or_dir_name_no_ext(template_path)
     directory = dir_name + "/" + template_name
     if os.path.exists(directory):
         print('directory exists, aborting')
@@ -59,13 +50,6 @@ def work_on_template(csv_path, dir_name, template_path, inverses_file):
     lines = filter_lines(lines)
     process_lines(lines, directory, template, inverses_file, False)
     process_lines(lines, directory, template, inverses_file, True)
-
-
-def get_name_no_ext(path):
-    parts = path.split("/")
-    filename = parts[-1]
-    name = filename.split(".")[0]
-    return name
 
 def filter_lines(lines):
     return list(filter(lambda x: (x.strip() and ";" not in x and "?" not in x and "NA" not in x), lines))
@@ -152,20 +136,40 @@ def generate_content_ltr(name,template, new_l, new_SC, inverses, directory, ind)
     l_part, extra_definitions = get_l_part_and_extra_definitions(name, inverses)
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion, l_part_PH: l_part})
     content = add_extra_definitions_to_content(content, extra_definitions)
-    if (not uses_and_or(new_l)) and (not uses_and_or(new_SC)):
-        content = try_to_eliminate_and_or(content)
-    if is_qf(assertion, directory):
-        content = massage_qf(content)
     content = remove_rtl_stuff(content)
     return content
 
+
+def generate_content_rtl(name, template, new_l, new_SC, directory, ind):
+    assertion = "assertion_rtl"
+    if ind:
+        assertion = assertion + "_ind"
+    content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion})
+    content = remove_ltr_stuff(content)
+    content = massage(content, new_l, new_SC, directory)
+    return content
+
+def massage(content, new_l, new_SC, directory):
+    content = try_to_eliminate_and_or(content, new_l, new_SC)
+    #if is_qf(directory):
+    #    content = massage_qf(content)
+    #TODO fix qf to use mathsat etc.
+    return content
+
+
 def remove_rtl_stuff(content):
-    rtl_stuff = ["_rtl", " x0", "right_to_left"]
-    return remove_lines_with(content, rtl_stuff)
+    lines = [l.strip() for l in content.splitlines()]
+    rtl_start_index = utils.get_index_of_line_with(lines, BEGIN_RTL_SECTION)
+    rtl_end_index = utils.get_index_of_line_with(lines, END_RTL_SECTION)
+    lines = utils.remove_lines_from_i_to_j(lines, rtl_start_index, rtl_end_index)
+    return "\n".join(lines)
 
 def remove_ltr_stuff(content):
-    ltr_stuff = ["_ltr", "left_to_right", "l_part", "define-fun inv "]
-    return remove_lines_with(content, ltr_stuff)
+    lines = [l.strip() for l in content.splitlines()]
+    ltr_start_index = utils.get_index_of_line_with(lines, BEGIN_LTR_SECTION)
+    ltr_end_index = utils.get_index_of_line_with(lines, END_LTR_SECTION)
+    lines = utils.remove_lines_from_i_to_j(lines, ltr_start_index, ltr_end_index)
+    return "\n".join(lines)
 
 #stuff is a *list* of stuff to remove
 def remove_lines_with(content, stuff):
@@ -193,19 +197,8 @@ def index_of_line_starting_with(lines, pref):
     assert(len(candidates) == 1)
     return lines.index(candidates[0])
 
-def generate_content_rtl(name, template, new_l, new_SC, directory, ind):
-    assertion = "assertion_rtl"
-    if ind:
-        assertion = assertion + "_ind"
-    content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion})
-    if (not uses_and_or(new_l)) and (not uses_and_or(new_SC)):
-        content = try_to_eliminate_and_or(content)
-    if is_qf(assertion, directory):
-        content = massage_qf(content)
-    content = remove_ltr_stuff(content)
-    return content
 
-def is_qf(assertion, directory):
+def is_qf(directory):
     return directory.endswith("qf")
 
 def massage_qf(content):
@@ -237,8 +230,35 @@ def sc_has_exists(content):
     sc_line = utils.get_line_starting_with(lines, SC_PREFIX)
     return "exists" in sc_line
 
+def has_quantifiers(line):
+    return "forall " in line or "exists " in line
+
+def get_def_fun_defs(template):
+    result = []
+    parens = utils.find_parens(template)
+    for opening in parens:
+        closing = parens[opening]
+        substring = template[opening:closing]
+        if DEFINE_FUN_PREFIX in substring:
+            result.append(substring)
+    return result
+
+def get_quantified_prefixes(template):
+    result = []
+    define_fun_defs = get_def_fun_defs(template)
+    for def_fun in define_fun_defs:
+        if has_quantifiers(def_fun):
+            first_space_index = def_fun.find(" ")
+            suffix = def_fun[first_space_index + 1 : ]
+            second_space_index = suffix.index(" ")
+            prefix = def_fun[0:second_space_index]
+            result.append(prefix)
+    return result
+
 def get_rid_of_quants_and_recs(template):
-    template = get_rid_of_commands(QUANT_REC_PREFIXES, template)
+    prefixes = get_quantified_prefixes(template)
+    prefixes.append(DEFINE_FUN_REC_PREFIX)
+    template = get_rid_of_commands(prefixes, template)
     return template
 
 def get_rid_of_commands(prefixes, template):
@@ -255,17 +275,20 @@ def get_rid_of_commands(prefixes, template):
         result = utils.substitute(result, subs)
     return result
 
+def uses_and(formula):
+    return (AND_OP in formula)
 
-def uses_and_or(formula):
-    return (AND_OP in formula) or (OR_OP in formula)
+def uses_or(formula):
+    return   (OR_OP in formula)
 
-def try_to_eliminate_and_or(content):
+def try_to_eliminate_and_or(content, new_l, new_SC):
     lines = content.splitlines()
-    index = get_andor_dec_index(lines)
-    result = content
-    lines[index] = ";" + lines[index]
-    lines.insert(index, AND_OR_COMMENT)
-    lines.insert(index+2, AND_OR_ARE_OK_TRIVIAL)
+    index_and = utils.get_index_of_line_with(lines, AND_OK_ASSERTION)
+    index_or = utils.get_index_of_line_with(lines, OR_OK_ASSERTION)
+    if (not uses_and(new_l)) and (not uses_and(new_SC)):
+        lines[index_and] = ""
+    if (not uses_or(new_l) and (not uses_or(new_SC))):
+        lines[index_or] = ""
     result = "\n".join(lines)
     return result
 

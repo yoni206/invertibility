@@ -92,6 +92,19 @@ def get_local_string(string, keys_to_escaped_keys):
         result = result.replace(key, keys_to_escaped_keys[key])
     return result
 
+def get_index_of_line_with(lines, substr):
+    candidates = [i for i in range(0, len(lines)) if substr in lines[i]]
+    assert len(candidates) == 1
+    return candidates[0]
+
+#removes all lines from i to j inclusive
+def remove_lines_from_i_to_j(lines, i, j):
+    result = []
+    for index in range(0,len(lines)):
+        if index < i or index > j:
+            result.append(lines[index])
+    return result
+
 
 #find all beinning indexes of substring in s.
 def find_all(s, substring):

@@ -1,4 +1,8 @@
 (set-logic UFNIA)
+
+;dummy function to be used in quantifier instantiation patterns
+(declare-fun instantiate_me (Int) Bool)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;    power definitions  ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -16,38 +20,93 @@
 (define-fun two_to_the ((b Int)) Int (two_to_the_dec b))
 
 ;complete axiomatization of power
-(define-fun two_to_the_is_ok_full ((b Int)) Bool (and (= (two_to_the 0) 1) (forall ((i Int)) (=> (and (> i 0) (<= i b)) (= (two_to_the i) (* (two_to_the (- i 1)) 2)))) ))
+(define-fun two_to_the_is_ok_full () Bool (and (= (two_to_the 0) 1) (forall ((i Int)) (!(and (instantiate_me i) (=> (> i 0) (= (two_to_the i) (* (two_to_the (- i 1)) 2)))) :pattern ((instantiate_me i))) )))
 
-;approximate axiomatization of power, with bounded quantifiers
-(define-fun two_to_the_is_ok_partial ((b Int)) Bool
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;    partial axiomatization of power  ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;some fixed values
+(define-fun base_cases () Bool
 (and
 (= (two_to_the 0) 1)
 (= (two_to_the 1) 2)
 (= (two_to_the 2) 4)
+(= (two_to_the 3) 8)
+)
+)
+
+;weak-monotinicity
+(define-fun weak_monotinicity () Bool
 (forall ((i Int) (j Int))
 (=>
-(and (>= i 0) (>= j 0) (<= i b) (<= j b))
-(and
-(=> (<= i j) (<= (two_to_the i) (two_to_the j))) ;weak monotinicity
-(=> (< i j) (< (two_to_the i) (two_to_the j))) ;strong monotinicity
-(forall ((x Int)) (=> (>= x 0) (=> (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0) (< i j)))) ;fun fact
-)
-)
+(and (>= i 0) (>= j 0) )
+(=> (<= i j) (<= (two_to_the i) (two_to_the j)))
 )
 )
 )
 
-;approximate axiomatization of power, no quantifers
-(define-fun two_to_the_is_ok_qf ((b Int)) Bool (and (= (two_to_the 0) 1) (= (two_to_the 1) 2) (= (two_to_the 2) 4) (=> (and (> b 2)) (and (> (two_to_the b) 4) (= (two_to_the b) (* (two_to_the (- b 1)) 2)) ))  ) )
+;strong-monotinicity
+(define-fun strong_monotinicity () Bool
+(forall ((i Int) (j Int))
+(=>
+(and (>= i 0) (>= j 0) )
+(=> (< i j) (< (two_to_the i) (two_to_the j)))
+)
+)
+)
+
+;if 2^i mod 2^j is not 0, then i<j
+(define-fun modular_power () Bool
+(forall ((i Int) (j Int) (x Int))
+(!(and
+(instantiate_me x)
+(=>
+(and (>= i 0) (>= j 0) (>= x 0) (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0))
+(< i j)
+)
+) :pattern ((instantiate_me x)))
+)
+)
+
+;2^k -1 is never even, provided that k != 0
+(define-fun never_even () Bool
+(forall ((k Int) (x Int))
+(!(and
+(instantiate_me k)
+(instantiate_me x)
+(=>
+(and (>= k 1) (>= x 0))
+(distinct (- (two_to_the k) 1) (* 2 x))
+)
+) :pattern ((instantiate_me k) (instantiate_me x)))
+)
+)
+
+(define-fun two_to_the_is_ok_partial () Bool
+(and
+base_cases
+weak_monotinicity
+strong_monotinicity
+modular_power
+never_even
+)
+)
+
+;quantifier-free axiomatization of power
+(define-fun two_to_the_is_ok_qf () Bool base_cases)
+
+;quantifier-free helper, to use on specific variables
+(define-fun two_to_the_is_ok_for ((b Int)) Bool
+(=> (and (> b 3)) (and (> (two_to_the b) 8) (= (two_to_the b) (* (two_to_the (- b 1)) 2)) ))
+)
 
 ;trivial axiomatization of power, in case the recursive definition is used
-(define-fun two_to_the_is_ok_rec ((b Int) ) Bool true)
+(define-fun two_to_the_is_ok_rec () Bool true)
 
 ;choose version of power properties
-(define-fun two_to_the_is_ok ((b Int)) Bool (two_to_the_is_ok_partial b))
-
-;unbounded quantification:
-(define-fun two_to_the_is_ok_unbounded () Bool (forall ((b Int)) (=> (>= b 0) (two_to_the_is_ok b)) ) )
+(define-fun two_to_the_is_ok () Bool two_to_the_is_ok_partial)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;     other functions     ;
@@ -62,7 +121,6 @@
 (define-fun intudivtotal ((k Int) (a Int) (b Int)) Int (ite (= b 0) (- (two_to_the k) 1) (div a b) ))
 (define-fun intmodtotal ((k Int) (a Int) (b Int)) Int (ite (= b 0) a (mod a b)))
 
-
 ;bvneg and bvnot
 (define-fun intneg ((k Int) (a Int)) Int (intmodtotal k (- (two_to_the k) a) (two_to_the k)))
 (define-fun intnot ((k Int) (a Int)) Int (- (intmax k) a))
@@ -74,7 +132,7 @@
 ;extract
 (define-fun intextract ((k Int) (i Int) (j Int) (a Int)) Int (mod (div a (two_to_the j)) (two_to_the (+ (- i j) 1))))
 
-;easy translations
+;other easu functions
 (define-fun intshl ((k Int) (a Int) (b Int)) Int (intmodtotal k (* a (two_to_the b)) (two_to_the k)))
 (define-fun intlshr ((k Int) (a Int) (b Int)) Int (intmodtotal k (intudivtotal k a (two_to_the b)) (two_to_the k)))
 (define-fun intashr ((k Int) (a Int) (b Int) ) Int (ite (= (intextract k (- k 1) (- k 1) a) 0) (intlshr k a b) (intnot k (intlshr k (intnot k a) b))))
@@ -84,7 +142,10 @@
 (define-fun intsub ((k Int) (a Int) (b Int)) Int (intadd k a (intneg k b)))
 
 ;signed business
-;Given an integer x s.t. 0<= x <= (2^k)-1, x can be represented by a bitvector v, so that x is the unsigned interpretation of v. now, v also has a signed interpretation, call it y. Then (unsigned_to_signed k x)=y.
+;Given an integer x s.t. 0<= x <= (2^k)-1, x can be represented by a bitvector v,
+;so that x is the unsigned interpretation of v.
+;now, v also has a signed interpretation, call it y.
+;Then (unsigned_to_signed k x) := y.
 (define-fun unsigned_to_signed ((k Int) (x Int)) Int (- (* 2 (intextract k (- k 2) 0 x)) x))
 (define-fun intslt ((k Int) (a Int) (b Int)) Bool (< (unsigned_to_signed k a) (unsigned_to_signed k b)) )
 (define-fun intsgt ((k Int) (a Int) (b Int)) Bool (> (unsigned_to_signed k a) (unsigned_to_signed k b)) )
@@ -103,7 +164,6 @@
 (define-fun bitof ((k Int) (l Int) (a Int)) Int (intextract k l l a))
 (define-fun lsb ((k Int) (a Int)) Int (bitof k 0 a))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;         bitwise or definitions       ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -117,50 +177,56 @@
 ;declaration that will be axiomatized
 (declare-fun intor_dec (Int Int Int) Int)
 
-
 ;choose your or!
 (define-fun intor ((k Int) (a Int) (b Int)) Int (intor_dec k a b))
 
-
 ;complete axiomatization of bitwise or
-(define-fun or_is_ok_full ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int))
-(and
+(define-fun or_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int))
+(!(and
+(instantiate_me a)
+(instantiate_me b)
 (= (intor 1 a b) (intor_helper (lsb k a) (lsb k b)))
 (=>
 (and
-(> m 1)
-(<= m k)
+(> k 1)
 (>= a 0)
 (>= b 0)
 (<= a (intmax k))
 (<= b (intmax k))
 )
 (and
-(= (intor m a b) (+ (intor (- m 1) a b) (* (two_to_the (- m 1)) (intor_helper (bitof k (- m 1) a) (bitof k (- m 1) b)))))
-)))))
+(= (intor k a b) (+ (intor (- k 1) a b) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
+))) :pattern ((instantiate_me a) (instantiate_me b)))
+))
 
 ;partial axiomatization of bitwise or, with quantifiers
-(define-fun or_is_ok_partial ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int))
-(and
+
+(define-fun or_is_ok_partial ((k Int)) Bool (forall ((a Int) (b Int))
+(!(and
+(instantiate_me a)
+(instantiate_me b)
 (= (intor 1 a b) (intor_helper (lsb k a) (lsb k b)))
 (=>
 (and
-(> m 1)
-(<= m k)
 (>= a 0)
 (>= b 0)
 (<= a (intmax k))
 (<= b (intmax k))
 )
 (and
-(>= (intor m a b) 0)
-(<= (intor m a b ) (intmax k))
-(>= (intor m a b) a)
-(>= (intor m a b) b) )
-))))
+(>= (intor k a b) 0)
+(<= (intor k a b ) (intmax k))
+(>= (intor k a b) a)
+(>= (intor k a b) b) )
+)) :pattern ((instantiate_me a) (instantiate_me b)))
+))
+
+
 
 ;partial axiomatization of bitwise or - quantifier free
-(define-fun or_is_ok_qf ((k Int) (a Int) ) Bool
+(define-fun or_is_ok_qf ((k Int)) Bool true)
+
+(define-fun or_is_ok_for ((k Int) (a Int) ) Bool
 (and
 (= (intor k 0 a) a)
 (= (intor k a 0) a)
@@ -169,12 +235,11 @@
 )
 )
 
-
 ;trivial axiomatization if recursive definition was chosen
-(define-fun or_is_ok_rec ((k Int) (a Int) ) Bool true)
+(define-fun or_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun or_is_ok ((k Int) (a Int)) Bool (or_is_ok_partial k a))
+(define-fun or_is_ok ((k Int)) Bool (or_is_ok_partial k))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;         bitwise and definitions       ;
@@ -189,49 +254,51 @@
 ;declaration that will be axiomatized
 (declare-fun intand_dec (Int Int Int) Int)
 
-
 ;choose your and!
 (define-fun intand ((k Int) (a Int) (b Int)) Int (intand_dec k a b))
 
 ;complete axiomatization of bitwise and
-(define-fun and_is_ok_full ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int))
-(and
+(define-fun and_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int))
+(!(and
+(instantiate_me a)
+(instantiate_me b)
 (= (intand 1 a b) (intand_helper (lsb k a) (lsb k b)))
 (=>
 (and
-(> m 1)
-(<= m k)
 (>= a 0)
 (>= b 0)
 (<= a (intmax k))
 (<= b (intmax k))
 )
 (and
-(= (intand m a b) (+ (intand (- m 1) a b) (* (two_to_the (- m 1)) (intand_helper (bitof k (- m 1) a) (bitof k (- m 1) b)))))
-)))))
+(= (intand k a b) (+ (intand (- k 1) a b) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
+))) :pattern ((instantiate_me a) (instantiate_me b)))
+))
 
 ;partial axiomatization of bitwise and, with quantifiers
-(define-fun and_is_ok_partial ((k Int) (x Int)) Bool (forall ((m Int) (a Int) (b Int))
-(and
+(define-fun and_is_ok_partial ((k Int)) Bool (forall ((a Int) (b Int))
+(!(and
+(instantiate_me a)
+(instantiate_me b)
 (= (intand 1 a b) (intand_helper (lsb k a) (lsb k b)))
 (=>
 (and
-(> m 1)
-(<= m k)
 (>= a 0)
 (>= b 0)
 (<= a (intmax k))
 (<= b (intmax k))
 )
 (and
-(>= (intand m a b) 0)
-(<= (intand m a b ) (intmax k))
-(<= (intand m a b) a)
-(<= (intand m a b) b) )
-))))
+(>= (intand k a b) 0)
+(<= (intand k a b ) (intmax k))
+(<= (intand k a b) a)
+(<= (intand k a b) b) )
+)) :pattern ((instantiate_me a) (instantiate_me b) ))
+))
 
-;partial axiomatization of bitwise and - quantifier free
-(define-fun and_is_ok_qf ((k Int) (a Int) ) Bool
+(define-fun and_is_ok_qf ((k Int)) Bool true)
+
+(define-fun and_is_ok_for ((k Int) (a Int) ) Bool
 (and
 (= (intand k 0 a) 0)
 (= (intand k a 0) 0)
@@ -241,20 +308,10 @@
 )
 
 ;trivial axiomatization for bitwise and - for when recursive definition is used
-(define-fun and_is_ok_rec ((k Int) (a Int) ) Bool true)
-
+(define-fun and_is_ok_rec ((k Int) ) Bool true)
 
 ;choose version of properties
-(define-fun and_is_ok ((k Int) (a Int)) Bool (and_is_ok_partial k a))
-
-;in this file, l and SC don't use intand nor intor. Therefore, there is no point in verifying that these functions satisfy their axiomatizations.
-;(define-fun and_or_are_ok ((k Int) (a Int)) Bool (and (and_is_ok k a) (or_is_ok k a)))
-(define-fun and_or_are_ok ((k Int) (a Int) ) Bool true)
-
-
-
-;unbounded quantification:
-(define-fun and_or_are_ok_unbounded () Bool (forall ((a Int)  (b Int)) (=> (> a 0) (>= b 0) (and_or_are_ok a b)) ) )
+(define-fun and_is_ok ((k Int)) Bool (and_is_ok_partial k))
 
 
 
@@ -274,38 +331,41 @@
 (define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (two_to_the k))))
 (define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
 
-;;;;;;;;;;;;;;;;;;;;;;;
-;more place-holders   ;
-;;;;;;;;;;;;;;;;;;;;;;;
-(define-fun inv_syntax_g ((k Int) (s Int) (t Int)) Int (intadd k (intand k s (intmins k)) (intmins k)))
-(define-fun inv_syntax_r ((k Int) (s Int) (t Int)) Int (intand k (intneg k t) (intmins k)))
-(define-fun l_part ((k Int) (s Int) (t Int)) Bool (or (l k (inv_syntax_r k s t) s t) (l k (inv_syntax_g k s t) s t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; what to prove            ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-
 (declare-fun k () Int)
 (declare-fun s () Int)
 (declare-fun t () Int)
+(assert (instantiate_me k))
+(assert (instantiate_me s))
+(assert (instantiate_me t))
 
-;skolemized x for the right-to-left direction
+;extra, harmless qf assertions
+(define-fun everything_is_ok_for ((k Int) (a Int)) Bool (and (two_to_the_is_ok_for a) (two_to_the_is_ok_for k) (and_is_ok_for k a) (or_is_ok_for k a) ))
+(assert (everything_is_ok_for k k))
+(assert (everything_is_ok_for k s))
+(assert (everything_is_ok_for k t))
 
+
+;<BEGIN_LTR>
+(define-fun inv_syntax_g ((k Int) (s Int) (t Int)) Int (intadd k (intand k (intmins k) s) (intmins k)))
+(define-fun inv_syntax_r ((k Int) (s Int) (t Int)) Int (intand k (intnot k t) (intmins k)))
+(define-fun l_part ((k Int) (s Int) (t Int)) Bool (or (l k (inv_syntax_r k s t) s t) (l k (inv_syntax_g k s t) s t)))
 (define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (l_part k s t)))
-
-
 (define-fun assertion_ltr () Bool (not (left_to_right k s t)))
 (define-fun assertion_ltr_ind () Bool (not (=> (left_to_right k s t) (left_to_right (+ k 1) s t))))
+;<END_LTR>
 
 
+;general assertions
 (assert (range_assumptions k s t))
-(assert (and (two_to_the_is_ok k) (two_to_the_is_ok s) (two_to_the_is_ok t)  ))
-(assert (and (and_or_are_ok k s) (and_or_are_ok k t) ))
+(assert two_to_the_is_ok)
+(assert (and_is_ok k))
+(assert (or_is_ok k))
 
-(assert two_to_the_is_ok_unbounded)
-(assert and_or_are_ok_unbounded)
 
 (assert assertion_ltr_ind)
 
