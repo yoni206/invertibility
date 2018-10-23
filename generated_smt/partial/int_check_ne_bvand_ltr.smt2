@@ -61,12 +61,14 @@
 (define-fun modular_power () Bool
 (forall ((i Int) (j Int) (x Int))
 (!(and
+(instantiate_me i)
+(instantiate_me j)
 (instantiate_me x)
 (=>
 (and (>= i 0) (>= j 0) (>= x 0) (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0))
 (< i j)
 )
-) :pattern ((instantiate_me x)))
+) :pattern ((instantiate_me i) (instantiate_me j) (instantiate_me x)))
 )
 )
 
@@ -366,7 +368,7 @@ never_even
 (assert two_to_the_is_ok)
 (assert (and_is_ok k))
 (assert (or_is_ok k))
-
+(assert (forall ((b Int) (c Int)) (!(and (instantiate_me b) (instantiate_me c) (=> (distinct c 0) (distinct (intand k (intnot k c) b) c))) :pattern ((instantiate_me b) (instantiate_me c)) )))
 
 (assert assertion_ltr)
 

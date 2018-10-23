@@ -27,7 +27,7 @@ int_check_bvsgt_bvnot,True,True,True
 int_check_bvsgt_bvor,True,True,False
 int_check_bvsgt_bvshl0,True,False,False
 int_check_bvsgt_bvshl1,False,False,False
-int_check_bvsgt_bvudiv0,True,False,True
+int_check_bvsgt_bvudiv0,True,True,True
 int_check_bvsgt_bvudiv1,False,False,True
 int_check_bvsgt_bvurem0,True,True,True
 int_check_bvsgt_bvurem1,False,False,True
@@ -58,7 +58,7 @@ int_check_bvslt_bvneg,True,True,True
 int_check_bvslt_bvnot,True,True,True
 int_check_bvslt_bvor,True,False,False
 int_check_bvslt_bvshl0,True,True,False
-int_check_bvslt_bvshl1,False,False,False
+int_check_bvslt_bvshl1,False,False,True
 int_check_bvslt_bvudiv0,True,True,True
 int_check_bvslt_bvudiv1,True,False,True
 int_check_bvslt_bvurem0,True,False,False
@@ -67,7 +67,7 @@ int_check_bvuge_bvadd,True,True,True
 int_check_bvuge_bvand,True,True,True
 int_check_bvuge_bvashr0,True,True,True
 int_check_bvuge_bvashr1,True,False,True
-int_check_bvuge_bvlshr0,True,True,True
+int_check_bvuge_bvlshr0,True,False,True
 int_check_bvuge_bvlshr1,True,True,True
 int_check_bvuge_bvmul,False,False,False
 int_check_bvuge_bvneg,True,True,True
@@ -108,7 +108,7 @@ int_check_bvule_bvor,True,False,True
 int_check_bvule_bvshl0,True,True,True
 int_check_bvule_bvshl1,True,False,True
 int_check_bvule_bvudiv0,True,True,False
-int_check_bvule_bvudiv1,True,True,False
+int_check_bvule_bvudiv1,True,True,True
 int_check_bvule_bvurem0,True,True,True
 int_check_bvule_bvurem1,True,True,True
 int_check_bvult_bvadd,True,True,True
@@ -129,7 +129,7 @@ int_check_bvult_bvurem0,True,True,True
 int_check_bvult_bvurem1,True,True,True
 int_check_eq_bvadd,True,True,True
 int_check_eq_bvand,True,True,False
-int_check_eq_bvashr0,True,False,True
+int_check_eq_bvashr0,True,False,False
 int_check_eq_bvashr1,False,False,True
 int_check_eq_bvlshr0,True,True,True
 int_check_eq_bvlshr1,False,False,True

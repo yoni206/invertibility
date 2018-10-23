@@ -61,12 +61,14 @@
 (define-fun modular_power () Bool
   (forall ((i Int) (j Int) (x Int))
     (!(and 
+      (instantiate_me i)
+      (instantiate_me j)
       (instantiate_me x)
       (=> 
         (and (>= i 0) (>= j 0) (>= x 0) (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0))
         (< i j)
       )
-    ) :pattern ((instantiate_me x)))
+    ) :pattern ((instantiate_me i) (instantiate_me j) (instantiate_me x)))
   )
 )
 

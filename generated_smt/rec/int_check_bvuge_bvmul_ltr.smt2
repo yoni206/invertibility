@@ -61,12 +61,14 @@
 (define-fun modular_power () Bool
 (forall ((i Int) (j Int) (x Int))
 (!(and
+(instantiate_me i)
+(instantiate_me j)
 (instantiate_me x)
 (=>
 (and (>= i 0) (>= j 0) (>= x 0) (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0))
 (< i j)
 )
-) :pattern ((instantiate_me x)))
+) :pattern ((instantiate_me i) (instantiate_me j) (instantiate_me x)))
 )
 )
 
@@ -351,7 +353,7 @@ never_even
 
 
 ;<BEGIN_LTR>
-(define-fun l_part ((k Int) (s Int) (t Int)) Bool (exists ((x Int)) (and (everything_is_ok_for k x) (in_range k x) (l k x s t))))
+(define-fun l_part ((k Int) (s Int) (t Int)) Bool (exists ((x Int)) (and (everything_is_ok_for k x) (in_range k x) (instantiate_me x) (l k x s t))))
 (define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (l_part k s t)))
 (define-fun assertion_ltr () Bool (not (left_to_right k s t)))
 (define-fun assertion_ltr_ind () Bool (not (=> (left_to_right k s t) (left_to_right (+ k 1) s t))))

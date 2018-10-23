@@ -61,12 +61,14 @@
 (define-fun modular_power () Bool
 (forall ((i Int) (j Int) (x Int))
 (!(and
+(instantiate_me i)
+(instantiate_me j)
 (instantiate_me x)
 (=>
 (and (>= i 0) (>= j 0) (>= x 0) (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0))
 (< i j)
 )
-) :pattern ((instantiate_me x)))
+) :pattern ((instantiate_me i) (instantiate_me j) (instantiate_me x)))
 )
 )
 
@@ -353,7 +355,8 @@ never_even
 ;<BEGIN_LTR>
 (define-fun inv_syntax_g ((k Int) (s Int) (t Int)) Int (intsub k (intmaxs k) s))
 (define-fun inv_syntax_a ((k Int) (s Int) (t Int)) Int (intsub k (intmaxs k) s))
-(define-fun l_part ((k Int) (s Int) (t Int)) Bool (or  (l k (inv_syntax_a k s t) s t) (l k (inv_syntax_g k s t) s t)))
+(define-fun inv_syntax_r ((k Int) (s Int) (t Int)) Int (intand k (intor k (intnot k s) (intmins k)) (intor k s t)))
+(define-fun l_part ((k Int) (s Int) (t Int)) Bool (or (l k (inv_syntax_r k s t) s t) (l k (inv_syntax_a k s t) s t) (l k (inv_syntax_g k s t) s t)))
 (define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (l_part k s t)))
 (define-fun assertion_ltr () Bool (not (left_to_right k s t)))
 (define-fun assertion_ltr_ind () Bool (not (=> (left_to_right k s t) (left_to_right (+ k 1) s t))))
@@ -363,10 +366,10 @@ never_even
 ;general assertions
 (assert (range_assumptions k s t))
 (assert two_to_the_is_ok)
+(assert (and_is_ok k))
+(assert (or_is_ok k))
 
 
 (assert assertion_ltr)
 
 (check-sat)
-
-(get-value (s t))
