@@ -22,12 +22,12 @@ Admitted.
 
 (*Multiplication*)
 (* x.s = t <=> (-s | s) & t = t *)
-Theorem bvmult1 : forall (x s t : bitvector), iff ((bv_mult x s) = t) ((bv_and (bv_or (bv_not s) s) t) = t).
+Theorem bvmult_eq : forall (x s t : bitvector), iff ((bv_mult x s) = t) ((bv_and (bv_or (bv_not s) s) t) = t).
 Proof.
 Admitted.
 
 (* x.s != t <=> s != 0 or t != 0 *)
-(*Theorem bvmult2 : forall (x s t : bitvector), iff (~((bv_mult x s) = t)) ().*)
+(*Theorem bvmult_neq : forall (x s t : bitvector), iff (~((bv_mult x s) = t)) ().*)
 
 
 (*Mod*)
@@ -54,7 +54,7 @@ Admitted.
 
 (*And*)
 (* x & s = t <=> t & s = t*)
-Theorem bvand1 : forall (x s t : bitvector), iff ((bv_and x s) = t) ((bv_and t s) = t).
+Theorem bvand_eq : forall (x s t : bitvector), iff ((bv_and x s) = t) ((bv_and t s) = t).
 Proof.
 Admitted.
 
@@ -63,7 +63,7 @@ Admitted.
 
 (*Or*)
 (* x | s = t <=> t & s = t *)
-Theorem bvor1 : forall (x s t  :bitvector), iff ((bv_or x s) = t) ((bv_and t s) = t).
+Theorem bvor_eq : forall (x s t  :bitvector), iff ((bv_or x s) = t) ((bv_and t s) = t).
 Proof.
 Admitted.
 
@@ -102,6 +102,33 @@ Admitted.
 (* s << x != t <=> s != 0 or or t != 0 *)
 
 
+(*Concat*)
+(* x o s = t <=> s = t[size(s) - 1, 0] *)
+Theorem bvconcat1_eq : forall (x s t : bitvector), iff ((bv_concat x s) = t) 
+(s = extract t (N.to_nat(size(s)) - 1) (0)).
+Proof.
+Admitted.
+
+(* x o s != t <=> T *)
+Theorem bvconcat1_neq : forall (x s t : bitvector), iff (~((bv_concat x s) = t)) (True).
+Proof.
+intros x s t.
+split. 
+- intros H. reflexivity.
+- intros H. Admitted.
+
+(* s o x = t <=> s = t[size(t) - 1 : size(t) - size(s)] *)
+Theorem bvconcat2_eq : forall (x s t : bitvector), iff ((bv_concat s x) = t) 
+(s = extract t (N.to_nat(size(t)) - 1) 
+               (N.to_nat(size(t)) - N.to_nat(size(s)))).
+Proof. 
+Admitted.
+
+Theorem bvconcat2_neq : forall (x s t : bitvector), iff (~((bv_concat s x) = t)) (True).
+Proof.
+intros x s t.
+split.
+- intros H. reflexivity.
+- intros H. Admitted.
 
 
-(*Logical left shift*)
