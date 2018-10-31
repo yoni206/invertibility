@@ -1,0 +1,6 @@
+Name: AddSub:1599
+Pre: C == width(%a) - 1
+%a = lshr %x, C
+%r = sub 0, %a
+  =>
+%r = ashr %x, C
