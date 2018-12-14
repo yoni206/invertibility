@@ -1,0 +1,105 @@
+(rewrite BvIteConstCond
+         (bvite (bvconst s n) x y)
+         (cond
+           [(= n 0) y]
+           [_ x]))
+(rewrite BvIteEqualChildren (bvite c x x) x)
+(rewrite BvIteConstChildren
+         (bvite c (bvconst 1 x) (bvconst 1 y))
+         (cond
+           [(and (= x 1) (= y 0)) c]
+           [_ (bvnot c)]))
+(rewrite BvIteMergeThenIf
+         (bvite c0 (bvite c1 x y) x)
+         (bvite (bvand c0 (bvnot c1)) y x))
+(rewrite BvIteMergeElseIf
+         (bvite c0 (bvite c1 x y) y)
+         (bvite (bvand c0 c1) x y))
+(rewrite BvIteMergeThenElse
+         (bvite c0 x (bvite c1 x y))
+         (bvite (bvand (bvnot c0) (bvnot c1)) y x))
+(rewrite BvIteMergeElseElse
+         (bvite c0 x (bvite c1 y x))
+         (bvite (bvand (bvnot c0) c1) y x))
+(rewrite BvComp
+         (bvcomp (bvconst 1 n) x)
+         (cond
+           [(= n 0) (bvnot x)]
+           [_ x]))
+(rewrite BitwiseIdempAnd (bvand x x) x)
+(rewrite BitwiseIdempOr (bvor x x) x)
+(rewrite AndZero (bvand x (bvconst s 0)) (bvconst s 0))
+(rewrite AndOne
+         (bvand x (bvconst s n))
+         (cond
+           [(= n (ones s)) x]
+           [_ fail]))
+(rewrite OrZero (bvor x (bvconst s 0)) x)
+(rewrite OrOne
+         (bvor x (bvconst s n))
+         (cond
+           [(= n (ones s)) (ones s)]
+           [_ fail]))
+(rewrite XorDuplicate (bvxor x y) (bvconst (bvsize x) 0))
+(rewrite BitwiseNotAnd (bvand x (bvnot x)) (bvconst (bvsize x) 0))
+(rewrite BitwiseNegOr (bvor x (bvnot x)) (ones (bvsize x)))
+(rewrite NotIdemp (bvnot (bvnot x)) x)
+(rewrite LtSelfUlt (bvult x x) false)
+(rewrite LtSelfSlt (bvslt x x) false)
+(rewrite LteSelfUle (bvule x x) true)
+(rewrite LteSelfSle (bvsle x x) true)
+(rewrite ZeroUlt (bvult (bvconst n 0) x) (lnot (eq (bvconst n 0) x)))
+(rewrite UltZero (bvult x (bvconst n 0)) false)
+(rewrite UltOne (bvult x (bvconst n 1)) (eq x (bvconst n 0)))
+(rewrite UleZero (bvule x (bvconst n 0)) (eq x (bvconst n 0)))
+(rewrite ZeroUle (bvule (bvconst n 0) x) true)
+(rewrite NotUlt (lnot (bvult x y)) (bvule y x))
+(rewrite NotUle (lnot (bvule x y)) (bvult y x))
+(rewrite NegIdemp (bvneg (bvneg x)) x)
+(rewrite UdivZero (bvudiv x (bvconst n 0)) (ones n))
+(rewrite UdivOne (bvudiv x (bvconst n 1)) x)
+(rewrite UgtEliminate (bvugt x y) (bvult y x))
+(rewrite UgeEliminate (bvuge x y) (bvule y x))
+(rewrite SgtEliminate (bvsgt x y) (bvslt y x))
+(rewrite SgeEliminate (bvsge x y) (bvsle y x))
+(rewrite SltEliminate
+         (bvslt x y)
+         (let ([bvx (bvsize x)]
+               [pt (bvconst bvx (pow2 (- bvx 1)))])
+           (bvult (bvadd x ) (bvadd y ))))
+(rewrite SleEliminate (bvsle x y) (lnot (bvslt y x)))
+(rewrite UleEliminate (bvult x y) (lnot (bvult y x)))
+(rewrite CompEliminate (bvcomp x y) (ite (eq x y) (bvconst 1 1) (bvconst 1 0)))
+(rewrite SubEliminate (bvsub x y) (bvadd x (bvneg y)))
+(rewrite RotateLeftEliminate
+         ((_ rotate_left i) x)
+         (let ([amount (modulo i (bvsize x))]
+               [sz (- (bvsize x) 1)]
+               [mid (- (bvsize x) amount)])
+           (cond
+             [(= amount 0) x]
+             [_ (concat ((_ extract (- mid 1) 0) x) ((_ extract sz mid) x))])))
+(rewrite RotateRightEliminate
+         ((_ rotate_right i) x)
+         (let ([amount (modulo i (bvsize x))]
+               [sz (- (bvsize x) 1)]
+               [mid (- (bvsize x) amount)])
+           (cond
+             [(= amount 0) x]
+             [_ (concat ((_ extract (- amount 1) 0) x) ((_ extract sz amount) x))])))
+(rewrite NandEliminate (bvnand x y) (bvnot (bvand x y)))
+(rewrite NorEliminate (bvnor x y) (bvnot (bvor x y)))
+(rewrite XnorEliminate (bvxnor x y) (bvnot (bvxor x y)))
+(rewrite ZeroExtendEliminate
+         ((_ zero_extend i) x)
+         (cond
+           [(= i 0) x]
+           [_ (concat (bvconst i 0) x)]))
+(rewrite SignExtendEliminate
+         ((_ zero_extend i) x)
+         (let ([sz (- (bvsize x) 1)])
+           (cond
+             [(= i 0) x]
+             [_ (concat ((_ repeat i) ((_ extract sz sz) x)) x)])))
+(rewrite RedorEliminate (bvredor x) (lnot (eq x (bvconst (bvsize x) 0))))
+(rewrite RedorEliminate (bvredand x) (lnot (eq x (ones (bvsize x)))))
