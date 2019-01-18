@@ -52,6 +52,7 @@ Bitwidth independence
 - These are the *feasible types*
 - the verification is done for every possible type assignment, up to 64bit integers.
 - for transformations without undefined values in the source template, we get QF_BV. sweet.
+TODO do they actually use quantifier in the smt level or translate to or and and? If the latter holds, i really need to change more stuff there.
 
 Undefined Behaviours
 --------------------
@@ -129,6 +130,7 @@ For every instruction i in T, let delta (delta') be the definedness constraint f
 I think that the issue with the quantifiers is that the we actually want to prove congruence, not only equivalence, since the target may later appear as a source. 
 For example, suppose we have an optimization `undef` => `undef`. We assign `u1` and `u2` to both. It is not enough to prove that there are `u1` and `u2` for which the above implications hold. We need that the first can always be replaced by the second. No matter what is u2, we must have some u1.
 Perhaps the following example will help.
+
 
 Example without `undef`
 -----------------------

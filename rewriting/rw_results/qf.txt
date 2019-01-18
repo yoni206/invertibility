@@ -1,0 +1,5 @@
+filename;cvc4;cvc4 --nl-ext-tplanes;cvc4 --nl-ext-tplanes --fmf-fun-rlv;cvc4 --nl-ext-tplanes --cbqi-all;cvc4 --cbqi-all;cvc4 --fmf-fun-rlv;z3
+ltr_3.smt2;unsat;unsat;unsat;unsat;unsat;unsat;unsat
+rtl_3.smt2;unsat;unsat;unsat;unsat;unsat;unsat;unsat
+ltr_1.smt2;unknown;unknown;sat;timeout;timeout;sat;timeout
+rtl_1.smt2;unknown;timeout;timeout;timeout;timeout;sat;sat

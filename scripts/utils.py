@@ -139,7 +139,6 @@ def get_line_starting_with(lines, pref):
         assert(False)
     return candidates[0]
 
-
 def save_lines_to_file(lines, filename):
     terminated_lines = [line + "\n" for line in lines]
     with open(filename, "w") as f:

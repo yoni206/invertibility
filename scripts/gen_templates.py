@@ -6,6 +6,7 @@ import utils
 replacements = {"rec":
                     {"<two_to_the>": "two_to_the_def",
                      "<intor>": "intor_def",
+                     "<intxor>": "intxor_def",
                      "<intand>": "intand_def",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_rec",
                      "<or_is_ok>": "or_is_ok_rec",
@@ -13,6 +14,7 @@ replacements = {"rec":
                 "full":
                     {"<two_to_the>": "two_to_the_dec",
                      "<intor>": "intor_dec",
+                     "<intxor>": "intxor_dec",
                      "<intand>": "intand_dec",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_full",
                      "<or_is_ok>": "or_is_ok_full",
@@ -20,6 +22,7 @@ replacements = {"rec":
                 "partial":
                     {"<two_to_the>": "two_to_the_dec",
                      "<intor>": "intor_dec",
+                     "<intxor>": "intxor_dec",
                      "<intand>": "intand_dec",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_partial",
                      "<or_is_ok>": "or_is_ok_partial",
@@ -27,6 +30,7 @@ replacements = {"rec":
                 "qf":
                     {"<two_to_the>": "two_to_the_dec",
                      "<intor>": "intor_dec",
+                     "<intxor>": "intxor_dec",
                      "<intand>": "intand_dec",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_qf",
                      "<or_is_ok>": "or_is_ok_qf",
