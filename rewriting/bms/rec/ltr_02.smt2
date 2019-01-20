@@ -414,6 +414,8 @@ true
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;THE ACTUAL REWRITE
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;zero_extend(x+t,n) * sign_extend(a,m) < zero_extend(x,n) * sign_extend(a,m)
 ;--->
@@ -461,9 +463,9 @@ true
 ; b - the bv
 ; b_w - its length
 ; i - the second argument to sign_extend
-(define-fun int_sign_extend ((b_w Int) (b Int) (i Int)) Int (ite (< b (intshl b_w 1 (- b_w 1))) a (intor (+ b_w i) (intshl (+ b_w i) (intnot (+ b_w i) 0) b_w) b )))
+(define-fun int_sign_extend ((b_w Int) (b Int) (i Int)) Int (ite (< b (intshl b_w 1 (- b_w 1))) b (intor (+ b_w i) (intshl (+ b_w i) (intnot (+ b_w i) 0) b_w) b )))
 
-(define-fun left () Bool (< (intmul (+ x_w n) (intadd x_w x t) (int_sign_extend a_w a m)) (intmul (+ x_w n) x (int_sign_extend a_w a m))))
+(define-fun left () Bool (intslt (+ x_w n) (intmul (+ x_w n) (intadd x_w x t) (int_sign_extend a_w a m)) (intmul (+ x_w n) x (int_sign_extend a_w a m))))
 (define-fun right () Bool (and (not (= t 0)) (not (= a 0)) (= (< x_w (intadd x_w x t) x) (intsgt a_w a 0))))
 
 (assert left)

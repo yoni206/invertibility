@@ -414,6 +414,8 @@ true
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;THE ACTUAL REWRITE
+;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;c^n+m < Rewrite zero_extend(x^n,m)
 ;--->
@@ -429,13 +431,15 @@ true
 (assert (> n 0))
 (assert (> m 0))
 
-(assert (in_range x n))
-(assert (in_range c (+ n m)))
+(assert (in_range n x))
+(assert (in_range (+ n m) c))
 
 (assert two_to_the_is_ok)
+(assert (= (intextract (+ n m) (- (+ n m) 1) n c ) 0))
+
 
 (define-fun left () Bool (< c x))
-(define-fun right () Bool (=> (= (intextract (+ n m) (- (+ n m) 1) n c ) 0) (< (intextract (+ n m) (- n 1) 0 c) x)))
+(define-fun right () Bool  (< (intextract (+ n m) (- n 1) 0 c) x))
 
 (assert right)
 (assert (not left))

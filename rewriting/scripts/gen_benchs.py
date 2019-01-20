@@ -43,6 +43,8 @@ def get_template_content_and_filter(t_path):
         if "main course" not in line.lower():
             new_lines.append(line)
         else:
+            new_lines.append(";THE ACTUAL REWRITE")
+            new_lines.append(";;;;;;;;;;;;;;;;;;;;;;;;;")
             new_lines.append("")
             break
     return "\n".join(new_lines)
