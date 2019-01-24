@@ -54,6 +54,7 @@ Module Type BITVECTOR.
 
   (* Constants *)
   Parameter zeros     : forall n, bitvector n.
+  Parameter one       : forall n, bitvector n.
 
   (*equality*)
   Parameter bv_eq     : forall n, bitvector n -> bitvector n -> bool.
@@ -123,6 +124,7 @@ Parameter bitOf      : nat -> bitvector -> bool.
 
 (* Constants *)
 Parameter zeros      : N -> bitvector.
+Parameter one        : N -> bitvector.
 
 (*equality*)
 Parameter bv_eq      : bitvector -> bitvector -> bool.
@@ -160,6 +162,7 @@ Axiom bits_size      : forall bv, List.length (bits bv) = N.to_nat (size bv).
 Axiom of_bits_size   : forall l, N.to_nat (size (of_bits l)) = List.length l.
 Axiom _of_bits_size  : forall l s,(size (_of_bits l s)) = s.
 Axiom zeros_size     : forall n, size (zeros n) = n.
+Axiom one_size       : forall n, size (one n) = n.
 Axiom bv_concat_size : forall n m a b, size a = n -> size b = m -> size (bv_concat a b) = n + m.
 Axiom bv_and_size    : forall n a b, size a = n -> size b = n -> size (bv_and a b) = n.
 Axiom bv_or_size     : forall n a b, size a = n -> size b = n -> size (bv_or a b) = n.
@@ -240,6 +243,9 @@ Module RAW2BITVECTOR (M:RAWBITVECTOR) <: BITVECTOR.
 
   Definition zeros (n:N) : bitvector n :=
     @MkBitvector _ (M.zeros n) (M.zeros_size n).
+
+  Definition one (n:N) : bitvector n :=
+    @MkBitvector _ (M.one n) (M.one_size n).
 
   Definition bv_eq n (bv1 bv2:bitvector n) := M.bv_eq bv1 bv2.
 
@@ -516,6 +522,15 @@ Definition zeros (n : N) : bitvector := mk_list_false (N.to_nat n).
 
 End Fold_left2.
 
+Fixpoint mk_list_one (t: nat) : list bool := 
+  match t with
+    | O => []
+    | S O => [true]
+    | S t' => false :: (mk_list_one t')
+  end.
+
+Definition one (n : N) : bitvector := mk_list_one (N.to_nat n).
+
 Definition bitOf (n: nat) (a: bitvector): bool := nth n a false.
 
 Definition bv_and (a b : bitvector) : bitvector :=
@@ -737,7 +752,7 @@ Definition mult_list a b := bvmult_bool a b (length a).
 Definition bv_mult (a b : bitvector) : bitvector :=
   if ((@size a) =? (@size b))
   then mult_list a b
-  else zeros (@size a).
+  else nil.
 
 (* Theorems *)
 
@@ -746,6 +761,17 @@ Proof. intro n.
        induction n as [ | n' IHn].
        - simpl. auto.
        - simpl. apply f_equal. exact IHn.
+Qed.
+
+Lemma length_mk_list_one: forall n, length (mk_list_one n) = n.
+Proof. intro n.
+  induction n as [| n' IHn].
+  - reflexivity.
+  - assert (H: forall n, length (mk_list_one (S n)) = S (length (mk_list_one n))).
+    { intros n. induction n as [ | n'' IHn'].
+      + reflexivity.
+      + reflexivity. }
+    rewrite -> H. rewrite -> IHn. reflexivity.
 Qed.
 
 Definition _of_bits (a:list bool) (s: N) := 
@@ -768,6 +794,10 @@ Qed.
 
 Lemma zeros_size (n : N) : size (zeros n) = n.
 Proof. unfold size, zeros. now rewrite length_mk_list_false, N2Nat.id. Qed. 
+
+Lemma one_size (n : N) : size (one n) = n.
+Proof. unfold size. unfold one. rewrite length_mk_list_one.
+  rewrite N2Nat.id. reflexivity. Qed.
 
 Lemma List_eq : forall (l m: list bool), beq_list l m = true <-> l = m.
 Proof.
