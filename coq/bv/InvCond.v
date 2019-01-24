@@ -30,6 +30,8 @@ Admitted.
 Theorem bvmult_neq : forall (x s t : bitvector), iff 
   (~((bv_mult x s) = t)) 
   ((~(s = zeros (size s))) \/ (~(t = zeros (size t)))).
+Proof.
+Admitted.
 
 
 (*Mod*)
@@ -61,7 +63,11 @@ Proof.
 Admitted.
 
 (* x & s != t <=> s != 0 or t != 0 *)
-
+Theorem bvand_neq : forall (x s t : bitvector), iff 
+  (~((bv_and x s) = t)) 
+  ((bv_and t s) = t).
+Proof.
+Admitted.
 
 (*Or*)
 (* x | s = t <=> t & s = t *)
@@ -70,7 +76,11 @@ Proof.
 Admitted.
 
 (* x | s != t <=> s != ~0 or t != ~0 *)
-
+Theorem bvor_neq : forall (x s t : bitvector), iff 
+  (~((bv_or x s) = t)) 
+  (~(s = (bv_not (zeros (size s)))) \/ (~(t = (bv_not (zeros (size t)))))).
+Proof.
+Admitted.
 
 (*Logical right shift*)
 (* x >> s = t <=> (t << s) >> s = t *)
