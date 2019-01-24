@@ -27,7 +27,9 @@ Proof.
 Admitted.
 
 (* x.s != t <=> s != 0 or t != 0 *)
-Theorem bvmult_neq : forall (x s t : bitvector), iff (~((bv_mult x s) = t)) ((~(s = zeros(size(s)))) || (~(t = zeros(size(t)))).
+Theorem bvmult_neq : forall (x s t : bitvector), iff 
+  (~((bv_mult x s) = t)) 
+  ((~(s = zeros (size s))) \/ (~(t = zeros (size t)))).
 
 
 (*Mod*)
