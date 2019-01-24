@@ -439,8 +439,8 @@ true
 (assert (in_range k a))
 (assert (in_range k b))
 (assert two_to_the_is_ok)
-(define-fun left () Bool true)
-(define-fun right () Bool (= (intextract k i j (intmul k a b)) (intextract k i j (intmul (+ i 1) (intextract k i 0 a) (intextract k i 0 b)))))
+(define-fun left () Bool (<= (intextract k i j (intmul k a b)) (intextract k i j (intmul (+ i 1) (intextract k i 0 a) (intextract k i 0 b)))))
+(define-fun right () Bool (>= (intextract k i j (intmul k a b)) (intextract k i j (intmul (+ i 1) (intextract k i 0 a) (intextract k i 0 b)))))
 
 (assert left)
 (assert (not right))

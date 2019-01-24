@@ -3,6 +3,10 @@
 ;x < c[n-1:0]   if (c <= (1 << (n - 1))) || (c >= (~0 << (n - 1)))
 ;x[n-1:n-1] = 0 if (1 << (n - 1)) < c <= (~0 << (n - 1))
 
+;precondition: 
+;~(~0 << (n - 1)) == (1 << (n - 1)) - 1
+
+
 (declare-fun x () Int)
 (declare-fun c () Int)
 
@@ -18,6 +22,9 @@
 (assert two_to_the_is_ok)
 
 (assert (or (<= c (intshl (+ n m) 1 (- n 1))) (>= c (intshl (+ n m) (intnot (+ n m ) 0) (- n 1)))))
+
+;precondition:
+(assert (= (intnot (+ n m) (intshl (+ n m) (intnot (+ n m) 0) (- n 1))) (- (intshl (+ n m) 1 (- n 1)) 1) ))
 
 
 ; b - the bv

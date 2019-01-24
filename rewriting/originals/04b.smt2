@@ -19,6 +19,9 @@
 
 (assert (and (> c (intshl (+ n m) 1 (- n 1))) (<= c (intshl (+ n m) (intnot (+ n m ) 0) (- n 1)))))
 
+;precondition
+(assert (= (intnot (+ n m) (intshl (+ n m) (intnot (+ n m) 0) (- n 1))) (- (intshl (+ n m) 1 (- n 1)) 1) ))
+
 
 ; b - the bv
 ; b_w - its length

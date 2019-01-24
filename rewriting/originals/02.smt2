@@ -29,6 +29,9 @@
 (assert (= x_w t_w))
 (assert (= (+ x_w n) (+ a_w m)))
 
+;n and m are "sufficiently big"
+(assert (>= n  x_w))
+(assert (>= m  a_w))
 
 (assert (in_range x_w x))
 (assert (in_range t_w t))

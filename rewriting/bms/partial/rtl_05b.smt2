@@ -438,6 +438,10 @@ true
 
 (assert (not (and (<= (intshl (+ n m) (intnot (+ n m) 0) (- n 1)) c) (<= c (intnot (+ n m) (intshl (+ n m) 1 (- n 1)))))))
 
+
+;precondition
+(assert (= (intnot (+ n m) (intshl (+ n m) (intnot (+ n m) 0) (- n 1))) (- (intshl (+ n m) 1 (- n 1)) 1) ))
+
 ; b - the bv
 ; b_w - its length
 ; i - the second argument to sign_extend

@@ -20,5 +20,5 @@
 (assert (in_range k y))
 (assert two_to_the_is_ok)
 (assert (and_is_ok k))
-(define-fun left () Bool true)
-(define-fun right () Bool (= (intextract k i j (intand k x y)) (intand (+ (- i j) 1) (intextract k i j x) (intextract k i  j y))))
+(define-fun left () Bool (<= (intextract k i j (intand k x y)) (intand (+ (- i j) 1) (intextract k i j x) (intextract k i  j y))))
+(define-fun right () Bool (>= (intextract k i j (intand k x y)) (intand (+ (- i j) 1) (intextract k i j x) (intextract k i  j y))))
