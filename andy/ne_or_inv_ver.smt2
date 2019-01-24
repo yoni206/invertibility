@@ -1,0 +1,7 @@
+(set-logic QF_BV)
+(declare-fun s () (_ BitVec 4))
+(declare-fun t () (_ BitVec 4))
+(assert (= t (bvnot (_ bv0 4))))
+(assert (= (bvor s (bvnot t)) t))
+(check-sat)
+(get-value (s t (bvnot t)))

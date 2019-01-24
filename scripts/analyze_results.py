@@ -65,6 +65,7 @@ def save_complete_csv(complete_results, output_file):
         for combination in combinations:
             enc = combination[0]
             conf = combination[1]
+            print("panda ", filename, enc, conf)
             result = complete_results[filename][enc][conf]
             results.append(result)
         line = filename + "," + ",".join(results)

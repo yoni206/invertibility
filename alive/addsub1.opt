@@ -1,0 +1,4 @@
+Name: AddSub:1156-3
+%a = add nuw %b, %b
+  =>
+%a = shl nuw %b, 1

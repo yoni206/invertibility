@@ -17,6 +17,7 @@ substitutions = {
     "bvneg":"intneg k",
     "bvand":"intand k",
     "bvor":"intor k",
+    "bvxor":"intxor k",
     "bvshl":"intshl k",
     "bvlshr":"intlshr k",
     "bvashr":"intashr k",
