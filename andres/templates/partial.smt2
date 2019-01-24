@@ -17,7 +17,7 @@
 (declare-fun two_to_the_dec (Int) Int) 
 
 ;choose your power!
-(define-fun two_to_the ((b Int)) Int (two_to_the_def b))
+(define-fun two_to_the ((b Int)) Int (two_to_the_dec b))
 
 ;complete axiomatization of power
 (define-fun two_to_the_is_ok_full () Bool (and (= (two_to_the 0) 1) (forall ((i Int)) (!(and (instantiate_me i) (=> (> i 0) (= (two_to_the i) (* (two_to_the (- i 1)) 2)))) :pattern ((instantiate_me i))) )))
@@ -108,7 +108,7 @@
 (define-fun two_to_the_is_ok_rec () Bool true)
 
 ;choose version of power properties
-(define-fun two_to_the_is_ok () Bool two_to_the_is_ok_rec)
+(define-fun two_to_the_is_ok () Bool two_to_the_is_ok_partial)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;     other functions     ;
@@ -186,7 +186,7 @@
 (declare-fun intor_dec (Int Int Int) Int)
 
 ;choose your or!
-(define-fun intor ((k Int) (a Int) (b Int)) Int (intor_def k a b))
+(define-fun intor ((k Int) (a Int) (b Int)) Int (intor_dec k a b))
 
 ;complete axiomatization of bitwise or
 (define-fun or_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int)) 
@@ -258,7 +258,7 @@
 (define-fun or_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun or_is_ok ((k Int)) Bool (or_is_ok_rec k))
+(define-fun or_is_ok ((k Int)) Bool (or_is_ok_partial k))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;         bitwise and definitions       ;
@@ -274,7 +274,7 @@
 (declare-fun intand_dec (Int Int Int) Int)
 
 ;choose your and!
-(define-fun intand ((k Int) (a Int) (b Int)) Int (intand_def k a b))
+(define-fun intand ((k Int) (a Int) (b Int)) Int (intand_dec k a b))
 
 ;complete axiomatization of bitwise and
 (define-fun and_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int)) 
@@ -342,7 +342,7 @@
 (define-fun and_is_ok_rec ((k Int) ) Bool true)
 
 ;choose version of properties
-(define-fun and_is_ok ((k Int)) Bool (and_is_ok_rec k))
+(define-fun and_is_ok ((k Int)) Bool (and_is_ok_partial k))
 
 
 
@@ -360,7 +360,7 @@
 (declare-fun intxor_dec (Int Int Int) Int)
 
 ;choose your xor!
-(define-fun intxor ((k Int) (a Int) (b Int)) Int (intxor_def k a b))
+(define-fun intxor ((k Int) (a Int) (b Int)) Int (intxor_dec k a b))
 
 ;complete axiomatization of bitwise xor
 (define-fun xor_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int)) 
@@ -400,7 +400,7 @@ true
 (define-fun xor_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_rec k))
+(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_partial k))
 
 
 
@@ -413,20 +413,3 @@ true
 (define-fun everything_is_ok_for ((k Int) (a Int)) Bool (and (two_to_the_is_ok_for a) (two_to_the_is_ok_for k) (and_is_ok_for k a) (or_is_ok_for k a) ))
 
 
-;(s ·s) >>(s <<s) ̸≈ s · (s >>(s <<s)),
-(declare-fun k () Int)
-(declare-fun s () Int)
-(define-fun left () Int (intlshr k (intmul k s s) (intshl k s s)))
-(define-fun right () Int (intmul k s (intlshr k s (intshl k s s))))
-(define-fun proposition () Bool (= left right))
-(define-fun hint () Bool (=> (>= s k) (= (intshl k s s) 0)))
-
-
-(assert (> k 0))
-(assert (in_range k s))
-(assert two_to_the_is_ok)
-(assert hint)
-(assert (not proposition))
-(assert (>= s k))
-
-(check-sat)

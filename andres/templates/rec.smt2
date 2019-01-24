@@ -413,20 +413,3 @@ true
 (define-fun everything_is_ok_for ((k Int) (a Int)) Bool (and (two_to_the_is_ok_for a) (two_to_the_is_ok_for k) (and_is_ok_for k a) (or_is_ok_for k a) ))
 
 
-;(s ·s) >>(s <<s) ̸≈ s · (s >>(s <<s)),
-(declare-fun k () Int)
-(declare-fun s () Int)
-(define-fun left () Int (intlshr k (intmul k s s) (intshl k s s)))
-(define-fun right () Int (intmul k s (intlshr k s (intshl k s s))))
-(define-fun proposition () Bool (= left right))
-(define-fun hint () Bool (=> (>= s k) (= (intshl k s s) 0)))
-
-
-(assert (> k 0))
-(assert (in_range k s))
-(assert two_to_the_is_ok)
-(assert hint)
-(assert (not proposition))
-(assert (>= s k))
-
-(check-sat)

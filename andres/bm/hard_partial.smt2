@@ -86,17 +86,6 @@
   )
 )
 
-(define-fun power_mod_zero () Bool (forall ((k Int) (x Int)) 
-   (!(and
-    (instantiate_me k)
-    (instantiate_me x)
-    (=>
-      (and (>= k 1) (>= x 0) (>= x k))
-      (= (mod (* x (two_to_the x)) (two_to_the k) ) 0)
-    )
-   ) :pattern ((instantiate_me k) (instantiate_me x)))
-  ))
-
 (define-fun two_to_the_is_ok_partial () Bool 
   (and
      base_cases
@@ -104,7 +93,6 @@
      strong_monotinicity
      modular_power
      never_even    
-     power_mod_zero
   )
 )
 
@@ -431,12 +419,14 @@ true
 (define-fun left () Int (intlshr k (intmul k s s) (intshl k s s)))
 (define-fun right () Int (intmul k s (intlshr k s (intshl k s s))))
 (define-fun proposition () Bool (= left right))
-
+(define-fun hint () Bool (=> (>= s k) (= (intshl k s s) 0)))
 
 
 (assert (> k 0))
 (assert (in_range k s))
 (assert two_to_the_is_ok)
+(assert hint)
 (assert (not proposition))
+(assert (>= s k))
 
 (check-sat)

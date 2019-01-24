@@ -10,6 +10,8 @@
 (assert (> k 0))
 (assert (in_range k s))
 (assert two_to_the_is_ok)
+(assert hint)
 (assert (not proposition))
+(assert (>= s k))
 
 (check-sat)
