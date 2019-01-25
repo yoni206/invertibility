@@ -108,7 +108,7 @@ never_even
 (define-fun two_to_the_is_ok_rec () Bool true)
 
 ;choose version of power properties
-(define-fun two_to_the_is_ok () Bool two_to_the_is_ok_partial)
+(define-fun two_to_the_is_ok () Bool two_to_the_is_ok_qf)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;     other functions     ;
@@ -258,7 +258,7 @@ never_even
 (define-fun or_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun or_is_ok ((k Int)) Bool (or_is_ok_partial k))
+(define-fun or_is_ok ((k Int)) Bool (or_is_ok_qf k))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;         bitwise and definitions       ;
@@ -342,7 +342,7 @@ never_even
 (define-fun and_is_ok_rec ((k Int) ) Bool true)
 
 ;choose version of properties
-(define-fun and_is_ok ((k Int)) Bool (and_is_ok_partial k))
+(define-fun and_is_ok ((k Int)) Bool (and_is_ok_qf k))
 
 
 
@@ -400,7 +400,7 @@ true
 (define-fun xor_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_partial k))
+(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_qf k))
 
 
 
@@ -425,10 +425,12 @@ true
 (define-fun proposition () Bool (= left right))
 
 
-(assert (> k 0))
+(assert (> k 3))
 (assert (in_range k s))
 (assert two_to_the_is_ok)
 (assert (not proposition))
+
 (assert (< s k))
+(assert (>= (* s (two_to_the s)) (two_to_the k)))
 
 (check-sat)

@@ -108,7 +108,7 @@ never_even
 (define-fun two_to_the_is_ok_rec () Bool true)
 
 ;choose version of power properties
-(define-fun two_to_the_is_ok () Bool two_to_the_is_ok_full)
+(define-fun two_to_the_is_ok () Bool two_to_the_is_ok_partial)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;     other functions     ;
@@ -258,7 +258,7 @@ never_even
 (define-fun or_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun or_is_ok ((k Int)) Bool (or_is_ok_full k))
+(define-fun or_is_ok ((k Int)) Bool (or_is_ok_partial k))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;         bitwise and definitions       ;
@@ -342,7 +342,7 @@ never_even
 (define-fun and_is_ok_rec ((k Int) ) Bool true)
 
 ;choose version of properties
-(define-fun and_is_ok ((k Int)) Bool (and_is_ok_full k))
+(define-fun and_is_ok ((k Int)) Bool (and_is_ok_partial k))
 
 
 
@@ -400,7 +400,7 @@ true
 (define-fun xor_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_full k))
+(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_partial k))
 
 
 
@@ -421,16 +421,26 @@ true
 (declare-fun k () Int)
 (declare-fun s () Int)
 (define-fun left () Int (intlshr k (intmul k s s) (intshl k s s)))
-(define-fun right () Int (intmul k s (intlshr k s (intshl k s s))))
+(define-fun right () Int 0)
 (define-fun proposition () Bool (= left right))
-(define-fun hint () Bool (=> (>= s k) (= (intshl k s s) 0)))
+(define-fun hint1 () Bool (=> (< (* s s) (two_to_the k)) (= (mod (* s s) (two_to_the k)) (* s s))))
+(define-fun hint2 () Bool (=> (< (* s (two_to_the s)) (two_to_the k)) (= (mod (* s (two_to_the s)) (two_to_the k)) (* s (two_to_the s)))))
+(define-fun hint3 () Bool (=> (< (* s s) (* s (two_to_the s))) (= (div (* s s) (* s (two_to_the s))) 0)))
+(define-fun hint4 () Bool (=> (< s (* s (two_to_the s))) (= (div s (* s (two_to_the s))) 0)))
 
-
-(assert (> k 0))
+(assert (> k 3))
 (assert (in_range k s))
 (assert two_to_the_is_ok)
-(assert hint)
+(assert hint1)
+(assert hint2)
+(assert hint3)
+(assert hint4)
 (assert (not proposition))
-(assert (>= s k))
+
+(assert (< s k))
+(assert (< (* s s) (two_to_the k))) ;actually this follows from the next line
+(assert (< (* s (two_to_the s)) (two_to_the k)))
+(assert (< (* s s) (* (s (two_to_the s)))))
+(assert (< s (* (s (two_to_the s)))))
 
 (check-sat)

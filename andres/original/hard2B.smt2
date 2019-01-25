@@ -6,10 +6,12 @@
 (define-fun proposition () Bool (= left right))
 
 
-(assert (> k 0))
+(assert (> k 3))
 (assert (in_range k s))
 (assert two_to_the_is_ok)
 (assert (not proposition))
+
 (assert (< s k))
+(assert (>= (* s (two_to_the s)) (two_to_the k)))
 
 (check-sat)
