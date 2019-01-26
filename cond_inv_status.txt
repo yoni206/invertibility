@@ -1,13 +1,12 @@
-Most are OK.
-
 verify_inv_bvsge_bvlshr0: 
 a: sat in most cases, except 4 and 5.
-g: no problems.
-syntax_r: no problems.
+g: perfect
+r: perfect
 
 verify_inv_bvsge_bvlshr1
-a and r: no inverse found.
-g: sat except for 4.
+a: no inverse
+g: sat 
+r: no inverse
 
 verify_inv_bvsge_bvudiv0
 a: some ok, some timeout. no sat.
