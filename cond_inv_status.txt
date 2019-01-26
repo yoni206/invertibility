@@ -1,0 +1,70 @@
+Most are OK.
+
+verify_inv_bvsge_bvlshr0: 
+a: sat in most cases, except 4 and 5.
+g: no problems.
+syntax_r: no problems.
+
+verify_inv_bvsge_bvlshr1
+a and r: no inverse found.
+g: sat except for 4.
+
+verify_inv_bvsge_bvudiv0
+a: some ok, some timeout. no sat.
+g: sat except for 4.
+r: mostly ok, some timeouts
+
+verify_inv_bvsgt_bvlshr0
+a: sat
+g: perfect
+r: perfect
+
+verify_inv_bvsgt_bvlshr1
+a: not found
+g: sat
+r: not found
+
+verify_inv_bvsgt_bvudiv0
+a: some timeouts
+g: some timeouts
+r: some timeouts
+
+verify_inv_bvsle_bvudiv1
+a: no inverse
+g: sat
+r: no inverse
+
+verify_inv_bvslt_bvudiv0
+a: timeouts, many
+g: perfect
+r: perfect
+
+verify_inv_bvslt_bvudiv1
+a: no inverse
+g: sat
+r: no inverse
+
+verify_inv_bvuge_bvudiv0
+a: timeouts
+g: timeouts
+r: timeouts
+
+verify_inv_eq_bvlshr0
+a: sat
+g: perfect
+r: no inverse
+
+verify_inv_ne_bvashr1
+a: interesting. half sat half unsat. how?! maybe even widths?
+g: perfect
+r: perfect
+
+verify_inv_ne_bvudiv0
+a: perfect
+g: sat
+r: perfect
+
+verify_inv_ne_bvudiv1
+a: strange. many sats, some unsat. 4-5-6 unsat. the rest sat.
+g: prefect
+r: perfect
