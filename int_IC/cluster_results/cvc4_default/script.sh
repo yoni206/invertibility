@@ -2,14 +2,14 @@
 #SBATCH -e /dev/null
 #SBATCH -o /dev/null
 #SBATCH -c 1
-#SBATCH -a 1-2031
+#SBATCH -a 1-1354
 #SBATCH --qos=normal
-#SBATCH -t 00:00:1
+#SBATCH -t 00:00:300
 #SBATCH -D /barrett/scratch/yoniz/git/invertibility/int_IC/cluster_results/cvc4_default
 
 prefix="/barrett/scratch/yoniz/git/invertibility/int_IC/generated_smt/"
 runlim_binary="/barrett/scratch/local/bin/runlim"
-runlim_options="--time-limit=1 --space-limit=4000"
+runlim_options="--time-limit=300 --space-limit=4000"
 solver="./cvc4"
 solver_options=""
 benchmarks="/barrett/scratch/yoniz/git/invertibility/int_IC/cluster_results/cvc4_default/benchmarks"
