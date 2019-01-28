@@ -1,0 +1,14 @@
+c host: barrett23.stanford.edu
+c start: Sun Jan 27 22:57:44 PST 2019
+c benchmark: /barrett/scratch/yoniz/git/invertibility/int_IC/generated_smt/rec/int_check_bvuge_bvudiv0_rtl.smt2
+c solver: ./z3
+c solver options: 
+(error "line 438 column 35: logic does not support theory recfun")
+(error "line 439 column 34: logic does not support theory recfun")
+(error "line 440 column 34: logic does not support theory recfun")
+(error "line 448 column 23: logic does not support theory recfun")
+(error "line 457 column 35: logic does not support theory recfun")
+(error "line 461 column 34: logic does not support theory recfun")
+(error "line 467 column 21: logic does not support theory recfun")
+sat
+c done
