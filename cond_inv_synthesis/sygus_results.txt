@@ -57,11 +57,11 @@ find_inv_bvuge_bvudiv0_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (
 find_inv_bvsge_bvashr1_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvand s #b1000));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvand s #b1000))
 find_inv_bvugt_bvmul_4bit.sy;unknown;unknown;unknown
 find_inv_eq_bvurem0_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) t);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) t);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) t)
-find_inv_bvsge_bvudiv1_4bit.sy;unknown;unknown;unknown
+find_inv_bvsge_bvudiv1_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvneg (bvnot (bvlshr s (bvlshr #b0111 (bvsub #b1000 #b0111))))));unknown
 find_inv_bvuge_bvshl1_4bit.sy;unknown;unknown;unknown
 find_inv_eq_bvadd_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvsub t s));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvsub t s));unknown
 find_inv_eq_bvlshr1_4bit.sy;unknown;unknown;unknown
-find_inv_eq_bvashr0_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvshl t (bvlshr (bvshl s s) s)));unknown
+find_inv_eq_bvashr0_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvmul t (bvsub s (bvnot (bvmul s (bvmul t (bvmul t t)))))));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvshl t (bvlshr (bvshl s s) s)));unknown
 find_inv_bvult_bvlshr1_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) s);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) s);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) s)
 find_inv_bvsgt_bvshl0_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvlshr #b0111 s));unknown
 find_inv_ne_bvlshr0_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot (bvneg t)));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvshl #b1000 t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot (bvneg t)))
@@ -75,7 +75,7 @@ find_inv_eq_bvurem1_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (Bit
 find_inv_bvslt_bvnot_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0111);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0111);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0111)
 find_inv_eq_bvshl0_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvlshr t s));unknown
 find_inv_bvule_bvurem1_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) s);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) s);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) s)
-find_inv_bvsge_bvudiv0_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvmul s t));unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvor s (bvor t (bvneg (bvnot (bvneg s))))))
+find_inv_bvsge_bvudiv0_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvmul s t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot (bvshl s (bvor s (bvadd s s)))));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvor s (bvor t (bvneg (bvnot (bvneg s))))))
 find_inv_eq_bvmul_4bit.sy;unknown;unknown;unknown
 find_inv_bvsgt_bvudiv0_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvadd s (bvmul s t)));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot (bvshl s (bvor s (bvadd s s)))));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvor s (bvor #b0111 (bvneg (bvnot (bvneg s))))))
 find_inv_bvule_bvashr1_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot (bvor s #b0111)));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot (bvor s #b0111)))
@@ -95,7 +95,7 @@ find_inv_bvsle_bvudiv1_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVe
 find_inv_bvule_bvmul_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0000);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0000);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0000)
 find_inv_bvsle_bvmul_4bit.sy;unknown;unknown;unknown
 find_inv_bvsge_bvshl0_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvlshr #b0111 s));unknown
-find_inv_bvsgt_bvudiv1_4bit.sy;unknown;unknown;unknown
+find_inv_bvsgt_bvudiv1_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvneg (bvnot (bvlshr s (bvlshr #b0111 (bvsub #b1000 #b0111))))));unknown
 find_inv_bvsge_bvor_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) t);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) t);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) t)
 find_inv_eq_bvnot_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot t))
 find_inv_bvuge_bvashr1_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvand s #b1000));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvand s #b1000))
@@ -157,5 +157,5 @@ find_inv_bvsgt_bvnot_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (Bi
 find_inv_bvuge_bvurem1_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0000);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0000);(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) #b0000)
 find_inv_bvslt_bvshl1_4bit.sy;unknown;unknown;unknown
 find_inv_ne_bvneg_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvnot t))
-find_inv_bvsgt_bvurem1_4bit.sy;unknown;unknown;unknown
+find_inv_bvsgt_bvurem1_4bit.sy;unknown;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvsub (bvor s #b1000) (bvand #b0111 (bvsub t #b0111))));unknown
 find_inv_bvsge_bvneg_4bit.sy;(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvneg t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvneg t));(define-fun inv ((s (BitVec 4)) (t (BitVec 4))) (BitVec 4) (bvneg t))
