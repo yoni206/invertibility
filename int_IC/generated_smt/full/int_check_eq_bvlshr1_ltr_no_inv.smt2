@@ -418,7 +418,7 @@ true
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (define-fun l ((k Int) (x Int) (s Int) (t Int)) Bool  (= (intlshr k s x) t))
-(define-fun SC ((k Int) (s Int) (t Int)) Bool (exists ((i Int)) (and (>= i 0) (<= i k) (>= (intshl k s i) t)))
+(define-fun SC ((k Int) (s Int) (t Int)) Bool (exists ((i Int)) (and (>= i 0) (<= i k) (= (intlshr k s i) t)))
 
 )
 

@@ -73,7 +73,7 @@ def make_substitutions(l_name_to_l_sc):
 def replace_disj_with_exists(sc):
     assert(sc.startswith("(or"))
     assert(sc.count("(_ bv") == 5)
-    insert_i = re.sub(r'\(_ bv\d 4\)','i',"(or  (bvuge (bvshl s (_ bv0 4)) t) (bvuge (bvshl s (_ bv1 4)) t) (bvuge (bvshl s (_ bv2 4)) t) (bvuge (bvshl s (_ bv3 4)) t) (bvuge (bvshl s (_ bv4 4)) t))")
+    insert_i = re.sub(r'\(_ bv\d 4\)','i', sc)
     matrix = get_matrix(insert_i)
     return "(exists ((i Int)) (and (>= i 0) (<= i k) " + matrix + "))"
 
@@ -82,9 +82,8 @@ def get_matrix(s):
     body = s[3:-1].strip()
     parens = utils.find_parens(body)
     all_disjuncts_same(body, parens)
-    i,j = list(parens.items())[0]
-    return body[i:j+1]
-
+    result = body[0:parens[0]+1]
+    return result
 def all_disjuncts_same(s, parens):
     expressions = []
     i = 0
@@ -99,7 +98,6 @@ def all_disjuncts_same(s, parens):
             i = -1
         else:
             i =  distance + end
-
     for i in range(0, len(expressions)):
         for j in range(i+1, len(expressions)):
             assert (expressions[i] == expressions[j])
