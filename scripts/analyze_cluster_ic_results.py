@@ -44,7 +44,8 @@ def get_result(log_content):
     lines = log_content.splitlines()
     bad_prefix = "c"
     good_lines = [l for l in lines if not l.startswith(bad_prefix)]
-    assert(len(good_lines) == 1)
+    if len(good_lines) != 1:
+        assert(False)
     good_line = good_lines[0]
     return good_line
 
