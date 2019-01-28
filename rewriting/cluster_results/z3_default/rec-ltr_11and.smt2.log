@@ -1,0 +1,11 @@
+c host: barrett52.stanford.edu
+c start: Wed Jan 23 20:25:00 PST 2019
+c benchmark: /barrett/scratch/yoniz/git/invertibility/rewriting/bms/rec/ltr_11and.smt2
+c solver: ./z3
+c solver options: 
+(error "line 438 column 22: logic does not support theory recfun")
+(error "line 439 column 22: logic does not support theory recfun")
+(error "line 445 column 12: logic does not support theory recfun")
+(error "line 446 column 19: logic does not support theory recfun")
+sat
+c done
