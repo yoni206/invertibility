@@ -4,12 +4,12 @@
 #SBATCH -c 1
 #SBATCH -a 1-480
 #SBATCH --qos=normal
-#SBATCH -t 00:00:5
+#SBATCH -t 00:00:3600
 #SBATCH -D /barrett/scratch/yoniz/git/invertibility/cond_inv_synthesis/cluster_results/cvc4_default
 
 prefix="/barrett/scratch/yoniz/git/invertibility/cond_inv_synthesis/generated_sygus/"
 runlim_binary="/barrett/scratch/local/bin/runlim"
-runlim_options="--time-limit=5 --space-limit=4000"
+runlim_options="--time-limit=3600 --space-limit=4000"
 solver="./cvc4"
 solver_options=""
 benchmarks="/barrett/scratch/yoniz/git/invertibility/cond_inv_synthesis/cluster_results/cvc4_default/benchmarks"
