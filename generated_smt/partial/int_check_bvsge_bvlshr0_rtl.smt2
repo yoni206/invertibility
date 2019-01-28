@@ -166,6 +166,7 @@ never_even
 ;helper functions for intor and intand. a and b should be 0 or 1.
 (define-fun intor_helper ((a Int) (b Int)) Int (ite (and (= a 0) (= b 0) ) 0 1))
 (define-fun intand_helper ((a Int) (b Int)) Int (ite (and (= a 1) (= b 1) ) 1 0))
+(define-fun intxor_helper ((a Int) (b Int)) Int (ite (or (and (= a 0) (=  b 1)) (and (= a 1) (= b 0))) 1 0))
 
 ;the l bit in the representatino of a as a k-width bitvector
 (define-fun bitof ((k Int) (l Int) (a Int)) Int (intextract k l l a))
@@ -345,6 +346,73 @@ never_even
 
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;         bitwise xor definitions       ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;recursive definition of xor
+(define-fun-rec intxor_def ((k Int) (a Int) (b Int)) Int
+(ite (<= k 1)
+(intxor_helper (lsb k a) (lsb k b))
+(+ (intxor_def (- k 1) a b) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
+
+;declaration that will be axiomatized
+(declare-fun intxor_dec (Int Int Int) Int)
+
+;choose your xor!
+(define-fun intxor ((k Int) (a Int) (b Int)) Int (intxor_dec k a b))
+
+;complete axiomatization of bitwise xor
+(define-fun xor_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int))
+(!(and
+(instantiate_me a)
+(instantiate_me b)
+(= (intxor 1 a b) (intxor_helper (lsb k a) (lsb k b)))
+(=>
+(and
+(> k 1)
+(>= a 0)
+(>= b 0)
+(<= a (intmax k))
+(<= b (intmax k))
+)
+(and
+(= (intxor k a b) (+ (intxor (- k 1) a b) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
+))) :pattern ((instantiate_me a) (instantiate_me b)))
+))
+
+;partial axiomatization of bitwise xor, with quantifiers
+
+(define-fun xor_is_ok_partial ((k Int)) Bool (and
+true
+))
+
+;partial axiomatization of bitwise xor - quantifier free
+(define-fun xor_is_ok_qf ((k Int)) Bool true)
+
+(define-fun xor_is_ok_for ((k Int) (a Int) ) Bool
+(and
+true
+)
+)
+
+;trivial axiomatization if recursive definition was chosen
+(define-fun xor_is_ok_rec ((k Int)  ) Bool true)
+
+;choose version of properties for or
+(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_partial k))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;   range functions        ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (two_to_the k))))
+(define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
+(define-fun everything_is_ok_for ((k Int) (a Int)) Bool (and (two_to_the_is_ok_for a) (two_to_the_is_ok_for k) (and_is_ok_for k a) (or_is_ok_for k a) ))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Main course: l and SC       ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -353,13 +421,6 @@ never_even
 (define-fun SC ((k Int) (s Int) (t Int)) Bool (=> (not (= s 0)) (intsge k (intlshr k (intmax k) s) t))
 
 )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;   range functions        ;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (two_to_the k))))
-(define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -374,7 +435,6 @@ never_even
 (assert (instantiate_me t))
 
 ;extra, harmless qf assertions
-(define-fun everything_is_ok_for ((k Int) (a Int)) Bool (and (two_to_the_is_ok_for a) (two_to_the_is_ok_for k) (and_is_ok_for k a) (or_is_ok_for k a) ))
 (assert (everything_is_ok_for k k))
 (assert (everything_is_ok_for k s))
 (assert (everything_is_ok_for k t))

@@ -3,9 +3,9 @@ import os
 import utils
 from gen_translations import substitutions
 
-FIND_INV = "find_inv"
+FIND_INV = "find_inv_"
 SYGUS_SUFFIX = "_4bit.sy"
-INT_CHECK = "int_check"
+INT_CHECK = "int_check_"
 EXISTENTIAL_L = "(exists ((x Int)) (and (everything_is_ok_for k x) (in_range k x) (instantiate_me x) (l k x s t)))"
 DELIMITER = ";"
 l_part_PH = "<l_part>"
@@ -30,12 +30,23 @@ DEFINE_FUN_PREFIX_REGEX = "\\(define-fun "
 DEFINE_FUN_REC_PREFIX_REGEX = "\\(define-fun-rec "
 DEFINE_FUN_PREFIX = "(define-fun "
 DEFINE_FUN_REC_PREFIX = "(define-fun-rec "
-def main(csv_path, dir_name, templates_dir, inverses_file):
-    files = os.listdir(templates_dir)
-    for f in files:
-        work_on_template(csv_path, dir_name, templates_dir + "/" + f, inverses_file)
 
-def work_on_template(csv_path, dir_name, template_path, inverses_file):
+def main(csv_path, dir_name, templates_dir, inverses_file, verified_inverses_file):
+    files = os.listdir(templates_dir)
+    verified_inverses = get_list_of_verified_inverses(verified_inverses_file)
+    for f in files:
+        work_on_template(csv_path, dir_name, templates_dir + "/" + f, inverses_file, verified_inverses)
+
+def get_list_of_verified_inverses(verified_inverses_file):
+    result = []
+    with open(verified_inverses_file, "r") as myfile:
+        lines = [l.strip() for l in myfile.readlines()]
+    for line in lines:
+        syn, name = line.split(",")
+        result.append((syn, name))
+    return result
+
+def work_on_template(csv_path, dir_name, template_path, inverses_file, verified_inverses):
     template_name = utils.get_file_or_dir_name_no_ext(template_path)
     directory = dir_name + "/" + template_name
     if os.path.exists(directory):
@@ -48,8 +59,8 @@ def work_on_template(csv_path, dir_name, template_path, inverses_file):
     with open(csv_path) as f:
         lines = f.readlines()
     lines = filter_lines(lines)
-    process_lines(lines, directory, template, inverses_file, False)
-    process_lines(lines, directory, template, inverses_file, True)
+    process_lines(lines, directory, template, inverses_file, False, verified_inverses)
+    process_lines(lines, directory, template, inverses_file, True, verified_inverses)
 
 def filter_lines(lines):
     return list(filter(lambda x: (x.strip() and ";" not in x and "?" not in x and "NA" not in x), lines))
@@ -77,65 +88,81 @@ def add_line_to_inverses_map(line, inv_map, syntaxes):
 
 #ind=true means we generate an inductive version
 #and put the generated file in directory_ind
-def process_lines(lines, directory, template, inverses_file, ind):
+def process_lines(lines, directory, template, inverses_file, ind, verified_inverses):
     inverses = get_inverses(inverses_file)
     for line in lines:
-        process_line(line, directory, template, inverses, ind)
+        process_line(line, directory, template, inverses, ind, verified_inverses)
 
-def process_line(line, directory, template, inverses, ind):
+def process_line(line, directory, template, inverses, ind, verified_inverses):
     name, orig_l, orig_SC, new_l, new_SC = line.split(",")
     if ind:
         d = directory + "_ind"
     else:
         d = directory
-    ltr_content = generate_content_ltr(name, template, new_l, new_SC, inverses, d, ind)
+    
     rtl_content = generate_content_rtl(name, template, new_l, new_SC, d, ind)
-    ltr_fname = name + "_ltr.smt2"
     rtl_fname = name + "_rtl.smt2"
-    write_content_to_file(ltr_content, ltr_fname, d)
     write_content_to_file(rtl_content, rtl_fname, d)
+    
+    ltr_contents = generate_contents_ltr(name, template, new_l, new_SC, inverses, d, ind, verified_inverses)
+    for ltr_subname in ltr_contents:
+        ltr_fname = name + "_ltr_" +  ltr_subname + ".smt2"
+        ltr_content = ltr_contents[ltr_subname]
+        write_content_to_file(ltr_content, ltr_fname, d)
 
-def get_l_part_and_extra_definitions(name, inverses):
-    inverses_for_name = get_inverses_for_name(name, inverses)
-    if len(inverses_for_name) == 0:
-        return EXISTENTIAL_L, []
-    else:
-        disjunction, definitions = get_disjunctive_L_and_inv_definitions(inverses_for_name)
-        return disjunction, definitions
+def get_l_part_and_extra_definition(name, inv):
+    l_part = "(l k ( inv k s t) s t)"
+    definition = translate(inv) 
+    definition = add_k_to_def(definition)
+    return l_part, definition
 
 #find the inverses for the current benchmark.
 #make needed translations
-def get_inverses_for_name(name, inverses):
+def get_inverses_for_name(name, inverses, verified_inverses):
     name = name[len(INT_CHECK):]
-    name = FIND_INV + name + SYGUS_SUFFIX
-    inverses_for_name = inverses[name]
-    inverses_for_name = {"inv_" + syntax: inverses_for_name[syntax] for syntax in inverses_for_name if inverses_for_name[syntax] != "unknown"}
+    full_name = FIND_INV + name + SYGUS_SUFFIX
+    inverses_for_name = inverses[full_name]
+    inverses_for_name = {get_syntax_name(syntax): inverses_for_name[syntax] for syntax in inverses_for_name if inverses_for_name[syntax] != "unknown" and inverse_verified(syntax, name, verified_inverses)}
     return inverses_for_name
 
-def get_disjunctive_L_and_inv_definitions(inverses_for_name):
-    disjuncts = ["(l k (" + inv + " k s t) s t)" for inv in inverses_for_name.keys()]
-    disjunctive_L = "(or " + " ".join(disjuncts) + ")"
-    definitions = [translate(inverses_for_name[inv_name]).replace("inv ",  inv_name + " ") for inv_name in inverses_for_name.keys()]
-    definitions = add_k_to_defs(definitions)
-    return disjunctive_L, definitions
+def inverse_verified(syntax, name, verified_inverses):
+    pair = (get_syntax_name(syntax), name)
+    return pair in verified_inverses
 
-def add_k_to_defs(definitions):
-    result = []
-    for defi in definitions:
-        defi = defi.replace("((s Int)", "((k Int) (s Int)")
-        result.append(defi)
+def get_syntax_name(syntax):
+    return syntax[len("syntax_"):]
+
+def add_k_to_def(definition):
+    result = definition.replace("((s Int)", "((k Int) (s Int)")
     return result
 
 def translate(definition):
     return utils.substitute(definition, substitutions)
 
-def generate_content_ltr(name,template, new_l, new_SC, inverses, directory, ind):
+def generate_contents_ltr(name,template, new_l, new_SC, inverses, directory, ind, verified_inverses):
+    result = {}
+    result["no_inv"] = gen_no_inv(name,template, new_l, new_SC, directory, ind)
+    inverses_for_name = get_inverses_for_name(name, inverses, verified_inverses)
+    for syn in inverses_for_name:
+        result["inv_" + syn] = gen_with_inv(name,template, new_l, new_SC, inverses_for_name[syn], directory, ind)
+    return result
+
+def gen_no_inv(name,template, new_l, new_SC, directory, ind):
     assertion = "assertion_ltr"
     if ind:
         assertion = assertion + "_ind"
-    l_part, extra_definitions = get_l_part_and_extra_definitions(name, inverses)
+    l_part = EXISTENTIAL_L
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion, l_part_PH: l_part})
-    content = add_extra_definitions_to_content(content, extra_definitions)
+    content = remove_rtl_stuff(content)
+    return content
+    
+def gen_with_inv(name,template, new_l, new_SC, inv, directory, ind):
+    assertion = "assertion_ltr"
+    if ind:
+        assertion = assertion + "_ind"
+    l_part, extra_definition = get_l_part_and_extra_definition(name, inv)
+    content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion, l_part_PH: l_part})
+    content = add_extra_definition_to_content(content, extra_definition)
     content = remove_rtl_stuff(content)
     return content
 
@@ -184,12 +211,11 @@ def remove_lines_with(content, stuff):
             result_lines.append(line)
     return "\n".join(result_lines)
 
-def add_extra_definitions_to_content(content, extra_detinitions):
+def add_extra_definition_to_content(content, extra_definition):
     lines = content.splitlines()
     lines = [line.strip() for line in lines]
     index_of_l_part_def = index_of_line_starting_with(lines, L_PART_PREFIX)
-    for definition in extra_detinitions:
-        lines.insert(index_of_l_part_def, definition)
+    lines.insert(index_of_l_part_def, extra_definition)
     return "\n".join(lines)
 
 def index_of_line_starting_with(lines, pref):
@@ -306,10 +332,11 @@ def write_content_to_file(content, filename, d):
 
 if __name__ == "__main__":
     if len(sys.argv) < 5:
-        print('arg1: csv file\narg2: generated files dir\narg3: templates dir\narg4: sygus inverses file')
+        print('arg1: csv file\narg2: generated files dir\narg3: templates dir\narg4: sygus inverses file\narg5: verifiedinverses file')
         exit(1)
     csv = sys.argv[1]
     result_dir = sys.argv[2]
     templates_dir = sys.argv[3]
     inverses_file = sys.argv[4]
-    main(csv, result_dir, templates_dir, inverses_file)
+    verified_inverses_file = sys.argv[5]
+    main(csv, result_dir, templates_dir, inverses_file, verified_inverses_file)
