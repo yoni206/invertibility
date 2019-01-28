@@ -154,6 +154,8 @@ def gen_no_inv(name,template, new_l, new_SC, directory, ind):
     l_part = EXISTENTIAL_L
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion, l_part_PH: l_part})
     content = remove_rtl_stuff(content)
+    if is_rec(directory):
+        content = massage_rec(content)
     return content
     
 def gen_with_inv(name,template, new_l, new_SC, inv, directory, ind):
@@ -164,6 +166,8 @@ def gen_with_inv(name,template, new_l, new_SC, inv, directory, ind):
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion, l_part_PH: l_part})
     content = add_extra_definition_to_content(content, extra_definition)
     content = remove_rtl_stuff(content)
+    if is_rec(directory):
+        content = massage_rec(content)
     return content
 
 
@@ -174,6 +178,8 @@ def generate_content_rtl(name, template, new_l, new_SC, directory, ind):
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion})
     content = remove_ltr_stuff(content)
     content = massage(content, new_l, new_SC, directory)
+    if is_rec(directory):
+        content = massage_rec(content)
     return content
 
 def massage(content, new_l, new_SC, directory):
@@ -226,6 +232,13 @@ def index_of_line_starting_with(lines, pref):
 
 def is_qf(directory):
     return directory.endswith("qf")
+
+def is_rec(directory):
+    return "rec" in directory
+
+def massage_rec(content):
+    content = content.replace(USUAL_LOGIC, "")
+    return content
 
 def massage_qf(content):
         content = get_rid_of_quants_and_recs(content)

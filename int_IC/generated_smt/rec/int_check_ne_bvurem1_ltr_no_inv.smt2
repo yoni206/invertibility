@@ -1,4 +1,5 @@
 
+
 ;dummy function to be used in quantifier instantiation patterns
 (declare-fun instantiate_me (Int) Bool)
 
