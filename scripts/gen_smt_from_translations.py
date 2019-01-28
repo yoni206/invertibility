@@ -345,7 +345,7 @@ def write_content_to_file(content, filename, d):
 
 if __name__ == "__main__":
     if len(sys.argv) < 5:
-        print('arg1: csv file\narg2: generated files dir\narg3: templates dir\narg4: sygus inverses file\narg5: verifiedinverses file')
+        print('arg1: csv file\narg2: generated files dir\narg3: templates dir\narg4: sygus inverses file\narg5: verified inverses file')
         exit(1)
     csv = sys.argv[1]
     result_dir = sys.argv[2]
