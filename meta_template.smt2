@@ -20,7 +20,7 @@
 (define-fun two_to_the ((b Int)) Int (<two_to_the> b))
 
 ;complete axiomatization of power
-(define-fun two_to_the_is_ok_full () Bool (and (= (two_to_the 0) 1) (forall ((i Int)) (!(and  (=> (> i 0) (= (two_to_the i) (* (two_to_the (- i 1)) 2)))) :pattern ((instantiate_me i))) )))
+(define-fun two_to_the_is_ok_full () Bool (and (= (two_to_the 0) 1) (forall ((i Int)) (!(=> (> i 0) (= (two_to_the i) (* (two_to_the (- i 1)) 2))) :pattern ((instantiate_me i))) )))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -60,24 +60,24 @@
 ;if 2^i mod 2^j is not 0, then i<j
 (define-fun modular_power () Bool
   (forall ((i Int) (j Int) (x Int))
-    (!(and 
+    (!
       (=> 
         (and (>= i 0) (>= j 0) (>= x 0) (distinct (mod (* x (two_to_the i)) (two_to_the j)) 0))
         (< i j)
       )
-    ) :pattern ((instantiate_me i) (instantiate_me j) (instantiate_me x)))
+     :pattern ((instantiate_me i) (instantiate_me j) (instantiate_me x)))
   )
 )
 
 ;2^k -1 is never even, provided that k != 0
 (define-fun never_even () Bool
   (forall ((k Int) (x Int)) 
-   (!(and
+   (!
     (=>
       (and (>= k 1) (>= x 0))
       (distinct (- (two_to_the k) 1) (* 2 x))
     )
-   ) :pattern ((instantiate_me k) (instantiate_me x)))
+    :pattern ((instantiate_me k) (instantiate_me x)))
   )
 )
 
@@ -122,7 +122,7 @@
 (define-fun intneg ((k Int) (a Int)) Int (intmodtotal k (- (two_to_the k) a) (two_to_the k)))
 (define-fun intnot ((k Int) (a Int)) Int (- (intmax k) a))
 (define-fun not_constants ((k Int)) Bool (and (= (intnot k 0) (intmax k)) (= (intnot k (intmax k)) 0 ) ))
-(define-fun not_diff ((k Int)) Bool (forall ((a Int)) (!(and  (distinct (intnot k a) a)) :pattern ((instantiate_me a)))))
+(define-fun not_diff ((k Int)) Bool (forall ((a Int)) (! (distinct (intnot k a) a) :pattern ((instantiate_me a)))))
 (define-fun not_is_ok ((k Int)) Bool (and (not_constants k) (not_diff k)))
 
 
@@ -202,11 +202,11 @@
 
 ;partial axiomatization of bitwise or, with quantifiers
 
-(define-fun or_max1 ((k Int)) Bool (forall ((a Int)) (!(and (= (intor k a (intmax k)) (intmax k))) :pattern ((instantiate_me a))) ))
+(define-fun or_max1 ((k Int)) Bool (forall ((a Int)) (! (= (intor k a (intmax k)) (intmax k)) :pattern ((instantiate_me a))) ))
 (define-fun or_max2 ((k Int)) Bool (forall ((a Int)) (!(and (= (intor k 0 a) a)   (= (intor k a 0) a)) :pattern ((instantiate_me a))) ))
 (define-fun excluded_middle ((k Int)) Bool (forall ((a Int)) (!(and (= (intor k (intnot k a) a) (intmax k)) (= (intor k a (intnot k a)) (intmax k))  ) :pattern ((instantiate_me a))) ))
-(define-fun or_difference1 ((k Int)) Bool (forall ((a Int) (b Int) (c Int)) (!(and (=> (distinct a b) (or (distinct (intor k a c) b) (distinct (intor k b c) a)))) :pattern ((instantiate_me a) (instantiate_me b) (instantiate_me c))) ))
-(define-fun or_sym ((k Int)) Bool (forall ((a Int) (b Int)) (!(and (= (intor k a b) (intor k b a))) :pattern ((instantiate_me a) (instantiate_me b)))))
+(define-fun or_difference1 ((k Int)) Bool (forall ((a Int) (b Int) (c Int)) (! (=> (distinct a b) (or (distinct (intor k a c) b) (distinct (intor k b c) a))) :pattern ((instantiate_me a) (instantiate_me b) (instantiate_me c))) ))
+(define-fun or_sym ((k Int)) Bool (forall ((a Int) (b Int)) (! (= (intor k a b) (intor k b a)) :pattern ((instantiate_me a) (instantiate_me b)))))
 (define-fun or_ranges ((k Int)) Bool (forall ((a Int) (b Int)) 
 (!(and
   (= (intor 1 a b) (intor_helper (lsb k a) (lsb k b)))
@@ -285,10 +285,10 @@
 
 ;partial axiomatization of bitwise and, with quantifiers
 
-(define-fun and_max1 ((k Int)) Bool (forall ((a Int)) (!(and (= (intand k a (intmax k)) a)) :pattern ((instantiate_me a))) ))
-(define-fun and_max2 ((k Int)) Bool (forall ((a Int)) (!(and (= (intand k 0 a) 0)   ) :pattern ((instantiate_me a))) ))
-(define-fun rule_of_contradiction ((k Int)) Bool (forall ((a Int)) (!(and (= (intand k (intnot k a) a) 0) ) :pattern ((instantiate_me a))) ))
-(define-fun and_sym ((k Int)) Bool (forall ((a Int) (b Int)) (!(and (= (intand k a b) (intand k b a))) :pattern ((instantiate_me a) (instantiate_me b)))))
+(define-fun and_max1 ((k Int)) Bool (forall ((a Int)) (! (= (intand k a (intmax k)) a) :pattern ((instantiate_me a))) ))
+(define-fun and_max2 ((k Int)) Bool (forall ((a Int)) (! (= (intand k 0 a) 0   ) :pattern ((instantiate_me a))) ))
+(define-fun rule_of_contradiction ((k Int)) Bool (forall ((a Int)) (! (= (intand k (intnot k a) a) 0 ) :pattern ((instantiate_me a))) ))
+(define-fun and_sym ((k Int)) Bool (forall ((a Int) (b Int)) (! (= (intand k a b) (intand k b a)) :pattern ((instantiate_me a) (instantiate_me b)))))
 (define-fun and_ranges ((k Int)) Bool (forall ((a Int) (b Int)) 
 (!(and
   (= (intand 1 a b) (intand_helper (lsb k a) (lsb k b)))
