@@ -441,7 +441,7 @@ true
 
 
 ;<BEGIN_LTR>
-(define-fun inv ((k Int) (s Int) (t Int)) Int (intor k (intneg k s) t))
+(define-fun inv ((k Int) (s Int) (t Int)) Int (intor k t (intneg k s)))
 (define-fun l_part ((k Int) (s Int) (t Int)) Bool (l k ( inv k s t) s t))
 (define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (l_part k s t)))
 (define-fun assertion_ltr () Bool (not (left_to_right k s t)))
