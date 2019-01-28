@@ -29,6 +29,7 @@ a,bvslt_bvlshr0
 a,bvslt_bvneg
 a,bvslt_bvnot
 a,bvslt_bvor
+a,bvslt_bvudiv0
 a,bvslt_bvurem1
 a,bvuge_bvadd
 a,bvuge_bvand
@@ -126,6 +127,7 @@ g,bvsgt_bvnot
 g,bvsgt_bvor
 g,bvsgt_bvshl0
 g,bvsgt_bvurem0
+g,bvsgt_bvurem1
 g,bvsle_bvadd
 g,bvsle_bvand
 g,bvsle_bvashr0
@@ -150,7 +152,6 @@ g,bvslt_bvnot
 g,bvslt_bvor
 g,bvslt_bvshl0
 g,bvslt_bvudiv0
-g,bvslt_bvurem0
 g,bvslt_bvurem1
 g,bvuge_bvadd
 g,bvuge_bvand
@@ -213,7 +214,6 @@ g,bvult_bvurem0
 g,bvult_bvurem1
 g,eq_bvadd
 g,eq_bvand
-g,eq_bvashr0
 g,eq_bvlshr0
 g,eq_bvneg
 g,eq_bvnot
@@ -233,6 +233,7 @@ g,ne_bvnot
 g,ne_bvor
 g,ne_bvshl0
 g,ne_bvshl1
+g,ne_bvudiv0
 g,ne_bvudiv1
 g,ne_bvurem0
 g,ne_bvurem1

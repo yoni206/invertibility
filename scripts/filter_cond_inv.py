@@ -68,7 +68,7 @@ def delete_first_row_from_file(input_file):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print('arg1: cluster results csv\narg2: output file\n')
+        print('arg1: cluster results csv (result of compare-smt-runs.py on the verification benchmarks)\narg2: output file\n')
         exit(1)
     csv_file = sys.argv[1]
     output_file = sys.argv[2]
