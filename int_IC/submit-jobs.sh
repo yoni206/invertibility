@@ -27,7 +27,7 @@ options="--nl-ext-tplanes --fmf-fun-rlv"
 echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
 
 directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_cbqi"
-options="cvc4 --nl-ext-tplanes --cbqi-all"
+options="--nl-ext-tplanes --cbqi-all"
 echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
 
 directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_saturate_no_e_matching"
