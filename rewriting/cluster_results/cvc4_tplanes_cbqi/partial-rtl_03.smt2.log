@@ -1,7 +1,6 @@
 c host: barrett52.stanford.edu
-c start: Wed Jan 23 19:22:35 PST 2019
+c start: Mon Jan 28 19:48:55 PST 2019
 c benchmark: /barrett/scratch/yoniz/git/invertibility/rewriting/bms/partial/rtl_03.smt2
 c solver: ./cvc4
-c solver options: --nl-ext-tplanes --cbqi-all
-unsat
+c solver options: cvc4 --nl-ext-tplanes --cbqi-all
 c done

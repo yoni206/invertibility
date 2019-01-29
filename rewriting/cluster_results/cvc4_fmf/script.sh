@@ -4,12 +4,12 @@
 #SBATCH -c 1
 #SBATCH -a 1-160
 #SBATCH --qos=normal
-#SBATCH -t 00:00:3600
+#SBATCH -t 00:00:300
 #SBATCH -D /barrett/scratch/yoniz/git/invertibility/rewriting/cluster_results/cvc4_fmf
 
 prefix="/barrett/scratch/yoniz/git/invertibility/rewriting/bms/"
 runlim_binary="/barrett/scratch/local/bin/runlim"
-runlim_options="--time-limit=3600 --space-limit=4000"
+runlim_options="--time-limit=300 --space-limit=4000"
 solver="./cvc4"
 solver_options="--fmf-fun-rlv"
 benchmarks="/barrett/scratch/yoniz/git/invertibility/rewriting/cluster_results/cvc4_fmf/benchmarks"

@@ -2,7 +2,7 @@
 #SBATCH -e /dev/null
 #SBATCH -o /dev/null
 #SBATCH -c 1
-#SBATCH -a 1-1354
+#SBATCH -a 1-5424
 #SBATCH --qos=normal
 #SBATCH -t 00:00:300
 #SBATCH -D /barrett/scratch/yoniz/git/invertibility/int_IC/cluster_results/z3_default
