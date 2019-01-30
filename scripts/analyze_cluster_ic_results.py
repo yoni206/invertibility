@@ -61,13 +61,21 @@ def main(results_dir, output_file):
     config_grouped = config_ic_agg.groupby(["encoding", "config"])
     config_agg = config_grouped.agg({'proved': agg_count_yes})
 
-    cond_agg.to_csv("~/tmp1.csv")
-    enc_agg.to_csv("~/tmp2.csv")
-    direction_agg.to_csv("~/tmp3.csv")
-    ic_agg.to_csv("~/tmp4.csv")
-    config_cond_agg.to_csv("~/tmp5.csv")
-    config_ic_agg.to_csv("~/tmp6.csv")
-    config_agg.to_csv("~/tmp7.csv")
+    enc_sum_grouped = config_agg.groupby(["encoding"])
+    enc_sum_agg = enc_sum_grouped.agg({'proved':sum})
+
+    conf_sum_grouped = config_agg.groupby(["config"])
+    conf_sum_agg = conf_sum_grouped.agg({'proved':sum})
+
+    cond_agg.to_csv("tmp/tmp1.csv")
+    enc_agg.to_csv("tmp/tmp2.csv")
+    direction_agg.to_csv("tmp/tmp3.csv")
+    ic_agg.to_csv("tmp/tmp4.csv")
+    config_cond_agg.to_csv("tmp/tmp5.csv")
+    config_ic_agg.to_csv("tmp/tmp6.csv")
+    config_agg.to_csv("tmp/tmp7.csv")
+    enc_sum_agg.to_csv("tmp/tmp8.csv")
+    conf_sum_agg.to_csv("tmp/tmp9.csv")
 
 def agg_count_yes(values):
     l = [a for a in values.tolist() if a == "yes"]
