@@ -67,6 +67,7 @@ def main(results_dir, output_file):
     conf_sum_grouped = config_agg.groupby(["config"])
     conf_sum_agg = conf_sum_grouped.agg({'proved':sum})
 
+    df.to_csv("tmp/tmp0.csv")
     cond_agg.to_csv("tmp/tmp1.csv")
     enc_agg.to_csv("tmp/tmp2.csv")
     direction_agg.to_csv("tmp/tmp3.csv")
