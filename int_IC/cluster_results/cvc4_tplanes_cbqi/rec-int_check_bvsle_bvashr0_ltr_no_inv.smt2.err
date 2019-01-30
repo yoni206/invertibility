@@ -3,19 +3,36 @@
 [runlim] real time limit:	311040000 seconds
 [runlim] space limit:		4000 MB
 [runlim] argv[0]:		./cvc4
-[runlim] argv[1]:		cvc4
-[runlim] argv[2]:		--nl-ext-tplanes
-[runlim] argv[3]:		--cbqi-all
-[runlim] argv[4]:		/tmp/0heqXcAK.smt2
-[runlim] start:			Mon Jan 28 15:57:47 2019
-[runlim] main pid:		16279
-CVC4 Error:
-Too many input files specified.
-[runlim] end:			Mon Jan 28 15:57:47 2019
-[runlim] status:		ok
-[runlim] result:		0
+[runlim] argv[1]:		--nl-ext-tplanes
+[runlim] argv[2]:		--cbqi-all
+[runlim] argv[3]:		/tmp/qjCgdQEM.smt2
+[runlim] start:			Tue Jan 29 12:54:29 2019
+[runlim] main pid:		14475
+/tmp/qjCgdQEM.smt2:4.12: No set-logic command was given before this point.
+/tmp/qjCgdQEM.smt2:4.12: CVC4 will make all theories available.
+/tmp/qjCgdQEM.smt2:4.12: Consider setting a stricter logic for (likely) better performance.
+/tmp/qjCgdQEM.smt2:4.12: To suppress this warning in the future use (set-logic ALL).
+[runlim] sample:		8.8 time, 10.4 real, 248.2 MB
+[runlim] sample:		18.8 time, 20.4 real, 544.4 MB
+[runlim] sample:		28.8 time, 30.4 real, 793.5 MB
+[runlim] sample:		38.8 time, 40.4 real, 1127.1 MB
+[runlim] sample:		48.5 time, 50.4 real, 1308.2 MB
+[runlim] sample:		58.4 time, 60.4 real, 1638.4 MB
+[runlim] sample:		67.3 time, 70.4 real, 1936.5 MB
+[runlim] sample:		77.1 time, 80.4 real, 2249.5 MB
+[runlim] sample:		87.1 time, 90.4 real, 2518.7 MB
+[runlim] sample:		97.1 time, 100.4 real, 2557.9 MB
+[runlim] sample:		106.1 time, 110.4 real, 2637.0 MB
+[runlim] sample:		115.0 time, 120.4 real, 2924.6 MB
+[runlim] sample:		125.0 time, 130.4 real, 3376.0 MB
+[runlim] sample:		135.0 time, 140.4 real, 3718.4 MB
+[runlim] sample:		143.3 time, 150.4 real, 3977.0 MB
+CVC4 interrupted by SIGTERM.
+[runlim] end:			Tue Jan 29 12:57:00 2019
+[runlim] status:		out of memory
+[runlim] result:		3
 [runlim] children:		0
-[runlim] real:			0.94 seconds
-[runlim] time:			0.00 seconds
-[runlim] space:			0.0 MB
-[runlim] samples:		0
+[runlim] real:			151.47 seconds
+[runlim] time:			144.35 seconds
+[runlim] space:			4003.0 MB
+[runlim] samples:		1511

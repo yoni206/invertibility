@@ -11,7 +11,7 @@ prefix="/barrett/scratch/yoniz/git/invertibility/int_IC/generated_smt/"
 runlim_binary="/barrett/scratch/local/bin/runlim"
 runlim_options="--time-limit=300 --space-limit=4000"
 solver="./cvc4"
-solver_options="cvc4 --nl-ext-tplanes --cbqi-all"
+solver_options="--nl-ext-tplanes --cbqi-all"
 benchmarks="/barrett/scratch/yoniz/git/invertibility/int_IC/cluster_results/cvc4_tplanes_cbqi/benchmarks"
 scrambler=""
 

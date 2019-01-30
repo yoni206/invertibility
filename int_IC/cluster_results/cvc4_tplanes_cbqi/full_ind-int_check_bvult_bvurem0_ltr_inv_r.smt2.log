@@ -1,6 +1,7 @@
-c host: barrett17.stanford.edu
-c start: Mon Jan 28 15:57:52 PST 2019
+c host: barrett33.stanford.edu
+c start: Tue Jan 29 13:15:16 PST 2019
 c benchmark: /barrett/scratch/yoniz/git/invertibility/int_IC/generated_smt/full_ind/int_check_bvult_bvurem0_ltr_inv_r.smt2
 c solver: ./cvc4
-c solver options: cvc4 --nl-ext-tplanes --cbqi-all
+c solver options: --nl-ext-tplanes --cbqi-all
+unsat
 c done
