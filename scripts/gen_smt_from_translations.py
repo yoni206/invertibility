@@ -53,14 +53,14 @@ def work_on_template(csv_path, dir_name, template_path, inverses_file, verified_
         print('directory exists, aborting')
         exit(1)
     os.makedirs(directory)
-    os.makedirs(directory + "_ind")
+#    os.makedirs(directory + "_ind")
     with open(template_path, 'r') as myfile:
         template = myfile.read()
     with open(csv_path) as f:
         lines = f.readlines()
     lines = filter_lines(lines)
     process_lines(lines, directory, template, inverses_file, False, verified_inverses)
-    process_lines(lines, directory, template, inverses_file, True, verified_inverses)
+#   process_lines(lines, directory, template, inverses_file, True, verified_inverses)
 
 def filter_lines(lines):
     return list(filter(lambda x: (x.strip() and ";" not in x and "?" not in x and "NA" not in x), lines))
