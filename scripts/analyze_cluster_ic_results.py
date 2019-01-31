@@ -82,7 +82,13 @@ def main(results_dir, output_file):
 
     encodings_to_keep = ["full", "partial"]
     proved = keep_encodings(enc_agg, encodings_to_keep)
+
+    only_partial = df.loc[df["encoding"] == "partial"]
+    andy_configs(only_partial)
+    proved = drop_configs(only_partial, ["cvc4_tplanes", "cvc4_fmf", "cvc4_cbqi", "cvc4_default"])
+    proved = keep_configs(only_partial, ["cvc4_default", "cvc4_tplanes_fmf"])
     print("panda", proved)
+
 
     df.to_csv("tmp/tmp0.csv")
     cond_agg.to_csv("tmp/tmp1.csv")
@@ -96,6 +102,39 @@ def main(results_dir, output_file):
     enc_sum_agg.to_csv("tmp/tmp9.csv")
     conf_alone_agg.to_csv("tmp/tmp10.csv")
     conf_sum_agg.to_csv("tmp/tmp11.csv")
+
+
+
+def keep_configs(df, configs_to_keep):
+    configs = set(df["config"].tolist())
+    assert(set(configs_to_keep).issubset(configs))
+    print(configs_to_keep)
+    encodings = set(df["encoding"].tolist())
+    assert len(encodings) == 1 and "partial" in encodings
+    df = df.drop(columns = ["encoding"])
+    cond_grouped = df.groupby(["ic_name", "direction", "config", ], as_index=False)
+    cond_agg = cond_grouped.agg({'proved' : agg_yes})
+    df["to_keep"] = df.config.apply(lambda x: x in configs_to_keep)
+    dff = df.loc[df["to_keep"] == True]
+    dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
+    dff_agg = dff_grouped.agg({'proved' : agg_yes})
+    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
+
+
+def drop_configs(df, configs_to_drop):
+    configs = set(df["config"].tolist())
+    assert(set(configs_to_drop).issubset(configs))
+    encodings = set(df["encoding"].tolist())
+    assert len(encodings) == 1 and "partial" in encodings
+    df = df.drop(columns = ["encoding"])
+    cond_grouped = df.groupby(["ic_name", "direction", "config", ], as_index=False)
+    cond_agg = cond_grouped.agg({'proved' : agg_yes})
+    df["to_drop"] = df.config.apply(lambda x: x in configs_to_drop)
+    dff = df.loc[df["to_drop"] == False]
+    dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
+    dff_agg = dff_grouped.agg({'proved' : agg_yes})
+    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
+
 
 def drop_encodings(df, encodings_to_drop):
     df["to_drop"] = df.encoding.apply(lambda x: x in encodings_to_drop)
@@ -126,7 +165,6 @@ def andy_encodings(df):
         s = set(l)
         d[encoding] = s
 
-
     for e1 in encodings:
         for e2 in encodings:
             if e1 == e2:
@@ -135,7 +173,35 @@ def andy_encodings(df):
                 if d[e1].issubset(d[e2]):
                     redundent_encodings.add(e1)
 
+def andy_configs(df):
+    encodings = set(df["encoding"].tolist())
+    assert len(encodings) == 1 and "partial" in encodings
+    df = df.drop(columns = ["encoding"])
+    cond_grouped = df.groupby(["ic_name", "direction", "config", ], as_index=False)
+    cond_agg = cond_grouped.agg({'proved' : agg_yes})
 
+    redundent_configs = set([])
+    configs = set(df['config'].tolist())
+    d = {}
+    for config in configs:
+        print("panda", config)
+        df_e = df.loc[df.config == config]
+        df_e_yes = df_e.loc[df_e.proved == "yes"]
+        df_e_yes["full_name"] = df_e_yes.apply(lambda row: row['ic_name'] + "_" + row['direction'], axis=1)
+        l = df_e_yes["full_name"].tolist()
+        s = set(l)
+        d[config] = s
+
+    for e1 in configs:
+        for e2 in configs:
+            if e1 == e2:
+                continue
+            else:
+                if d[e1] == d[e2]:
+                    print("panda same:", e1, e2)
+                if d[e1].issubset(d[e2]):
+                    redundent_configs.add(e1)
+    print("panda", redundent_configs)
 
 def validate_no_sat_except_qf(df):
     no_qf = df.loc[df.encoding != "qf"]
