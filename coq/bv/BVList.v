@@ -75,6 +75,7 @@ Module Type BITVECTOR.
 
   Parameter bv_shl    : forall n, bitvector n -> bitvector n -> bitvector n.
   Parameter bv_shr    : forall n, bitvector n -> bitvector n -> bitvector n.
+  Parameter bv_ashr   : forall n, bitvector n -> bitvector n -> bitvector n.
 
     (*unary operations*)
   Parameter bv_not    : forall n,     bitvector n -> bitvector n.
@@ -145,6 +146,7 @@ Parameter bv_sltP    : bitvector -> bitvector -> Prop.
 
 Parameter bv_shl     : bitvector -> bitvector -> bitvector.
 Parameter bv_shr     : bitvector -> bitvector -> bitvector.
+Parameter bv_ashr    : bitvector -> bitvector -> bitvector.
 
 (*unary operations*)
 Parameter bv_not     : bitvector -> bitvector.
@@ -174,7 +176,7 @@ Axiom bv_not_size    : forall n a, size a = n -> size (bv_not a) = n.
 Axiom bv_neg_size    : forall n a, size a = n -> size (bv_neg a) = n.
 Axiom bv_shl_size    : forall n a b, size a = n -> size b = n -> size (bv_shl a b) = n.
 Axiom bv_shr_size    : forall n a b, size a = n -> size b = n -> size (bv_shr a b) = n.
-
+Axiom bv_ashr_size   : forall n a b, size a = n -> size b = n -> size (bv_ashr a b) = n.
 Axiom bv_extr_size   : forall i n0 n1 a, size a = n1 -> size (@bv_extr i n0 n1 a) = n0.
 
 (*
@@ -303,6 +305,9 @@ Module RAW2BITVECTOR (M:RAWBITVECTOR) <: BITVECTOR.
 
   Definition bv_shr n (bv1 bv2:bitvector n) : bitvector n :=
     @MkBitvector n (M.bv_shr bv1 bv2) (M.bv_shr_size (wf bv1) (wf bv2)).
+
+  Definition bv_ashr n (bv1 bv2:bitvector n) : bitvector n :=
+    @MkBitvector n (M.bv_ashr bv1 bv2) (M.bv_ashr_size (wf bv1) (wf bv2)).
 
   Lemma bits_size n (bv:bitvector n) : List.length (bits bv) = N.to_nat n.
   Proof. unfold bits. now rewrite M.bits_size, wf. Qed.
@@ -529,7 +534,7 @@ Fixpoint mk_list_one (t: nat) : list bool :=
     | S t' => false :: (mk_list_one t')
   end.
 
-Definition one (n : N) : bitvector := mk_list_one (N.to_nat n).
+Definition one (n : N) : bitvector := rev (mk_list_one (N.to_nat n)).
 
 Definition bitOf (n: nat) (a: bitvector): bool := nth n a false.
 
@@ -763,12 +768,12 @@ Proof. intro n.
        - simpl. apply f_equal. exact IHn.
 Qed.
 
-Lemma length_mk_list_one: forall n, length (mk_list_one n) = n.
+Lemma length_mk_list_one: forall n, length (rev (mk_list_one n)) = n.
 Proof. intro n.
   induction n as [| n' IHn].
   - reflexivity.
-  - assert (H: forall n, length (mk_list_one (S n)) = S (length (mk_list_one n))).
-    { intros n. induction n as [ | n'' IHn'].
+  - assert (H: forall n, length (rev (mk_list_one (S n))) = S (length (rev(mk_list_one n)))).
+    { intros n. rewrite -> rev_length. rewrite -> rev_length. induction n as [ | n'' IHn'].
       + reflexivity.
       + reflexivity. }
     rewrite -> H. rewrite -> IHn. reflexivity.
@@ -2585,7 +2590,12 @@ Qed.
     now rewrite <- H1.
   Qed.
 
-  (** shift left *)
+
+
+(* BV Shift Operations *)
+
+
+(*BV -> Nat Conversion *)
 
 Fixpoint pow2 (n: nat): nat :=
   match n with
@@ -2603,22 +2613,30 @@ Fixpoint _list2nat_be (a: list bool) (n i: nat) : nat :=
 
 Definition list2nat_be (a: list bool) := _list2nat_be a 0 0.
 
-Definition _shl_be (a: list bool) : list bool :=
+
+(* Shift Left *)
+
+Definition shl_one_bit  (a: list bool) : list bool :=
    match a with
      | [] => []
      | _ => false :: removelast a 
    end.
 
-Fixpoint nshl_be (a: list bool) (n: nat): list bool :=
+Fixpoint shl_n_bits  (a: list bool) (n: nat): list bool :=
     match n with
       | O => a
-      | S n' => nshl_be (_shl_be a) n'  
+      | S n' => shl_n_bits (shl_one_bit a) n'  
     end.
 
-Definition shl_be (a b: list bool): list bool :=
-nshl_be a (list2nat_be b).
+Definition shl_aux  (a b: list bool): list bool :=
+shl_n_bits a (list2nat_be b).
 
-Lemma length__shl_be: forall a, length (_shl_be a) = length a.
+Definition bv_shl (a b : bitvector) : bitvector :=
+  if ((@size a) =? (@size b))
+  then shl_aux a b
+  else nil.
+
+Lemma length_shl_one_bit : forall a, length (shl_one_bit a) = length a.
 Proof. intro a.
        induction a; intros.
        - now simpl.
@@ -2626,54 +2644,54 @@ Proof. intro a.
          case_eq a0; easy.
 Qed.
 
-Lemma length_nshl_be: forall n a, length (nshl_be a n) = length a.
+Lemma length_shl_n_bits : forall n a, length (shl_n_bits a n) = length a.
 Proof. intro n.
        induction n; intros; simpl.
        - reflexivity.
-       - now rewrite (IHn (_shl_be a)), length__shl_be.
+       - now rewrite (IHn (shl_one_bit a)), length_shl_one_bit.
 Qed.
 
-Lemma length_shl_be: forall a b n, n = (length a) -> n = (length b)%nat -> 
-                     n = (length (shl_be a b)).
+Lemma length_shl_aux : forall a b n, n = (length a) -> n = (length b)%nat -> 
+                     n = (length (shl_aux a b)).
 Proof.
     intros.
-    unfold shl_be. now rewrite length_nshl_be.
+    unfold shl_aux. now rewrite length_shl_n_bits.
 Qed.
-
-  (** bit-vector extension *)
-Definition bv_shl (a b : bitvector) : bitvector :=
-  if ((@size a) =? (@size b))
-  then shl_be a b
-  else zeros (@size a).
 
 Lemma bv_shl_size n a b : size a = n -> size b = n -> size (bv_shl a b) = n.
 Proof.
   unfold bv_shl. intros H1 H2. rewrite H1, H2.
   rewrite N.eqb_compare. rewrite N.compare_refl.
-  unfold size in *. rewrite <- (@length_shl_be a b (nat_of_N n)).
+  unfold size in *. rewrite <- (@length_shl_aux a b (nat_of_N n)).
   now rewrite N2Nat.id.
   now apply (f_equal (N.to_nat)) in H1; rewrite Nat2N.id in H1.
   now apply (f_equal (N.to_nat)) in H2; rewrite Nat2N.id in H2.
 Qed.
 
-  (** shift right *)
 
-Definition _shr_be (a: list bool) : list bool :=
+(* Shift Right (Logical) *)
+
+Definition shr_one_bit (a: list bool) : list bool :=
    match a with
      | [] => []
      | xa :: xsa => xsa ++ [false]
    end.
 
-Fixpoint nshr_be (a: list bool) (n: nat): list bool :=
+Fixpoint shr_n_bits (a: list bool) (n: nat): list bool :=
     match n with
       | O => a
-      | S n' => nshr_be (_shr_be a) n'  
+      | S n' => shr_n_bits (shr_one_bit a) n'  
     end.
 
-Definition shr_be (a b: list bool): list bool :=
-nshr_be a (list2nat_be b).
+Definition shr_aux (a b: list bool): list bool :=
+shr_n_bits a (list2nat_be b).
 
-Lemma length__shr_be: forall a, length (_shr_be a) = length a.
+Definition bv_shr (a b : bitvector) : bitvector :=
+  if ((@size a) =? (@size b))
+  then shr_aux a b
+  else nil.
+
+Lemma length_shr_one_bit: forall a, length (shr_one_bit a) = length a.
 Proof. intro a.
        induction a; intros.
        - now simpl.
@@ -2681,35 +2699,92 @@ Proof. intro a.
          case_eq a0; easy.
 Qed.
 
-Lemma length_nshr_be: forall n a, length (nshr_be a n) = length a.
+Lemma length_shr_n_bits: forall n a, length (shr_n_bits a n) = length a.
 Proof. intro n.
        induction n; intros; simpl.
        - reflexivity.
-       - now rewrite (IHn (_shr_be a)), length__shr_be.
+       - now rewrite (IHn (shr_one_bit a)), length_shr_one_bit.
 Qed.
 
-Lemma length_shr_be: forall a b n, n = (length a) -> n = (length b)%nat -> 
-                     n = (length (shr_be a b)).
+Lemma length_shr_aux: forall a b n, n = (length a) -> n = (length b)%nat -> 
+                     n = (length (shr_aux a b)).
 Proof.
     intros.
-    unfold shr_be. now rewrite length_nshr_be.
+    unfold shr_aux. now rewrite length_shr_n_bits.
 Qed.
 
-  (** bit-vector extension *)
-Definition bv_shr (a b : bitvector) : bitvector :=
-  if ((@size a) =? (@size b))
-  then shr_be a b
-  else zeros (@size a).
 
 Lemma bv_shr_size n a b : size a = n -> size b = n -> size (bv_shr a b) = n.
 Proof.
   unfold bv_shr. intros H1 H2. rewrite H1, H2.
   rewrite N.eqb_compare. rewrite N.compare_refl.
-  unfold size in *. rewrite <- (@length_shr_be a b (nat_of_N n)).
+  unfold size in *. rewrite <- (@length_shr_aux a b (nat_of_N n)).
   now rewrite N2Nat.id.
   now apply (f_equal (N.to_nat)) in H1; rewrite Nat2N.id in H1.
   now apply (f_equal (N.to_nat)) in H2; rewrite Nat2N.id in H2.
 Qed.
+
+
+(* Shift Right (Arithmetic) *)
+
+Definition ashr_one_bit (a: list bool) (sign: bool) : list bool :=
+   match a with
+     | [] => []
+     | h :: t => t ++ [sign]
+   end.
+
+Fixpoint ashr_n_bits (a: list bool) (n: nat) (sign: bool): list bool :=
+    match n with
+      | O => a
+      | S n' => ashr_n_bits (ashr_one_bit a sign) n' sign
+    end.
+
+Definition ashr_aux (a b: list bool): list bool :=
+ashr_n_bits a (list2nat_be b) (last a false).
+
+Definition bv_ashr (a b : bitvector) : bitvector :=
+  if ((@size a) =? (@size b))
+  then ashr_aux a b
+  else nil.
+
+Lemma length_ashr_one_bit: forall a sign, length (ashr_one_bit a sign) = length a.
+Proof. intro a. destruct sign.
+  + induction a; intros.
+    - now simpl.
+    - simpl. rewrite <- IHa.
+      case_eq a0; easy.
+  + induction a; intros.
+   - now simpl.
+   - simpl. rewrite <- IHa.
+     case_eq a0; easy.
+  Qed.
+
+Lemma length_ashr_n_bits: forall n a sign, length (ashr_n_bits a n sign) = length a.
+Proof.
+  intros n.
+  induction n; intros; simpl.
+  - reflexivity.
+  - now rewrite (IHn (ashr_one_bit a sign)), length_ashr_one_bit.
+Qed. 
+
+Lemma length_ashr_aux: forall a b n, n = (length a) -> n = (length b)%nat -> 
+                     n = (length (ashr_aux a b)).
+Proof.
+  intros.
+  unfold ashr_aux. now rewrite length_ashr_n_bits.
+Qed.
+
+Lemma bv_ashr_size n a b : size a = n -> size b = n -> size (bv_ashr a b) = n.
+Proof.
+  unfold bv_ashr. intros H1 H2. rewrite H1, H2.
+  rewrite N.eqb_compare. rewrite N.compare_refl.
+  unfold size in *. rewrite <- (@length_ashr_aux a b (nat_of_N n)).
+  now rewrite N2Nat.id. 
+  now apply (f_equal (N.to_nat)) in H1; rewrite Nat2N.id in H1.
+  now apply (f_equal (N.to_nat)) in H2; rewrite Nat2N.id in H2.
+  Qed.
+
+
 
 End RAWBITVECTOR_LIST.
 
