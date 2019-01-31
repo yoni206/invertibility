@@ -6,7 +6,7 @@ from gen_translations import substitutions
 FIND_INV = "find_inv_"
 SYGUS_SUFFIX = "_4bit.sy"
 INT_CHECK = "int_check_"
-EXISTENTIAL_L = "(exists ((x Int)) (and (everything_is_ok_for k x) (in_range k x) (instantiate_me x) (l k x s t)))"
+EXISTENTIAL_L = "(exists ((x Int)) (and (everything_is_ok_for k x) (in_range k x) (l k x s t)))"
 DELIMITER = ";"
 l_part_PH = "<l_part>"
 l_PH = "<l>"
