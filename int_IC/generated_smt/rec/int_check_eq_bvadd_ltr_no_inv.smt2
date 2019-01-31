@@ -443,3 +443,4 @@ true
 (assert assertion_ltr)
 
 (check-sat)
+(get-value (k s t (intadd k 0 s) (= (intadd k 0 s) t) (l k 0 s t) (everything_is_ok_for k 0) (instantiate_me 0) ))

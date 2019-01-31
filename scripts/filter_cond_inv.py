@@ -22,6 +22,7 @@ def agg_all_true(values):
     trues = [v for v in values if v == True]
     falses = [v for v in values if v == False]
     return len(falses) == 0 
+
 def proved(row):
     return row.STAT == "ok" and row.RES == "20"
 

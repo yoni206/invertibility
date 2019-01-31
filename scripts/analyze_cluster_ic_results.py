@@ -38,7 +38,11 @@ def main(results_dir, output_file):
     df["status"] = df.err_log.apply(lambda x: x.split(",")[0])
     df["result"] = df.err_log.apply(lambda x: x.split(",")[1])
     validate_stat_res(df)
+    validate_consistency(df)
+    #validate_no_sat_except_qf(df)
+    #TODO uncomment...
     df["proved"] = df.result.apply(lambda x: "yes" if (x == "unsat") else "no")
+
     
     cond_grouped = df.groupby(["ic_name", "direction", "encoding", "cond_inv"], as_index=False)
     cond_agg = cond_grouped.agg({'proved' : agg_yes})
@@ -52,20 +56,26 @@ def main(results_dir, output_file):
     ic_grouped = direction_agg.groupby(["ic_name"], as_index=False)
     ic_agg = ic_grouped.agg({'proved' : agg_both_yes})
     
-    config_cond_grouped = df.groupby(["encoding", "config", "ic_name", "cond_inv"], as_index = False)
+    config_cond_grouped = df.groupby(["encoding", "config", "ic_name", "direction", "cond_inv"], as_index = False)
     config_cond_agg = config_cond_grouped.agg({'proved' : agg_yes})
 
-    config_ic_grouped = config_cond_agg.groupby(["encoding", "config", "ic_name"])
+    config_ic_grouped = config_cond_agg.groupby(["encoding", "config", "ic_name", "direction"])
     config_ic_agg = config_ic_grouped.agg({'proved': agg_yes})
 
     config_grouped = config_ic_agg.groupby(["encoding", "config"])
     config_agg = config_grouped.agg({'proved': agg_count_yes})
 
-    enc_sum_grouped = config_agg.groupby(["encoding"])
-    enc_sum_agg = enc_sum_grouped.agg({'proved':sum})
+    enc_alone_grouped = config_ic_agg.groupby(["encoding", "ic_name", "direction"])
+    enc_alone_agg = enc_alone_grouped.agg({'proved':agg_yes})
 
-    conf_sum_grouped = config_agg.groupby(["config"])
-    conf_sum_agg = conf_sum_grouped.agg({'proved':sum})
+    enc_sum_grouped = enc_alone_agg.groupby(["encoding"])
+    enc_sum_agg = enc_sum_grouped.agg({'proved':agg_count_yes})
+
+    conf_alone_grouped = config_ic_agg.groupby(["config", "ic_name", "direction"])
+    conf_alone_agg = conf_alone_grouped.agg({'proved':agg_yes})
+
+    conf_sum_grouped = conf_alone_agg.groupby(["config"])
+    conf_sum_agg = conf_sum_grouped.agg({'proved':agg_count_yes})
 
     df.to_csv("tmp/tmp0.csv")
     cond_agg.to_csv("tmp/tmp1.csv")
@@ -75,8 +85,20 @@ def main(results_dir, output_file):
     config_cond_agg.to_csv("tmp/tmp5.csv")
     config_ic_agg.to_csv("tmp/tmp6.csv")
     config_agg.to_csv("tmp/tmp7.csv")
-    enc_sum_agg.to_csv("tmp/tmp8.csv")
-    conf_sum_agg.to_csv("tmp/tmp9.csv")
+    enc_alone_agg.to_csv("tmp/tmp8.csv")
+    enc_sum_agg.to_csv("tmp/tmp9.csv")
+    conf_alone_agg.to_csv("tmp/tmp10.csv")
+    conf_sum_agg.to_csv("tmp/tmp11.csv")
+
+
+def validate_no_sat_except_qf(df):
+    no_qf = df.loc[df.encoding != "qf"]
+    no_qf = no_qf.loc[no_qf.encoding != "qf_ind"]
+    sat = no_qf.loc[no_qf.result == "sat"]
+    if len(sat.index) != 0:
+        print("\n".join(sat.path.tolist()))
+        assert(False)
+
 
 def agg_count_yes(values):
     l = [a for a in values.tolist() if a == "yes"]
@@ -103,6 +125,16 @@ def agg_yes(values):
         return "yes"
     else:
         return "no"
+
+def validate_consistency(df):
+    pivot = df.pivot_table(index='filename', columns='config', values='result', aggfunc=lambda x: ' '.join(x))
+    pivot["consistent"] = pivot.apply(consistent, axis=1)
+
+def consistent(row):
+    l = row.tolist()
+    result = ( not ("sat" in l and "unsat" in l))
+    assert(result)
+    return result
 
 def validate_stat_res_row(row):
     if row.status == "ok" and row.result not in ["sat", "unsat", "unknown"]:
