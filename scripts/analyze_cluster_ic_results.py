@@ -77,6 +77,13 @@ def main(results_dir, output_file):
     conf_sum_grouped = conf_alone_agg.groupby(["config"])
     conf_sum_agg = conf_sum_grouped.agg({'proved':agg_count_yes})
 
+    encodings_to_drop = ["rec_ind", "full_ind", "qf_ind", "partial_ind"]
+    proved = drop_encodings(enc_agg, encodings_to_drop)
+
+    encodings_to_keep = ["full", "partial"]
+    proved = keep_encodings(enc_agg, encodings_to_keep)
+    print("panda", proved)
+
     df.to_csv("tmp/tmp0.csv")
     cond_agg.to_csv("tmp/tmp1.csv")
     enc_agg.to_csv("tmp/tmp2.csv")
@@ -89,6 +96,45 @@ def main(results_dir, output_file):
     enc_sum_agg.to_csv("tmp/tmp9.csv")
     conf_alone_agg.to_csv("tmp/tmp10.csv")
     conf_sum_agg.to_csv("tmp/tmp11.csv")
+
+def drop_encodings(df, encodings_to_drop):
+    df["to_drop"] = df.encoding.apply(lambda x: x in encodings_to_drop)
+    dff = df.loc[df["to_drop"] == False]
+    dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
+    dff_agg = dff_grouped.agg({'proved' : agg_yes})
+    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
+
+
+def keep_encodings(df, encodings_to_keep):
+    df["to_keep"] = df.encoding.apply(lambda x: x in encodings_to_keep)
+    dff = df.loc[df["to_keep"] == True]
+    dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
+    dff_agg = dff_grouped.agg({'proved' : agg_yes})
+    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
+
+
+def andy_encodings(df):
+    redundent_encodings = set([])
+    encodings = set(df['encoding'].tolist())
+    d = {}
+    for encoding in encodings:
+        print("panda", encoding)
+        df_e = df.loc[df.encoding == encoding]
+        df_e_yes = df_e.loc[df_e.proved == "yes"]
+        df_e_yes["full_name"] = df_e_yes.apply(lambda row: row['ic_name'] + "_" + row['direction'], axis=1)
+        l = df_e_yes["full_name"].tolist()
+        s = set(l)
+        d[encoding] = s
+
+
+    for e1 in encodings:
+        for e2 in encodings:
+            if e1 == e2:
+                continue
+            else:
+                if d[e1].issubset(d[e2]):
+                    redundent_encodings.add(e1)
+
 
 
 def validate_no_sat_except_qf(df):
