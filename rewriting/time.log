@@ -1,0 +1,1120 @@
+cvc4 bms/qf/rtl_03.smt2: 1.4243712425231934: unsat
+cvc4 bms/qf/ltr_12add.smt2: 1.5473873615264893: unknown
+cvc4 bms/qf/ltr_11and.smt2: 1.6299667358398438: unknown
+cvc4 bms/qf/rtl_11and.smt2: 1.6582117080688477: unknown
+cvc4 bms/qf/rtl_11or.smt2: 1.664208173751831: unknown
+cvc4 bms/qf/ltr_09b.smt2: 1.9611108303070068: unsat
+cvc4 bms/qf/ltr_07.smt2: 1.9759390354156494: unsat
+cvc4 bms/qf/ltr_08b.smt2: 2.0078630447387695: timeout
+cvc4 bms/qf/rtl_11xor.smt2: 2.0077297687530518: timeout
+cvc4 bms/qf/rtl_05b.smt2: 2.0073323249816895: timeout
+cvc4 bms/qf/rtl_08a.smt2: 2.007619857788086: timeout
+cvc4 bms/qf/rtl_01.smt2: 2.007568836212158: timeout
+cvc4 bms/qf/rtl_04b.smt2: 2.0069472789764404: timeout
+cvc4 bms/qf/ltr_02.smt2: 2.006849527359009: timeout
+cvc4 bms/qf/ltr_04b.smt2: 2.0072720050811768: timeout
+cvc4 bms/qf/rtl_04a.smt2: 2.013411283493042: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_03.smt2: 1.3696343898773193: unsat
+cvc4 --nl-ext-tplanes bms/qf/ltr_12add.smt2: 1.4869544506072998: unknown
+cvc4 --nl-ext-tplanes bms/qf/rtl_11or.smt2: 1.622915506362915: unknown
+cvc4 --nl-ext-tplanes bms/qf/ltr_11and.smt2: 1.6733720302581787: unknown
+cvc4 --nl-ext-tplanes bms/qf/rtl_11and.smt2: 1.647951364517212: unknown
+cvc4 --nl-ext-tplanes bms/qf/ltr_07.smt2: 1.9035615921020508: unsat
+cvc4 --nl-ext-tplanes bms/qf/ltr_09b.smt2: 1.9678621292114258: unsat
+cvc4 --nl-ext-tplanes bms/qf/rtl_05b.smt2: 2.0042123794555664: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_08a.smt2: 2.0043399333953857: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_02.smt2: 2.005018949508667: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_08b.smt2: 2.006558656692505: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_01.smt2: 2.0065410137176514: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_04b.smt2: 2.006321430206299: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_11xor.smt2: 2.007336378097534: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_04b.smt2: 2.0058140754699707: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_04a.smt2: 2.009223222732544: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_03.smt2: 2.008683443069458: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_12add.smt2: 1.9636743068695068: sat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_11or.smt2: 2.00968599319458: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_11and.smt2: 2.007324695587158: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_11and.smt2: 2.00771164894104: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_07.smt2: 2.0099902153015137: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_09b.smt2: 2.0055179595947266: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_05b.smt2: 2.006019115447998: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_02.smt2: 2.0049633979797363: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_08a.smt2: 2.0063459873199463: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_04b.smt2: 2.004786252975464: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_08b.smt2: 2.006056785583496: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_11xor.smt2: 2.005298614501953: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_04b.smt2: 2.005741834640503: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_01.smt2: 2.009491443634033: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_04a.smt2: 2.007962942123413: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_03.smt2: 2.0121092796325684: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_12add.smt2: 2.011256217956543: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_11or.smt2: 2.011826276779175: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_11and.smt2: 2.011972188949585: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_11and.smt2: 2.008486747741699: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_07.smt2: 2.0068721771240234: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_09b.smt2: 2.006828546524048: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_05b.smt2: 2.005948781967163: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_08a.smt2: 2.0055673122406006: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_02.smt2: 2.0057921409606934: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_08b.smt2: 2.0055296421051025: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_04b.smt2: 2.006089210510254: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_11xor.smt2: 2.0060975551605225: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_04b.smt2: 2.006289005279541: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_01.smt2: 2.007068395614624: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_04a.smt2: 2.0147695541381836: timeout
+cvc4 --cbqi-all bms/qf/rtl_03.smt2: 2.0118908882141113: timeout
+cvc4 --cbqi-all bms/qf/ltr_12add.smt2: 2.011850118637085: timeout
+cvc4 --cbqi-all bms/qf/rtl_11or.smt2: 2.011870861053467: timeout
+cvc4 --cbqi-all bms/qf/rtl_11and.smt2: 2.0041627883911133: timeout
+cvc4 --cbqi-all bms/qf/ltr_11and.smt2: 2.015153646469116: timeout
+cvc4 --cbqi-all bms/qf/ltr_07.smt2: 2.0121655464172363: timeout
+cvc4 --cbqi-all bms/qf/ltr_09b.smt2: 2.008828639984131: timeout
+cvc4 --cbqi-all bms/qf/rtl_05b.smt2: 2.006093978881836: timeout
+cvc4 --cbqi-all bms/qf/rtl_08a.smt2: 2.0062332153320312: timeout
+cvc4 --cbqi-all bms/qf/ltr_08b.smt2: 2.0048811435699463: timeout
+cvc4 --cbqi-all bms/qf/ltr_02.smt2: 2.006772756576538: timeout
+cvc4 --cbqi-all bms/qf/rtl_11xor.smt2: 2.0045723915100098: timeout
+cvc4 --cbqi-all bms/qf/rtl_04b.smt2: 2.005025863647461: timeout
+cvc4 --cbqi-all bms/qf/rtl_01.smt2: 2.0045111179351807: timeout
+cvc4 --cbqi-all bms/qf/ltr_04b.smt2: 2.0164029598236084: timeout
+cvc4 --cbqi-all bms/qf/rtl_04a.smt2: 2.0048608779907227: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_03.smt2: 2.0114004611968994: timeout
+z3 bms/qf/rtl_03.smt2: 0.03089427947998047: unsat
+cvc4 --fmf-fun-rlv bms/qf/ltr_12add.smt2: 1.955467939376831: sat
+cvc4 --fmf-fun-rlv bms/qf/rtl_11and.smt2: 2.006512403488159: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_11or.smt2: 2.014789342880249: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_11and.smt2: 2.011897325515747: timeout
+z3 bms/qf/rtl_11or.smt2: 0.020839691162109375: sat
+z3 bms/qf/rtl_11and.smt2: 0.03247714042663574: sat
+z3 bms/qf/ltr_11and.smt2: 0.03534364700317383: sat
+cvc4 --fmf-fun-rlv bms/qf/ltr_07.smt2: 2.006849765777588: timeout
+cvc4 bms/qf/rtl_08b.smt2: 0.5780022144317627: unsat
+z3 bms/qf/ltr_07.smt2: 0.028415679931640625: unsat
+cvc4 --fmf-fun-rlv bms/qf/ltr_09b.smt2: 2.0071232318878174: timeout
+z3 bms/qf/ltr_09b.smt2: 0.026654958724975586: unsat
+cvc4 --fmf-fun-rlv bms/qf/ltr_08b.smt2: 2.005725145339966: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_08a.smt2: 2.005751132965088: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_05b.smt2: 2.005779504776001: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_11xor.smt2: 2.005065679550171: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_04b.smt2: 2.005087375640869: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_02.smt2: 2.0066428184509277: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_01.smt2: 2.009937286376953: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_04b.smt2: 2.0113720893859863: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_04a.smt2: 2.0108137130737305: timeout
+z3 bms/qf/rtl_11xor.smt2: 0.029305219650268555: sat
+cvc4 --nl-ext-tplanes bms/qf/rtl_08b.smt2: 0.4990401268005371: unsat
+z3 bms/qf/ltr_12add.smt2: 1.5486886501312256: unknown
+cvc4 bms/qf/rtl_12add.smt2: 1.2550840377807617: unknown
+cvc4 bms/qf/ltr_05b.smt2: 2.0119969844818115: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_08b.smt2: 0.7218198776245117: unsat
+cvc4 bms/qf/rtl_12mul.smt2: 2.008591890335083: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_08b.smt2: 0.48028111457824707: unsat
+cvc4 --nl-ext-tplanes bms/qf/rtl_12add.smt2: 1.0822787284851074: unknown
+cvc4 bms/qf/ltr_13add.smt2: 1.8980238437652588: unknown
+cvc4 bms/qf/rtl_02.smt2: 2.0126068592071533: timeout
+z3 bms/qf/rtl_05b.smt2: 2.0041539669036865: timeout
+z3 bms/qf/rtl_08a.smt2: 2.0041611194610596: timeout
+z3 bms/qf/ltr_02.smt2: 2.0054783821105957: timeout
+z3 bms/qf/rtl_04b.smt2: 2.007619619369507: timeout
+z3 bms/qf/ltr_08b.smt2: 2.011040210723877: timeout
+cvc4 bms/qf/rtl_13add.smt2: 1.9838848114013672: unknown
+z3 bms/qf/rtl_01.smt2: 2.0088613033294678: timeout
+z3 bms/qf/ltr_04b.smt2: 2.0081334114074707: timeout
+cvc4 --cbqi-all bms/qf/rtl_08b.smt2: 0.42448925971984863: unsat
+z3 bms/qf/rtl_04a.smt2: 2.007744073867798: timeout
+cvc4 bms/qf/ltr_06.smt2: 1.764455795288086: unknown
+cvc4 --nl-ext-tplanes bms/qf/ltr_05b.smt2: 2.0111958980560303: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_08b.smt2: 0.8340158462524414: unsat
+z3 bms/qf/rtl_08b.smt2: 0.014875650405883789: unsat
+cvc4 bms/qf/ltr_09a.smt2: 1.091374397277832: unknown
+cvc4 --nl-ext-tplanes bms/qf/rtl_12mul.smt2: 2.0119612216949463: timeout
+cvc4 bms/qf/rtl_09a.smt2: 0.5135655403137207: unsat
+cvc4 bms/qf/ltr_11or.smt2: 1.5982773303985596: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_12add.smt2: 2.01257586479187: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_13add.smt2: 2.0067808628082275: timeout
+cvc4 bms/qf/ltr_12mul.smt2: 1.8263812065124512: unknown
+cvc4 --nl-ext-tplanes bms/qf/rtl_09a.smt2: 0.5148961544036865: unsat
+cvc4 --nl-ext-tplanes bms/qf/rtl_02.smt2: 2.012730598449707: timeout
+cvc4 bms/qf/ltr_11xor.smt2: 1.9887666702270508: unknown
+cvc4 bms/qf/ltr_13mul.smt2: 2.0049312114715576: timeout
+cvc4 bms/qf/ltr_01.smt2: 2.0073957443237305: timeout
+cvc4 bms/qf/rtl_07.smt2: 2.012751817703247: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_13add.smt2: 2.0138235092163086: timeout
+cvc4 bms/qf/ltr_04a.smt2: 2.0165319442749023: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_09a.smt2: 1.1481244564056396: unknown
+cvc4 --nl-ext-tplanes bms/qf/ltr_06.smt2: 2.0065090656280518: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_09a.smt2: 0.7362828254699707: unsat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_05b.smt2: 2.0055768489837646: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_09a.smt2: 0.49706339836120605: unsat
+cvc4 --nl-ext-tplanes bms/qf/ltr_11or.smt2: 1.5983121395111084: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_12mul.smt2: 2.011852502822876: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_12mul.smt2: 1.787257194519043: unknown
+cvc4 --cbqi-all bms/qf/rtl_09a.smt2: 0.5387465953826904: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_12add.smt2: 2.005934476852417: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_13add.smt2: 2.0076494216918945: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_09a.smt2: 1.5972504615783691: sat
+cvc4 --nl-ext-tplanes bms/qf/ltr_11xor.smt2: 1.897214651107788: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_02.smt2: 2.003933906555176: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_13mul.smt2: 2.0077176094055176: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_01.smt2: 2.0050182342529297: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_07.smt2: 2.010399103164673: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_13add.smt2: 2.015774965286255: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_04a.smt2: 2.007827043533325: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_06.smt2: 2.0109145641326904: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_09a.smt2: 0.7743575572967529: unsat
+z3 bms/qf/rtl_09a.smt2: 0.014776945114135742: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_05b.smt2: 2.0118398666381836: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_11or.smt2: 2.004060983657837: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_12mul.smt2: 2.0117905139923096: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_12mul.smt2: 2.0239815711975098: timeout
+cvc4 --cbqi-all bms/qf/rtl_12add.smt2: 2.007941246032715: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_13add.smt2: 2.0068912506103516: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_09a.smt2: 2.0066826343536377: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_11xor.smt2: 2.009168863296509: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_02.smt2: 2.0038750171661377: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_13mul.smt2: 2.003932476043701: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_01.smt2: 2.0104284286499023: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_07.smt2: 2.005260705947876: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_04a.smt2: 2.0040206909179688: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_13add.smt2: 2.0158777236938477: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_06.smt2: 2.012507915496826: timeout
+cvc4 bms/qf/ltr_05a.smt2: 2.0113556385040283: timeout
+cvc4 --cbqi-all bms/qf/ltr_05b.smt2: 2.0118844509124756: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_11or.smt2: 2.0118160247802734: timeout
+cvc4 --cbqi-all bms/qf/rtl_12mul.smt2: 2.011404037475586: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_12mul.smt2: 2.0118203163146973: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_12add.smt2: 2.007858991622925: timeout
+cvc4 --cbqi-all bms/qf/ltr_13add.smt2: 2.0112485885620117: timeout
+cvc4 --cbqi-all bms/qf/ltr_09a.smt2: 2.008087158203125: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_11xor.smt2: 2.005044937133789: timeout
+cvc4 --cbqi-all bms/qf/rtl_02.smt2: 2.003810167312622: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_13mul.smt2: 2.0037779808044434: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_01.smt2: 2.00539231300354: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_07.smt2: 2.004021167755127: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_04a.smt2: 2.007614850997925: timeout
+cvc4 --cbqi-all bms/qf/rtl_13add.smt2: 2.00498104095459: timeout
+cvc4 --cbqi-all bms/qf/ltr_06.smt2: 2.0167033672332764: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_05a.smt2: 2.0118110179901123: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_05b.smt2: 2.0118560791015625: timeout
+cvc4 --cbqi-all bms/qf/ltr_11or.smt2: 2.0118680000305176: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_09a.smt2: 1.5379204750061035: sat
+cvc4 --fmf-fun-rlv bms/qf/rtl_12mul.smt2: 2.012187957763672: timeout
+z3 bms/qf/ltr_09a.smt2: 0.034131765365600586: sat
+cvc4 --cbqi-all bms/qf/ltr_12mul.smt2: 2.0106899738311768: timeout
+z3 bms/qf/rtl_12add.smt2: 2.005640745162964: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_13add.smt2: 2.009444236755371: timeout
+cvc4 --cbqi-all bms/qf/ltr_11xor.smt2: 2.0106029510498047: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_02.smt2: 2.0107779502868652: timeout
+cvc4 --cbqi-all bms/qf/ltr_13mul.smt2: 2.006633996963501: timeout
+cvc4 --cbqi-all bms/qf/ltr_01.smt2: 2.0058372020721436: timeout
+cvc4 --cbqi-all bms/qf/rtl_07.smt2: 2.0104100704193115: timeout
+cvc4 --cbqi-all bms/qf/ltr_04a.smt2: 2.004124402999878: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_13add.smt2: 2.0078048706054688: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_06.smt2: 2.012019157409668: timeout
+z3 bms/qf/ltr_06.smt2: 0.028393030166625977: sat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_05a.smt2: 2.0118722915649414: timeout
+z3 bms/qf/ltr_05b.smt2: 2.0108590126037598: timeout
+cvc4 bms/qf/ltr_03.smt2: 1.3558359146118164: unsat
+cvc4 --fmf-fun-rlv bms/qf/ltr_11or.smt2: 1.9098680019378662: sat
+z3 bms/qf/ltr_11or.smt2: 0.025981664657592773: sat
+z3 bms/qf/rtl_12mul.smt2: 2.0067625045776367: timeout
+cvc4 bms/qf/rtl_05a.smt2: 2.0105433464050293: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_12mul.smt2: 2.008995294570923: timeout
+z3 bms/qf/ltr_13add.smt2: 2.002936840057373: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_11xor.smt2: 2.004969596862793: timeout
+z3 bms/qf/ltr_11xor.smt2: 0.023988723754882812: sat
+cvc4 --fmf-fun-rlv bms/qf/ltr_13mul.smt2: 1.954817533493042: sat
+z3 bms/qf/rtl_02.smt2: 2.00654673576355: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_01.smt2: 2.005378007888794: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_07.smt2: 2.007657051086426: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_04a.smt2: 2.007716655731201: timeout
+z3 bms/qf/rtl_07.smt2: 0.020518064498901367: sat
+z3 bms/qf/rtl_13add.smt2: 2.0066144466400146: timeout
+cvc4 bms/qf/ltr_08a.smt2: 2.0113723278045654: timeout
+cvc4 --nl-ext-tplanes bms/qf/ltr_03.smt2: 1.4101054668426514: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_05a.smt2: 2.0038959980010986: timeout
+cvc4 bms/qf/rtl_13mul.smt2: 1.702991247177124: unknown
+cvc4 bms/qf/rtl_06.smt2: 1.5643622875213623: unsat
+cvc4 bms/qf/rtl_09b.smt2: 2.012877941131592: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_05a.smt2: 2.0086333751678467: timeout
+z3 bms/qf/ltr_12mul.smt2: 2.0062038898468018: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_06.smt2: 1.0263612270355225: unsat
+z3 bms/qf/ltr_04a.smt2: 1.8957252502441406: sat
+z3 bms/qf/ltr_13mul.smt2: 2.0047717094421387: timeout
+z3 bms/qf/ltr_01.smt2: 2.0056686401367188: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_13mul.smt2: 1.4461901187896729: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_03.smt2: 1.5917823314666748: unsat
+cvc4 --nl-ext-tplanes bms/qf/ltr_08a.smt2: 2.005110263824463: timeout
+cvc4 --cbqi-all bms/qf/ltr_05a.smt2: 2.0034127235412598: timeout
+cvc4 --nl-ext-tplanes bms/qf/rtl_09b.smt2: 1.7157306671142578: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_06.smt2: 1.3926033973693848: unsat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_13mul.smt2: 1.3672716617584229: sat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_05a.smt2: 2.006824016571045: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_03.smt2: 2.004943609237671: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/ltr_08a.smt2: 2.006335973739624: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_05a.smt2: 2.005495548248291: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/qf/rtl_09b.smt2: 2.0037217140197754: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_06.smt2: 2.005558967590332: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_13mul.smt2: 2.003477096557617: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_05a.smt2: 2.004995107650757: timeout
+cvc4 --cbqi-all bms/qf/ltr_03.smt2: 2.0049028396606445: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/ltr_08a.smt2: 2.0057456493377686: timeout
+z3 bms/qf/ltr_05a.smt2: 2.00398325920105: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/qf/rtl_09b.smt2: 2.005703926086426: timeout
+cvc4 --fmf-fun-rlv bms/qf/ltr_03.smt2: 1.1049201488494873: unsat
+cvc4 --cbqi-all bms/qf/rtl_06.smt2: 2.0050907135009766: timeout
+z3 bms/qf/ltr_03.smt2: 0.019297361373901367: unsat
+cvc4 --cbqi-all bms/qf/rtl_13mul.smt2: 2.0039165019989014: timeout
+cvc4 --cbqi-all bms/qf/rtl_05a.smt2: 2.003786087036133: timeout
+cvc4 --cbqi-all bms/qf/ltr_08a.smt2: 2.0055840015411377: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_06.smt2: 1.2939221858978271: unsat
+z3 bms/qf/rtl_06.smt2: 0.014337539672851562: unsat
+cvc4 --fmf-fun-rlv bms/qf/rtl_13mul.smt2: 1.355400800704956: sat
+cvc4 --cbqi-all bms/qf/rtl_09b.smt2: 2.004877805709839: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_05a.smt2: 2.0059125423431396: timeout
+z3 bms/qf/rtl_05a.smt2: 0.7930498123168945: sat
+cvc4 --fmf-fun-rlv bms/qf/ltr_08a.smt2: 2.005155086517334: timeout
+z3 bms/qf/rtl_13mul.smt2: 2.004376173019409: timeout
+cvc4 --fmf-fun-rlv bms/qf/rtl_09b.smt2: 2.0093533992767334: timeout
+z3 bms/qf/rtl_09b.smt2: 0.02095770835876465: sat
+z3 bms/qf/ltr_08a.smt2: 2.0045325756073: timeout
+cvc4 bms/rec/ltr_12add.smt2: 2.0065839290618896: timeout
+cvc4 bms/rec/ltr_11and.smt2: 2.0066800117492676: timeout
+cvc4 bms/rec/rtl_03.smt2: 2.00650954246521: timeout
+cvc4 bms/rec/rtl_05b.smt2: 2.006956100463867: timeout
+cvc4 bms/rec/rtl_11and.smt2: 2.0064902305603027: timeout
+cvc4 bms/rec/rtl_01.smt2: 2.0071239471435547: timeout
+cvc4 bms/rec/rtl_04a.smt2: 2.0066113471984863: timeout
+cvc4 bms/rec/ltr_08b.smt2: 2.0088348388671875: timeout
+cvc4 bms/rec/rtl_08a.smt2: 2.008868455886841: timeout
+cvc4 bms/rec/rtl_11or.smt2: 2.0069875717163086: timeout
+cvc4 bms/rec/rtl_11xor.smt2: 2.009378433227539: timeout
+cvc4 bms/rec/ltr_07.smt2: 2.007800817489624: timeout
+cvc4 bms/rec/ltr_02.smt2: 2.0117948055267334: timeout
+cvc4 bms/rec/rtl_04b.smt2: 2.0123653411865234: timeout
+cvc4 bms/rec/ltr_09b.smt2: 2.0122315883636475: timeout
+cvc4 bms/rec/ltr_04b.smt2: 2.011225938796997: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_11and.smt2: 2.007507085800171: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_12add.smt2: 2.007617950439453: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_05b.smt2: 2.007678985595703: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_11and.smt2: 2.0078797340393066: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_08a.smt2: 2.0060975551605225: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_01.smt2: 2.0077507495880127: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_04a.smt2: 2.007596254348755: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_03.smt2: 2.008063554763794: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_11xor.smt2: 2.0059680938720703: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_08b.smt2: 2.0068485736846924: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_07.smt2: 2.006143093109131: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_11or.smt2: 2.0070958137512207: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_09b.smt2: 2.0057079792022705: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_04b.smt2: 2.0057129859924316: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_04b.smt2: 2.0065417289733887: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_02.smt2: 2.012791872024536: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_08b.smt2: 2.0063560009002686: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_07.smt2: 2.0063560009002686: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_04a.smt2: 2.006943941116333: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_01.smt2: 2.006955862045288: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_11and.smt2: 2.0073087215423584: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_12add.smt2: 2.007343292236328: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_11xor.smt2: 2.0071966648101807: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_05b.smt2: 2.0075643062591553: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_11and.smt2: 2.007467031478882: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_11or.smt2: 2.0064024925231934: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_08a.smt2: 2.009162187576294: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_03.smt2: 2.0107078552246094: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_09b.smt2: 2.006707191467285: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_04b.smt2: 2.0068202018737793: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_04b.smt2: 2.00605845451355: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_02.smt2: 2.0070512294769287: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_11or.smt2: 2.003481149673462: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_12add.smt2: 2.0041823387145996: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_08b.smt2: 2.0044972896575928: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_11and.smt2: 2.006335735321045: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_05b.smt2: 2.0067710876464844: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_04a.smt2: 2.007460832595825: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_07.smt2: 2.007892370223999: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_03.smt2: 2.0037739276885986: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_08a.smt2: 2.0058984756469727: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_01.smt2: 2.008028507232666: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_11xor.smt2: 2.0076520442962646: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_09b.smt2: 2.004143714904785: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_04b.smt2: 2.0063891410827637: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_04b.smt2: 2.006462812423706: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_11and.smt2: 2.0154988765716553: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_02.smt2: 2.005645990371704: timeout
+cvc4 --cbqi-all bms/rec/ltr_08b.smt2: 2.0063748359680176: timeout
+cvc4 --cbqi-all bms/rec/ltr_12add.smt2: 2.006704568862915: timeout
+cvc4 --cbqi-all bms/rec/rtl_03.smt2: 2.0042521953582764: timeout
+cvc4 --cbqi-all bms/rec/rtl_05b.smt2: 2.004748582839966: timeout
+cvc4 --cbqi-all bms/rec/rtl_01.smt2: 2.0041162967681885: timeout
+cvc4 --cbqi-all bms/rec/ltr_07.smt2: 2.0044615268707275: timeout
+cvc4 --cbqi-all bms/rec/rtl_11or.smt2: 2.009658098220825: timeout
+cvc4 --cbqi-all bms/rec/ltr_09b.smt2: 2.0059080123901367: timeout
+cvc4 --cbqi-all bms/rec/rtl_08a.smt2: 2.006056070327759: timeout
+cvc4 --cbqi-all bms/rec/rtl_11xor.smt2: 2.007067918777466: timeout
+cvc4 --cbqi-all bms/rec/rtl_11and.smt2: 2.0097672939300537: timeout
+cvc4 --cbqi-all bms/rec/rtl_04b.smt2: 2.009261131286621: timeout
+cvc4 --cbqi-all bms/rec/rtl_04a.smt2: 2.0123560428619385: timeout
+cvc4 --cbqi-all bms/rec/ltr_04b.smt2: 2.0095648765563965: timeout
+cvc4 --cbqi-all bms/rec/ltr_02.smt2: 2.0111048221588135: timeout
+cvc4 --cbqi-all bms/rec/ltr_11and.smt2: 2.0137736797332764: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_12add.smt2: 2.0098185539245605: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_05b.smt2: 2.008916139602661: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_07.smt2: 2.0086679458618164: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_11or.smt2: 2.007023811340332: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_11xor.smt2: 2.005842924118042: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_09b.smt2: 2.00701642036438: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_08a.smt2: 2.006934881210327: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_08b.smt2: 2.0102286338806152: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_01.smt2: 2.0090198516845703: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_03.smt2: 2.0148391723632812: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_04b.smt2: 2.0074005126953125: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_04a.smt2: 2.00740122795105: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_04b.smt2: 2.0109312534332275: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_11and.smt2: 2.015247344970703: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_02.smt2: 2.006227731704712: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_11and.smt2: 2.017665147781372: timeout
+z3 bms/rec/rtl_11or.smt2: 2.0080068111419678: timeout
+z3 bms/rec/ltr_08b.smt2: 2.007986307144165: timeout
+z3 bms/rec/rtl_11xor.smt2: 2.008173704147339: timeout
+z3 bms/rec/ltr_12add.smt2: 2.0088672637939453: timeout
+z3 bms/rec/rtl_01.smt2: 2.00860595703125: timeout
+z3 bms/rec/rtl_05b.smt2: 2.008906602859497: timeout
+z3 bms/rec/rtl_08a.smt2: 2.008791446685791: timeout
+z3 bms/rec/ltr_07.smt2: 2.0096793174743652: timeout
+z3 bms/rec/ltr_09b.smt2: 2.0118067264556885: timeout
+z3 bms/rec/rtl_04b.smt2: 2.0057101249694824: timeout
+z3 bms/rec/rtl_03.smt2: 2.0062835216522217: timeout
+z3 bms/rec/ltr_04b.smt2: 2.005559206008911: timeout
+z3 bms/rec/rtl_04a.smt2: 2.009397506713867: timeout
+z3 bms/rec/ltr_02.smt2: 2.0060667991638184: timeout
+z3 bms/rec/rtl_11and.smt2: 2.019378662109375: timeout
+z3 bms/rec/ltr_11and.smt2: 2.0112946033477783: timeout
+cvc4 bms/rec/rtl_08b.smt2: 0.5430262088775635: unsat
+cvc4 --nl-ext-tplanes bms/rec/rtl_08b.smt2: 0.5685586929321289: unsat
+cvc4 bms/rec/ltr_05b.smt2: 2.006535291671753: timeout
+cvc4 bms/rec/rtl_12mul.smt2: 2.0059120655059814: timeout
+cvc4 bms/rec/rtl_12add.smt2: 2.006194591522217: timeout
+cvc4 bms/rec/ltr_13add.smt2: 2.0091423988342285: timeout
+cvc4 bms/rec/ltr_06.smt2: 2.008420705795288: timeout
+cvc4 bms/rec/rtl_02.smt2: 2.00972843170166: timeout
+cvc4 bms/rec/ltr_13mul.smt2: 2.0067758560180664: timeout
+cvc4 bms/rec/rtl_07.smt2: 2.0069639682769775: timeout
+cvc4 bms/rec/rtl_13add.smt2: 2.012373208999634: timeout
+cvc4 bms/rec/ltr_12mul.smt2: 2.009725332260132: timeout
+cvc4 bms/rec/ltr_01.smt2: 2.0062363147735596: timeout
+cvc4 bms/rec/ltr_09a.smt2: 2.005485773086548: timeout
+cvc4 bms/rec/ltr_11xor.smt2: 2.0065155029296875: timeout
+cvc4 bms/rec/ltr_04a.smt2: 2.0048909187316895: timeout
+cvc4 bms/rec/ltr_11or.smt2: 2.0050859451293945: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_08b.smt2: 1.0514593124389648: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_08b.smt2: 0.5791871547698975: unsat
+cvc4 --cbqi-all bms/rec/rtl_08b.smt2: 0.5763587951660156: unsat
+cvc4 --nl-ext-tplanes bms/rec/rtl_12mul.smt2: 2.0060489177703857: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_05b.smt2: 2.0060489177703857: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_13add.smt2: 2.0044732093811035: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_02.smt2: 2.0061793327331543: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_13mul.smt2: 2.006089687347412: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_12add.smt2: 2.0109918117523193: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_13add.smt2: 2.0047435760498047: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_07.smt2: 2.011647939682007: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_11xor.smt2: 2.004703998565674: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_12mul.smt2: 2.01222825050354: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_01.smt2: 2.0121805667877197: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_09a.smt2: 2.015366554260254: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_06.smt2: 2.020545721054077: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_04a.smt2: 2.00607967376709: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_11or.smt2: 2.006676197052002: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_08b.smt2: 1.0272157192230225: unsat
+z3 bms/rec/rtl_08b.smt2: 0.014781713485717773: unsat
+cvc4 bms/rec/rtl_09a.smt2: 0.5123186111450195: unsat
+cvc4 --nl-ext-tplanes bms/rec/rtl_09a.smt2: 0.5358459949493408: unsat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_02.smt2: 2.0055973529815674: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_05b.smt2: 2.0096535682678223: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_13mul.smt2: 2.0058891773223877: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_13add.smt2: 2.00850248336792: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_12mul.smt2: 2.01020884513855: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_12add.smt2: 2.00654673576355: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_07.smt2: 2.006584882736206: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_11xor.smt2: 2.006535530090332: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_12mul.smt2: 2.00826096534729: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_01.smt2: 2.0085291862487793: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_09a.smt2: 2.007009983062744: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_06.smt2: 2.006025552749634: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_13add.smt2: 2.0198233127593994: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_04a.smt2: 2.005739450454712: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_11or.smt2: 2.0045087337493896: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_09a.smt2: 0.846529483795166: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_09a.smt2: 0.4873809814453125: unsat
+cvc4 --cbqi-all bms/rec/rtl_09a.smt2: 0.49776315689086914: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_13add.smt2: 2.0070443153381348: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_12add.smt2: 2.0057880878448486: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_02.smt2: 2.0075886249542236: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_12mul.smt2: 2.007054567337036: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_05b.smt2: 2.007887840270996: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_13mul.smt2: 2.009920597076416: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_07.smt2: 2.004979372024536: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_11xor.smt2: 2.012097120285034: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_12mul.smt2: 2.0070998668670654: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_01.smt2: 2.0070481300354004: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_06.smt2: 2.0051541328430176: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_13add.smt2: 2.0041091442108154: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_04a.smt2: 2.0158185958862305: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_09a.smt2: 2.0178704261779785: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_11or.smt2: 2.0146689414978027: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_09a.smt2: 0.8508360385894775: unsat
+z3 bms/rec/rtl_09a.smt2: 0.020510196685791016: unsat
+cvc4 --cbqi-all bms/rec/rtl_12add.smt2: 2.0076143741607666: timeout
+cvc4 --cbqi-all bms/rec/ltr_13add.smt2: 2.0076241493225098: timeout
+cvc4 --cbqi-all bms/rec/ltr_05b.smt2: 2.0080819129943848: timeout
+cvc4 --cbqi-all bms/rec/ltr_13mul.smt2: 2.0058133602142334: timeout
+cvc4 --cbqi-all bms/rec/rtl_12mul.smt2: 2.01035737991333: timeout
+cvc4 --cbqi-all bms/rec/rtl_02.smt2: 2.0103604793548584: timeout
+cvc4 --cbqi-all bms/rec/ltr_12mul.smt2: 2.0051326751708984: timeout
+cvc4 --cbqi-all bms/rec/rtl_13add.smt2: 2.0047237873077393: timeout
+cvc4 --cbqi-all bms/rec/rtl_07.smt2: 2.0146684646606445: timeout
+cvc4 --cbqi-all bms/rec/ltr_06.smt2: 2.0074565410614014: timeout
+cvc4 --cbqi-all bms/rec/ltr_01.smt2: 2.011896848678589: timeout
+cvc4 --cbqi-all bms/rec/ltr_11xor.smt2: 2.0161936283111572: timeout
+cvc4 --cbqi-all bms/rec/ltr_04a.smt2: 2.006593942642212: timeout
+cvc4 --cbqi-all bms/rec/ltr_09a.smt2: 2.006589412689209: timeout
+cvc4 --cbqi-all bms/rec/ltr_11or.smt2: 2.005204677581787: timeout
+cvc4 bms/rec/ltr_05a.smt2: 2.013387680053711: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_05b.smt2: 2.0063858032226562: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_13mul.smt2: 2.0063815116882324: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_12add.smt2: 2.0074517726898193: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_12mul.smt2: 2.0051767826080322: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_02.smt2: 2.009570837020874: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_13add.smt2: 2.0060198307037354: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_13add.smt2: 2.015439748764038: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_12mul.smt2: 2.0065810680389404: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_06.smt2: 2.004368543624878: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_07.smt2: 2.0091633796691895: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_01.smt2: 2.0114243030548096: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_11xor.smt2: 2.0115978717803955: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_09a.smt2: 2.0080785751342773: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_11or.smt2: 2.0078659057617188: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_04a.smt2: 2.0162546634674072: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_05a.smt2: 2.0056793689727783: timeout
+z3 bms/rec/ltr_13mul.smt2: 2.005443572998047: timeout
+z3 bms/rec/ltr_05b.smt2: 2.0054478645324707: timeout
+z3 bms/rec/rtl_12mul.smt2: 2.007512092590332: timeout
+z3 bms/rec/rtl_02.smt2: 2.008880615234375: timeout
+z3 bms/rec/ltr_06.smt2: 2.0055394172668457: timeout
+z3 bms/rec/rtl_12add.smt2: 2.0146117210388184: timeout
+z3 bms/rec/rtl_13add.smt2: 2.007725238800049: timeout
+z3 bms/rec/ltr_12mul.smt2: 2.0085270404815674: timeout
+z3 bms/rec/ltr_13add.smt2: 2.011390209197998: timeout
+z3 bms/rec/ltr_11xor.smt2: 2.003981590270996: timeout
+z3 bms/rec/ltr_01.smt2: 2.0098748207092285: timeout
+z3 bms/rec/rtl_07.smt2: 2.018770217895508: timeout
+z3 bms/rec/ltr_11or.smt2: 2.006765842437744: timeout
+z3 bms/rec/ltr_09a.smt2: 2.017219305038452: timeout
+z3 bms/rec/ltr_04a.smt2: 2.010423421859741: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_05a.smt2: 2.005765676498413: timeout
+cvc4 bms/rec/ltr_03.smt2: 2.006526470184326: timeout
+cvc4 bms/rec/ltr_08a.smt2: 2.0062754154205322: timeout
+cvc4 bms/rec/rtl_05a.smt2: 2.014829635620117: timeout
+cvc4 bms/rec/rtl_13mul.smt2: 2.0062079429626465: timeout
+cvc4 bms/rec/rtl_09b.smt2: 2.0082433223724365: timeout
+cvc4 bms/rec/rtl_06.smt2: 2.0088958740234375: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_05a.smt2: 2.0049490928649902: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_03.smt2: 2.0064828395843506: timeout
+cvc4 --nl-ext-tplanes bms/rec/ltr_08a.smt2: 2.0052196979522705: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_13mul.smt2: 2.0040273666381836: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_05a.smt2: 2.0043232440948486: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_06.smt2: 2.0050265789031982: timeout
+cvc4 --nl-ext-tplanes bms/rec/rtl_09b.smt2: 2.0050950050354004: timeout
+cvc4 --cbqi-all bms/rec/ltr_05a.smt2: 2.0036981105804443: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_08a.smt2: 2.004237413406372: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/ltr_03.smt2: 2.005309581756592: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_05a.smt2: 2.003532886505127: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_13mul.smt2: 2.0045294761657715: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_09b.smt2: 2.0039265155792236: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/rec/rtl_06.smt2: 2.00437331199646: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_05a.smt2: 2.0039350986480713: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_03.smt2: 2.0038387775421143: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/ltr_08a.smt2: 2.0055079460144043: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_13mul.smt2: 2.0055947303771973: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_05a.smt2: 2.0062952041625977: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_09b.smt2: 2.005187749862671: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/rec/rtl_06.smt2: 2.0048468112945557: timeout
+z3 bms/rec/ltr_05a.smt2: 2.0034518241882324: timeout
+cvc4 --cbqi-all bms/rec/ltr_08a.smt2: 2.0047361850738525: timeout
+cvc4 --cbqi-all bms/rec/ltr_03.smt2: 2.006375551223755: timeout
+cvc4 --cbqi-all bms/rec/rtl_05a.smt2: 2.005430221557617: timeout
+cvc4 --cbqi-all bms/rec/rtl_13mul.smt2: 2.0057451725006104: timeout
+cvc4 --cbqi-all bms/rec/rtl_06.smt2: 2.0051052570343018: timeout
+cvc4 --cbqi-all bms/rec/rtl_09b.smt2: 2.0063283443450928: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_03.smt2: 2.0053751468658447: timeout
+cvc4 --fmf-fun-rlv bms/rec/ltr_08a.smt2: 2.0054681301116943: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_05a.smt2: 2.003615140914917: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_13mul.smt2: 2.0045816898345947: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_06.smt2: 2.005103826522827: timeout
+cvc4 --fmf-fun-rlv bms/rec/rtl_09b.smt2: 2.0041089057922363: timeout
+z3 bms/rec/ltr_08a.smt2: 2.003945827484131: timeout
+z3 bms/rec/ltr_03.smt2: 2.004720449447632: timeout
+z3 bms/rec/rtl_05a.smt2: 2.0046699047088623: timeout
+z3 bms/rec/rtl_13mul.smt2: 2.0059211254119873: timeout
+z3 bms/rec/rtl_06.smt2: 2.0049469470977783: timeout
+z3 bms/rec/rtl_09b.smt2: 2.0056045055389404: timeout
+cvc4 bms/full/rtl_03.smt2: 1.3109889030456543: unsat
+cvc4 bms/full/ltr_12add.smt2: 1.4035413265228271: unknown
+cvc4 bms/full/rtl_11or.smt2: 1.5066149234771729: unknown
+cvc4 bms/full/rtl_11and.smt2: 1.510801076889038: unknown
+cvc4 bms/full/ltr_11and.smt2: 1.5827782154083252: unknown
+cvc4 bms/full/ltr_07.smt2: 1.604252576828003: unsat
+cvc4 bms/full/ltr_09b.smt2: 1.6389756202697754: unsat
+cvc4 bms/full/rtl_11xor.smt2: 1.8295581340789795: unknown
+cvc4 bms/full/ltr_02.smt2: 2.0056958198547363: timeout
+cvc4 bms/full/ltr_08b.smt2: 2.0073578357696533: timeout
+cvc4 bms/full/rtl_05b.smt2: 2.007795572280884: timeout
+cvc4 bms/full/rtl_01.smt2: 2.0079731941223145: timeout
+cvc4 bms/full/rtl_04b.smt2: 2.007319450378418: timeout
+cvc4 bms/full/rtl_08a.smt2: 2.008462905883789: timeout
+cvc4 bms/full/rtl_04a.smt2: 2.007445812225342: timeout
+cvc4 bms/full/ltr_04b.smt2: 2.0115597248077393: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_03.smt2: 1.3153669834136963: unsat
+cvc4 --nl-ext-tplanes bms/full/ltr_12add.smt2: 1.4236061573028564: unknown
+cvc4 --nl-ext-tplanes bms/full/rtl_11and.smt2: 1.551666021347046: unknown
+cvc4 --nl-ext-tplanes bms/full/ltr_11and.smt2: 1.4913885593414307: unknown
+cvc4 --nl-ext-tplanes bms/full/rtl_11or.smt2: 1.5843582153320312: unknown
+cvc4 --nl-ext-tplanes bms/full/ltr_07.smt2: 1.5693638324737549: unsat
+cvc4 --nl-ext-tplanes bms/full/ltr_09b.smt2: 1.6355326175689697: unsat
+cvc4 --nl-ext-tplanes bms/full/rtl_11xor.smt2: 1.7771832942962646: unknown
+cvc4 --nl-ext-tplanes bms/full/ltr_02.smt2: 2.0070760250091553: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_08b.smt2: 2.007302761077881: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_04b.smt2: 2.006019353866577: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_04a.smt2: 2.0074594020843506: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_05b.smt2: 2.0077767372131348: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_08a.smt2: 2.007512092590332: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_04b.smt2: 2.005607843399048: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_01.smt2: 2.0156497955322266: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_03.smt2: 2.0122244358062744: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_12add.smt2: 2.0151610374450684: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_11and.smt2: 2.012425661087036: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_11and.smt2: 2.005091905593872: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_11or.smt2: 2.005293369293213: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_07.smt2: 2.0059120655059814: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_09b.smt2: 2.004004955291748: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_11xor.smt2: 2.0124549865722656: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_04b.smt2: 2.0086519718170166: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_08b.smt2: 2.008666515350342: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_05b.smt2: 2.007279634475708: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_04a.smt2: 2.0073254108428955: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_04b.smt2: 2.0038111209869385: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_08a.smt2: 2.0077273845672607: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_02.smt2: 2.015571117401123: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_01.smt2: 2.005923271179199: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_03.smt2: 2.012183904647827: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_12add.smt2: 2.0125114917755127: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_11and.smt2: 2.01051926612854: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_11and.smt2: 2.0108656883239746: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_11or.smt2: 2.005535125732422: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_07.smt2: 2.0056312084198: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_09b.smt2: 2.0068869590759277: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_11xor.smt2: 2.0123772621154785: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_08a.smt2: 2.0041680335998535: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_04b.smt2: 2.0041794776916504: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_04b.smt2: 2.0046684741973877: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_05b.smt2: 2.0047309398651123: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_08b.smt2: 2.0056345462799072: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_01.smt2: 2.0053822994232178: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_04a.smt2: 2.0120153427124023: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_02.smt2: 2.0174331665039062: timeout
+cvc4 --cbqi-all bms/full/rtl_03.smt2: 2.010324001312256: timeout
+cvc4 --cbqi-all bms/full/ltr_12add.smt2: 2.014845609664917: timeout
+cvc4 --cbqi-all bms/full/ltr_11and.smt2: 2.0047953128814697: timeout
+cvc4 --cbqi-all bms/full/rtl_11and.smt2: 2.0130679607391357: timeout
+cvc4 --cbqi-all bms/full/rtl_11or.smt2: 2.006016254425049: timeout
+cvc4 --cbqi-all bms/full/ltr_07.smt2: 2.007882833480835: timeout
+cvc4 --cbqi-all bms/full/ltr_09b.smt2: 2.0047607421875: timeout
+cvc4 --cbqi-all bms/full/rtl_11xor.smt2: 2.0118143558502197: timeout
+cvc4 --cbqi-all bms/full/rtl_08a.smt2: 2.007169008255005: timeout
+cvc4 --cbqi-all bms/full/rtl_05b.smt2: 2.0070626735687256: timeout
+cvc4 --cbqi-all bms/full/ltr_08b.smt2: 2.0068070888519287: timeout
+cvc4 --cbqi-all bms/full/rtl_04b.smt2: 2.0077385902404785: timeout
+cvc4 --cbqi-all bms/full/ltr_04b.smt2: 2.011263608932495: timeout
+cvc4 --cbqi-all bms/full/rtl_01.smt2: 2.0065252780914307: timeout
+cvc4 --cbqi-all bms/full/rtl_04a.smt2: 2.015218496322632: timeout
+cvc4 --cbqi-all bms/full/ltr_02.smt2: 2.0078883171081543: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_03.smt2: 2.011884927749634: timeout
+z3 bms/full/rtl_03.smt2: 0.03170299530029297: unsat
+cvc4 --fmf-fun-rlv bms/full/ltr_12add.smt2: 2.0117151737213135: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_11and.smt2: 2.0118327140808105: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_11and.smt2: 2.010206460952759: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_11or.smt2: 2.0078864097595215: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_07.smt2: 2.007714033126831: timeout
+z3 bms/full/ltr_07.smt2: 0.02426600456237793: unsat
+cvc4 --fmf-fun-rlv bms/full/ltr_09b.smt2: 2.0069897174835205: timeout
+z3 bms/full/ltr_09b.smt2: 0.021241188049316406: unsat
+cvc4 --fmf-fun-rlv bms/full/rtl_11xor.smt2: 2.011486291885376: timeout
+cvc4 bms/full/rtl_08b.smt2: 0.4369971752166748: unsat
+cvc4 --fmf-fun-rlv bms/full/rtl_05b.smt2: 2.008131265640259: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_04b.smt2: 2.008049964904785: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_08b.smt2: 2.00805401802063: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_08a.smt2: 2.0086400508880615: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_01.smt2: 2.005382776260376: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_04b.smt2: 2.011075258255005: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_04a.smt2: 2.004999876022339: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_02.smt2: 2.010993719100952: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_08b.smt2: 0.42362093925476074: unsat
+cvc4 bms/full/rtl_12add.smt2: 1.210029125213623: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_08b.smt2: 0.5659716129302979: unsat
+cvc4 bms/full/ltr_05b.smt2: 2.0117366313934326: timeout
+z3 bms/full/ltr_12add.smt2: 2.010627508163452: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_08b.smt2: 0.40221548080444336: unsat
+z3 bms/full/ltr_11and.smt2: 2.0094258785247803: timeout
+z3 bms/full/rtl_11and.smt2: 2.0076236724853516: timeout
+z3 bms/full/rtl_11or.smt2: 2.007763624191284: timeout
+cvc4 --cbqi-all bms/full/rtl_08b.smt2: 0.43243980407714844: unsat
+cvc4 --nl-ext-tplanes bms/full/rtl_12add.smt2: 1.0487329959869385: unknown
+z3 bms/full/rtl_11xor.smt2: 2.0110559463500977: timeout
+z3 bms/full/ltr_08b.smt2: 2.006704568862915: timeout
+z3 bms/full/rtl_04b.smt2: 2.0067150592803955: timeout
+z3 bms/full/rtl_08a.smt2: 2.006749153137207: timeout
+z3 bms/full/rtl_05b.smt2: 2.007338285446167: timeout
+z3 bms/full/rtl_01.smt2: 2.0095272064208984: timeout
+z3 bms/full/ltr_04b.smt2: 2.0076074600219727: timeout
+z3 bms/full/rtl_04a.smt2: 2.0048604011535645: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_08b.smt2: 0.57810378074646: unsat
+z3 bms/full/ltr_02.smt2: 2.010986566543579: timeout
+z3 bms/full/rtl_08b.smt2: 0.02207779884338379: unsat
+cvc4 bms/full/rtl_09a.smt2: 0.5187246799468994: unsat
+cvc4 --nl-ext-tplanes bms/full/ltr_05b.smt2: 2.007225751876831: timeout
+cvc4 bms/full/ltr_13add.smt2: 1.645155906677246: unknown
+cvc4 bms/full/rtl_13add.smt2: 1.6764299869537354: unknown
+cvc4 bms/full/rtl_12mul.smt2: 2.0128848552703857: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_09a.smt2: 0.5196969509124756: unsat
+cvc4 bms/full/rtl_02.smt2: 2.0124592781066895: timeout
+cvc4 bms/full/ltr_09a.smt2: 1.1106445789337158: unknown
+cvc4 bms/full/ltr_06.smt2: 1.7701592445373535: unknown
+cvc4 bms/full/ltr_11or.smt2: 1.4927973747253418: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_12add.smt2: 2.006748914718628: timeout
+cvc4 bms/full/ltr_12mul.smt2: 1.6773004531860352: unknown
+cvc4 bms/full/ltr_11xor.smt2: 1.7308712005615234: unknown
+cvc4 bms/full/ltr_13mul.smt2: 1.790832757949829: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_09a.smt2: 0.7829947471618652: unsat
+cvc4 bms/full/rtl_07.smt2: 2.00807523727417: timeout
+cvc4 bms/full/ltr_01.smt2: 2.0083489418029785: timeout
+cvc4 bms/full/ltr_04a.smt2: 2.010462760925293: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_09a.smt2: 1.0330262184143066: unknown
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_09a.smt2: 0.524486780166626: unsat
+cvc4 --nl-ext-tplanes bms/full/ltr_13add.smt2: 1.8011906147003174: unknown
+cvc4 --nl-ext-tplanes bms/full/rtl_13add.smt2: 1.8275701999664307: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_05b.smt2: 2.0114424228668213: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_12mul.smt2: 2.008100986480713: timeout
+cvc4 --cbqi-all bms/full/rtl_09a.smt2: 0.5200963020324707: unsat
+cvc4 --nl-ext-tplanes bms/full/ltr_11or.smt2: 1.4982273578643799: unknown
+cvc4 --nl-ext-tplanes bms/full/rtl_02.smt2: 2.0071609020233154: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_06.smt2: 1.9310557842254639: unknown
+cvc4 --nl-ext-tplanes bms/full/ltr_12mul.smt2: 1.7295312881469727: unknown
+cvc4 --nl-ext-tplanes bms/full/ltr_11xor.smt2: 1.7548279762268066: unknown
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_12add.smt2: 2.0091168880462646: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_13mul.smt2: 1.8752055168151855: unknown
+cvc4 --fmf-fun-rlv bms/full/rtl_09a.smt2: 0.7873804569244385: unsat
+z3 bms/full/rtl_09a.smt2: 0.007973194122314453: unsat
+cvc4 --nl-ext-tplanes bms/full/rtl_07.smt2: 2.008228302001953: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_01.smt2: 2.0099194049835205: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_04a.smt2: 2.0105721950531006: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_09a.smt2: 2.014263391494751: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_13add.smt2: 2.011425018310547: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_13add.smt2: 2.0076546669006348: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_05b.smt2: 2.00585675239563: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_12mul.smt2: 2.012284517288208: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_11or.smt2: 2.010369300842285: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_02.smt2: 2.005727767944336: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_06.smt2: 2.006983518600464: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_12mul.smt2: 2.0053181648254395: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_11xor.smt2: 2.0069849491119385: timeout
+cvc4 --cbqi-all bms/full/rtl_12add.smt2: 2.0068905353546143: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_13mul.smt2: 2.010124444961548: timeout
+cvc4 bms/full/ltr_05a.smt2: 2.005963087081909: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_07.smt2: 2.007864475250244: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_01.smt2: 2.007418394088745: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_04a.smt2: 2.007995128631592: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_09a.smt2: 2.0251593589782715: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_13add.smt2: 2.01179575920105: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_13add.smt2: 2.007643938064575: timeout
+cvc4 --cbqi-all bms/full/ltr_05b.smt2: 2.0116965770721436: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_12mul.smt2: 2.012486696243286: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_11or.smt2: 2.0038344860076904: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_02.smt2: 2.0058672428131104: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_06.smt2: 2.0122392177581787: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_12mul.smt2: 2.003751277923584: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_11xor.smt2: 2.0039939880371094: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_12add.smt2: 2.0049707889556885: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_13mul.smt2: 2.011857509613037: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_05a.smt2: 2.008201837539673: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_07.smt2: 2.0077457427978516: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_01.smt2: 2.008897304534912: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_04a.smt2: 2.0050859451293945: timeout
+cvc4 --cbqi-all bms/full/ltr_09a.smt2: 2.010499954223633: timeout
+cvc4 --cbqi-all bms/full/ltr_13add.smt2: 2.0118556022644043: timeout
+cvc4 --cbqi-all bms/full/rtl_13add.smt2: 2.0078701972961426: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_05b.smt2: 2.0121347904205322: timeout
+cvc4 --cbqi-all bms/full/rtl_12mul.smt2: 2.0117101669311523: timeout
+cvc4 --cbqi-all bms/full/ltr_11or.smt2: 2.003856897354126: timeout
+cvc4 --cbqi-all bms/full/rtl_02.smt2: 2.0057871341705322: timeout
+cvc4 --cbqi-all bms/full/ltr_06.smt2: 2.006927251815796: timeout
+cvc4 --cbqi-all bms/full/ltr_12mul.smt2: 2.0078723430633545: timeout
+cvc4 --cbqi-all bms/full/ltr_11xor.smt2: 2.006865978240967: timeout
+z3 bms/full/rtl_12add.smt2: 2.0056636333465576: timeout
+cvc4 --cbqi-all bms/full/ltr_13mul.smt2: 2.0119261741638184: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_05a.smt2: 2.0058305263519287: timeout
+cvc4 --cbqi-all bms/full/ltr_01.smt2: 2.007500648498535: timeout
+cvc4 --cbqi-all bms/full/rtl_07.smt2: 2.0149617195129395: timeout
+cvc4 --cbqi-all bms/full/ltr_04a.smt2: 2.007826328277588: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_09a.smt2: 2.0175044536590576: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_13add.smt2: 2.0119986534118652: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_13add.smt2: 2.007941484451294: timeout
+z3 bms/full/ltr_05b.smt2: 2.0044779777526855: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_12mul.smt2: 2.012024402618408: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_11or.smt2: 2.011911630630493: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_02.smt2: 2.0037841796875: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_06.smt2: 2.0120952129364014: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_12mul.smt2: 2.0038654804229736: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_11xor.smt2: 2.0047998428344727: timeout
+cvc4 bms/full/rtl_05a.smt2: 2.005788564682007: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_13mul.smt2: 2.0110344886779785: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_05a.smt2: 2.008148431777954: timeout
+cvc4 bms/full/ltr_03.smt2: 1.240478277206421: unsat
+cvc4 --fmf-fun-rlv bms/full/rtl_07.smt2: 2.004817008972168: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_04a.smt2: 2.00661301612854: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_01.smt2: 2.0205981731414795: timeout
+z3 bms/full/ltr_09a.smt2: 2.0092644691467285: timeout
+z3 bms/full/ltr_13add.smt2: 2.0103323459625244: timeout
+z3 bms/full/rtl_13add.smt2: 2.0067012310028076: timeout
+z3 bms/full/rtl_12mul.smt2: 2.011969804763794: timeout
+z3 bms/full/ltr_11or.smt2: 2.0102782249450684: timeout
+z3 bms/full/rtl_02.smt2: 2.007622003555298: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_03.smt2: 1.2279770374298096: unsat
+z3 bms/full/ltr_06.smt2: 2.005678176879883: timeout
+z3 bms/full/ltr_12mul.smt2: 2.005964517593384: timeout
+z3 bms/full/ltr_11xor.smt2: 2.006251811981201: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_05a.smt2: 2.006343364715576: timeout
+z3 bms/full/ltr_13mul.smt2: 2.0102174282073975: timeout
+cvc4 --cbqi-all bms/full/ltr_05a.smt2: 2.007979154586792: timeout
+z3 bms/full/rtl_07.smt2: 1.7361712455749512: unknown
+cvc4 bms/full/rtl_06.smt2: 1.287604808807373: unsat
+cvc4 bms/full/rtl_13mul.smt2: 1.4256658554077148: unknown
+z3 bms/full/ltr_04a.smt2: 2.00362491607666: timeout
+z3 bms/full/ltr_01.smt2: 2.0033931732177734: timeout
+cvc4 bms/full/rtl_09b.smt2: 1.2257132530212402: unknown
+cvc4 bms/full/ltr_08a.smt2: 2.0116140842437744: timeout
+cvc4 --nl-ext-tplanes bms/full/rtl_06.smt2: 0.8132896423339844: unsat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_03.smt2: 1.6228549480438232: unsat
+cvc4 --nl-ext-tplanes bms/full/rtl_13mul.smt2: 1.0332155227661133: unknown
+cvc4 --nl-ext-tplanes bms/full/rtl_09b.smt2: 0.974193811416626: unknown
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_05a.smt2: 2.005124807357788: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_05a.smt2: 2.0052528381347656: timeout
+cvc4 --nl-ext-tplanes bms/full/ltr_08a.smt2: 2.0045337677001953: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_06.smt2: 1.8256587982177734: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_03.smt2: 2.0053141117095947: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_13mul.smt2: 2.005594491958618: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/rtl_09b.smt2: 2.0052027702331543: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_05a.smt2: 2.005319833755493: timeout
+z3 bms/full/ltr_05a.smt2: 2.004420042037964: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/full/ltr_08a.smt2: 2.0053603649139404: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_06.smt2: 2.0064024925231934: timeout
+cvc4 --cbqi-all bms/full/ltr_03.smt2: 2.0057461261749268: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_13mul.smt2: 2.004011392593384: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/rtl_09b.smt2: 2.0053107738494873: timeout
+cvc4 --cbqi-all bms/full/rtl_05a.smt2: 2.005793333053589: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_03.smt2: 1.3717710971832275: unsat
+z3 bms/full/ltr_03.smt2: 0.013498306274414062: unsat
+cvc4 --nl-ext-tplanes --cbqi-all bms/full/ltr_08a.smt2: 2.0059521198272705: timeout
+cvc4 --cbqi-all bms/full/rtl_06.smt2: 2.0051472187042236: timeout
+cvc4 --cbqi-all bms/full/rtl_13mul.smt2: 2.00369930267334: timeout
+cvc4 --cbqi-all bms/full/rtl_09b.smt2: 2.0058932304382324: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_05a.smt2: 2.0065906047821045: timeout
+cvc4 --cbqi-all bms/full/ltr_08a.smt2: 2.005715847015381: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_06.smt2: 1.9045369625091553: unsat
+z3 bms/full/rtl_06.smt2: 0.015676259994506836: unsat
+cvc4 --fmf-fun-rlv bms/full/rtl_13mul.smt2: 2.0051639080047607: timeout
+cvc4 --fmf-fun-rlv bms/full/rtl_09b.smt2: 2.0061583518981934: timeout
+z3 bms/full/rtl_05a.smt2: 2.004512310028076: timeout
+cvc4 --fmf-fun-rlv bms/full/ltr_08a.smt2: 2.0056517124176025: timeout
+z3 bms/full/rtl_13mul.smt2: 2.0044825077056885: timeout
+z3 bms/full/rtl_09b.smt2: 2.004462480545044: timeout
+z3 bms/full/ltr_08a.smt2: 2.0044264793395996: timeout
+cvc4 bms/partial/ltr_08b.smt2: 2.0074985027313232: timeout
+cvc4 bms/partial/rtl_01.smt2: 2.007158041000366: timeout
+cvc4 bms/partial/rtl_03.smt2: 2.006941080093384: timeout
+cvc4 bms/partial/ltr_12add.smt2: 2.007091999053955: timeout
+cvc4 bms/partial/rtl_08a.smt2: 2.007662057876587: timeout
+cvc4 bms/partial/rtl_11and.smt2: 2.0068814754486084: timeout
+cvc4 bms/partial/ltr_02.smt2: 2.0065793991088867: timeout
+cvc4 bms/partial/rtl_05b.smt2: 2.0075244903564453: timeout
+cvc4 bms/partial/ltr_11and.smt2: 2.0074732303619385: timeout
+cvc4 bms/partial/rtl_04b.smt2: 2.0075485706329346: timeout
+cvc4 bms/partial/ltr_07.smt2: 2.007115125656128: timeout
+cvc4 bms/partial/rtl_04a.smt2: 2.0068440437316895: timeout
+cvc4 bms/partial/rtl_11xor.smt2: 2.0097711086273193: timeout
+cvc4 bms/partial/ltr_09b.smt2: 2.0084710121154785: timeout
+cvc4 bms/partial/ltr_04b.smt2: 2.013076066970825: timeout
+cvc4 bms/partial/rtl_11or.smt2: 2.0170035362243652: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_03.smt2: 2.006420850753784: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_12add.smt2: 2.006598472595215: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_11xor.smt2: 2.0046119689941406: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_01.smt2: 2.006974458694458: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_02.smt2: 2.007613182067871: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_08b.smt2: 2.008176326751709: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_09b.smt2: 2.005748987197876: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_08a.smt2: 2.007776975631714: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_04b.smt2: 2.0092275142669678: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_04a.smt2: 2.009133815765381: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_05b.smt2: 2.00999116897583: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_07.smt2: 2.0092711448669434: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_11and.smt2: 2.0105791091918945: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_11and.smt2: 2.0106770992279053: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_04b.smt2: 2.003804922103882: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_11or.smt2: 2.0072221755981445: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_04b.smt2: 2.0060019493103027: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_05b.smt2: 2.0059258937835693: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_09b.smt2: 2.0082836151123047: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_03.smt2: 2.00976300239563: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_01.smt2: 2.0095953941345215: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_11and.smt2: 2.0055928230285645: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_12add.smt2: 2.0096306800842285: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_04a.smt2: 2.0061511993408203: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_11and.smt2: 2.005446672439575: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_07.smt2: 2.006178617477417: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_11xor.smt2: 2.010615825653076: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_08a.smt2: 2.0097367763519287: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_04b.smt2: 2.006805896759033: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_02.smt2: 2.0111608505249023: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_08b.smt2: 2.013988971710205: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_11or.smt2: 2.0077226161956787: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_11xor.smt2: 2.005871295928955: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_05b.smt2: 2.0070104598999023: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_11and.smt2: 2.0068888664245605: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_11and.smt2: 2.0068070888519287: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_04b.smt2: 2.007124185562134: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_07.smt2: 2.0072250366210938: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_02.smt2: 2.004603862762451: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_08a.smt2: 2.0060579776763916: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_12add.smt2: 2.007598638534546: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_04a.smt2: 2.0075502395629883: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_09b.smt2: 2.0077264308929443: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_03.smt2: 2.009273052215576: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_01.smt2: 2.0096993446350098: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_04b.smt2: 2.0082645416259766: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_08b.smt2: 2.0049290657043457: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_11or.smt2: 2.006424903869629: timeout
+cvc4 --cbqi-all bms/partial/rtl_04a.smt2: 2.006439447402954: timeout
+cvc4 --cbqi-all bms/partial/ltr_07.smt2: 2.0066771507263184: timeout
+cvc4 --cbqi-all bms/partial/rtl_04b.smt2: 2.0070455074310303: timeout
+cvc4 --cbqi-all bms/partial/ltr_12add.smt2: 2.006878614425659: timeout
+cvc4 --cbqi-all bms/partial/rtl_05b.smt2: 2.007551431655884: timeout
+cvc4 --cbqi-all bms/partial/ltr_09b.smt2: 2.0068717002868652: timeout
+cvc4 --cbqi-all bms/partial/rtl_11xor.smt2: 2.0075502395629883: timeout
+cvc4 --cbqi-all bms/partial/rtl_01.smt2: 2.0048303604125977: timeout
+cvc4 --cbqi-all bms/partial/rtl_03.smt2: 2.0052826404571533: timeout
+cvc4 --cbqi-all bms/partial/ltr_02.smt2: 2.007308006286621: timeout
+cvc4 --cbqi-all bms/partial/ltr_04b.smt2: 2.005014419555664: timeout
+cvc4 --cbqi-all bms/partial/ltr_08b.smt2: 2.004671335220337: timeout
+cvc4 --cbqi-all bms/partial/rtl_11and.smt2: 2.0082497596740723: timeout
+cvc4 --cbqi-all bms/partial/rtl_08a.smt2: 2.012519121170044: timeout
+cvc4 --cbqi-all bms/partial/ltr_11and.smt2: 2.015761137008667: timeout
+cvc4 --cbqi-all bms/partial/rtl_11or.smt2: 2.0125441551208496: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_09b.smt2: 2.0076942443847656: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_04a.smt2: 2.0082485675811768: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_04b.smt2: 2.0081889629364014: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_05b.smt2: 2.008404016494751: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_07.smt2: 2.008836030960083: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_01.smt2: 2.0085885524749756: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_08b.smt2: 2.0080478191375732: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_11xor.smt2: 2.0086944103240967: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_04b.smt2: 2.0085339546203613: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_12add.smt2: 2.0087714195251465: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_02.smt2: 2.0086100101470947: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_03.smt2: 2.008742332458496: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_08a.smt2: 2.0046896934509277: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_11and.smt2: 2.00683856010437: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_11or.smt2: 2.0043654441833496: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_11and.smt2: 2.0257863998413086: timeout
+z3 bms/partial/rtl_03.smt2: 0.048037052154541016: unsat
+z3 bms/partial/ltr_07.smt2: 0.0613245964050293: unsat
+z3 bms/partial/ltr_09b.smt2: 0.35617518424987793: unsat
+cvc4 bms/partial/rtl_08b.smt2: 0.494706392288208: unsat
+cvc4 --nl-ext-tplanes bms/partial/rtl_08b.smt2: 0.5072226524353027: unsat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_08b.smt2: 0.6916091442108154: unsat
+z3 bms/partial/ltr_08b.smt2: 2.006696939468384: timeout
+z3 bms/partial/rtl_04b.smt2: 2.0078184604644775: timeout
+z3 bms/partial/rtl_08a.smt2: 2.0059196949005127: timeout
+z3 bms/partial/ltr_12add.smt2: 2.0073723793029785: timeout
+z3 bms/partial/rtl_04a.smt2: 2.0084660053253174: timeout
+z3 bms/partial/rtl_05b.smt2: 2.0078320503234863: timeout
+z3 bms/partial/ltr_02.smt2: 2.0075113773345947: timeout
+z3 bms/partial/rtl_01.smt2: 2.007800817489624: timeout
+z3 bms/partial/rtl_11xor.smt2: 2.008727788925171: timeout
+z3 bms/partial/ltr_04b.smt2: 2.009943962097168: timeout
+z3 bms/partial/ltr_11and.smt2: 2.011551856994629: timeout
+z3 bms/partial/rtl_11or.smt2: 2.0107924938201904: timeout
+z3 bms/partial/rtl_11and.smt2: 2.0164129734039307: timeout
+cvc4 bms/partial/ltr_05b.smt2: 2.0098342895507812: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_08b.smt2: 0.5767366886138916: unsat
+cvc4 bms/partial/rtl_12add.smt2: 2.014629602432251: timeout
+cvc4 --cbqi-all bms/partial/rtl_08b.smt2: 0.6339454650878906: unsat
+cvc4 --fmf-fun-rlv bms/partial/rtl_08b.smt2: 0.8787524700164795: unsat
+z3 bms/partial/rtl_08b.smt2: 0.016156911849975586: unsat
+cvc4 bms/partial/rtl_02.smt2: 2.007974147796631: timeout
+cvc4 bms/partial/rtl_13add.smt2: 2.007840633392334: timeout
+cvc4 bms/partial/ltr_13add.smt2: 2.008364200592041: timeout
+cvc4 bms/partial/ltr_06.smt2: 2.0077264308929443: timeout
+cvc4 bms/partial/rtl_12mul.smt2: 2.0085835456848145: timeout
+cvc4 bms/partial/ltr_09a.smt2: 2.0056982040405273: timeout
+cvc4 bms/partial/ltr_13mul.smt2: 2.008084297180176: timeout
+cvc4 bms/partial/ltr_12mul.smt2: 2.008007049560547: timeout
+cvc4 bms/partial/rtl_07.smt2: 2.008052110671997: timeout
+cvc4 bms/partial/ltr_01.smt2: 2.014810800552368: timeout
+cvc4 bms/partial/ltr_04a.smt2: 2.0048022270202637: timeout
+cvc4 bms/partial/ltr_11xor.smt2: 2.015990734100342: timeout
+cvc4 bms/partial/ltr_11or.smt2: 2.0048842430114746: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_05b.smt2: 2.0049798488616943: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_12add.smt2: 2.0081236362457275: timeout
+cvc4 bms/partial/rtl_09a.smt2: 0.5810880661010742: unsat
+cvc4 --nl-ext-tplanes bms/partial/rtl_09a.smt2: 0.6129302978515625: unsat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_09a.smt2: 0.8469476699829102: unsat
+cvc4 --nl-ext-tplanes bms/partial/ltr_13add.smt2: 2.0067710876464844: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_09a.smt2: 2.006366729736328: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_02.smt2: 2.006781816482544: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_13mul.smt2: 2.0068483352661133: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_12mul.smt2: 2.0072450637817383: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_07.smt2: 2.0068650245666504: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_12mul.smt2: 2.006878614425659: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_13add.smt2: 2.0073282718658447: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_06.smt2: 2.011554002761841: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_04a.smt2: 2.0108985900878906: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_01.smt2: 2.0183072090148926: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_11xor.smt2: 2.012439250946045: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_11or.smt2: 2.011479139328003: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_05b.smt2: 2.0077896118164062: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_12add.smt2: 2.0121655464172363: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_09a.smt2: 0.5976653099060059: unsat
+cvc4 --cbqi-all bms/partial/rtl_09a.smt2: 0.5881950855255127: unsat
+cvc4 --fmf-fun-rlv bms/partial/rtl_09a.smt2: 0.9057936668395996: unsat
+z3 bms/partial/rtl_09a.smt2: 0.015030860900878906: unsat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_07.smt2: 2.0044338703155518: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_02.smt2: 2.005070209503174: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_09a.smt2: 2.0051419734954834: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_13add.smt2: 2.0046677589416504: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_12mul.smt2: 2.006660223007202: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_13mul.smt2: 2.006680727005005: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_12mul.smt2: 2.006699323654175: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_06.smt2: 2.006133556365967: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_13add.smt2: 2.0121872425079346: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_04a.smt2: 2.008004665374756: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_01.smt2: 2.0088560581207275: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_11xor.smt2: 2.0108344554901123: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_11or.smt2: 2.01139760017395: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_05b.smt2: 2.006650447845459: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_12add.smt2: 2.012096643447876: timeout
+cvc4 bms/partial/ltr_05a.smt2: 2.0112063884735107: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_12mul.smt2: 2.0055055618286133: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_12mul.smt2: 2.00551438331604: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_13mul.smt2: 2.0055184364318848: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_02.smt2: 2.011654853820801: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_06.smt2: 2.0059151649475098: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_13add.smt2: 2.0046515464782715: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_09a.smt2: 2.018733024597168: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_07.smt2: 2.0189530849456787: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_13add.smt2: 2.021920919418335: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_04a.smt2: 2.0086567401885986: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_01.smt2: 2.018768548965454: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_11xor.smt2: 2.0172886848449707: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_11or.smt2: 2.0127010345458984: timeout
+cvc4 --cbqi-all bms/partial/ltr_05b.smt2: 2.0050902366638184: timeout
+cvc4 --cbqi-all bms/partial/rtl_12add.smt2: 2.0115647315979004: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_05a.smt2: 2.0119235515594482: timeout
+cvc4 --cbqi-all bms/partial/rtl_12mul.smt2: 2.0073208808898926: timeout
+cvc4 --cbqi-all bms/partial/ltr_12mul.smt2: 2.009660005569458: timeout
+cvc4 --cbqi-all bms/partial/rtl_02.smt2: 2.005592107772827: timeout
+cvc4 --cbqi-all bms/partial/ltr_06.smt2: 2.005511999130249: timeout
+cvc4 --cbqi-all bms/partial/ltr_13mul.smt2: 2.011522054672241: timeout
+cvc4 --cbqi-all bms/partial/ltr_13add.smt2: 2.0095162391662598: timeout
+cvc4 --cbqi-all bms/partial/ltr_09a.smt2: 2.0045325756073: timeout
+cvc4 --cbqi-all bms/partial/rtl_07.smt2: 2.0045201778411865: timeout
+cvc4 --cbqi-all bms/partial/rtl_13add.smt2: 2.008532762527466: timeout
+cvc4 --cbqi-all bms/partial/ltr_04a.smt2: 2.0108509063720703: timeout
+cvc4 --cbqi-all bms/partial/ltr_11xor.smt2: 2.006589889526367: timeout
+cvc4 --cbqi-all bms/partial/ltr_01.smt2: 2.011972427368164: timeout
+cvc4 --cbqi-all bms/partial/ltr_11or.smt2: 2.014475107192993: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_05b.smt2: 2.0078582763671875: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_12add.smt2: 2.0122010707855225: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_12mul.smt2: 2.0063669681549072: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_05a.smt2: 2.012260675430298: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_12mul.smt2: 2.0087056159973145: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_06.smt2: 2.006359100341797: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_13mul.smt2: 2.004601001739502: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_02.smt2: 2.008573293685913: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_13add.smt2: 2.0057320594787598: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_07.smt2: 2.008363962173462: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_09a.smt2: 2.0083775520324707: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_04a.smt2: 2.0037877559661865: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_13add.smt2: 2.0116894245147705: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_01.smt2: 2.0048668384552: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_11xor.smt2: 2.0050995349884033: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_11or.smt2: 2.009225845336914: timeout
+z3 bms/partial/ltr_05b.smt2: 2.01370906829834: timeout
+z3 bms/partial/ltr_09a.smt2: 0.2747066020965576: unsat
+z3 bms/partial/rtl_12add.smt2: 2.0095906257629395: timeout
+cvc4 bms/partial/ltr_03.smt2: 1.5834190845489502: unsat
+z3 bms/partial/rtl_12mul.smt2: 2.005577564239502: timeout
+z3 bms/partial/ltr_13mul.smt2: 2.0062737464904785: timeout
+z3 bms/partial/ltr_06.smt2: 2.006535530090332: timeout
+z3 bms/partial/ltr_12mul.smt2: 2.0066823959350586: timeout
+z3 bms/partial/rtl_02.smt2: 2.0046167373657227: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_05a.smt2: 2.006831645965576: timeout
+z3 bms/partial/rtl_07.smt2: 2.0052289962768555: timeout
+z3 bms/partial/ltr_13add.smt2: 2.0183355808258057: timeout
+z3 bms/partial/rtl_13add.smt2: 2.0033512115478516: timeout
+z3 bms/partial/ltr_04a.smt2: 2.007089853286743: timeout
+z3 bms/partial/ltr_01.smt2: 2.0057404041290283: timeout
+z3 bms/partial/ltr_11xor.smt2: 2.011665105819702: timeout
+z3 bms/partial/ltr_11or.smt2: 2.0103511810302734: timeout
+cvc4 bms/partial/rtl_05a.smt2: 2.0057363510131836: timeout
+cvc4 bms/partial/ltr_08a.smt2: 2.009758234024048: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_03.smt2: 1.2504796981811523: unsat
+cvc4 bms/partial/rtl_06.smt2: 1.6719045639038086: unsat
+cvc4 bms/partial/rtl_09b.smt2: 2.01185941696167: timeout
+cvc4 --cbqi-all bms/partial/ltr_05a.smt2: 2.0117666721343994: timeout
+cvc4 bms/partial/rtl_13mul.smt2: 2.0129425525665283: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_05a.smt2: 2.0036303997039795: timeout
+cvc4 --nl-ext-tplanes bms/partial/ltr_08a.smt2: 2.006674289703369: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_03.smt2: 2.0051190853118896: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_06.smt2: 1.645458698272705: unsat
+cvc4 --fmf-fun-rlv bms/partial/ltr_05a.smt2: 2.004213809967041: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_09b.smt2: 2.0042178630828857: timeout
+cvc4 --nl-ext-tplanes bms/partial/rtl_13mul.smt2: 2.004122257232666: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_05a.smt2: 2.005373001098633: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/ltr_08a.smt2: 2.005115032196045: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_03.smt2: 2.005690336227417: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_06.smt2: 2.0050697326660156: timeout
+z3 bms/partial/ltr_05a.smt2: 2.00307559967041: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_09b.smt2: 2.00520920753479: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bms/partial/rtl_13mul.smt2: 2.005584716796875: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_05a.smt2: 2.00517201423645: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/ltr_08a.smt2: 2.006286859512329: timeout
+cvc4 --cbqi-all bms/partial/ltr_03.smt2: 2.0056233406066895: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_06.smt2: 2.005772352218628: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_13mul.smt2: 2.005401849746704: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bms/partial/rtl_09b.smt2: 2.0057754516601562: timeout
+cvc4 --cbqi-all bms/partial/rtl_05a.smt2: 2.0052247047424316: timeout
+cvc4 --cbqi-all bms/partial/ltr_08a.smt2: 2.005171298980713: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_03.smt2: 2.005086660385132: timeout
+z3 bms/partial/ltr_03.smt2: 0.019504308700561523: unsat
+cvc4 --cbqi-all bms/partial/rtl_06.smt2: 2.005526304244995: timeout
+cvc4 --cbqi-all bms/partial/rtl_13mul.smt2: 2.006230354309082: timeout
+cvc4 --cbqi-all bms/partial/rtl_09b.smt2: 2.0062434673309326: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_05a.smt2: 2.0036866664886475: timeout
+cvc4 --fmf-fun-rlv bms/partial/ltr_08a.smt2: 2.0051279067993164: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_06.smt2: 2.004995584487915: timeout
+z3 bms/partial/rtl_06.smt2: 0.04917621612548828: unsat
+cvc4 --fmf-fun-rlv bms/partial/rtl_09b.smt2: 2.005120038986206: timeout
+cvc4 --fmf-fun-rlv bms/partial/rtl_13mul.smt2: 2.0053746700286865: timeout
+z3 bms/partial/rtl_05a.smt2: 2.0047852993011475: timeout
+z3 bms/partial/ltr_08a.smt2: 2.0046498775482178: timeout
+z3 bms/partial/rtl_09b.smt2: 2.0039658546447754: timeout
+z3 bms/partial/rtl_13mul.smt2: 2.0052599906921387: timeout

@@ -1,0 +1,278 @@
+cvc4 bm/qf/hard2Aa.smt2: 0.022815704345703125: (error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/qf/hard2Ab.smt2: 0.030442476272583008: (error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/qf/hard2Aa.smt2: 0.022753000259399414: (error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/qf/hard2Ab.smt2: 0.023405075073242188: (error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/qf/hard2Aa.smt2: 0.025835037231445312: (error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/qf/hard2Ab.smt2: 0.025748491287231445: (error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/qf/hard2Aa.smt2: 0.02150893211364746: (error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/qf/hard2Ab.smt2: 0.021127700805664062: (error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/qf/hard2Aa.smt2: 0.02549576759338379: (error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/qf/hard2Ab.smt2: 0.021076679229736328: (error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --fmf-fun-rlv bm/qf/hard2Aa.smt2: 0.022286653518676758: (error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --fmf-fun-rlv bm/qf/hard2Ab.smt2: 0.019193172454833984: (error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/qf/hard2B.smt2: 0.19668316841125488: unknown
+cvc4 --nl-ext-tplanes bm/qf/hard2B.smt2: 0.14693164825439453: unknown
+z3 bm/qf/hard2Aa.smt2: 0.27495384216308594: (error "line 443 column 39: Wrong number of arguments (1) passed to function (declare-fun s () Int)")
+(error "line 444 column 33: Wrong number of arguments (1) passed to function (declare-fun s () Int)")
+sat
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/qf/hard2B.smt2: 0.17757558822631836: sat
+z3 bm/qf/hard2Ab.smt2: 5.009142637252808: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bm/qf/hard2B.smt2: 5.0081939697265625: timeout
+cvc4 --cbqi-all bm/qf/hard2B.smt2: 5.009143829345703: timeout
+cvc4 --fmf-fun-rlv bm/qf/hard2B.smt2: 0.1623363494873047: sat
+z3 bm/qf/hard2B.smt2: 5.00752067565918: timeout
+cvc4 bm/rec/hard2Aa.smt2: 0.023561954498291016: (error "Parse Error: bm/rec/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/rec/hard2Ab.smt2: 0.024091243743896484: (error "Parse Error: bm/rec/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/rec/hard2Aa.smt2: 0.01737213134765625: (error "Parse Error: bm/rec/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/rec/hard2Ab.smt2: 0.024113178253173828: (error "Parse Error: bm/rec/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/rec/hard2Aa.smt2: 0.017514944076538086: (error "Parse Error: bm/rec/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/rec/hard2Ab.smt2: 0.01856088638305664: (error "Parse Error: bm/rec/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/rec/hard2Aa.smt2: 0.017700910568237305: (error "Parse Error: bm/rec/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/rec/hard2Ab.smt2: 0.01799774169921875: (error "Parse Error: bm/rec/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/rec/hard2Aa.smt2: 0.025026559829711914: (error "Parse Error: bm/rec/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/rec/hard2Ab.smt2: 0.021035194396972656: (error "Parse Error: bm/rec/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --fmf-fun-rlv bm/rec/hard2Ab.smt2: 0.0193173885345459: (error "Parse Error: bm/rec/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --fmf-fun-rlv bm/rec/hard2Aa.smt2: 0.028250932693481445: (error "Parse Error: bm/rec/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/rec/hard2B.smt2: 5.00875186920166: timeout
+z3 bm/rec/hard2Ab.smt2: 5.007611274719238: timeout
+z3 bm/rec/hard2Aa.smt2: 5.008531093597412: timeout
+cvc4 --nl-ext-tplanes bm/rec/hard2B.smt2: 5.008524656295776: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/rec/hard2B.smt2: 5.008517026901245: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bm/rec/hard2B.smt2: 5.008633136749268: timeout
+cvc4 --cbqi-all bm/rec/hard2B.smt2: 5.008556127548218: timeout
+cvc4 --fmf-fun-rlv bm/rec/hard2B.smt2: 5.008549451828003: timeout
+z3 bm/rec/hard2B.smt2: 5.0094170570373535: timeout
+cvc4 bm/full/hard2Aa.smt2: 0.0235750675201416: (error "Parse Error: bm/full/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/full/hard2Ab.smt2: 0.025974750518798828: (error "Parse Error: bm/full/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/full/hard2Ab.smt2: 0.01627945899963379: (error "Parse Error: bm/full/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/full/hard2Aa.smt2: 0.02497267723083496: (error "Parse Error: bm/full/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/full/hard2Ab.smt2: 0.02414417266845703: (error "Parse Error: bm/full/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/full/hard2Aa.smt2: 0.021886348724365234: (error "Parse Error: bm/full/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/full/hard2Ab.smt2: 0.01950526237487793: (error "Parse Error: bm/full/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/full/hard2Aa.smt2: 0.019326448440551758: (error "Parse Error: bm/full/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/full/hard2Ab.smt2: 0.019196271896362305: (error "Parse Error: bm/full/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/full/hard2Aa.smt2: 0.021259307861328125: (error "Parse Error: bm/full/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --fmf-fun-rlv bm/full/hard2Ab.smt2: 0.02109670639038086: (error "Parse Error: bm/full/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --fmf-fun-rlv bm/full/hard2Aa.smt2: 0.026163339614868164: (error "Parse Error: bm/full/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/full/hard2B.smt2: 2.0563793182373047: unknown
+z3 bm/full/hard2Ab.smt2: 5.0088207721710205: timeout
+z3 bm/full/hard2Aa.smt2: 5.005102157592773: timeout
+cvc4 --nl-ext-tplanes bm/full/hard2B.smt2: 5.0083253383636475: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/full/hard2B.smt2: 5.011582136154175: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bm/full/hard2B.smt2: 5.009072542190552: timeout
+cvc4 --cbqi-all bm/full/hard2B.smt2: 5.008597373962402: timeout
+cvc4 --fmf-fun-rlv bm/full/hard2B.smt2: 5.011517524719238: timeout
+z3 bm/full/hard2B.smt2: 5.008525371551514: timeout
+cvc4 bm/partial/hard2Aa.smt2: 0.02163243293762207: (error "Parse Error: bm/partial/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/partial/hard2Ab.smt2: 0.025393009185791016: (error "Parse Error: bm/partial/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/partial/hard2Aa.smt2: 0.024821758270263672: (error "Parse Error: bm/partial/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/partial/hard2Ab.smt2: 0.0220644474029541: (error "Parse Error: bm/partial/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/partial/hard2Ab.smt2: 0.022492647171020508: (error "Parse Error: bm/partial/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/partial/hard2Aa.smt2: 0.025644540786743164: (error "Parse Error: bm/partial/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/partial/hard2Ab.smt2: 0.019705533981323242: (error "Parse Error: bm/partial/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes --cbqi-all bm/partial/hard2Aa.smt2: 0.024374723434448242: (error "Parse Error: bm/partial/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/partial/hard2Ab.smt2: 0.019880056381225586: (error "Parse Error: bm/partial/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --cbqi-all bm/partial/hard2Aa.smt2: 0.025462627410888672: (error "Parse Error: bm/partial/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --fmf-fun-rlv bm/partial/hard2Ab.smt2: 0.020186185836791992: (error "Parse Error: bm/partial/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 bm/partial/hard2B.smt2: 0.13680410385131836: unknown
+cvc4 --fmf-fun-rlv bm/partial/hard2Aa.smt2: 0.02545166015625: (error "Parse Error: bm/partial/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+")
+cvc4 --nl-ext-tplanes bm/partial/hard2B.smt2: 0.6724131107330322: unknown
+z3 bm/partial/hard2Ab.smt2: 5.00864577293396: timeout
+z3 bm/partial/hard2Aa.smt2: 5.004730224609375: timeout
+cvc4 --nl-ext-tplanes --fmf-fun-rlv bm/partial/hard2B.smt2: 5.008684158325195: timeout
+cvc4 --nl-ext-tplanes --cbqi-all bm/partial/hard2B.smt2: 5.008736848831177: timeout
+cvc4 --cbqi-all bm/partial/hard2B.smt2: 5.008963584899902: timeout
+cvc4 --fmf-fun-rlv bm/partial/hard2B.smt2: 5.009218454360962: timeout
+z3 bm/partial/hard2B.smt2: 5.007720708847046: timeout

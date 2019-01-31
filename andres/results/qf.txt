@@ -1,3 +1,54 @@
 filename;cvc4;cvc4 --nl-ext-tplanes;cvc4 --nl-ext-tplanes --fmf-fun-rlv;cvc4 --nl-ext-tplanes --cbqi-all;cvc4 --cbqi-all;cvc4 --fmf-fun-rlv;z3
-hard1.smt2;unknown;unsat;unsat;unsat;unsat;unknown;timeout
-hard2.smt2;unknown;unknown;sat;timeout;timeout;unknown;timeout
+hard2Aa.smt2;(error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Aa.smt2:443.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "line 443 column 39: Wrong number of arguments (1) passed to function (declare-fun s () Int)")
+(error "line 444 column 33: Wrong number of arguments (1) passed to function (declare-fun s () Int)")
+sat
+hard2Ab.smt2;(error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");(error "Parse Error: bm/qf/hard2Ab.smt2:446.24: Expecting function-like symbol, found 's'
+
+  (assert (< (* s s) (* (s (two_to_the s)))))
+                         ^
+");timeout
+hard2B.smt2;unknown;unknown;sat;timeout;timeout;sat;timeout

@@ -1,7 +1,3 @@
 cvc4 
-cvc4 --nl-ext-tplanes
-cvc4 --nl-ext-tplanes --fmf-fun-rlv 
-cvc4 --nl-ext-tplanes --cbqi-all
-cvc4 --cbqi-all
-cvc4 --fmf-fun-rlv 
+cvc4 --nl-ext-tplanes --full-saturate-quant --no-e-matching
 z3 
