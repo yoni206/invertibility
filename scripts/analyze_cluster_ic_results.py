@@ -2,7 +2,7 @@ import pandas as ps
 import sys
 import os
 
-def main(results_dir, output_file):
+def main(results_dir, tex_csv_dir, translations_file):
     results = {}
     results_dirs = [d for d in os.listdir(results_dir)]
     for d in results_dirs:
@@ -40,7 +40,6 @@ def main(results_dir, output_file):
     validate_stat_res(df)
     validate_consistency(df)
     #validate_no_sat_except_qf(df)
-    #TODO uncomment...
     df["proved"] = df.result.apply(lambda x: "yes" if (x == "unsat") else "no")
 
     
@@ -77,17 +76,9 @@ def main(results_dir, output_file):
     conf_sum_grouped = conf_alone_agg.groupby(["config"])
     conf_sum_agg = conf_sum_grouped.agg({'proved':agg_count_yes})
 
-    encodings_to_drop = ["rec_ind", "full_ind", "qf_ind", "partial_ind"]
-    proved = drop_encodings(enc_agg, encodings_to_drop)
 
-    encodings_to_keep = ["full", "partial"]
-    proved = keep_encodings(enc_agg, encodings_to_keep)
-
-    only_partial = df.loc[df["encoding"] == "partial"]
+    only_partial = df.loc[df["encoding"] == "partial"].copy()
     andy_configs(only_partial)
-    proved = drop_configs(only_partial, ["cvc4_tplanes", "cvc4_fmf", "cvc4_cbqi", "cvc4_default"])
-    proved = keep_configs(only_partial, ["cvc4_default", "cvc4_tplanes_fmf"])
-    print("panda", proved)
 
 
     df.to_csv("tmp/tmp0.csv")
@@ -103,7 +94,127 @@ def main(results_dir, output_file):
     conf_alone_agg.to_csv("tmp/tmp10.csv")
     conf_sum_agg.to_csv("tmp/tmp11.csv")
 
+    tex_stuff(direction_agg, cond_agg, tex_csv_dir, translations_file)
 
+def tex_stuff(direction_agg, cond_agg, tex_csv_dir, translations_file):
+    gen_IC_status_tables(direction_agg, tex_csv_dir)
+    gen_encoding_cond_tables(cond_agg, tex_csv_dir)
+    gen_qf_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file)
+
+def gen_qf_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file):
+    ic_names = cond_agg["ic_name"].tolist()
+    ics = gen_ics_from_translations_file(ic_names, translations_file)
+    ics = clean_ics(ics)
+    proved = cond_agg.loc[cond_agg["proved"] == "yes"].copy()
+    proved = proved.loc[proved["direction"] == "rtl"].copy()
+    proved = proved.loc[proved["encoding"] == "qf"].copy()
+    proved["ic"] = proved["ic_name"].apply(get_ic_from_name(ics))
+    proved.to_csv(tex_csv_dir + "/" + "qf_rtl.csv")
+
+def gen_ics_from_translations_file(ic_names, translation_file):
+    result = {}
+    with open(translation_file, "r") as myfile:
+        lines = myfile.readlines()
+    for line in lines:
+        name = line.split(",")[0]
+        ic = line.split(",")[2]
+        result[name] = ic
+    return result
+
+def clean_ics(ics):
+    return {name[len("int_check_"):] : ics[name] for name in ics}
+
+def get_ic_from_name(ics):
+    return lambda name : ics[name]
+
+def concat_special(row):
+    direction = row["direction"]
+    cond = row["cond_inv"]
+    if direction == "rtl":
+        return direction
+    else:
+        assert(direction == "ltr")
+        return direction + "_" + cond
+
+def cond_inv_yes(row):
+    if row["ltr_inv_a"] == "yes" or row["ltr_inv_g"] == "yes" or row["ltr_inv_r"] == "yes":
+        return "yes"
+    else:
+        return "no"
+
+def ltr_yes(row):
+    if row["ltr_inv"] == "yes" or row["ltr_no_inv"] == "yes":
+        return "yes"
+    else:
+        return "no"
+
+def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
+    cond_agg["direction_cond"] = cond_agg.apply(concat_special, axis=1)
+    pivot = cond_agg.pivot_table(index = ["encoding", "ic_name"], columns = "direction_cond", values = "proved", aggfunc = lambda x : " ".join(x)).reset_index()
+    pivot["ltr_inv"] = pivot.apply(cond_inv_yes, axis=1)
+    pivot["ltr"] = pivot.apply(ltr_yes, axis=1)
+    group_by = pivot.groupby(["encoding"]) 
+    agg = group_by.agg(countyes)
+    agg = agg.rename(under_to_middle ,axis='columns')
+    agg = agg.drop("ic-name", axis=1)
+    titles = ['ltr-inv-a', 'ltr-inv-g', 'ltr-inv-r', 'ltr-inv', 'ltr-no-inv', 'ltr', 'rtl']
+    agg = agg.reindex(columns = titles)
+    agg.to_csv(tex_csv_dir + "/" + "cond.csv")
+
+def under_to_middle(s):
+    return s.replace("_", "-")
+
+def countyes(ser):
+    l = ser.tolist()
+    return len([a for a in l if a == "yes"])
+
+def gen_IC_status_tables(direction_agg, tex_csv_dir):
+    pivot = direction_agg.pivot_table(index = "ic_name", columns = "direction", values = "proved", aggfunc = lambda x: ' '.join(x))
+#    pivot.columns = pivot.columns.droplevel()
+    pivot = pivot.reset_index()
+    pivot.columns=pivot.columns.tolist()
+    pivot["relation"] = pivot["ic_name"].apply(lambda x: x.split('_')[0])
+    pivot["operation"] = pivot["ic_name"].apply(lambda x: x.split('_')[1])
+    pivot["family"] = pivot["relation"].apply(get_family)
+    pivot["direction_proved"] = pivot.apply(what_proved, axis=1)
+    
+    summary = pivot.pivot_table(index = "operation", columns = "relation", values = "direction_proved", aggfunc = lambda x: ' '.join(x))
+    columnsTitles = ['eq', 'ne', 'bvult', 'bvugt', 'bvule', 'bvuge', 'bvslt', 'bvsgt', 'bvsle', 'bvsge']
+
+    summary = summary.reindex(columns=columnsTitles)
+    summary.to_csv(tex_csv_dir + "/" + "summary" + ".csv")
+    
+#    tables = {}
+#    families = set(pivot["family"].tolist())
+#    for family in families:
+#        filtered = pivot.loc[pivot["family"] == family]
+#        tables[family] = filtered.pivot_table(index = "operation", columns = "relation", values = "direction_proved", aggfunc = lambda x: ' '.join(x))
+#        tables[family] = tables[family].reset_index()
+#        tables[family].columns=tables[family].columns.tolist()
+#        tables[family].to_csv(tex_csv_dir + "/" + family + ".csv")
+
+def what_proved(row):
+    if row["ltr"] == "yes" and row["rtl"] == "yes":
+        return "\\both"
+    if row.ltr == "yes" and row.rtl == "no":
+        return "\\ltr"
+    if row.ltr == "no" and row.rtl == "yes":
+        return "\\rtl"
+    if row.ltr == "no" and row.rtl == "no":
+        return "\\none"
+
+def get_family(s):
+    if s in ["eq", "ne"]:
+        return "equality"
+    if s in ["bvult", "bvugt"]:
+        return "unsigned_strong"
+    if s in ["bvule", "bvuge"]:
+        return "unsigned_weak"
+    if s in ["bvslt", "bvsgt"]:
+        return "signed_strong"
+    if s in ["bvsle", "bvsge"]:
+        return "signed_weak"
+    assert(False)
 
 def keep_configs(df, configs_to_keep):
     configs = set(df["config"].tolist())
@@ -115,10 +226,10 @@ def keep_configs(df, configs_to_keep):
     cond_grouped = df.groupby(["ic_name", "direction", "config", ], as_index=False)
     cond_agg = cond_grouped.agg({'proved' : agg_yes})
     df["to_keep"] = df.config.apply(lambda x: x in configs_to_keep)
-    dff = df.loc[df["to_keep"] == True]
+    dff = df.loc[df["to_keep"] == True].copy()
     dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
     dff_agg = dff_grouped.agg({'proved' : agg_yes})
-    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
+    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index).copy()
 
 
 def drop_configs(df, configs_to_drop):
@@ -130,7 +241,7 @@ def drop_configs(df, configs_to_drop):
     cond_grouped = df.groupby(["ic_name", "direction", "config", ], as_index=False)
     cond_agg = cond_grouped.agg({'proved' : agg_yes})
     df["to_drop"] = df.config.apply(lambda x: x in configs_to_drop)
-    dff = df.loc[df["to_drop"] == False]
+    dff = df.loc[df["to_drop"] == False].copy()
     dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
     dff_agg = dff_grouped.agg({'proved' : agg_yes})
     return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
@@ -138,15 +249,15 @@ def drop_configs(df, configs_to_drop):
 
 def drop_encodings(df, encodings_to_drop):
     df["to_drop"] = df.encoding.apply(lambda x: x in encodings_to_drop)
-    dff = df.loc[df["to_drop"] == False]
+    dff = df.loc[df["to_drop"] == False].copy()
     dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
     dff_agg = dff_grouped.agg({'proved' : agg_yes})
-    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
+    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index).copy()
 
 
 def keep_encodings(df, encodings_to_keep):
     df["to_keep"] = df.encoding.apply(lambda x: x in encodings_to_keep)
-    dff = df.loc[df["to_keep"] == True]
+    dff = df.loc[df["to_keep"] == True].copy()
     dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
     dff_agg = dff_grouped.agg({'proved' : agg_yes})
     return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
@@ -157,9 +268,8 @@ def andy_encodings(df):
     encodings = set(df['encoding'].tolist())
     d = {}
     for encoding in encodings:
-        print("panda", encoding)
-        df_e = df.loc[df.encoding == encoding]
-        df_e_yes = df_e.loc[df_e.proved == "yes"]
+        df_e = df.loc[df.encoding == encoding].copy()
+        df_e_yes = df_e.loc[df_e.proved == "yes"].copy()
         df_e_yes["full_name"] = df_e_yes.apply(lambda row: row['ic_name'] + "_" + row['direction'], axis=1)
         l = df_e_yes["full_name"].tolist()
         s = set(l)
@@ -184,9 +294,8 @@ def andy_configs(df):
     configs = set(df['config'].tolist())
     d = {}
     for config in configs:
-        print("panda", config)
-        df_e = df.loc[df.config == config]
-        df_e_yes = df_e.loc[df_e.proved == "yes"]
+        df_e = df.loc[df.config == config].copy()
+        df_e_yes = df_e.loc[df_e.proved == "yes"].copy()
         df_e_yes["full_name"] = df_e_yes.apply(lambda row: row['ic_name'] + "_" + row['direction'], axis=1)
         l = df_e_yes["full_name"].tolist()
         s = set(l)
@@ -201,12 +310,11 @@ def andy_configs(df):
                     print("panda same:", e1, e2)
                 if d[e1].issubset(d[e2]):
                     redundent_configs.add(e1)
-    print("panda", redundent_configs)
 
 def validate_no_sat_except_qf(df):
-    no_qf = df.loc[df.encoding != "qf"]
-    no_qf = no_qf.loc[no_qf.encoding != "qf_ind"]
-    sat = no_qf.loc[no_qf.result == "sat"]
+    no_qf = df.loc[df.encoding != "qf"].copy()
+    no_qf = no_qf.loc[no_qf.encoding != "qf_ind"].copy()
+    sat = no_qf.loc[no_qf.result == "sat"].copy()
     if len(sat.index) != 0:
         print("\n".join(sat.path.tolist()))
         assert(False)
@@ -298,9 +406,10 @@ def get_result(log_content):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print('arg1: cluster results dir\narg2: output file\n')
+    if len(sys.argv) < 4:
+        print('arg1: cluster results dir\narg2: tex-csv dir\ntranslations file')
         exit(1)
     results_dir = sys.argv[1]
-    output_file = sys.argv[2]
-    main(results_dir, output_file)
+    tex_csv_dir = sys.argv[2]
+    translation_file = sys.argv[3]
+    main(results_dir, tex_csv_dir, translation_file)
