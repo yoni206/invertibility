@@ -188,15 +188,8 @@
 (!(and
   (= (intor 1 a b) (intor_helper (lsb k a) (lsb k b)))
   (=>           
-    (and 
       (> k 1)
-      (>= a 0)
-      (>= b 0)
-      (<= a (intmax k))
-      (<= b (intmax k))
-    )
-    (and
-      (= (intor k a b) (+ (intor (- k 1) a b) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
+      (= (intor k a b) (+ (intor (- k 1) a b) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
     ))) :pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
@@ -272,14 +265,8 @@
 (!(and
   (= (intand 1 a b) (intand_helper (lsb k a) (lsb k b)))
   (=>           
-    (and 
-      (>= a 0)
-      (>= b 0)
-      (<= a (intmax k))
-      (<= b (intmax k))
-    )
-    (and
-      (= (intand k a b) (+ (intand (- k 1) a b) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
+      (> k 1)
+      (= (intand k a b) (+ (intand (- k 1) a b) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
     ))) :pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
@@ -354,16 +341,9 @@
 (!(and
   (= (intxor 1 a b) (intxor_helper (lsb k a) (lsb k b)))
   (=>           
-    (and 
       (> k 1)
-      (>= a 0)
-      (>= b 0)
-      (<= a (intmax k))
-      (<= b (intmax k))
-    )
-    (and
       (= (intxor k a b) (+ (intxor (- k 1) a b) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
-    ))) :pattern ((instantiate_me a) (instantiate_me b)))
+    )) :pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
 ;partial axiomatization of bitwise xor, with quantifiers
