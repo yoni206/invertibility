@@ -317,8 +317,9 @@ never_even
 (and_max1 k)
 (and_max2 k)
 (rule_of_contradiction k)
-(or_sym k)
-(or_ranges k)
+(and_sym k)
+(and_difference1 k)
+(and_ranges k)
 ))
 (define-fun and_is_ok_qf ((k Int)) Bool true)
 
