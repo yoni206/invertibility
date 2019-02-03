@@ -63,7 +63,7 @@ full,cvc4_default,bvsgt_bvurem0,ltr,yes
 full,cvc4_default,bvsgt_bvurem0,rtl,yes
 full,cvc4_default,bvsgt_bvurem1,ltr,no
 full,cvc4_default,bvsgt_bvurem1,rtl,no
-full,cvc4_default,bvsle_bvadd,ltr,yes
+full,cvc4_default,bvsle_bvadd,ltr,no
 full,cvc4_default,bvsle_bvadd,rtl,yes
 full,cvc4_default,bvsle_bvand,ltr,no
 full,cvc4_default,bvsle_bvand,rtl,no
@@ -347,11 +347,11 @@ full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvudiv0,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvudiv0,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvudiv1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvudiv1,rtl,no
-full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvurem0,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvurem0,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvurem0,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvurem1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsge_bvurem1,rtl,yes
-full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvadd,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvadd,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvadd,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvand,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvand,rtl,no
@@ -365,9 +365,9 @@ full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvlshr1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvlshr1,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvmul,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvmul,rtl,no
-full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvneg,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvneg,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvneg,rtl,no
-full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvnot,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvnot,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvnot,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvor,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsgt_bvor,rtl,no
@@ -415,7 +415,7 @@ full,cvc4_tplanes_saturate_no_e_matching,bvsle_bvurem0,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsle_bvurem0,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvsle_bvurem1,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvsle_bvurem1,rtl,yes
-full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvadd,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvadd,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvadd,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvand,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvand,rtl,no
@@ -429,9 +429,9 @@ full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvlshr1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvlshr1,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvmul,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvmul,rtl,no
-full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvneg,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvneg,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvneg,rtl,no
-full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvnot,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvnot,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvnot,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvor,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvslt_bvor,rtl,no
@@ -451,7 +451,7 @@ full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvadd,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvadd,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvand,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvand,rtl,no
-full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvashr0,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvashr0,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvashr0,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvashr1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvashr1,rtl,yes
@@ -475,7 +475,7 @@ full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvudiv0,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvudiv0,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvudiv1,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvudiv1,rtl,yes
-full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvurem0,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvurem0,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvurem0,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvurem1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvuge_bvurem1,rtl,no
@@ -535,7 +535,7 @@ full,cvc4_tplanes_saturate_no_e_matching,bvule_bvshl0,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvule_bvshl0,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvule_bvshl1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvule_bvshl1,rtl,yes
-full,cvc4_tplanes_saturate_no_e_matching,bvule_bvudiv0,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,bvule_bvudiv0,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvule_bvudiv0,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvule_bvudiv1,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvule_bvudiv1,rtl,no
@@ -569,13 +569,13 @@ full,cvc4_tplanes_saturate_no_e_matching,bvult_bvshl1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvshl1,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv0,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv0,rtl,yes
-full,cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv1,ltr,yes
+full,cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv1,ltr,no
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv1,rtl,no
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvurem0,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvurem0,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvurem1,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,bvult_bvurem1,rtl,yes
-full,cvc4_tplanes_saturate_no_e_matching,eq_bvadd,ltr,no
+full,cvc4_tplanes_saturate_no_e_matching,eq_bvadd,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,eq_bvadd,rtl,yes
 full,cvc4_tplanes_saturate_no_e_matching,eq_bvand,ltr,yes
 full,cvc4_tplanes_saturate_no_e_matching,eq_bvand,rtl,no
@@ -767,7 +767,7 @@ full,z3_default,bvslt_bvurem0,ltr,no
 full,z3_default,bvslt_bvurem0,rtl,no
 full,z3_default,bvslt_bvurem1,ltr,no
 full,z3_default,bvslt_bvurem1,rtl,no
-full,z3_default,bvuge_bvadd,ltr,yes
+full,z3_default,bvuge_bvadd,ltr,no
 full,z3_default,bvuge_bvadd,rtl,yes
 full,z3_default,bvuge_bvand,ltr,no
 full,z3_default,bvuge_bvand,rtl,no
@@ -777,7 +777,7 @@ full,z3_default,bvuge_bvashr1,ltr,no
 full,z3_default,bvuge_bvashr1,rtl,no
 full,z3_default,bvuge_bvlshr0,ltr,no
 full,z3_default,bvuge_bvlshr0,rtl,no
-full,z3_default,bvuge_bvlshr1,ltr,yes
+full,z3_default,bvuge_bvlshr1,ltr,no
 full,z3_default,bvuge_bvlshr1,rtl,yes
 full,z3_default,bvuge_bvmul,ltr,no
 full,z3_default,bvuge_bvmul,rtl,no
@@ -809,7 +809,7 @@ full,z3_default,bvugt_bvashr1,ltr,no
 full,z3_default,bvugt_bvashr1,rtl,no
 full,z3_default,bvugt_bvlshr0,ltr,yes
 full,z3_default,bvugt_bvlshr0,rtl,no
-full,z3_default,bvugt_bvlshr1,ltr,yes
+full,z3_default,bvugt_bvlshr1,ltr,no
 full,z3_default,bvugt_bvlshr1,rtl,no
 full,z3_default,bvugt_bvmul,ltr,no
 full,z3_default,bvugt_bvmul,rtl,no
@@ -843,7 +843,7 @@ full,z3_default,bvule_bvlshr0,ltr,no
 full,z3_default,bvule_bvlshr0,rtl,yes
 full,z3_default,bvule_bvlshr1,ltr,no
 full,z3_default,bvule_bvlshr1,rtl,yes
-full,z3_default,bvule_bvmul,ltr,yes
+full,z3_default,bvule_bvmul,ltr,no
 full,z3_default,bvule_bvmul,rtl,yes
 full,z3_default,bvule_bvneg,ltr,yes
 full,z3_default,bvule_bvneg,rtl,yes
@@ -851,7 +851,7 @@ full,z3_default,bvule_bvnot,ltr,yes
 full,z3_default,bvule_bvnot,rtl,yes
 full,z3_default,bvule_bvor,ltr,no
 full,z3_default,bvule_bvor,rtl,no
-full,z3_default,bvule_bvshl0,ltr,yes
+full,z3_default,bvule_bvshl0,ltr,no
 full,z3_default,bvule_bvshl0,rtl,yes
 full,z3_default,bvule_bvshl1,ltr,no
 full,z3_default,bvule_bvshl1,rtl,yes
@@ -875,7 +875,7 @@ full,z3_default,bvult_bvlshr0,ltr,no
 full,z3_default,bvult_bvlshr0,rtl,yes
 full,z3_default,bvult_bvlshr1,ltr,no
 full,z3_default,bvult_bvlshr1,rtl,yes
-full,z3_default,bvult_bvmul,ltr,yes
+full,z3_default,bvult_bvmul,ltr,no
 full,z3_default,bvult_bvmul,rtl,yes
 full,z3_default,bvult_bvneg,ltr,yes
 full,z3_default,bvult_bvneg,rtl,yes
@@ -883,7 +883,7 @@ full,z3_default,bvult_bvnot,ltr,no
 full,z3_default,bvult_bvnot,rtl,yes
 full,z3_default,bvult_bvor,ltr,no
 full,z3_default,bvult_bvor,rtl,no
-full,z3_default,bvult_bvshl0,ltr,yes
+full,z3_default,bvult_bvshl0,ltr,no
 full,z3_default,bvult_bvshl0,rtl,yes
 full,z3_default,bvult_bvshl1,ltr,no
 full,z3_default,bvult_bvshl1,rtl,yes

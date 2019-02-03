@@ -353,8 +353,8 @@
 351,bvsgt_bvurem1,rtl,full,NA,yes
 352,bvsgt_bvurem1,rtl,partial,NA,yes
 353,bvsgt_bvurem1,rtl,qf,NA,yes
-354,bvsle_bvadd,ltr,full,inv_a,yes
-355,bvsle_bvadd,ltr,full,inv_g,yes
+354,bvsle_bvadd,ltr,full,inv_a,no
+355,bvsle_bvadd,ltr,full,inv_g,no
 356,bvsle_bvadd,ltr,full,inv_r,no
 357,bvsle_bvadd,ltr,full,no_inv,no
 358,bvsle_bvadd,ltr,partial,inv_a,yes
@@ -776,9 +776,9 @@
 774,bvuge_bvand,rtl,full,NA,no
 775,bvuge_bvand,rtl,partial,NA,no
 776,bvuge_bvand,rtl,qf,NA,no
-777,bvuge_bvashr0,ltr,full,inv_a,no
-778,bvuge_bvashr0,ltr,full,inv_g,no
-779,bvuge_bvashr0,ltr,full,inv_r,no
+777,bvuge_bvashr0,ltr,full,inv_a,yes
+778,bvuge_bvashr0,ltr,full,inv_g,yes
+779,bvuge_bvashr0,ltr,full,inv_r,yes
 780,bvuge_bvashr0,ltr,full,no_inv,no
 781,bvuge_bvashr0,ltr,partial,inv_a,yes
 782,bvuge_bvashr0,ltr,partial,inv_g,yes
