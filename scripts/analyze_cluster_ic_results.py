@@ -159,6 +159,7 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     agg = agg.drop("ic-name", axis=1)
     titles = ['ltr-inv-a', 'ltr-inv-g', 'ltr-inv-r', 'ltr-inv', 'ltr-no-inv', 'ltr', 'rtl']
     agg = agg.reindex(columns = titles)
+    agg["total"] = agg.apply(lambda row : row["ltr"] + row["rtl"], axis=1)
     agg.to_csv(tex_csv_dir + "/" + "cond.csv")
 
 def under_to_middle(s):
