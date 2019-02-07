@@ -2,6 +2,8 @@ import pandas as ps
 import sys
 import os
 
+TRIVIAL_RTL = 32
+
 def main(results_dir, tex_csv_dir, translations_file):
     results = {}
     results_dirs = [d for d in os.listdir(results_dir)]
@@ -39,7 +41,7 @@ def main(results_dir, tex_csv_dir, translations_file):
     df["result"] = df.err_log.apply(lambda x: x.split(",")[1])
     validate_stat_res(df)
     validate_consistency(df)
-    #validate_no_sat_except_qf(df)
+    validate_no_sat_except_qf(df)
     df["proved"] = df.result.apply(lambda x: "yes" if (x == "unsat") else "no")
 
     
@@ -94,12 +96,34 @@ def main(results_dir, tex_csv_dir, translations_file):
     conf_alone_agg.to_csv("tmp/tmp10.csv")
     conf_sum_agg.to_csv("tmp/tmp11.csv")
 
-    tex_stuff(direction_agg, cond_agg, tex_csv_dir, translations_file)
+    tex_stuff(ic_agg, direction_agg, cond_agg, tex_csv_dir, translations_file)
 
-def tex_stuff(direction_agg, cond_agg, tex_csv_dir, translations_file):
+def tex_stuff(ic_agg, direction_agg, cond_agg, tex_csv_dir, translations_file):
     gen_IC_status_tables(direction_agg, tex_csv_dir)
-    gen_encoding_cond_tables(cond_agg, tex_csv_dir)
+    enc_conds = gen_encoding_cond_tables(cond_agg, tex_csv_dir)
     gen_qf_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file)
+    gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir)
+
+def gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir):
+    ics_proved = ic_agg.loc[ic_agg["proved"] == "yes"].copy()
+    num_proved = len(ics_proved.index)
+    sides_proved = direction_agg.loc[direction_agg["proved"] == "yes"].copy()
+    ltr_proved = sides_proved.loc[sides_proved["direction"] == "ltr"]
+    rtl_proved = sides_proved.loc[sides_proved["direction"] == "rtl"]
+    num_ltr_proved = len(ltr_proved.index)
+    num_rtl_proved = len(rtl_proved.index)
+
+    num_qf_proved = enc_conds["total"]["qf"]
+
+    with open(tex_csv_dir + "/total_proved.tex", "w") as myfile:
+        myfile.write(str(num_proved))
+    with open(tex_csv_dir + "/ltr_proved.tex", "w") as myfile:
+        myfile.write(str(num_ltr_proved))
+    with open(tex_csv_dir + "/rtl_proved.tex", "w") as myfile:
+        myfile.write(str(num_rtl_proved))
+    
+    with open(tex_csv_dir + "/qf_proved.tex", "w") as myfile:
+        myfile.write(str(num_qf_proved))
 
 def gen_qf_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file):
     ic_names = cond_agg["ic_name"].tolist()
@@ -157,10 +181,22 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     agg = group_by.agg(countyes)
     agg = agg.rename(under_to_middle ,axis='columns')
     agg = agg.drop("ic-name", axis=1)
-    titles = ['ltr-inv-a', 'ltr-inv-g', 'ltr-inv-r', 'ltr-inv', 'ltr-no-inv', 'ltr', 'rtl']
-    agg = agg.reindex(columns = titles)
+    agg["rtl-non-trivial"] = agg["rtl"].apply(lambda x : int(x) - TRIVIAL_RTL)
+    agg["rtl_complex"] = agg.apply(lambda row : str(row["rtl"]) + " (" + str(row["rtl-non-trivial"])  + ")", axis=1 )
     agg["total"] = agg.apply(lambda row : row["ltr"] + row["rtl"], axis=1)
-    agg.to_csv(tex_csv_dir + "/" + "cond.csv")
+    agg["total-non-trivial"] = agg["total"].apply(lambda x : int(x) - TRIVIAL_RTL)
+    agg["total_complex"] = agg.apply(lambda row : str(row["total"]) + " (" + str(row["total-non-trivial"])  + ")", axis=1 )
+    #output is what is going to the csv. agg is what is returned, with all info.
+    output = agg.copy() 
+    output = output.drop("rtl", axis=1)
+    output = output.drop("rtl-non-trivial", axis=1)
+    output = output.drop("total", axis=1)
+    output = output.drop("total-non-trivial", axis=1)
+    titles = ['ltr-inv-a', 'ltr-inv-g', 'ltr-inv-r', 'ltr-inv', 'ltr-no-inv', 'ltr', 'rtl_complex', 'total_complex']
+    output = output.reindex(columns = titles)
+    output = output.rename(columns = {"rtl_complex": "rtl", "total_complex": "total"})
+    output.to_csv(tex_csv_dir + "/" + "cond.csv")
+    return agg.copy()
 
 def under_to_middle(s):
     return s.replace("_", "-")
