@@ -2614,6 +2614,31 @@ Fixpoint _list2nat_be (a: list bool) (n i: nat) : nat :=
 Definition list2nat_be (a: list bool) := _list2nat_be a 0 0.
 
 
+(*Nat -> BV Conversion *)
+
+Fixpoint nat2bv_aux (n : nat) (acc : list bool) :=
+  match n with
+  | O => acc
+  | S n' => match ((N.of_nat n) mod 2) with
+            | 0 => nat2bv_aux n' (acc ++ [false])
+            | _ => nat2bv_aux n' (acc ++ [true])
+            end
+  end.
+
+
+Fixpoint pad (bv : list bool) (diff : nat) :=
+  match diff with
+  | O => bv
+  | S n => pad (bv ++ [false]) n
+  end.
+
+Definition pad_to (size : nat) (bv : list bool) : list bool :=
+  pad bv (size - (length bv)).
+
+Definition nat2bv (n : nat) (size : nat) : bitvector :=
+  pad_to size (nat2bv_aux n nil).
+
+
 (* Shift Left *)
 
 Definition shl_one_bit  (a: list bool) : list bool :=

@@ -109,14 +109,24 @@ Proof.
 Admitted.
 
 (* x >> s != t <=> t != 0 or s <u Nat2BV (size(s))*)
-(*Theorem bvshr_neq : forall (x s t : bitvector),
+Theorem bvshr_neq : forall (x s t : bitvector),
   iff
     (~(bv_shr x s = t))
     (~(t = zeros (size t)) 
       \/
-      (bv_ult s (NAT2BV size s))).*)
+      ((bv_ult s (nat2bv 
+                  (N.to_nat (size s)) 
+                  (N.to_nat (size s))))) 
+      = 
+      true).
+Proof.
+Admitted.
 
 (* s >> x = t <=> [i=0...size(s)]OR(s >> i = t) *)
+(*Theorem bvshr_eq2 : forall (x s t : bitvector),
+  iff
+    (bv_shr s x = t)
+    (Need a way to quantify over integers i...size(s))*)
 
 (* s >> x != t <=> s != 0 or t != 0 *)
 Theorem bvshr_neq2 : forall (x s t : bitvector),
@@ -165,6 +175,18 @@ Proof.
 Admitted.
 
 (* x << s != t <=> t != 0 or s <u size(s) *)
+Theorem bvshl_neq : forall (x s t : bitvector),
+  iff
+    (~(bv_shl x s = t))
+    (~(t = zeros (size t))
+     \/
+     ((bv_ult s (nat2bv 
+                  (N.to_nat (size s))
+                  (N.to_nat (size s)))))
+      =
+      true).
+Proof.
+Admitted.
 
 (* s << x = t <=> [i=0...size(s)]OR(s << i = t)  *)
 
