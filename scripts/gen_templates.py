@@ -10,6 +10,7 @@ replacements = {"rec":
                      "<intand>": "intand_def",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_rec",
                      "<or_is_ok>": "or_is_ok_rec",
+                     "<xor_is_ok>": "xor_is_ok_rec",
                      "<and_is_ok>": "and_is_ok_rec"},
                 "full":
                     {"<two_to_the>": "two_to_the_dec",
@@ -18,6 +19,7 @@ replacements = {"rec":
                      "<intand>": "intand_dec",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_full",
                      "<or_is_ok>": "or_is_ok_full",
+                     "<xor_is_ok>": "xor_is_ok_full",
                      "<and_is_ok>": "and_is_ok_full"},
                 "partial":
                     {"<two_to_the>": "two_to_the_dec",
@@ -26,6 +28,7 @@ replacements = {"rec":
                      "<intand>": "intand_dec",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_partial",
                      "<or_is_ok>": "or_is_ok_partial",
+                     "<xor_is_ok>": "xor_is_ok_partial",
                      "<and_is_ok>": "and_is_ok_partial"},
                 "qf":
                     {"<two_to_the>": "two_to_the_dec",
@@ -34,6 +37,7 @@ replacements = {"rec":
                      "<intand>": "intand_dec",
                      "<two_to_the_is_ok>": "two_to_the_is_ok_qf",
                      "<or_is_ok>": "or_is_ok_qf",
+                     "<xor_is_ok>": "xor_is_ok_qf",
                      "<and_is_ok>": "and_is_ok_qf"},
                 }
 

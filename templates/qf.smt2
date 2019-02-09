@@ -368,8 +368,34 @@
 
 ;partial axiomatization of bitwise xor, with quantifiers
 
+(define-fun xor_ide ((k Int)) Bool (forall ((a Int)) (! (= (intxor k a a) 0) :pattern ((instantiate_me a))) ))
+
+(define-fun xor_flip ((k Int)) Bool (forall ((a Int)) (! (= (intxor k a (intnot k a)) 1) :pattern ((instantiate_me a))) ))
+
+(define-fun xor_sym ((k Int)) Bool (forall ((a Int) (b Int)) (! (= (intxor k a b) (intxor k b a)) :pattern ((instantiate_me a) (instantiate_me b)))))
+
+(define-fun xor_ranges ((k Int)) Bool (forall ((a Int) (b Int)) 
+(!(and
+  (= (intxor 1 a b) (intxor_helper (lsb k a) (lsb k b)))
+  (=>           
+    (and 
+      (>= a 0)
+      (>= b 0)
+      (<= a (intmax k))
+      (<= b (intmax k))
+    )
+    (and
+      (>= (intxor k a b) 0) 
+      (<= (intxor k a b ) (intmax k)) 
+    )
+    )) :pattern ((instantiate_me a) (instantiate_me b)))
+))
+
 (define-fun xor_is_ok_partial ((k Int)) Bool (and 
-true
+  (xor_ide k)
+  (xor_flip k)
+  (xor_sym k)
+  (xor_ranges k)
 ))
 
 ;partial axiomatization of bitwise xor - quantifier free
@@ -377,7 +403,8 @@ true
 
 (define-fun xor_is_ok_for ((k Int) (a Int) ) Bool 
 (and
-true    
+        (= (intxor k a a) 0)
+        (= (intxor k a (intnot k a)) (intmax k))
 )
 )
 
@@ -385,7 +412,7 @@ true
 (define-fun xor_is_ok_rec ((k Int)  ) Bool true)
 
 ;choose version of properties for or
-(define-fun xor_is_ok ((k Int)) Bool (or_is_ok_qf k))
+(define-fun xor_is_ok ((k Int)) Bool (xor_is_ok_qf k))
 
 
 
@@ -395,7 +422,7 @@ true
 
 (define-fun in_range ((k Int) (x Int)) Bool (and (>= x 0) (< x (two_to_the k))))
 (define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
-(define-fun everything_is_ok_for ((k Int) (a Int)) Bool (and (two_to_the_is_ok_for a) (two_to_the_is_ok_for k) (and_is_ok_for k a) (or_is_ok_for k a) ))
+(define-fun everything_is_ok_for ((k Int) (a Int)) Bool (and (two_to_the_is_ok_for a) (two_to_the_is_ok_for k) (and_is_ok_for k a) (or_is_ok_for k a) (xor_is_ok_for k a)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
