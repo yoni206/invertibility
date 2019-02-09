@@ -41,7 +41,7 @@ def main(results_dir, tex_csv_dir, translations_file):
     df["result"] = df.err_log.apply(lambda x: x.split(",")[1])
     validate_stat_res(df)
     validate_consistency(df)
-    validate_no_sat_except_qf(df)
+    validate_no_sat_except_qf_and_cond_inv(df)
     df["proved"] = df.result.apply(lambda x: "yes" if (x == "unsat") else "no")
 
     
@@ -400,9 +400,10 @@ def andy_configs(df):
                 if d[e1].issubset(d[e2]):
                     redundent_configs.add(e1)
 
-def validate_no_sat_except_qf(df):
+def validate_no_sat_except_qf_and_cond_inv(df):
     no_qf = df.loc[df.encoding != "qf"].copy()
     no_qf = no_qf.loc[no_qf.encoding != "qf_ind"].copy()
+    no_qf = no_qf.loc[(no_qf["cond_inv"] != "inv_a") & (no_qf["cond_inv"] != "inv_g") & (no_qf["cond_inv"] != "inv_r") ]
     sat = no_qf.loc[no_qf.result == "sat"].copy()
     if len(sat.index) != 0:
         print("\n".join(sat.path.tolist()))
