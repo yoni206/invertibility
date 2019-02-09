@@ -1,0 +1,29 @@
+[runlim] version:		1.10fixed
+[runlim] time limit:		1800 seconds
+[runlim] real time limit:	311040000 seconds
+[runlim] space limit:		4000 MB
+[runlim] argv[0]:		./cvc4
+[runlim] argv[1]:		--nl-ext-tplanes
+[runlim] argv[2]:		--full-saturate-quant
+[runlim] argv[3]:		--no-e-matching
+[runlim] argv[4]:		/tmp/P3IbOH4y.smt2
+[runlim] start:			Fri Feb  8 22:27:36 2019
+[runlim] main pid:		10159
+/tmp/P3IbOH4y.smt2:4.12: No set-logic command was given before this point.
+/tmp/P3IbOH4y.smt2:4.12: CVC4 will make all theories available.
+/tmp/P3IbOH4y.smt2:4.12: Consider setting a stricter logic for (likely) better performance.
+/tmp/P3IbOH4y.smt2:4.12: To suppress this warning in the future use (set-logic ALL).
+[runlim] sample:		9.3 time, 10.5 real, 44.8 MB
+[runlim] sample:		19.3 time, 20.5 real, 53.3 MB
+[runlim] sample:		29.3 time, 30.5 real, 64.3 MB
+[runlim] sample:		39.3 time, 40.5 real, 70.4 MB
+[runlim] sample:		49.3 time, 50.5 real, 76.8 MB
+[runlim] sample:		59.3 time, 60.5 real, 86.6 MB
+[runlim] end:			Fri Feb  8 22:28:45 2019
+[runlim] status:		ok
+[runlim] result:		0
+[runlim] children:		0
+[runlim] real:			69.53 seconds
+[runlim] time:			68.31 seconds
+[runlim] space:			90.0 MB
+[runlim] samples:		690
