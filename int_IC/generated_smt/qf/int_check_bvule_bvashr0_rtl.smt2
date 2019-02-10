@@ -370,7 +370,7 @@ never_even
 
 (define-fun xor_ide ((k Int)) Bool (forall ((a Int)) (! (= (intxor k a a) 0) :pattern ((instantiate_me a))) ))
 
-(define-fun xor_flip ((k Int)) Bool (forall ((a Int)) (! (= (intxor k a (intnot k a)) 1) :pattern ((instantiate_me a))) ))
+(define-fun xor_flip ((k Int)) Bool (forall ((a Int)) (! (= (intxor k a (intnot k a)) (intmax k)) :pattern ((instantiate_me a))) ))
 
 (define-fun xor_sym ((k Int)) Bool (forall ((a Int) (b Int)) (! (= (intxor k a b) (intxor k b a)) :pattern ((instantiate_me a) (instantiate_me b)))))
 
