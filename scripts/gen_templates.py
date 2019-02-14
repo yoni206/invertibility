@@ -39,6 +39,15 @@ replacements = {"rec":
                      "<or_is_ok>": "or_is_ok_qf",
                      "<xor_is_ok>": "xor_is_ok_qf",
                      "<and_is_ok>": "and_is_ok_qf"},
+                "combined":
+                    {"<two_to_the>": "two_to_the_dec",
+                     "<intor>": "intor_dec",
+                     "<intxor>": "intxor_dec",
+                     "<intand>": "intand_dec",
+                     "<two_to_the_is_ok>": "two_to_the_is_ok_combined",
+                     "<or_is_ok>": "or_is_ok_combined",
+                     "<xor_is_ok>": "xor_is_ok_combined",
+                     "<and_is_ok>": "and_is_ok_combined"},
                 }
 
 

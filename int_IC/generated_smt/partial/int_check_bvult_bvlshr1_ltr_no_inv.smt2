@@ -91,6 +91,9 @@ never_even
 )
 )
 
+;combination of full and partial
+(define-fun two_to_the_is_ok_combined () Bool (and two_to_the_is_ok_full two_to_the_is_ok_partial))
+
 ;quantifier-free axiomatization of power
 (define-fun two_to_the_is_ok_qf () Bool base_cases)
 
@@ -235,6 +238,9 @@ never_even
 (or_ranges k)
 ))
 
+;combination of full and prtial
+(define-fun or_is_ok_combined ((k Int)) Bool (and (or_is_ok_full k) (or_is_ok_partial k)))
+
 ;partial axiomatization of bitwise or - quantifier free
 (define-fun or_is_ok_qf ((k Int)) Bool true)
 
@@ -323,6 +329,11 @@ never_even
 ))
 (define-fun and_is_ok_qf ((k Int)) Bool true)
 
+
+
+;combination of full and prtial
+(define-fun and_is_ok_combined ((k Int)) Bool (and (and_is_ok_full k) (and_is_ok_partial k)))
+
 (define-fun and_is_ok_for ((k Int) (a Int) ) Bool
 (and
 (= (intand k 0 a) 0)
@@ -397,6 +408,9 @@ never_even
 (xor_sym k)
 (xor_ranges k)
 ))
+
+;combination of full and prtial
+(define-fun xor_is_ok_combined ((k Int)) Bool (and (xor_is_ok_full k) (xor_is_ok_partial k)))
 
 ;partial axiomatization of bitwise xor - quantifier free
 (define-fun xor_is_ok_qf ((k Int)) Bool true)
