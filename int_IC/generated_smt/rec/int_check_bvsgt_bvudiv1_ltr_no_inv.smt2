@@ -200,6 +200,7 @@ never_even
 
 (define-fun or_max1 ((k Int)) Bool (forall ((a Int)) (! (= (intor k a (intmax k)) (intmax k)) :pattern ((instantiate_me a))) ))
 (define-fun or_max2 ((k Int)) Bool (forall ((a Int)) (!(and (= (intor k 0 a) a)   (= (intor k a 0) a)) :pattern ((instantiate_me a))) ))
+(define-fun or_ide ((k Int)) Bool (forall ((a Int)) (! (= (intor k a a) a) :pattern ((instantiate_me a))) ))
 (define-fun excluded_middle ((k Int)) Bool (forall ((a Int)) (!(and (= (intor k (intnot k a) a) (intmax k)) (= (intor k a (intnot k a)) (intmax k))  ) :pattern ((instantiate_me a))) ))
 (define-fun or_difference1 ((k Int)) Bool (forall ((a Int) (b Int) (c Int)) (! (=>
 (and (distinct a b)
@@ -232,6 +233,7 @@ never_even
 (define-fun or_is_ok_partial ((k Int)) Bool (and
 (or_max1 k)
 (or_max2 k)
+(or_ide k)
 (excluded_middle k)
 (or_sym k)
 (or_difference1 k)
@@ -289,6 +291,7 @@ never_even
 
 (define-fun and_max1 ((k Int)) Bool (forall ((a Int)) (! (= (intand k a (intmax k)) a) :pattern ((instantiate_me a))) ))
 (define-fun and_max2 ((k Int)) Bool (forall ((a Int)) (! (= (intand k 0 a) 0   ) :pattern ((instantiate_me a))) ))
+(define-fun and_ide ((k Int)) Bool (forall ((a Int)) (! (= (intand k a a) a) :pattern ((instantiate_me a))) ))
 (define-fun rule_of_contradiction ((k Int)) Bool (forall ((a Int)) (! (= (intand k (intnot k a) a) 0 ) :pattern ((instantiate_me a))) ))
 (define-fun and_sym ((k Int)) Bool (forall ((a Int) (b Int)) (! (= (intand k a b) (intand k b a)) :pattern ((instantiate_me a) (instantiate_me b)))))
 (define-fun and_difference1 ((k Int)) Bool (forall ((a Int) (b Int) (c Int)) (! (=>
@@ -322,6 +325,7 @@ never_even
 (define-fun and_is_ok_partial ((k Int)) Bool (and
 (and_max1 k)
 (and_max2 k)
+(and_ide k)
 (rule_of_contradiction k)
 (and_sym k)
 (and_difference1 k)

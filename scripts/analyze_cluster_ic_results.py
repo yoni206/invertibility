@@ -81,6 +81,7 @@ def main(results_dir, tex_csv_dir, translations_file):
 
     only_partial = df.loc[df["encoding"] == "partial"].copy()
     andy_configs(only_partial)
+    andy_encodings(enc_agg)
 
 
     df.to_csv("tmp/tmp0.csv")
@@ -366,10 +367,12 @@ def andy_encodings(df):
 
     for e1 in encodings:
         for e2 in encodings:
+            print(e1, e2, d[e1].difference(d[e2]))
             if e1 == e2:
                 continue
             else:
                 if d[e1].issubset(d[e2]):
+                    print(e1, e2)
                     redundent_encodings.add(e1)
 
 def andy_configs(df):

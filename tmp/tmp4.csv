@@ -1,7 +1,7 @@
 ,ic_name,proved
 0,bvsge_bvadd,yes
 1,bvsge_bvand,no
-2,bvsge_bvashr0,yes
+2,bvsge_bvashr0,no
 3,bvsge_bvashr1,no
 4,bvsge_bvlshr0,yes
 5,bvsge_bvlshr1,no
@@ -17,7 +17,7 @@
 15,bvsge_bvurem1,no
 16,bvsgt_bvadd,yes
 17,bvsgt_bvand,no
-18,bvsgt_bvashr0,yes
+18,bvsgt_bvashr0,no
 19,bvsgt_bvashr1,no
 20,bvsgt_bvlshr0,no
 21,bvsgt_bvlshr1,no
@@ -44,7 +44,7 @@
 42,bvsle_bvshl0,no
 43,bvsle_bvshl1,no
 44,bvsle_bvudiv0,yes
-45,bvsle_bvudiv1,yes
+45,bvsle_bvudiv1,no
 46,bvsle_bvurem0,no
 47,bvsle_bvurem1,yes
 48,bvslt_bvadd,yes
@@ -60,7 +60,7 @@
 58,bvslt_bvshl0,no
 59,bvslt_bvshl1,no
 60,bvslt_bvudiv0,yes
-61,bvslt_bvudiv1,yes
+61,bvslt_bvudiv1,no
 62,bvslt_bvurem0,no
 63,bvslt_bvurem1,yes
 64,bvuge_bvadd,yes
@@ -104,10 +104,10 @@
 102,bvule_bvmul,yes
 103,bvule_bvneg,yes
 104,bvule_bvnot,yes
-105,bvule_bvor,yes
+105,bvule_bvor,no
 106,bvule_bvshl0,yes
 107,bvule_bvshl1,no
-108,bvule_bvudiv0,yes
+108,bvule_bvudiv0,no
 109,bvule_bvudiv1,no
 110,bvule_bvurem0,yes
 111,bvule_bvurem1,yes
@@ -120,7 +120,7 @@
 118,bvult_bvmul,yes
 119,bvult_bvneg,yes
 120,bvult_bvnot,yes
-121,bvult_bvor,yes
+121,bvult_bvor,no
 122,bvult_bvshl0,yes
 123,bvult_bvshl1,no
 124,bvult_bvudiv0,yes
@@ -156,6 +156,6 @@
 154,ne_bvshl0,no
 155,ne_bvshl1,no
 156,ne_bvudiv0,yes
-157,ne_bvudiv1,yes
+157,ne_bvudiv1,no
 158,ne_bvurem0,yes
 159,ne_bvurem1,yes
