@@ -1,24 +1,24 @@
 [runlim] version:		1.10fixed
-[runlim] time limit:		1800 seconds
+[runlim] time limit:		300 seconds
 [runlim] real time limit:	311040000 seconds
 [runlim] space limit:		4000 MB
 [runlim] argv[0]:		./cvc4
 [runlim] argv[1]:		--nl-ext-tplanes
 [runlim] argv[2]:		--full-saturate-quant
 [runlim] argv[3]:		--no-e-matching
-[runlim] argv[4]:		/tmp/dnm4dsn4.smt2
-[runlim] start:			Sat Feb  9 20:40:29 2019
-[runlim] main pid:		17111
-/tmp/dnm4dsn4.smt2:4.12: No set-logic command was given before this point.
-/tmp/dnm4dsn4.smt2:4.12: CVC4 will make all theories available.
-/tmp/dnm4dsn4.smt2:4.12: Consider setting a stricter logic for (likely) better performance.
-/tmp/dnm4dsn4.smt2:4.12: To suppress this warning in the future use (set-logic ALL).
-[runlim] sample:		9.2 time, 10.4 real, 45.6 MB
-[runlim] end:			Sat Feb  9 20:40:42 2019
+[runlim] argv[4]:		/tmp/PIiEAdjA.smt2
+[runlim] start:			Wed Feb 13 23:45:02 2019
+[runlim] main pid:		22524
+/tmp/PIiEAdjA.smt2:4.12: No set-logic command was given before this point.
+/tmp/PIiEAdjA.smt2:4.12: CVC4 will make all theories available.
+/tmp/PIiEAdjA.smt2:4.12: Consider setting a stricter logic for (likely) better performance.
+/tmp/PIiEAdjA.smt2:4.12: To suppress this warning in the future use (set-logic ALL).
+[runlim] sample:		8.4 time, 10.5 real, 45.3 MB
+[runlim] end:			Wed Feb 13 23:45:16 2019
 [runlim] status:		ok
 [runlim] result:		0
 [runlim] children:		0
-[runlim] real:			13.56 seconds
-[runlim] time:			11.94 seconds
-[runlim] space:			47.2 MB
-[runlim] samples:		131
+[runlim] real:			14.80 seconds
+[runlim] time:			12.25 seconds
+[runlim] space:			47.3 MB
+[runlim] samples:		142

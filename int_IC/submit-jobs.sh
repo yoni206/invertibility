@@ -8,19 +8,19 @@ num_cores=1
 space_limit="4000"
 
 benchmark_set=foo
-time_limit=1800
+time_limit=300
 subdir_name=cluster_results
 
 #
 # cvc4 runs
 #
-directory_name="$exp_base_dir/$subdir_name/cvc4_default"
-options=""
-echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
-
-#directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes"
-#options="--nl-ext-tplanes"
+#directory_name="$exp_base_dir/$subdir_name/cvc4_default"
+#options=""
 #echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
+
+directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes"
+options="--nl-ext-tplanes"
+echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
 #
 #directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_fmf"
 #options="--nl-ext-tplanes --fmf-fun-rlv"

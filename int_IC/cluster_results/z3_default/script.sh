@@ -2,14 +2,14 @@
 #SBATCH -e /dev/null
 #SBATCH -o /dev/null
 #SBATCH -c 1
-#SBATCH -a 1-2712
+#SBATCH -a 1-3390
 #SBATCH --qos=normal
-#SBATCH -t 00:00:1800
+#SBATCH -t 00:00:300
 #SBATCH -D /barrett/scratch/yoniz/git/invertibility/int_IC/cluster_results/z3_default
 
 prefix="/barrett/scratch/yoniz/git/invertibility/int_IC/generated_smt/"
 runlim_binary="/barrett/scratch/local/bin/runlim"
-runlim_options="--time-limit=1800 --space-limit=4000"
+runlim_options="--time-limit=300 --space-limit=4000"
 solver="./z3"
 solver_options=""
 benchmarks="/barrett/scratch/yoniz/git/invertibility/int_IC/cluster_results/z3_default/benchmarks"

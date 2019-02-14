@@ -1,27 +1,28 @@
 [runlim] version:		1.10fixed
-[runlim] time limit:		1800 seconds
+[runlim] time limit:		300 seconds
 [runlim] real time limit:	311040000 seconds
 [runlim] space limit:		4000 MB
 [runlim] argv[0]:		./cvc4
 [runlim] argv[1]:		--nl-ext-tplanes
 [runlim] argv[2]:		--full-saturate-quant
 [runlim] argv[3]:		--no-e-matching
-[runlim] argv[4]:		/tmp/vp5FAfkR.smt2
-[runlim] start:			Sat Feb  9 20:44:16 2019
-[runlim] main pid:		18082
-/tmp/vp5FAfkR.smt2:4.12: No set-logic command was given before this point.
-/tmp/vp5FAfkR.smt2:4.12: CVC4 will make all theories available.
-/tmp/vp5FAfkR.smt2:4.12: Consider setting a stricter logic for (likely) better performance.
-/tmp/vp5FAfkR.smt2:4.12: To suppress this warning in the future use (set-logic ALL).
-[runlim] sample:		9.6 time, 10.0 real, 44.3 MB
-[runlim] sample:		19.6 time, 20.0 real, 54.2 MB
-[runlim] sample:		29.6 time, 30.0 real, 58.2 MB
-[runlim] sample:		39.6 time, 40.0 real, 58.4 MB
-[runlim] end:			Sat Feb  9 20:45:05 2019
+[runlim] argv[4]:		/tmp/I7iRnvkE.smt2
+[runlim] start:			Wed Feb 13 23:45:18 2019
+[runlim] main pid:		16020
+/tmp/I7iRnvkE.smt2:4.12: No set-logic command was given before this point.
+/tmp/I7iRnvkE.smt2:4.12: CVC4 will make all theories available.
+/tmp/I7iRnvkE.smt2:4.12: Consider setting a stricter logic for (likely) better performance.
+/tmp/I7iRnvkE.smt2:4.12: To suppress this warning in the future use (set-logic ALL).
+[runlim] sample:		8.3 time, 10.4 real, 41.5 MB
+[runlim] sample:		18.3 time, 20.4 real, 52.7 MB
+[runlim] sample:		28.3 time, 30.4 real, 58.2 MB
+[runlim] sample:		38.3 time, 40.4 real, 58.2 MB
+[runlim] sample:		48.0 time, 50.4 real, 62.8 MB
+[runlim] end:			Wed Feb 13 23:46:09 2019
 [runlim] status:		ok
 [runlim] result:		0
 [runlim] children:		0
-[runlim] real:			49.25 seconds
-[runlim] time:			48.75 seconds
+[runlim] real:			51.94 seconds
+[runlim] time:			49.45 seconds
 [runlim] space:			63.3 MB
-[runlim] samples:		492
+[runlim] samples:		515
