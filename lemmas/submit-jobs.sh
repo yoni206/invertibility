@@ -8,7 +8,7 @@ num_cores=1
 space_limit="4000"
 
 benchmark_set=foo
-time_limit=1
+time_limit=3600
 subdir_name=cluster_results
 
 #
@@ -18,29 +18,29 @@ directory_name="$exp_base_dir/$subdir_name/cvc4_default"
 options=""
 echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
 
-#directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes"
-#options="--nl-ext-tplanes"
-#echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
-#
-#directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_fmf"
-#options="--nl-ext-tplanes --fmf-fun-rlv"
-#echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
-#
-#directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_cbqi"
-#options="--nl-ext-tplanes --cbqi-all"
-#echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
+directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes"
+options="--nl-ext-tplanes"
+echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
+
+directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_fmf"
+options="--nl-ext-tplanes --fmf-fun-rlv"
+echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
+
+directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_cbqi"
+options="--nl-ext-tplanes --cbqi-all"
+echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
 
 directory_name="$exp_base_dir/$subdir_name/cvc4_tplanes_saturate_no_e_matching"
 options="--nl-ext-tplanes --full-saturate-quant --no-e-matching"
 echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
 
-#directory_name="$exp_base_dir/$subdir_name/cvc4_cbqi"
-#options="--cbqi-all"
-#echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
-#
-#directory_name="$exp_base_dir/$subdir_name/cvc4_fmf"
-#options="--fmf-fun-rlv"
-#echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
+directory_name="$exp_base_dir/$subdir_name/cvc4_cbqi"
+options="--cbqi-all"
+echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
+
+directory_name="$exp_base_dir/$subdir_name/cvc4_fmf"
+options="--fmf-fun-rlv"
+echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $cvc4_binary
 
 # z3 runs
 #
