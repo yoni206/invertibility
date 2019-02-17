@@ -105,6 +105,8 @@ def tex_stuff(ic_agg, direction_agg, cond_agg, config_cond_agg, tex_csv_dir, tra
     gen_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file)
     gen_enc_conf(config_cond_agg, translations_file, tex_csv_dir)
     gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir)
+        
+
 
 def gen_enc_conf(config_cond_agg, translations_file, tex_csv_dir):
     ic_names = config_cond_agg["ic_name"].tolist()
@@ -216,6 +218,7 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     pivot = cond_agg.pivot_table(index = ["encoding", "ic_name"], columns = "direction_cond", values = "proved", aggfunc = lambda x : " ".join(x)).reset_index()
     pivot["ltr_inv"] = pivot.apply(cond_inv_yes, axis=1)
     pivot["ltr"] = pivot.apply(ltr_yes, axis=1)
+    pivot.to_csv("~/tmp.csv")
     group_by = pivot.groupby(["encoding"]) 
     agg = group_by.agg(countyes)
 

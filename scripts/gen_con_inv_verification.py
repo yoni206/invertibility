@@ -65,7 +65,7 @@ def gen_bms(inverses, dest_dir, dir_of_SC_verification):
         invs = inverses[name]
         for syn in invs:
             if inv_exists(invs, syn):
-                for k in range(4,64):
+                for k in range(1,65):
                     inv = adjust_term(invs[syn], k)
                     path = dest_dir + "/" + syn + "/" + name + str(k) + ".smt2"
                     l, SC = l_name_to_l_sc[name]
