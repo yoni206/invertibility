@@ -8,7 +8,7 @@ num_cores=1
 space_limit="4000"
 
 benchmark_set=foo
-time_limit=300
+time_limit=1800
 subdir_name=cluster_results
 
 #

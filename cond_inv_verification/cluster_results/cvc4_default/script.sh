@@ -2,7 +2,7 @@
 #SBATCH -e /dev/null
 #SBATCH -o /dev/null
 #SBATCH -c 1
-#SBATCH -a 1-22860
+#SBATCH -a 1-24384
 #SBATCH --qos=normal
 #SBATCH -t 00:00:3600
 #SBATCH -D /barrett/scratch/yoniz/git/invertibility/cond_inv_verification/cluster_results/cvc4_default
