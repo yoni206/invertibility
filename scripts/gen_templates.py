@@ -60,8 +60,18 @@ def main(templates_dir, meta_template_file):
 def generate_template(templates_dir, meta_template, sf):
     template = meta_template
     template = utils.substitute(template, replacements[sf])
+    if sf != "rec":
+        template = remove_rec(template)
     write_content_to_file(template, sf + ".smt2", templates_dir)
 
+def remove_rec(template):
+    lines = template.splitlines()
+    new_lines = []
+    for line in lines:
+        if "(define-fun-rec" not in line:
+            new_lines.append(line)
+    template = "\n".join(new_lines)
+    return template
 
 def write_content_to_file(content, filename, d):
     f = open(d + "/" + filename, "w")

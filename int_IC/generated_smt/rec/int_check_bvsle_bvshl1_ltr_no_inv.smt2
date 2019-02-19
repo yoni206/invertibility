@@ -8,10 +8,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;recursive definition
-(define-fun-rec two_to_the_def ((b Int)) Int
-(ite (<= b 0)
-1
-(* 2 (two_to_the_def (- b 1)))))
+;must be a one liner!
+(define-fun-rec two_to_the_def ((b Int)) Int (ite (<= b 0) 1 (* 2 (two_to_the_def (- b 1)))))
 
 ;declaration that will be axiomatized
 (declare-fun two_to_the_dec (Int) Int)
@@ -176,10 +174,8 @@ never_even
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;recursive definition of or
-(define-fun-rec intor_def ((k Int) (a Int) (b Int)) Int
-(ite (<= k 1)
-(intor_helper (lsb k a) (lsb k b))
-(+ (intor_def (- k 1) a b) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
+;must be a one liner!
+(define-fun-rec intor_def ((k Int) (a Int) (b Int)) Int (ite (<= k 1) (intor_helper (lsb k a) (lsb k b)) (+ (intor_def (- k 1) a b) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
 
 ;declaration that will be axiomatized
 (declare-fun intor_dec (Int Int Int) Int)
@@ -267,10 +263,8 @@ never_even
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;recursive definition of and
-(define-fun-rec intand_def ((k Int) (a Int) (b Int)) Int
-(ite (<= k 1)
-(intand_helper (lsb k a) (lsb k b))
-(+ (intand_def (- k 1) a b) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
+;must be a one liner!
+(define-fun-rec intand_def ((k Int) (a Int) (b Int)) Int (ite (<= k 1) (intand_helper (lsb k a) (lsb k b)) (+ (intand_def (- k 1) a b) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
 
 ;declaration that will be axiomatized
 (declare-fun intand_dec (Int Int Int) Int)
@@ -357,10 +351,8 @@ never_even
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;recursive definition of xor
-(define-fun-rec intxor_def ((k Int) (a Int) (b Int)) Int
-(ite (<= k 1)
-(intxor_helper (lsb k a) (lsb k b))
-(+ (intxor_def (- k 1) a b) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
+;must be a one liner!
+(define-fun-rec intxor_def ((k Int) (a Int) (b Int)) Int (ite (<= k 1) (intxor_helper (lsb k a) (lsb k b)) (+ (intxor_def (- k 1) a b) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
 
 ;declaration that will be axiomatized
 (declare-fun intxor_dec (Int Int Int) Int)
