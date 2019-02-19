@@ -3,6 +3,7 @@
 exp_base_dir="/barrett/scratch/yoniz/git/invertibility/int_IC"
 cvc4_binary="/barrett/scratch/yoniz/git/CVC4/build/bin/cvc4"
 z3_binary="/barrett/scratch/yoniz/git/z3/build/z3"
+vampire_binary="/barrett/scratch/preiner/papers/2019-cade/solvers/vampire-wrapper.sh"
 partition="normal"         # default
 num_cores=1
 space_limit="4000"
@@ -48,3 +49,8 @@ directory_name="$exp_base_dir/$subdir_name/z3_default"
 options=""
 echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $z3_binary
 #
+
+#vampire runs
+directory_name="$exp_base_dir/$subdir_name/vampire"
+options="--ignore_missing on --mode smtcomp"
+echo -e "$benchmark_set\n$directory_name\n$options\n$partition\n$time_limit\n$space_limit\n$num_cores\n" | submit-solver.sh $vampire_binary
