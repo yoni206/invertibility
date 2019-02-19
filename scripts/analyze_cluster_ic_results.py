@@ -152,7 +152,6 @@ def gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir):
     num_ltr_proved = len(ltr_proved.index)
     num_rtl_proved = len(rtl_proved.index)
 
-    num_qf_proved = enc_conds["total"]["qf"]
 
     with open(tex_csv_dir + "/total_proved.tex", "w") as myfile:
         myfile.write(str(num_proved))
@@ -161,8 +160,6 @@ def gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir):
     with open(tex_csv_dir + "/rtl_proved.tex", "w") as myfile:
         myfile.write(str(num_rtl_proved))
     
-    with open(tex_csv_dir + "/qf_proved.tex", "w") as myfile:
-        myfile.write(str(num_qf_proved))
 
 def gen_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file):
     ic_names = cond_agg["ic_name"].tolist()
@@ -213,15 +210,35 @@ def ltr_yes(row):
     else:
         return "no"
 
+def ltr_only(row):
+    if row.ltr == "yes" and row.rtl == "no":
+        return "yes"
+    else:
+        return "no"
+
+def rtl_only(row):
+    if row.rtl == "yes" and row.ltr == "no":
+        return "yes"
+    else:
+        return "no"
+
+def fully_proved(row):
+    if row.rtl == "yes" and row.ltr == "yes":
+        return "yes"
+    else:
+        return "no"
+
+
 def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     cond_agg["direction_cond"] = cond_agg.apply(concat_special, axis=1)
     pivot = cond_agg.pivot_table(index = ["encoding", "ic_name"], columns = "direction_cond", values = "proved", aggfunc = lambda x : " ".join(x)).reset_index()
     pivot["ltr_inv"] = pivot.apply(cond_inv_yes, axis=1)
     pivot["ltr"] = pivot.apply(ltr_yes, axis=1)
-    pivot.to_csv("~/tmp.csv")
+    pivot["ltr_only"] = pivot.apply(ltr_only, axis=1)
+    pivot["rtl_only"] = pivot.apply(rtl_only, axis=1)
+    pivot["fully_proved"] = pivot.apply(fully_proved, axis=1)
     group_by = pivot.groupby(["encoding"]) 
     agg = group_by.agg(countyes)
-
 
     #do another pivot for total according to direction and cond.
     g = cond_agg.groupby(["ic_name", "direction_cond"], as_index =False)
@@ -229,28 +246,29 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     ap = a.pivot_table(index = ["ic_name"], columns = "direction_cond", values = "proved", aggfunc = lambda x: " ".join(x)).reset_index()
     ap["ltr_inv"] = ap.apply(cond_inv_yes, axis=1)
     ap["ltr"] = ap.apply(ltr_yes, axis=1)
+    ap["ltr_only"] = ap.apply(ltr_only, axis=1)
+    ap["rtl_only"] = ap.apply(rtl_only, axis=1)
+    ap["fully_proved"] = ap.apply(fully_proved, axis=1)
     ap = ap.set_index("ic_name")
     s = ap.apply(countyes)
     s.name = "total"
+
     agg.loc["total"] = s
     agg = agg.drop("ic_name", axis=1)
     agg = agg.astype(int)
     agg["rtl_non_trivial"] = agg["rtl"].apply(lambda x : int(x) - TRIVIAL_RTL)
     agg["rtl_complex"] = agg.apply(lambda row : str(row["rtl"]) + "~(" + str(row["rtl_non_trivial"])  + ")", axis=1 )
-    agg["total"] = agg.apply(lambda row : row["ltr"] + row["rtl"], axis=1)
-    agg["total_non_trivial"] = agg["total"].apply(lambda x : int(x) - TRIVIAL_RTL)
-    agg["total_complex"] = agg.apply(lambda row : str(row["total"]) + "~(" + str(row["total_non_trivial"])  + ")", axis=1 )
     
     agg = agg.rename(under_to_middle ,axis='columns')
     #output is what is going to the csv. agg is what is returned, with all info.
     output = agg.copy() 
     output = output.drop("rtl", axis=1)
     output = output.drop("rtl-non-trivial", axis=1)
-    output = output.drop("total", axis=1)
-    output = output.drop("total-non-trivial", axis=1)
-    titles = ['ltr-inv-a', 'ltr-inv-g', 'ltr-inv-r', 'ltr-inv', 'ltr-no-inv', 'ltr', 'rtl-complex', 'total-complex']
+    output = output.drop("ltr-inv-a", axis=1)
+    output = output.drop("ltr-inv-g", axis=1)
+    output = output.drop("ltr-inv-r", axis=1)
+    titles = ['fully-proved', 'rtl-only', 'ltr-only', 'ltr-inv', 'ltr-no-inv']
     output = output.reindex(columns = titles)
-    output = output.rename(columns = {"rtl-complex": "rtl", "total-complex": "total"})
     output.to_csv(tex_csv_dir + "/" + "cond.csv")
     return agg.copy()
 
