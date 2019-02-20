@@ -83,6 +83,8 @@ def main(results_dir, tex_csv_dir, translations_file):
     andy_configs(only_partial)
     andy_encodings(enc_agg)
 
+    print(keep_encodings(enc_agg, ["qf", "partial", "full"]))
+
 
     df.to_csv("tmp/tmp0.csv")
     cond_agg.to_csv("tmp/tmp1.csv")
@@ -104,7 +106,7 @@ def tex_stuff(ic_agg, direction_agg, cond_agg, config_cond_agg, tex_csv_dir, tra
     enc_conds = gen_encoding_cond_tables(cond_agg, tex_csv_dir)
     gen_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file)
     gen_enc_conf(config_cond_agg, translations_file, tex_csv_dir)
-    gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir)
+    #gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir)
         
 
 
@@ -228,15 +230,35 @@ def fully_proved(row):
     else:
         return "no"
 
+def nothing_proved(row):
+    if row.rtl == "no" and row.ltr == "no":
+        return "yes"
+    else:
+        return "no"
+
+def inv_only(row):
+    if row["ltr_inv"] == "yes" and row["ltr_no_inv"] == "no":
+        return "yes"
+    else:
+        return "no"
+
+def no_inv_only(row):
+    if row["ltr_inv"] == "no" and row["ltr_no_inv"] == "yes":
+        return "yes"
+    else:
+        return "no"
 
 def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     cond_agg["direction_cond"] = cond_agg.apply(concat_special, axis=1)
     pivot = cond_agg.pivot_table(index = ["encoding", "ic_name"], columns = "direction_cond", values = "proved", aggfunc = lambda x : " ".join(x)).reset_index()
     pivot["ltr_inv"] = pivot.apply(cond_inv_yes, axis=1)
     pivot["ltr"] = pivot.apply(ltr_yes, axis=1)
+    pivot["ltr_inv_only"] = pivot.apply(inv_only, axis=1)
+    pivot["ltr_no_inv_only"] = pivot.apply(no_inv_only, axis=1)
     pivot["ltr_only"] = pivot.apply(ltr_only, axis=1)
     pivot["rtl_only"] = pivot.apply(rtl_only, axis=1)
     pivot["fully_proved"] = pivot.apply(fully_proved, axis=1)
+    pivot["nothing_proved"] = pivot.apply(nothing_proved, axis=1)
     group_by = pivot.groupby(["encoding"]) 
     agg = group_by.agg(countyes)
 
@@ -246,9 +268,12 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     ap = a.pivot_table(index = ["ic_name"], columns = "direction_cond", values = "proved", aggfunc = lambda x: " ".join(x)).reset_index()
     ap["ltr_inv"] = ap.apply(cond_inv_yes, axis=1)
     ap["ltr"] = ap.apply(ltr_yes, axis=1)
+    ap["ltr_inv_only"] = ap.apply(inv_only, axis=1)
+    ap["ltr_no_inv_only"] = ap.apply(no_inv_only, axis=1)
     ap["ltr_only"] = ap.apply(ltr_only, axis=1)
     ap["rtl_only"] = ap.apply(rtl_only, axis=1)
     ap["fully_proved"] = ap.apply(fully_proved, axis=1)
+    ap["nothing_proved"] = ap.apply(nothing_proved, axis=1)
     ap = ap.set_index("ic_name")
     s = ap.apply(countyes)
     s.name = "total"
@@ -262,12 +287,13 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     agg = agg.rename(under_to_middle ,axis='columns')
     #output is what is going to the csv. agg is what is returned, with all info.
     output = agg.copy() 
+    output.to_csv(tex_csv_dir + "/" + "cond_detailed.csv")
     output = output.drop("rtl", axis=1)
     output = output.drop("rtl-non-trivial", axis=1)
     output = output.drop("ltr-inv-a", axis=1)
     output = output.drop("ltr-inv-g", axis=1)
     output = output.drop("ltr-inv-r", axis=1)
-    titles = ['fully-proved', 'rtl-only', 'ltr-only', 'ltr-inv', 'ltr-no-inv']
+    titles = ['fully-proved', 'nothing-proved', 'rtl-only', 'ltr-only', 'ltr-inv', 'ltr-no-inv']
     output = output.reindex(columns = titles)
     output.to_csv(tex_csv_dir + "/" + "cond.csv")
     return agg.copy()
@@ -388,7 +414,6 @@ def andy_encodings(df):
 
     for e1 in encodings:
         for e2 in encodings:
-            print(e1, e2, d[e1].difference(d[e2]))
             if e1 == e2:
                 continue
             else:
@@ -501,7 +526,8 @@ def get_status(err_content):
     lines = err_content.splitlines()
     prefix = "[runlim] status:"
     status_lines = [line for line in lines if line.startswith(prefix)]
-    assert(len(status_lines) == 1)
+    if len(status_lines) != 1:
+        assert(False)
     status_line = status_lines[0]
     status = status_line[len(prefix):].strip()
     return status
