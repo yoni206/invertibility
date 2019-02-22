@@ -694,7 +694,7 @@ vampire,bvsgt_bvor,rtl,no
 vampire,bvsgt_bvshl0,ltr,no
 vampire,bvsgt_bvshl0,rtl,no
 vampire,bvsgt_bvshl1,ltr,no
-vampire,bvsgt_bvshl1,rtl,no
+vampire,bvsgt_bvshl1,rtl,yes
 vampire,bvsgt_bvudiv0,ltr,no
 vampire,bvsgt_bvudiv0,rtl,no
 vampire,bvsgt_bvudiv1,ltr,no
@@ -875,7 +875,7 @@ vampire,bvult_bvlshr0,ltr,no
 vampire,bvult_bvlshr0,rtl,yes
 vampire,bvult_bvlshr1,ltr,no
 vampire,bvult_bvlshr1,rtl,yes
-vampire,bvult_bvmul,ltr,yes
+vampire,bvult_bvmul,ltr,no
 vampire,bvult_bvmul,rtl,yes
 vampire,bvult_bvneg,ltr,no
 vampire,bvult_bvneg,rtl,yes
@@ -918,7 +918,7 @@ vampire,eq_bvor,rtl,no
 vampire,eq_bvshl0,ltr,yes
 vampire,eq_bvshl0,rtl,no
 vampire,eq_bvshl1,ltr,no
-vampire,eq_bvshl1,rtl,no
+vampire,eq_bvshl1,rtl,yes
 vampire,eq_bvudiv0,ltr,yes
 vampire,eq_bvudiv0,rtl,no
 vampire,eq_bvudiv1,ltr,no
@@ -993,9 +993,9 @@ z3_default,bvsge_bvurem1,ltr,no
 z3_default,bvsge_bvurem1,rtl,no
 z3_default,bvsgt_bvadd,ltr,no
 z3_default,bvsgt_bvadd,rtl,yes
-z3_default,bvsgt_bvand,ltr,no
+z3_default,bvsgt_bvand,ltr,yes
 z3_default,bvsgt_bvand,rtl,no
-z3_default,bvsgt_bvashr0,ltr,no
+z3_default,bvsgt_bvashr0,ltr,yes
 z3_default,bvsgt_bvashr0,rtl,no
 z3_default,bvsgt_bvashr1,ltr,no
 z3_default,bvsgt_bvashr1,rtl,no
@@ -1009,7 +1009,7 @@ z3_default,bvsgt_bvneg,ltr,no
 z3_default,bvsgt_bvneg,rtl,yes
 z3_default,bvsgt_bvnot,ltr,yes
 z3_default,bvsgt_bvnot,rtl,yes
-z3_default,bvsgt_bvor,ltr,no
+z3_default,bvsgt_bvor,ltr,yes
 z3_default,bvsgt_bvor,rtl,no
 z3_default,bvsgt_bvshl0,ltr,no
 z3_default,bvsgt_bvshl0,rtl,no
@@ -1023,7 +1023,7 @@ z3_default,bvsgt_bvurem0,ltr,no
 z3_default,bvsgt_bvurem0,rtl,no
 z3_default,bvsgt_bvurem1,ltr,no
 z3_default,bvsgt_bvurem1,rtl,no
-z3_default,bvsle_bvadd,ltr,yes
+z3_default,bvsle_bvadd,ltr,no
 z3_default,bvsle_bvadd,rtl,yes
 z3_default,bvsle_bvand,ltr,no
 z3_default,bvsle_bvand,rtl,no
@@ -1041,7 +1041,7 @@ z3_default,bvsle_bvneg,ltr,no
 z3_default,bvsle_bvneg,rtl,yes
 z3_default,bvsle_bvnot,ltr,yes
 z3_default,bvsle_bvnot,rtl,yes
-z3_default,bvsle_bvor,ltr,no
+z3_default,bvsle_bvor,ltr,yes
 z3_default,bvsle_bvor,rtl,no
 z3_default,bvsle_bvshl0,ltr,no
 z3_default,bvsle_bvshl0,rtl,no
@@ -1053,7 +1053,7 @@ z3_default,bvsle_bvudiv1,ltr,yes
 z3_default,bvsle_bvudiv1,rtl,no
 z3_default,bvsle_bvurem0,ltr,no
 z3_default,bvsle_bvurem0,rtl,no
-z3_default,bvsle_bvurem1,ltr,yes
+z3_default,bvsle_bvurem1,ltr,no
 z3_default,bvsle_bvurem1,rtl,yes
 z3_default,bvslt_bvadd,ltr,no
 z3_default,bvslt_bvadd,rtl,yes
@@ -1069,7 +1069,7 @@ z3_default,bvslt_bvlshr1,ltr,no
 z3_default,bvslt_bvlshr1,rtl,no
 z3_default,bvslt_bvmul,ltr,no
 z3_default,bvslt_bvmul,rtl,no
-z3_default,bvslt_bvneg,ltr,no
+z3_default,bvslt_bvneg,ltr,yes
 z3_default,bvslt_bvneg,rtl,yes
 z3_default,bvslt_bvnot,ltr,yes
 z3_default,bvslt_bvnot,rtl,yes
@@ -1081,12 +1081,12 @@ z3_default,bvslt_bvshl1,ltr,no
 z3_default,bvslt_bvshl1,rtl,no
 z3_default,bvslt_bvudiv0,ltr,yes
 z3_default,bvslt_bvudiv0,rtl,no
-z3_default,bvslt_bvudiv1,ltr,no
+z3_default,bvslt_bvudiv1,ltr,yes
 z3_default,bvslt_bvudiv1,rtl,no
 z3_default,bvslt_bvurem0,ltr,no
 z3_default,bvslt_bvurem0,rtl,no
 z3_default,bvslt_bvurem1,ltr,yes
-z3_default,bvslt_bvurem1,rtl,yes
+z3_default,bvslt_bvurem1,rtl,no
 z3_default,bvuge_bvadd,ltr,yes
 z3_default,bvuge_bvadd,rtl,yes
 z3_default,bvuge_bvand,ltr,yes
@@ -1115,7 +1115,7 @@ z3_default,bvuge_bvudiv0,ltr,no
 z3_default,bvuge_bvudiv0,rtl,no
 z3_default,bvuge_bvudiv1,ltr,yes
 z3_default,bvuge_bvudiv1,rtl,yes
-z3_default,bvuge_bvurem0,ltr,no
+z3_default,bvuge_bvurem0,ltr,yes
 z3_default,bvuge_bvurem0,rtl,yes
 z3_default,bvuge_bvurem1,ltr,no
 z3_default,bvuge_bvurem1,rtl,no
@@ -1155,7 +1155,7 @@ z3_default,bvule_bvadd,ltr,yes
 z3_default,bvule_bvadd,rtl,yes
 z3_default,bvule_bvand,ltr,yes
 z3_default,bvule_bvand,rtl,yes
-z3_default,bvule_bvashr0,ltr,no
+z3_default,bvule_bvashr0,ltr,yes
 z3_default,bvule_bvashr0,rtl,yes
 z3_default,bvule_bvashr1,ltr,no
 z3_default,bvule_bvashr1,rtl,no
@@ -1175,7 +1175,7 @@ z3_default,bvule_bvshl0,ltr,yes
 z3_default,bvule_bvshl0,rtl,yes
 z3_default,bvule_bvshl1,ltr,no
 z3_default,bvule_bvshl1,rtl,yes
-z3_default,bvule_bvudiv0,ltr,no
+z3_default,bvule_bvudiv0,ltr,yes
 z3_default,bvule_bvudiv0,rtl,no
 z3_default,bvule_bvudiv1,ltr,no
 z3_default,bvule_bvudiv1,rtl,no
@@ -1269,7 +1269,7 @@ z3_default,ne_bvor,ltr,yes
 z3_default,ne_bvor,rtl,yes
 z3_default,ne_bvshl0,ltr,no
 z3_default,ne_bvshl0,rtl,yes
-z3_default,ne_bvshl1,ltr,no
+z3_default,ne_bvshl1,ltr,yes
 z3_default,ne_bvshl1,rtl,yes
 z3_default,ne_bvudiv0,ltr,yes
 z3_default,ne_bvudiv0,rtl,yes
