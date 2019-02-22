@@ -20,11 +20,12 @@ def main(results_dir, tex_csv_dir, translations_file):
                 log_content = myfile.read()
             status = get_status(err_content)
             is_ok = get_status_ok(status)
+            seconds = get_seconds(err_content)
             if is_ok:
                 result = get_result(log_content)
             else:
                 result = "no result"
-            results[config + "/" + smt_file] = status + "," + result
+            results[config + "/" + smt_file] = status + "," + result + "," + seconds
     df = ps.DataFrame(list(results.items()))
     df.index = df.index.rename("index")
     df.columns = [ 'path', 'err_log']
@@ -39,6 +40,7 @@ def main(results_dir, tex_csv_dir, translations_file):
     df["cond_inv"] = df.filename_clean.apply(cond_inv_info)
     df["status"] = df.err_log.apply(lambda x: x.split(",")[0])
     df["result"] = df.err_log.apply(lambda x: x.split(",")[1])
+    df["seconds"] = df.err_log.apply(lambda x: x.split(",")[2])
     validate_stat_res(df)
     validate_consistency(df)
     validate_no_sat_except_qf_and_cond_inv(df)
@@ -47,6 +49,10 @@ def main(results_dir, tex_csv_dir, translations_file):
     
     cond_grouped = df.groupby(["ic_name", "direction", "encoding", "cond_inv"], as_index=False)
     cond_agg = cond_grouped.agg({'proved' : agg_yes})
+
+    yes_filter = df.loc[df["proved"] == "yes"]
+    yes_grouped = yes_filter.groupby(["ic_name", "direction", "encoding", "cond_inv"], as_index=False)
+    time_agg = yes_grouped.agg({'seconds': 'min'})
     
     enc_grouped = cond_agg.groupby(["ic_name", "direction", "encoding"], as_index = False)
     enc_agg = enc_grouped.agg({'proved' : agg_yes})
@@ -79,11 +85,14 @@ def main(results_dir, tex_csv_dir, translations_file):
     conf_sum_agg = conf_sum_grouped.agg({'proved':agg_count_yes})
 
 
-    only_partial = df.loc[df["encoding"] == "partial"].copy()
-    andy_configs(only_partial)
-    andy_encodings(enc_agg)
+    only_combined = df.loc[df["encoding"] == "combined"].copy()
+    red_configs = andy_configs(only_combined)
+    print("panda red configs", red_configs)
+    red_encodings = andy_encodings(enc_agg)
+    print("panda red encs", red_encodings)
 
-    print(keep_encodings(enc_agg, ["qf", "partial", "full"]))
+    print(keep_encodings(enc_agg, ["qf", "combined"]))
+    print(keep_configs(only_combined, ["z3_default", "cvc4_tplanes", "vampire" ]))
 
 
     df.to_csv("tmp/tmp0.csv")
@@ -98,6 +107,7 @@ def main(results_dir, tex_csv_dir, translations_file):
     enc_sum_agg.to_csv("tmp/tmp9.csv")
     conf_alone_agg.to_csv("tmp/tmp10.csv")
     conf_sum_agg.to_csv("tmp/tmp11.csv")
+    time_agg.to_csv("tmp/tmp12.csv")
 
     tex_stuff(ic_agg, direction_agg, cond_agg, config_cond_agg, tex_csv_dir, translations_file)
 
@@ -356,9 +366,8 @@ def get_family(s):
 def keep_configs(df, configs_to_keep):
     configs = set(df["config"].tolist())
     assert(set(configs_to_keep).issubset(configs))
-    print(configs_to_keep)
     encodings = set(df["encoding"].tolist())
-    assert len(encodings) == 1 and "partial" in encodings
+    assert len(encodings) == 1 and "combined" in encodings
     df = df.drop(columns = ["encoding"])
     cond_grouped = df.groupby(["ic_name", "direction", "config", ], as_index=False)
     cond_agg = cond_grouped.agg({'proved' : agg_yes})
@@ -366,7 +375,7 @@ def keep_configs(df, configs_to_keep):
     dff = df.loc[df["to_keep"] == True].copy()
     dff_grouped = dff.groupby(["ic_name", "direction"], as_index=False)
     dff_agg = dff_grouped.agg({'proved' : agg_yes})
-    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index).copy()
+    return len(dff_agg.loc[dff_agg["proved"] == "yes"].index)
 
 
 def drop_configs(df, configs_to_drop):
@@ -420,10 +429,11 @@ def andy_encodings(df):
                 if d[e1].issubset(d[e2]):
                     print(e1, e2)
                     redundent_encodings.add(e1)
+    return redundent_encodings
 
 def andy_configs(df):
     encodings = set(df["encoding"].tolist())
-    assert len(encodings) == 1 and "partial" in encodings
+    assert len(encodings) == 1 and "combined" in encodings
     df = df.drop(columns = ["encoding"])
     cond_grouped = df.groupby(["ic_name", "direction", "config", ], as_index=False)
     cond_agg = cond_grouped.agg({'proved' : agg_yes})
@@ -448,6 +458,7 @@ def andy_configs(df):
                     print("panda same:", e1, e2)
                 if d[e1].issubset(d[e2]):
                     redundent_configs.add(e1)
+    return redundent_configs
 
 def validate_no_sat_except_qf_and_cond_inv(df):
     no_qf = df.loc[df.encoding != "qf"].copy()
@@ -496,7 +507,7 @@ def consistent(row):
     return result
 
 def validate_stat_res_row(row):
-    if row.status == "ok" and row.result not in ["sat", "unsat", "unknown"]:
+    if row.status == "ok" and row.result not in ["sat", "unsat", "unknown", "no result"]:
         return False
     if row.status != "ok" and row.result in ["sat", "unsat", "unknown"]:
         return False
@@ -522,15 +533,37 @@ def cond_inv_info(s):
             return result
     return result
 
+def get_seconds(err_content):
+    lines = err_content.splitlines()
+    prefix = "[runlim] time:"
+    time_lines = [line for line in lines if line.startswith(prefix)]
+    if len(time_lines) == 0:
+        return "no_time"
+    elif len(time_lines) > 1:
+        assert(False)
+    else:
+        assert(len(time_lines) == 1)
+        time_line = time_lines[0]
+        time = time_line[len(prefix):].split(".")[0].strip()
+        return time
+
 def get_status(err_content):
     lines = err_content.splitlines()
     prefix = "[runlim] status:"
     status_lines = [line for line in lines if line.startswith(prefix)]
-    if len(status_lines) != 1:
+    if len(status_lines) == 0:
+        return "no status"
+    elif len(status_lines) > 1:
         assert(False)
-    status_line = status_lines[0]
-    status = status_line[len(prefix):].strip()
-    return status
+    else:
+        assert(len(status_lines) == 1)
+        status_line = status_lines[0]
+        status = status_line[len(prefix):].strip()
+        #vampire errors
+        if "User error" in err_content:
+            return "error"
+        else:
+            return status
 
 def get_status_ok(status):
     return status == "ok"
@@ -539,10 +572,14 @@ def get_result(log_content):
     lines = log_content.splitlines()
     bad_prefix = "c"
     good_lines = [l for l in lines if not l.startswith(bad_prefix)]
-    if len(good_lines) != 1:
+    if len(good_lines) == 0:
+        return "no result"
+    elif len(good_lines) > 1:
         assert(False)
-    good_line = good_lines[0]
-    return good_line
+    else:
+        assert(len(good_lines) == 1)
+        good_line = good_lines[0]
+        return good_line
 
 
 if __name__ == "__main__":

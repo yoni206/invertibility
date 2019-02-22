@@ -3,15 +3,17 @@ import os
 import utils
 
 
-replacements = {"rec":
-                    {"<two_to_the>": "two_to_the_def",
-                     "<intor>": "intor_def",
-                     "<intxor>": "intxor_def",
-                     "<intand>": "intand_def",
-                     "<two_to_the_is_ok>": "two_to_the_is_ok_rec",
-                     "<or_is_ok>": "or_is_ok_rec",
-                     "<xor_is_ok>": "xor_is_ok_rec",
-                     "<and_is_ok>": "and_is_ok_rec"},
+replacements = {
+               #currently disabling rec because it is outperformed by the rest.
+               # "rec":
+               #     {"<two_to_the>": "two_to_the_def",
+               #      "<intor>": "intor_def",
+               #      "<intxor>": "intxor_def",
+               #      "<intand>": "intand_def",
+               #      "<two_to_the_is_ok>": "two_to_the_is_ok_rec",
+               #      "<or_is_ok>": "or_is_ok_rec",
+               #      "<xor_is_ok>": "xor_is_ok_rec",
+               #      "<and_is_ok>": "and_is_ok_rec"},
                 "full":
                     {"<two_to_the>": "two_to_the_dec",
                      "<intor>": "intor_dec",
