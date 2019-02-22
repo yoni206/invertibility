@@ -5,6 +5,7 @@ import os
 
 def main(input_file, output_file):
     raw = get_raw_data(input_file)
+    raw.to_csv("~/tmp.csv")
     raw["syntax"] = raw.BENCHMARK.apply(get_syntax)
     raw["ic_name"] = raw.BENCHMARK.apply(get_name)
     raw["width"] = raw.BENCHMARK.apply(get_width)
