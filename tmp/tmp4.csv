@@ -1,7 +1,7 @@
 ,ic_name,proved
 0,bvsge_bvadd,yes
 1,bvsge_bvand,no
-2,bvsge_bvashr0,yes
+2,bvsge_bvashr0,no
 3,bvsge_bvashr1,no
 4,bvsge_bvlshr0,yes
 5,bvsge_bvlshr1,yes
@@ -78,7 +78,7 @@
 76,bvuge_bvudiv0,no
 77,bvuge_bvudiv1,yes
 78,bvuge_bvurem0,yes
-79,bvuge_bvurem1,no
+79,bvuge_bvurem1,yes
 80,bvugt_bvadd,yes
 81,bvugt_bvand,yes
 82,bvugt_bvashr0,yes
@@ -108,14 +108,14 @@
 106,bvule_bvshl0,yes
 107,bvule_bvshl1,no
 108,bvule_bvudiv0,yes
-109,bvule_bvudiv1,no
+109,bvule_bvudiv1,yes
 110,bvule_bvurem0,yes
 111,bvule_bvurem1,yes
 112,bvult_bvadd,yes
 113,bvult_bvand,yes
 114,bvult_bvashr0,yes
 115,bvult_bvashr1,no
-116,bvult_bvlshr0,no
+116,bvult_bvlshr0,yes
 117,bvult_bvlshr1,no
 118,bvult_bvmul,yes
 119,bvult_bvneg,yes

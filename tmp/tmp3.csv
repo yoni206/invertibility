@@ -4,7 +4,7 @@
 2,bvsge_bvand,ltr,yes
 3,bvsge_bvand,rtl,no
 4,bvsge_bvashr0,ltr,yes
-5,bvsge_bvashr0,rtl,yes
+5,bvsge_bvashr0,rtl,no
 6,bvsge_bvashr1,ltr,no
 7,bvsge_bvashr1,rtl,yes
 8,bvsge_bvlshr0,ltr,yes
@@ -92,7 +92,7 @@
 90,bvsle_bvudiv1,ltr,yes
 91,bvsle_bvudiv1,rtl,yes
 92,bvsle_bvurem0,ltr,no
-93,bvsle_bvurem0,rtl,no
+93,bvsle_bvurem0,rtl,yes
 94,bvsle_bvurem1,ltr,yes
 95,bvsle_bvurem1,rtl,yes
 96,bvslt_bvadd,ltr,yes
@@ -157,7 +157,7 @@
 155,bvuge_bvudiv1,rtl,yes
 156,bvuge_bvurem0,ltr,yes
 157,bvuge_bvurem0,rtl,yes
-158,bvuge_bvurem1,ltr,no
+158,bvuge_bvurem1,ltr,yes
 159,bvuge_bvurem1,rtl,yes
 160,bvugt_bvadd,ltr,yes
 161,bvugt_bvadd,rtl,yes
@@ -218,7 +218,7 @@
 216,bvule_bvudiv0,ltr,yes
 217,bvule_bvudiv0,rtl,yes
 218,bvule_bvudiv1,ltr,yes
-219,bvule_bvudiv1,rtl,no
+219,bvule_bvudiv1,rtl,yes
 220,bvule_bvurem0,ltr,yes
 221,bvule_bvurem0,rtl,yes
 222,bvule_bvurem1,ltr,yes
@@ -231,7 +231,7 @@
 229,bvult_bvashr0,rtl,yes
 230,bvult_bvashr1,ltr,no
 231,bvult_bvashr1,rtl,yes
-232,bvult_bvlshr0,ltr,no
+232,bvult_bvlshr0,ltr,yes
 233,bvult_bvlshr0,rtl,yes
 234,bvult_bvlshr1,ltr,no
 235,bvult_bvlshr1,rtl,yes
@@ -285,7 +285,7 @@
 283,eq_bvudiv1,rtl,yes
 284,eq_bvurem0,ltr,yes
 285,eq_bvurem0,rtl,yes
-286,eq_bvurem1,ltr,no
+286,eq_bvurem1,ltr,yes
 287,eq_bvurem1,rtl,no
 288,ne_bvadd,ltr,yes
 289,ne_bvadd,rtl,yes

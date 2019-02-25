@@ -127,13 +127,15 @@ never_even
 (define-fun intmins ((k Int)) Int (two_to_the (- k 1)))
 (define-fun intmaxs ((k Int)) Int (intnot k (intmins k)))
 
-;extract
-(define-fun intextract ((k Int) (i Int) (j Int) (a Int)) Int (mod (div a (two_to_the j)) (two_to_the (+ (- i j) 1))))
+;a[l]
+(define-fun bitof ((k Int) (l Int) (a Int)) Int (mod (div a (two_to_the l)) 2))
+;a[k-2:0]
+(define-fun int_all_but_msb ((k Int) (a Int)) Int (mod a (two_to_the (- k 1))))
 
 ;other easu functions
 (define-fun intshl ((k Int) (a Int) (b Int)) Int (intmodtotal k (* a (two_to_the b)) (two_to_the k)))
 (define-fun intlshr ((k Int) (a Int) (b Int)) Int (intmodtotal k (intudivtotal k a (two_to_the b)) (two_to_the k)))
-(define-fun intashr ((k Int) (a Int) (b Int) ) Int (ite (= (intextract k (- k 1) (- k 1) a) 0) (intlshr k a b) (intnot k (intlshr k (intnot k a) b))))
+(define-fun intashr ((k Int) (a Int) (b Int) ) Int (ite (= (bitof k (- k 1) a) 0) (intlshr k a b) (intnot k (intlshr k (intnot k a) b))))
 (define-fun intconcat ((k Int) (m Int) (a Int) (b Int)) Int (+ (* a (two_to_the m)) b))
 (define-fun intadd ((k Int) (a Int) (b Int) ) Int (intmodtotal k (+ a b) (two_to_the k)))
 (define-fun intmul ((k Int) (a Int) (b Int)) Int (intmodtotal k (* a b) (two_to_the k)))
@@ -144,7 +146,7 @@ never_even
 ;so that x is the unsigned interpretation of v.
 ;now, v also has a signed interpretation, call it y.
 ;Then (unsigned_to_signed k x) := y.
-(define-fun unsigned_to_signed ((k Int) (x Int)) Int (- (* 2 (intextract k (- k 2) 0 x)) x))
+(define-fun unsigned_to_signed ((k Int) (x Int)) Int (- (* 2 (int_all_but_msb k x)) x))
 (define-fun intslt ((k Int) (a Int) (b Int)) Bool (< (unsigned_to_signed k a) (unsigned_to_signed k b)) )
 (define-fun intsgt ((k Int) (a Int) (b Int)) Bool (> (unsigned_to_signed k a) (unsigned_to_signed k b)) )
 (define-fun intsle ((k Int) (a Int) (b Int)) Bool (<= (unsigned_to_signed k a) (unsigned_to_signed k b)) )
@@ -159,9 +161,7 @@ never_even
 (define-fun intand_helper ((a Int) (b Int)) Int (ite (and (= a 1) (= b 1) ) 1 0))
 (define-fun intxor_helper ((a Int) (b Int)) Int (ite (or (and (= a 0) (=  b 1)) (and (= a 1) (= b 0))) 1 0))
 
-;the l bit in the representatino of a as a k-width bitvector
-(define-fun bitof ((k Int) (l Int) (a Int)) Int (intextract k l l a))
-(define-fun lsb ((k Int) (a Int)) Int (bitof k 0 a))
+;(define-fun lsb ((k Int) (a Int)) Int (bitof k 0 a))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;         bitwise or definitions       ;
@@ -178,16 +178,10 @@ never_even
 
 ;complete axiomatization of bitwise or
 (define-fun or_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int))
-(!(and
-(= (intor 1 a b) (intor_helper (lsb k a) (lsb k b)))
-(=>
-(and
-(> k 1)
-(in_range k a)
-(in_range k b)
-)
-(= (intor k a b) (+ (intor (- k 1) (intextract k (- k 2) 0 a) (intextract k (- k 2) 0 b)) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
-))) :pattern ((instantiate_me a) (instantiate_me b)))
+(!
+(=> (and (> k 0) (in_range k a) (in_range k b))
+(= (intor k a b) (+ (ite (> k 1) (intor (- k 1) (int_all_but_msb k a) (int_all_but_msb k b)) 0) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
+:pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
 ;partial axiomatization of bitwise or, with quantifiers
@@ -207,7 +201,6 @@ never_even
 (define-fun or_sym ((k Int)) Bool (forall ((a Int) (b Int)) (! (=> (and (> k 0) (in_range k a) (in_range k b)) (= (intor k a b) (intor k b a))) :pattern ((instantiate_me a) (instantiate_me b)))))
 (define-fun or_ranges ((k Int)) Bool (forall ((a Int) (b Int))
 (!(and
-(= (intor 1 a b) (intor_helper (lsb k a) (lsb k b)))
 (=>
 (and
 (> k 0)
@@ -257,12 +250,10 @@ never_even
 
 ;complete axiomatization of bitwise and
 (define-fun and_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int))
-(!(and
-(= (intand 1 a b) (intand_helper (lsb k a) (lsb k b)))
-(=>
-( and (> k 1) (in_range k a) (in_range k b))
-(= (intand k a b) (+ (intand (- k 1) (intextract k (- k 2) 0 a) (intextract k (- k 2) 0 b)) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
-))) :pattern ((instantiate_me a) (instantiate_me b)))
+(!
+(=> (and (> k 0) (in_range k a) (in_range k b))
+(= (intand k a b) (+ (ite (> k 1) (intand (- k 1) (int_all_but_msb k a) (int_all_but_msb k b)) 0) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
+:pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
 ;partial axiomatization of bitwise and, with quantifiers
@@ -282,7 +273,6 @@ never_even
 (or (distinct (intand k a c) b) (distinct (intand k b c) a))) :pattern ((instantiate_me a) (instantiate_me b) (instantiate_me c))) ))
 (define-fun and_ranges ((k Int)) Bool (forall ((a Int) (b Int))
 (!(and
-(= (intand 1 a b) (intand_helper (lsb k a) (lsb k b)))
 (=>
 (and
 (> k 0)
@@ -335,12 +325,10 @@ never_even
 
 ;complete axiomatization of bitwise xor
 (define-fun xor_is_ok_full ((k Int)) Bool (forall ((a Int) (b Int))
-(!(and
-(= (intxor 1 a b) (intxor_helper (lsb k a) (lsb k b)))
-(=>
-(and (> k 1) (in_range k a) (in_range k b))
-(= (intxor k a b) (+ (intxor (- k 1) (intextract k (- k 2) 0 a) (intextract k (- k 2) 0 b)) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
-)) :pattern ((instantiate_me a) (instantiate_me b)))
+(!
+(=> (and (> k 0) (in_range k a) (in_range k b))
+(= (intxor k a b) (+ (ite (> k 1) (intxor (- k 1) (int_all_but_msb k a) (int_all_but_msb k b)) 0) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))))
+:pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
 ;partial axiomatization of bitwise xor, with quantifiers
@@ -353,7 +341,6 @@ never_even
 
 (define-fun xor_ranges ((k Int)) Bool (forall ((a Int) (b Int))
 (!(and
-(= (intxor 1 a b) (intxor_helper (lsb k a) (lsb k b)))
 (=>
 (and
 (> k 0)
