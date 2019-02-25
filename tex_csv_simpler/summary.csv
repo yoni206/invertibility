@@ -1,0 +1,17 @@
+operation,eq,ne,bvult,bvugt,bvule,bvuge,bvslt,bvsgt,bvsle,bvsge
+bvadd,\both,\both,\both,\both,\both,\both,\both,\both,\both,\both
+bvand,\ltr,\both,\both,\both,\both,\both,\ltr,\ltr,\none,\ltr
+bvashr0,\none,\both,\both,\both,\both,\both,\ltr,\ltr,\ltr,\both
+bvashr1,\none,\rtl,\rtl,\rtl,\rtl,\rtl,\rtl,\none,\rtl,\rtl
+bvlshr0,\both,\both,\rtl,\ltr,\rtl,\both,\both,\ltr,\both,\both
+bvlshr1,\rtl,\both,\rtl,\both,\rtl,\both,\rtl,\both,\rtl,\both
+bvmul,\none,\both,\both,\none,\both,\none,\none,\none,\rtl,\none
+bvneg,\both,\both,\both,\both,\both,\both,\both,\both,\both,\both
+bvnot,\both,\both,\both,\both,\both,\both,\both,\both,\both,\both
+bvor,\ltr,\both,\both,\both,\both,\both,\ltr,\ltr,\ltr,\none
+bvshl0,\ltr,\both,\both,\ltr,\both,\ltr,\ltr,\none,\rtl,\none
+bvshl1,\rtl,\both,\rtl,\rtl,\rtl,\rtl,\rtl,\rtl,\rtl,\rtl
+bvudiv0,\both,\both,\both,\both,\both,\rtl,\both,\both,\both,\both
+bvudiv1,\both,\rtl,\ltr,\both,\ltr,\both,\both,\rtl,\both,\rtl
+bvurem0,\both,\both,\both,\both,\both,\both,\none,\both,\none,\both
+bvurem1,\none,\both,\both,\both,\both,\rtl,\both,\rtl,\both,\rtl

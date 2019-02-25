@@ -1,0 +1,359 @@
+,ic_name,direction,encoding,cond_inv,proved,direction_cond,ic
+16,bvsge_bvadd,rtl,combined,NA,yes,rtl,true
+17,bvsge_bvadd,rtl,full,NA,yes,rtl,true
+18,bvsge_bvadd,rtl,partial,NA,yes,rtl,true
+19,bvsge_bvadd,rtl,qf,NA,yes,rtl,true
+56,bvsge_bvashr0,rtl,combined,NA,yes,rtl,(bvsge (bvlshr max s) t)
+72,bvsge_bvashr1,rtl,combined,NA,yes,rtl,(not (and (bvult t (bvnot t)) (bvslt s t)))
+88,bvsge_bvlshr0,rtl,combined,NA,yes,rtl,(=> (not (= s (_ bv0 4))) (bvsge (bvlshr (bvnot (_ bv0 4)) s) t))
+96,bvsge_bvlshr1,rtl,combined,NA,yes,rtl,(and (=> (bvslt s (_ bv0 4)) (bvsge (bvlshr s (_ bv1 4)) t)) (=> (bvsge s (_ bv0 4)) (bvsge s t)))
+97,bvsge_bvlshr1,rtl,full,NA,yes,rtl,(and (=> (bvslt s (_ bv0 4)) (bvsge (bvlshr s (_ bv1 4)) t)) (=> (bvsge s (_ bv0 4)) (bvsge s t)))
+124,bvsge_bvneg,rtl,combined,NA,yes,rtl,true
+125,bvsge_bvneg,rtl,full,NA,yes,rtl,true
+126,bvsge_bvneg,rtl,partial,NA,yes,rtl,true
+127,bvsge_bvneg,rtl,qf,NA,yes,rtl,true
+144,bvsge_bvnot,rtl,combined,NA,yes,rtl,true
+145,bvsge_bvnot,rtl,full,NA,yes,rtl,true
+146,bvsge_bvnot,rtl,partial,NA,yes,rtl,true
+147,bvsge_bvnot,rtl,qf,NA,yes,rtl,true
+184,bvsge_bvshl1,rtl,combined,NA,yes,rtl,(or  (bvsge (bvshl s (_ bv0 4)) t) (bvsge (bvshl s (_ bv1 4)) t) (bvsge (bvshl s (_ bv2 4)) t) (bvsge (bvshl s (_ bv3 4)) t) (bvsge (bvshl s (_ bv4 4)) t))
+186,bvsge_bvshl1,rtl,partial,NA,yes,rtl,(or  (bvsge (bvshl s (_ bv0 4)) t) (bvsge (bvshl s (_ bv1 4)) t) (bvsge (bvshl s (_ bv2 4)) t) (bvsge (bvshl s (_ bv3 4)) t) (bvsge (bvshl s (_ bv4 4)) t))
+192,bvsge_bvudiv0,rtl,combined,NA,yes,rtl,(or (bvsge (udivtotal (bvnot (_ bv0 4)) s) t) (bvsge (udivtotal max s) t))
+193,bvsge_bvudiv0,rtl,full,NA,yes,rtl,(or (bvsge (udivtotal (bvnot (_ bv0 4)) s) t) (bvsge (udivtotal max s) t))
+200,bvsge_bvudiv1,rtl,combined,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsge s t)) (=> (bvslt s (_ bv0 4)) (bvsge (bvlshr s (_ bv1 4)) t)))
+201,bvsge_bvudiv1,rtl,full,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsge s t)) (=> (bvslt s (_ bv0 4)) (bvsge (bvlshr s (_ bv1 4)) t)))
+220,bvsge_bvurem0,rtl,combined,NA,yes,rtl,(or (bvslt t s) (bvsge (_ bv0 4) s))
+221,bvsge_bvurem0,rtl,full,NA,yes,rtl,(or (bvslt t s) (bvsge (_ bv0 4) s))
+222,bvsge_bvurem0,rtl,partial,NA,yes,rtl,(or (bvslt t s) (bvsge (_ bv0 4) s))
+232,bvsge_bvurem1,rtl,combined,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsge s t)) (=> (and (bvslt s (_ bv0 4)) (bvsge t (_ bv0 4))) (bvugt (bvsub s t) t)))
+233,bvsge_bvurem1,rtl,full,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsge s t)) (=> (and (bvslt s (_ bv0 4)) (bvsge t (_ bv0 4))) (bvugt (bvsub s t) t)))
+234,bvsge_bvurem1,rtl,partial,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsge s t)) (=> (and (bvslt s (_ bv0 4)) (bvsge t (_ bv0 4))) (bvugt (bvsub s t) t)))
+252,bvsgt_bvadd,rtl,combined,NA,yes,rtl,(distinct t max)
+253,bvsgt_bvadd,rtl,full,NA,yes,rtl,(distinct t max)
+332,bvsgt_bvlshr1,rtl,combined,NA,yes,rtl,(and (=> (bvslt s (_ bv0 4)) (bvsgt (bvlshr s (_ bv1 4)) t)) (=> (bvsge s (_ bv0 4)) (bvsgt s t)))
+360,bvsgt_bvneg,rtl,combined,NA,yes,rtl,(distinct t max)
+361,bvsgt_bvneg,rtl,full,NA,yes,rtl,(distinct t max)
+380,bvsgt_bvnot,rtl,combined,NA,yes,rtl,(distinct t max)
+381,bvsgt_bvnot,rtl,full,NA,yes,rtl,(distinct t max)
+420,bvsgt_bvshl1,rtl,combined,NA,yes,rtl,(or  (bvsgt (bvshl s (_ bv0 4)) t) (bvsgt (bvshl s (_ bv1 4)) t) (bvsgt (bvshl s (_ bv2 4)) t) (bvsgt (bvshl s (_ bv3 4)) t) (bvsgt (bvshl s (_ bv4 4)) t))
+422,bvsgt_bvshl1,rtl,partial,NA,yes,rtl,(or  (bvsgt (bvshl s (_ bv0 4)) t) (bvsgt (bvshl s (_ bv1 4)) t) (bvsgt (bvshl s (_ bv2 4)) t) (bvsgt (bvshl s (_ bv3 4)) t) (bvsgt (bvshl s (_ bv4 4)) t))
+429,bvsgt_bvudiv0,rtl,full,NA,yes,rtl,(or (bvsgt (udivtotal (bvnot (_ bv0 4)) s) t) (bvsgt (udivtotal max s) t))
+436,bvsgt_bvudiv1,rtl,combined,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsgt s t)) (=> (bvslt s (_ bv0 4)) (bvsgt (bvlshr s (_ bv1 4)) t)))
+437,bvsgt_bvudiv1,rtl,full,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsgt s t)) (=> (bvslt s (_ bv0 4)) (bvsgt (bvlshr s (_ bv1 4)) t)))
+456,bvsgt_bvurem0,rtl,combined,NA,yes,rtl,(and (and (=> (bvsgt s (_ bv0 4)) (bvslt t (bvnot (bvneg s)))) (=> (bvsle s (_ bv0 4)) (distinct t max))) (or (distinct t (_ bv0 4)) (distinct s (_ bv1 4))))
+457,bvsgt_bvurem0,rtl,full,NA,yes,rtl,(and (and (=> (bvsgt s (_ bv0 4)) (bvslt t (bvnot (bvneg s)))) (=> (bvsle s (_ bv0 4)) (distinct t max))) (or (distinct t (_ bv0 4)) (distinct s (_ bv1 4))))
+468,bvsgt_bvurem1,rtl,combined,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsgt s t)) (=> (bvslt s (_ bv0 4)) (bvsgt (bvlshr (bvsub s (_ bv1 4)) (_ bv1 4)) t)))
+469,bvsgt_bvurem1,rtl,full,NA,yes,rtl,(and (=> (bvsge s (_ bv0 4)) (bvsgt s t)) (=> (bvslt s (_ bv0 4)) (bvsgt (bvlshr (bvsub s (_ bv1 4)) (_ bv1 4)) t)))
+488,bvsle_bvadd,rtl,combined,NA,yes,rtl,true
+489,bvsle_bvadd,rtl,full,NA,yes,rtl,true
+490,bvsle_bvadd,rtl,partial,NA,yes,rtl,true
+491,bvsle_bvadd,rtl,qf,NA,yes,rtl,true
+544,bvsle_bvashr1,rtl,combined,NA,yes,rtl,(or (bvsge t (_ bv0 4)) (bvsge t s))
+564,bvsle_bvlshr0,rtl,combined,NA,yes,rtl,(bvsge t (bvlshr t s))
+580,bvsle_bvlshr1,rtl,combined,NA,yes,rtl,(or (bvult t min) (bvsge t s))
+588,bvsle_bvmul,rtl,combined,NA,yes,rtl,(not (and (= s (_ bv0 4)) (bvslt t s)))
+589,bvsle_bvmul,rtl,full,NA,yes,rtl,(not (and (= s (_ bv0 4)) (bvslt t s)))
+590,bvsle_bvmul,rtl,partial,NA,yes,rtl,(not (and (= s (_ bv0 4)) (bvslt t s)))
+591,bvsle_bvmul,rtl,qf,NA,yes,rtl,(not (and (= s (_ bv0 4)) (bvslt t s)))
+608,bvsle_bvneg,rtl,combined,NA,yes,rtl,true
+609,bvsle_bvneg,rtl,full,NA,yes,rtl,true
+610,bvsle_bvneg,rtl,partial,NA,yes,rtl,true
+611,bvsle_bvneg,rtl,qf,NA,yes,rtl,true
+628,bvsle_bvnot,rtl,combined,NA,yes,rtl,true
+629,bvsle_bvnot,rtl,full,NA,yes,rtl,true
+630,bvsle_bvnot,rtl,partial,NA,yes,rtl,true
+631,bvsle_bvnot,rtl,qf,NA,yes,rtl,true
+660,bvsle_bvshl0,rtl,combined,NA,yes,rtl,(bvult (bvlshr t (bvlshr t s)) min)
+668,bvsle_bvshl1,rtl,combined,NA,yes,rtl,(bvult (bvlshr t s) min)
+688,bvsle_bvudiv0,rtl,combined,NA,yes,rtl,(or (= (udivtotal (bvmul s t) s) t) (=> (bvsle t (_ bv0 4)) (bvslt (udivtotal min s) t)))
+689,bvsle_bvudiv0,rtl,full,NA,yes,rtl,(or (= (udivtotal (bvmul s t) s) t) (=> (bvsle t (_ bv0 4)) (bvslt (udivtotal min s) t)))
+696,bvsle_bvudiv1,rtl,combined,NA,yes,rtl,(or (bvsge t (bvnot (_ bv0 4))) (bvsge t s))
+697,bvsle_bvudiv1,rtl,full,NA,yes,rtl,(or (bvsge t (bvnot (_ bv0 4))) (bvsge t s))
+732,bvsle_bvurem1,rtl,combined,NA,yes,rtl,(or (bvult t min) (bvsge t s))
+733,bvsle_bvurem1,rtl,full,NA,yes,rtl,(or (bvult t min) (bvsge t s))
+734,bvsle_bvurem1,rtl,partial,NA,yes,rtl,(or (bvult t min) (bvsge t s))
+752,bvslt_bvadd,rtl,combined,NA,yes,rtl,(distinct t min)
+753,bvslt_bvadd,rtl,full,NA,yes,rtl,(distinct t min)
+808,bvslt_bvashr1,rtl,combined,NA,yes,rtl,(or (bvslt s t) (bvslt (_ bv0 4) t))
+828,bvslt_bvlshr0,rtl,combined,NA,yes,rtl,(bvslt (bvlshr (bvnot (bvneg t)) s) t)
+844,bvslt_bvlshr1,rtl,combined,NA,yes,rtl,(or (bvslt s t) (bvslt (_ bv0 4) t))
+846,bvslt_bvlshr1,rtl,partial,NA,yes,rtl,(or (bvslt s t) (bvslt (_ bv0 4) t))
+872,bvslt_bvneg,rtl,combined,NA,yes,rtl,(distinct t min)
+873,bvslt_bvneg,rtl,full,NA,yes,rtl,(distinct t min)
+892,bvslt_bvnot,rtl,combined,NA,yes,rtl,(distinct t min)
+893,bvslt_bvnot,rtl,full,NA,yes,rtl,(distinct t min)
+933,bvslt_bvshl1,rtl,full,NA,yes,rtl,(bvult (bvshl min s) (bvadd t min))
+952,bvslt_bvudiv0,rtl,combined,NA,yes,rtl,(=> (bvsle t (_ bv0 4)) (bvslt (udivtotal min s) t))
+953,bvslt_bvudiv0,rtl,full,NA,yes,rtl,(=> (bvsle t (_ bv0 4)) (bvslt (udivtotal min s) t))
+960,bvslt_bvudiv1,rtl,combined,NA,yes,rtl,(or (bvslt s t) (bvsge t (_ bv0 4)))
+961,bvslt_bvudiv1,rtl,full,NA,yes,rtl,(or (bvslt s t) (bvsge t (_ bv0 4)))
+992,bvslt_bvurem1,rtl,combined,NA,yes,rtl,(or (bvslt s t) (bvslt (_ bv0 4) t))
+993,bvslt_bvurem1,rtl,full,NA,yes,rtl,(or (bvslt s t) (bvslt (_ bv0 4) t))
+1012,bvuge_bvadd,rtl,combined,NA,yes,rtl,true
+1013,bvuge_bvadd,rtl,full,NA,yes,rtl,true
+1014,bvuge_bvadd,rtl,partial,NA,yes,rtl,true
+1015,bvuge_bvadd,rtl,qf,NA,yes,rtl,true
+1032,bvuge_bvand,rtl,combined,NA,yes,rtl,(not (bvult s t))
+1034,bvuge_bvand,rtl,partial,NA,yes,rtl,(not (bvult s t))
+1052,bvuge_bvashr0,rtl,combined,NA,yes,rtl,true
+1053,bvuge_bvashr0,rtl,full,NA,yes,rtl,true
+1054,bvuge_bvashr0,rtl,partial,NA,yes,rtl,true
+1055,bvuge_bvashr0,rtl,qf,NA,yes,rtl,true
+1068,bvuge_bvashr1,rtl,combined,NA,yes,rtl,(not (and (bvult s (bvnot s)) (bvult s t)))
+1088,bvuge_bvlshr0,rtl,combined,NA,yes,rtl,(= (bvlshr (bvshl t s) s) t)
+1090,bvuge_bvlshr0,rtl,partial,NA,yes,rtl,(= (bvlshr (bvshl t s) s) t)
+1108,bvuge_bvlshr1,rtl,combined,NA,yes,rtl,(bvuge s t)
+1110,bvuge_bvlshr1,rtl,partial,NA,yes,rtl,(bvuge s t)
+1136,bvuge_bvneg,rtl,combined,NA,yes,rtl,true
+1137,bvuge_bvneg,rtl,full,NA,yes,rtl,true
+1138,bvuge_bvneg,rtl,partial,NA,yes,rtl,true
+1139,bvuge_bvneg,rtl,qf,NA,yes,rtl,true
+1156,bvuge_bvnot,rtl,combined,NA,yes,rtl,true
+1157,bvuge_bvnot,rtl,full,NA,yes,rtl,true
+1158,bvuge_bvnot,rtl,partial,NA,yes,rtl,true
+1159,bvuge_bvnot,rtl,qf,NA,yes,rtl,true
+1176,bvuge_bvor,rtl,combined,NA,yes,rtl,true
+1177,bvuge_bvor,rtl,full,NA,yes,rtl,true
+1178,bvuge_bvor,rtl,partial,NA,yes,rtl,true
+1179,bvuge_bvor,rtl,qf,NA,yes,rtl,true
+1204,bvuge_bvshl1,rtl,combined,NA,yes,rtl,(or  (bvuge (bvshl s (_ bv0 4)) t) (bvuge (bvshl s (_ bv1 4)) t) (bvuge (bvshl s (_ bv2 4)) t) (bvuge (bvshl s (_ bv3 4)) t) (bvuge (bvshl s (_ bv4 4)) t))
+1206,bvuge_bvshl1,rtl,partial,NA,yes,rtl,(or  (bvuge (bvshl s (_ bv0 4)) t) (bvuge (bvshl s (_ bv1 4)) t) (bvuge (bvshl s (_ bv2 4)) t) (bvuge (bvshl s (_ bv3 4)) t) (bvuge (bvshl s (_ bv4 4)) t))
+1212,bvuge_bvudiv0,rtl,combined,NA,yes,rtl,(= (bvand (udivtotal (bvmul s t) t) s) s)
+1214,bvuge_bvudiv0,rtl,partial,NA,yes,rtl,(= (bvand (udivtotal (bvmul s t) t) s) s)
+1232,bvuge_bvudiv1,rtl,combined,NA,yes,rtl,true
+1233,bvuge_bvudiv1,rtl,full,NA,yes,rtl,true
+1234,bvuge_bvudiv1,rtl,partial,NA,yes,rtl,true
+1235,bvuge_bvudiv1,rtl,qf,NA,yes,rtl,true
+1252,bvuge_bvurem0,rtl,combined,NA,yes,rtl,(bvuge (bvnot (bvneg s)) t)
+1253,bvuge_bvurem0,rtl,full,NA,yes,rtl,(bvuge (bvnot (bvneg s)) t)
+1254,bvuge_bvurem0,rtl,partial,NA,yes,rtl,(bvuge (bvnot (bvneg s)) t)
+1255,bvuge_bvurem0,rtl,qf,NA,yes,rtl,(bvuge (bvnot (bvneg s)) t)
+1272,bvuge_bvurem1,rtl,combined,NA,yes,rtl,(or (bvuge (bvand (bvsub (bvadd t t) s) s) t) (bvult t s))
+1274,bvuge_bvurem1,rtl,partial,NA,yes,rtl,(or (bvuge (bvand (bvsub (bvadd t t) s) s) t) (bvult t s))
+1292,bvugt_bvadd,rtl,combined,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1293,bvugt_bvadd,rtl,full,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1294,bvugt_bvadd,rtl,partial,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1295,bvugt_bvadd,rtl,qf,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1312,bvugt_bvand,rtl,combined,NA,yes,rtl,(bvult t s)
+1314,bvugt_bvand,rtl,partial,NA,yes,rtl,(bvult t s)
+1332,bvugt_bvashr0,rtl,combined,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1333,bvugt_bvashr0,rtl,full,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1334,bvugt_bvashr0,rtl,partial,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1335,bvugt_bvashr0,rtl,qf,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1348,bvugt_bvashr1,rtl,combined,NA,yes,rtl,(or (bvslt s (bvlshr s (bvnot t))) (bvult t s))
+1350,bvugt_bvashr1,rtl,partial,NA,yes,rtl,(or (bvslt s (bvlshr s (bvnot t))) (bvult t s))
+1388,bvugt_bvlshr1,rtl,combined,NA,yes,rtl,(bvult t s)
+1390,bvugt_bvlshr1,rtl,partial,NA,yes,rtl,(bvult t s)
+1416,bvugt_bvneg,rtl,combined,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1417,bvugt_bvneg,rtl,full,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1418,bvugt_bvneg,rtl,partial,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1419,bvugt_bvneg,rtl,qf,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1436,bvugt_bvnot,rtl,combined,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1437,bvugt_bvnot,rtl,full,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1438,bvugt_bvnot,rtl,partial,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1439,bvugt_bvnot,rtl,qf,NA,yes,rtl,(distinct t (bvnot (_ bv0 4)))
+1456,bvugt_bvor,rtl,combined,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1458,bvugt_bvor,rtl,partial,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1484,bvugt_bvshl1,rtl,combined,NA,yes,rtl,(or  (bvugt (bvshl s (_ bv0 4)) t) (bvugt (bvshl s (_ bv1 4)) t) (bvugt (bvshl s (_ bv2 4)) t) (bvugt (bvshl s (_ bv3 4)) t) (bvugt (bvshl s (_ bv4 4)) t))
+1486,bvugt_bvshl1,rtl,partial,NA,yes,rtl,(or  (bvugt (bvshl s (_ bv0 4)) t) (bvugt (bvshl s (_ bv1 4)) t) (bvugt (bvshl s (_ bv2 4)) t) (bvugt (bvshl s (_ bv3 4)) t) (bvugt (bvshl s (_ bv4 4)) t))
+1504,bvugt_bvudiv0,rtl,combined,NA,yes,rtl,(bvugt (udivtotal (bvnot (_ bv0 4)) s) t)
+1505,bvugt_bvudiv0,rtl,full,NA,yes,rtl,(bvugt (udivtotal (bvnot (_ bv0 4)) s) t)
+1506,bvugt_bvudiv0,rtl,partial,NA,yes,rtl,(bvugt (udivtotal (bvnot (_ bv0 4)) s) t)
+1507,bvugt_bvudiv0,rtl,qf,NA,yes,rtl,(bvugt (udivtotal (bvnot (_ bv0 4)) s) t)
+1524,bvugt_bvudiv1,rtl,combined,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1525,bvugt_bvudiv1,rtl,full,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1526,bvugt_bvudiv1,rtl,partial,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1527,bvugt_bvudiv1,rtl,qf,NA,yes,rtl,(bvult t (bvnot (_ bv0 4)))
+1544,bvugt_bvurem0,rtl,combined,NA,yes,rtl,(bvult t (bvnot (bvneg s)))
+1545,bvugt_bvurem0,rtl,full,NA,yes,rtl,(bvult t (bvnot (bvneg s)))
+1546,bvugt_bvurem0,rtl,partial,NA,yes,rtl,(bvult t (bvnot (bvneg s)))
+1547,bvugt_bvurem0,rtl,qf,NA,yes,rtl,(bvult t (bvnot (bvneg s)))
+1564,bvugt_bvurem1,rtl,combined,NA,yes,rtl,(bvult t s)
+1565,bvugt_bvurem1,rtl,full,NA,yes,rtl,(bvult t s)
+1566,bvugt_bvurem1,rtl,partial,NA,yes,rtl,(bvult t s)
+1567,bvugt_bvurem1,rtl,qf,NA,yes,rtl,(bvult t s)
+1584,bvule_bvadd,rtl,combined,NA,yes,rtl,true
+1585,bvule_bvadd,rtl,full,NA,yes,rtl,true
+1586,bvule_bvadd,rtl,partial,NA,yes,rtl,true
+1587,bvule_bvadd,rtl,qf,NA,yes,rtl,true
+1604,bvule_bvand,rtl,combined,NA,yes,rtl,true
+1605,bvule_bvand,rtl,full,NA,yes,rtl,true
+1606,bvule_bvand,rtl,partial,NA,yes,rtl,true
+1607,bvule_bvand,rtl,qf,NA,yes,rtl,true
+1624,bvule_bvashr0,rtl,combined,NA,yes,rtl,true
+1625,bvule_bvashr0,rtl,full,NA,yes,rtl,true
+1626,bvule_bvashr0,rtl,partial,NA,yes,rtl,true
+1627,bvule_bvashr0,rtl,qf,NA,yes,rtl,true
+1640,bvule_bvashr1,rtl,combined,NA,yes,rtl,(or (bvult s min) (bvuge t s))
+1660,bvule_bvlshr0,rtl,combined,NA,yes,rtl,true
+1661,bvule_bvlshr0,rtl,full,NA,yes,rtl,true
+1662,bvule_bvlshr0,rtl,partial,NA,yes,rtl,true
+1663,bvule_bvlshr0,rtl,qf,NA,yes,rtl,true
+1680,bvule_bvlshr1,rtl,combined,NA,yes,rtl,true
+1681,bvule_bvlshr1,rtl,full,NA,yes,rtl,true
+1682,bvule_bvlshr1,rtl,partial,NA,yes,rtl,true
+1683,bvule_bvlshr1,rtl,qf,NA,yes,rtl,true
+1700,bvule_bvmul,rtl,combined,NA,yes,rtl,true
+1701,bvule_bvmul,rtl,full,NA,yes,rtl,true
+1702,bvule_bvmul,rtl,partial,NA,yes,rtl,true
+1703,bvule_bvmul,rtl,qf,NA,yes,rtl,true
+1720,bvule_bvneg,rtl,combined,NA,yes,rtl,true
+1721,bvule_bvneg,rtl,full,NA,yes,rtl,true
+1722,bvule_bvneg,rtl,partial,NA,yes,rtl,true
+1723,bvule_bvneg,rtl,qf,NA,yes,rtl,true
+1740,bvule_bvnot,rtl,combined,NA,yes,rtl,true
+1741,bvule_bvnot,rtl,full,NA,yes,rtl,true
+1742,bvule_bvnot,rtl,partial,NA,yes,rtl,true
+1743,bvule_bvnot,rtl,qf,NA,yes,rtl,true
+1760,bvule_bvor,rtl,combined,NA,yes,rtl,(bvuge t s)
+1762,bvule_bvor,rtl,partial,NA,yes,rtl,(bvuge t s)
+1780,bvule_bvshl0,rtl,combined,NA,yes,rtl,true
+1781,bvule_bvshl0,rtl,full,NA,yes,rtl,true
+1782,bvule_bvshl0,rtl,partial,NA,yes,rtl,true
+1783,bvule_bvshl0,rtl,qf,NA,yes,rtl,true
+1800,bvule_bvshl1,rtl,combined,NA,yes,rtl,true
+1801,bvule_bvshl1,rtl,full,NA,yes,rtl,true
+1802,bvule_bvshl1,rtl,partial,NA,yes,rtl,true
+1803,bvule_bvshl1,rtl,qf,NA,yes,rtl,true
+1822,bvule_bvudiv0,rtl,partial,NA,yes,rtl,(not (bvult (bvor s t) (bvnot (bvneg s))))
+1860,bvule_bvurem0,rtl,combined,NA,yes,rtl,true
+1861,bvule_bvurem0,rtl,full,NA,yes,rtl,true
+1862,bvule_bvurem0,rtl,partial,NA,yes,rtl,true
+1863,bvule_bvurem0,rtl,qf,NA,yes,rtl,true
+1880,bvule_bvurem1,rtl,combined,NA,yes,rtl,true
+1881,bvule_bvurem1,rtl,full,NA,yes,rtl,true
+1882,bvule_bvurem1,rtl,partial,NA,yes,rtl,true
+1883,bvule_bvurem1,rtl,qf,NA,yes,rtl,true
+1900,bvult_bvadd,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+1901,bvult_bvadd,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+1902,bvult_bvadd,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+1903,bvult_bvadd,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+1920,bvult_bvand,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+1922,bvult_bvand,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+1940,bvult_bvashr0,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+1941,bvult_bvashr0,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+1942,bvult_bvashr0,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+1943,bvult_bvashr0,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+1956,bvult_bvashr1,rtl,combined,NA,yes,rtl,(and (not (and (not (bvult s t)) (bvslt s (_ bv0 4)))) (not (= t (_ bv0 4))))
+1976,bvult_bvlshr0,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+1977,bvult_bvlshr0,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+1978,bvult_bvlshr0,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+1979,bvult_bvlshr0,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+1996,bvult_bvlshr1,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+1997,bvult_bvlshr1,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+1998,bvult_bvlshr1,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+1999,bvult_bvlshr1,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2016,bvult_bvmul,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+2017,bvult_bvmul,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+2018,bvult_bvmul,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+2019,bvult_bvmul,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2036,bvult_bvneg,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+2037,bvult_bvneg,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+2038,bvult_bvneg,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+2039,bvult_bvneg,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2056,bvult_bvnot,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+2057,bvult_bvnot,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+2058,bvult_bvnot,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+2059,bvult_bvnot,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2076,bvult_bvor,rtl,combined,NA,yes,rtl,(bvult s t)
+2078,bvult_bvor,rtl,partial,NA,yes,rtl,(bvult s t)
+2096,bvult_bvshl0,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+2097,bvult_bvshl0,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+2098,bvult_bvshl0,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+2099,bvult_bvshl0,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2116,bvult_bvshl1,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+2117,bvult_bvshl1,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+2118,bvult_bvshl1,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+2119,bvult_bvshl1,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2136,bvult_bvudiv0,rtl,combined,NA,yes,rtl,(and (bvult (_ bv0 4) s) (bvult (_ bv0 4) t))
+2137,bvult_bvudiv0,rtl,full,NA,yes,rtl,(and (bvult (_ bv0 4) s) (bvult (_ bv0 4) t))
+2138,bvult_bvudiv0,rtl,partial,NA,yes,rtl,(and (bvult (_ bv0 4) s) (bvult (_ bv0 4) t))
+2139,bvult_bvudiv0,rtl,qf,NA,yes,rtl,(and (bvult (_ bv0 4) s) (bvult (_ bv0 4) t))
+2176,bvult_bvurem0,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+2177,bvult_bvurem0,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+2178,bvult_bvurem0,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+2179,bvult_bvurem0,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2196,bvult_bvurem1,rtl,combined,NA,yes,rtl,(distinct t (_ bv0 4))
+2197,bvult_bvurem1,rtl,full,NA,yes,rtl,(distinct t (_ bv0 4))
+2198,bvult_bvurem1,rtl,partial,NA,yes,rtl,(distinct t (_ bv0 4))
+2199,bvult_bvurem1,rtl,qf,NA,yes,rtl,(distinct t (_ bv0 4))
+2212,eq_bvadd,rtl,combined,NA,yes,rtl,true
+2213,eq_bvadd,rtl,full,NA,yes,rtl,true
+2214,eq_bvadd,rtl,partial,NA,yes,rtl,true
+2215,eq_bvadd,rtl,qf,NA,yes,rtl,true
+2260,eq_bvlshr0,rtl,combined,NA,yes,rtl,(= (bvlshr (bvshl t s) s) t)
+2262,eq_bvlshr0,rtl,partial,NA,yes,rtl,(= (bvlshr (bvshl t s) s) t)
+2268,eq_bvlshr1,rtl,combined,NA,yes,rtl,(or  (= (bvlshr s (_ bv0 4)) t) (= (bvlshr s (_ bv1 4)) t) (= (bvlshr s (_ bv2 4)) t) (= (bvlshr s (_ bv3 4)) t) (= (bvlshr s (_ bv4 4)) t))
+2270,eq_bvlshr1,rtl,partial,NA,yes,rtl,(or  (= (bvlshr s (_ bv0 4)) t) (= (bvlshr s (_ bv1 4)) t) (= (bvlshr s (_ bv2 4)) t) (= (bvlshr s (_ bv3 4)) t) (= (bvlshr s (_ bv4 4)) t))
+2296,eq_bvneg,rtl,combined,NA,yes,rtl,true
+2297,eq_bvneg,rtl,full,NA,yes,rtl,true
+2298,eq_bvneg,rtl,partial,NA,yes,rtl,true
+2299,eq_bvneg,rtl,qf,NA,yes,rtl,true
+2316,eq_bvnot,rtl,combined,NA,yes,rtl,true
+2317,eq_bvnot,rtl,full,NA,yes,rtl,true
+2318,eq_bvnot,rtl,partial,NA,yes,rtl,true
+2319,eq_bvnot,rtl,qf,NA,yes,rtl,true
+2356,eq_bvshl1,rtl,combined,NA,yes,rtl,(or  (= (bvshl s (_ bv0 4)) t) (= (bvshl s (_ bv1 4)) t) (= (bvshl s (_ bv2 4)) t) (= (bvshl s (_ bv3 4)) t) (= (bvshl s (_ bv4 4)) t))
+2358,eq_bvshl1,rtl,partial,NA,yes,rtl,(or  (= (bvshl s (_ bv0 4)) t) (= (bvshl s (_ bv1 4)) t) (= (bvshl s (_ bv2 4)) t) (= (bvshl s (_ bv3 4)) t) (= (bvshl s (_ bv4 4)) t))
+2368,eq_bvudiv0,rtl,combined,NA,yes,rtl,(= (udivtotal (bvmul s t) s) t)
+2369,eq_bvudiv0,rtl,full,NA,yes,rtl,(= (udivtotal (bvmul s t) s) t)
+2370,eq_bvudiv0,rtl,partial,NA,yes,rtl,(= (udivtotal (bvmul s t) s) t)
+2371,eq_bvudiv0,rtl,qf,NA,yes,rtl,(= (udivtotal (bvmul s t) s) t)
+2377,eq_bvudiv1,rtl,full,NA,yes,rtl,(= (udivtotal s (udivtotal s t)) t)
+2378,eq_bvudiv1,rtl,partial,NA,yes,rtl,(= (udivtotal s (udivtotal s t)) t)
+2379,eq_bvudiv1,rtl,qf,NA,yes,rtl,(= (udivtotal s (udivtotal s t)) t)
+2396,eq_bvurem0,rtl,combined,NA,yes,rtl,(not (bvult (bvnot (bvneg s)) t))
+2397,eq_bvurem0,rtl,full,NA,yes,rtl,(not (bvult (bvnot (bvneg s)) t))
+2398,eq_bvurem0,rtl,partial,NA,yes,rtl,(not (bvult (bvnot (bvneg s)) t))
+2399,eq_bvurem0,rtl,qf,NA,yes,rtl,(not (bvult (bvnot (bvneg s)) t))
+2432,ne_bvadd,rtl,combined,NA,yes,rtl,true
+2433,ne_bvadd,rtl,full,NA,yes,rtl,true
+2434,ne_bvadd,rtl,partial,NA,yes,rtl,true
+2435,ne_bvadd,rtl,qf,NA,yes,rtl,true
+2452,ne_bvand,rtl,combined,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2454,ne_bvand,rtl,partial,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2472,ne_bvashr0,rtl,combined,NA,yes,rtl,true
+2473,ne_bvashr0,rtl,full,NA,yes,rtl,true
+2474,ne_bvashr0,rtl,partial,NA,yes,rtl,true
+2475,ne_bvashr0,rtl,qf,NA,yes,rtl,true
+2488,ne_bvashr1,rtl,combined,NA,yes,rtl,(and (or (not (= t (_ bv0 4))) (not (= s (_ bv0 4)))) (or (not (= t (bvnot (_ bv0 4)))) (not (= s (bvnot (_ bv0 4))))))
+2508,ne_bvlshr0,rtl,combined,NA,yes,rtl,(or (distinct t (_ bv0 4)) (bvult s (_ bv4 4)))
+2510,ne_bvlshr0,rtl,partial,NA,yes,rtl,(or (distinct t (_ bv0 4)) (bvult s (_ bv4 4)))
+2528,ne_bvlshr1,rtl,combined,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2530,ne_bvlshr1,rtl,partial,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2540,ne_bvmul,rtl,combined,NA,yes,rtl,(or (distinct t (_ bv0 4)) (distinct s (_ bv0 4)))
+2541,ne_bvmul,rtl,full,NA,yes,rtl,(or (distinct t (_ bv0 4)) (distinct s (_ bv0 4)))
+2542,ne_bvmul,rtl,partial,NA,yes,rtl,(or (distinct t (_ bv0 4)) (distinct s (_ bv0 4)))
+2543,ne_bvmul,rtl,qf,NA,yes,rtl,(or (distinct t (_ bv0 4)) (distinct s (_ bv0 4)))
+2560,ne_bvneg,rtl,combined,NA,yes,rtl,true
+2561,ne_bvneg,rtl,full,NA,yes,rtl,true
+2562,ne_bvneg,rtl,partial,NA,yes,rtl,true
+2563,ne_bvneg,rtl,qf,NA,yes,rtl,true
+2580,ne_bvnot,rtl,combined,NA,yes,rtl,true
+2581,ne_bvnot,rtl,full,NA,yes,rtl,true
+2582,ne_bvnot,rtl,partial,NA,yes,rtl,true
+2583,ne_bvnot,rtl,qf,NA,yes,rtl,true
+2600,ne_bvor,rtl,combined,NA,yes,rtl,(or (distinct s (bvnot (_ bv0 4))) (distinct t (bvnot (_ bv0 4))))
+2602,ne_bvor,rtl,partial,NA,yes,rtl,(or (distinct s (bvnot (_ bv0 4))) (distinct t (bvnot (_ bv0 4))))
+2612,ne_bvshl0,rtl,combined,NA,yes,rtl,(or (distinct t (_ bv0 4)) (bvult s (_ bv4 4)))
+2614,ne_bvshl0,rtl,partial,NA,yes,rtl,(or (distinct t (_ bv0 4)) (bvult s (_ bv4 4)))
+2632,ne_bvshl1,rtl,combined,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2633,ne_bvshl1,rtl,full,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2634,ne_bvshl1,rtl,partial,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2635,ne_bvshl1,rtl,qf,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2652,ne_bvudiv0,rtl,combined,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (bvnot (_ bv0 4))))
+2653,ne_bvudiv0,rtl,full,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (bvnot (_ bv0 4))))
+2654,ne_bvudiv0,rtl,partial,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (bvnot (_ bv0 4))))
+2655,ne_bvudiv0,rtl,qf,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (bvnot (_ bv0 4))))
+2668,ne_bvudiv1,rtl,combined,NA,yes,rtl,true
+2669,ne_bvudiv1,rtl,full,NA,yes,rtl,true
+2670,ne_bvudiv1,rtl,partial,NA,yes,rtl,true
+2671,ne_bvudiv1,rtl,qf,NA,yes,rtl,true
+2688,ne_bvurem0,rtl,combined,NA,yes,rtl,(or (distinct s (_ bv1 4)) (distinct t (_ bv0 4)))
+2689,ne_bvurem0,rtl,full,NA,yes,rtl,(or (distinct s (_ bv1 4)) (distinct t (_ bv0 4)))
+2690,ne_bvurem0,rtl,partial,NA,yes,rtl,(or (distinct s (_ bv1 4)) (distinct t (_ bv0 4)))
+2691,ne_bvurem0,rtl,qf,NA,yes,rtl,(or (distinct s (_ bv1 4)) (distinct t (_ bv0 4)))
+2708,ne_bvurem1,rtl,combined,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2709,ne_bvurem1,rtl,full,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2710,ne_bvurem1,rtl,partial,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))
+2711,ne_bvurem1,rtl,qf,NA,yes,rtl,(or (distinct s (_ bv0 4)) (distinct t (_ bv0 4)))

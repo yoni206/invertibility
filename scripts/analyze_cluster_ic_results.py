@@ -572,12 +572,11 @@ def get_result(log_content):
     lines = log_content.splitlines()
     bad_prefix = "c"
     good_lines = [l for l in lines if not l.startswith(bad_prefix)]
-    if len(good_lines) == 0:
+    if len(good_lines) == 0 or "Memory limit exceeded" in "\n".join(good_lines): 
         return "no result"
     elif len(good_lines) > 1:
         assert(False)
     else:
-        assert(len(good_lines) == 1)
         good_line = good_lines[0]
         return good_line
 

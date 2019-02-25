@@ -186,7 +186,7 @@ never_even
 (in_range k a)
 (in_range k b)
 )
-(= (intor k a b) (+ (intor (- k 1) a b) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
+(= (intor k a b) (+ (intor (- k 1) (intextract k (- k 2) 0 a) (intextract k (- k 2) 0 b)) (* (two_to_the (- k 1)) (intor_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
 ))) :pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
@@ -261,7 +261,7 @@ never_even
 (= (intand 1 a b) (intand_helper (lsb k a) (lsb k b)))
 (=>
 ( and (> k 1) (in_range k a) (in_range k b))
-(= (intand k a b) (+ (intand (- k 1) a b) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
+(= (intand k a b) (+ (intand (- k 1) (intextract k (- k 2) 0 a) (intextract k (- k 2) 0 b)) (* (two_to_the (- k 1)) (intand_helper (bitof k (- k 1) a) (bitof k (- k 1) b))))
 ))) :pattern ((instantiate_me a) (instantiate_me b)))
 ))
 
@@ -339,7 +339,7 @@ never_even
 (= (intxor 1 a b) (intxor_helper (lsb k a) (lsb k b)))
 (=>
 (and (> k 1) (in_range k a) (in_range k b))
-(= (intxor k a b) (+ (intxor (- k 1) a b) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
+(= (intxor k a b) (+ (intxor (- k 1) (intextract k (- k 2) 0 a) (intextract k (- k 2) 0 b)) (* (two_to_the (- k 1)) (intxor_helper (bitof k (- k 1) a) (bitof k (- k 1) b)))))
 )) :pattern ((instantiate_me a) (instantiate_me b)))
 ))
 

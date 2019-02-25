@@ -41,7 +41,7 @@ combined,bvsgt_bvashr1,ltr,no
 combined,bvsgt_bvashr1,rtl,no
 combined,bvsgt_bvlshr0,ltr,yes
 combined,bvsgt_bvlshr0,rtl,no
-combined,bvsgt_bvlshr1,ltr,yes
+combined,bvsgt_bvlshr1,ltr,no
 combined,bvsgt_bvlshr1,rtl,yes
 combined,bvsgt_bvmul,ltr,no
 combined,bvsgt_bvmul,rtl,no
@@ -55,7 +55,7 @@ combined,bvsgt_bvshl0,ltr,no
 combined,bvsgt_bvshl0,rtl,no
 combined,bvsgt_bvshl1,ltr,no
 combined,bvsgt_bvshl1,rtl,yes
-combined,bvsgt_bvudiv0,ltr,no
+combined,bvsgt_bvudiv0,ltr,yes
 combined,bvsgt_bvudiv0,rtl,no
 combined,bvsgt_bvudiv1,ltr,no
 combined,bvsgt_bvudiv1,rtl,yes
@@ -601,7 +601,7 @@ full,eq_bvshl1,ltr,no
 full,eq_bvshl1,rtl,no
 full,eq_bvudiv0,ltr,yes
 full,eq_bvudiv0,rtl,yes
-full,eq_bvudiv1,ltr,no
+full,eq_bvudiv1,ltr,yes
 full,eq_bvudiv1,rtl,yes
 full,eq_bvurem0,ltr,yes
 full,eq_bvurem0,rtl,yes
@@ -667,7 +667,7 @@ partial,bvsge_bvudiv0,ltr,yes
 partial,bvsge_bvudiv0,rtl,no
 partial,bvsge_bvudiv1,ltr,no
 partial,bvsge_bvudiv1,rtl,no
-partial,bvsge_bvurem0,ltr,yes
+partial,bvsge_bvurem0,ltr,no
 partial,bvsge_bvurem0,rtl,yes
 partial,bvsge_bvurem1,ltr,no
 partial,bvsge_bvurem1,rtl,yes
@@ -695,7 +695,7 @@ partial,bvsgt_bvshl0,ltr,no
 partial,bvsgt_bvshl0,rtl,no
 partial,bvsgt_bvshl1,ltr,no
 partial,bvsgt_bvshl1,rtl,yes
-partial,bvsgt_bvudiv0,ltr,yes
+partial,bvsgt_bvudiv0,ltr,no
 partial,bvsgt_bvudiv0,rtl,no
 partial,bvsgt_bvudiv1,ltr,no
 partial,bvsgt_bvudiv1,rtl,no
@@ -721,7 +721,7 @@ partial,bvsle_bvneg,ltr,no
 partial,bvsle_bvneg,rtl,yes
 partial,bvsle_bvnot,ltr,yes
 partial,bvsle_bvnot,rtl,yes
-partial,bvsle_bvor,ltr,no
+partial,bvsle_bvor,ltr,yes
 partial,bvsle_bvor,rtl,no
 partial,bvsle_bvshl0,ltr,no
 partial,bvsle_bvshl0,rtl,no
@@ -759,7 +759,7 @@ partial,bvslt_bvshl0,ltr,yes
 partial,bvslt_bvshl0,rtl,no
 partial,bvslt_bvshl1,ltr,no
 partial,bvslt_bvshl1,rtl,no
-partial,bvslt_bvudiv0,ltr,yes
+partial,bvslt_bvudiv0,ltr,no
 partial,bvslt_bvudiv0,rtl,no
 partial,bvslt_bvudiv1,ltr,no
 partial,bvslt_bvudiv1,rtl,no
@@ -792,7 +792,7 @@ partial,bvuge_bvshl0,rtl,no
 partial,bvuge_bvshl1,ltr,no
 partial,bvuge_bvshl1,rtl,yes
 partial,bvuge_bvudiv0,ltr,no
-partial,bvuge_bvudiv0,rtl,no
+partial,bvuge_bvudiv0,rtl,yes
 partial,bvuge_bvudiv1,ltr,yes
 partial,bvuge_bvudiv1,rtl,yes
 partial,bvuge_bvurem0,ltr,yes
@@ -871,7 +871,7 @@ partial,bvult_bvashr0,ltr,yes
 partial,bvult_bvashr0,rtl,yes
 partial,bvult_bvashr1,ltr,no
 partial,bvult_bvashr1,rtl,no
-partial,bvult_bvlshr0,ltr,yes
+partial,bvult_bvlshr0,ltr,no
 partial,bvult_bvlshr0,rtl,yes
 partial,bvult_bvlshr1,ltr,no
 partial,bvult_bvlshr1,rtl,yes
@@ -1053,7 +1053,7 @@ qf,bvsle_bvudiv1,ltr,yes
 qf,bvsle_bvudiv1,rtl,no
 qf,bvsle_bvurem0,ltr,no
 qf,bvsle_bvurem0,rtl,no
-qf,bvsle_bvurem1,ltr,no
+qf,bvsle_bvurem1,ltr,yes
 qf,bvsle_bvurem1,rtl,no
 qf,bvslt_bvadd,ltr,no
 qf,bvslt_bvadd,rtl,no
