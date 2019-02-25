@@ -91,7 +91,7 @@ def main(results_dir, tex_csv_dir, translations_file):
     red_encodings = andy_encodings(enc_agg)
     print("panda red encs", red_encodings)
 
-    print(keep_encodings(enc_agg, ["qf", "combined"]))
+    print(keep_encodings(enc_agg, ["combined", "partial", "full"]))
     print(keep_configs(only_combined, ["z3_default", "cvc4_tplanes", "vampire" ]))
 
 
@@ -269,9 +269,14 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     pivot["rtl_only"] = pivot.apply(rtl_only, axis=1)
     pivot["fully_proved"] = pivot.apply(fully_proved, axis=1)
     pivot["nothing_proved"] = pivot.apply(nothing_proved, axis=1)
+    
+    over_encs_gb = pivot.groupby(["ic_name"])
+    over_encs = over_encs_gb.agg(agg_yes)
+    over_encs.to_csv("~/tmp.csv")
+    
+
     group_by = pivot.groupby(["encoding"]) 
     agg = group_by.agg(countyes)
-
     #do another pivot for total according to direction and cond.
     g = cond_agg.groupby(["ic_name", "direction_cond"], as_index =False)
     a = g.agg({'proved': agg_yes})
