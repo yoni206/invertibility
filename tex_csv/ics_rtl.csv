@@ -74,6 +74,7 @@
 734,bvsle_bvurem1,rtl,partial,NA,yes,rtl,(or (bvult t min) (bvsge t s))
 752,bvslt_bvadd,rtl,combined,NA,yes,rtl,(distinct t min)
 753,bvslt_bvadd,rtl,full,NA,yes,rtl,(distinct t min)
+772,bvslt_bvand,rtl,combined,NA,yes,rtl,(bvslt (bvand (bvnot (bvneg t)) s) t)
 808,bvslt_bvashr1,rtl,combined,NA,yes,rtl,(or (bvslt s t) (bvslt (_ bv0 4) t))
 828,bvslt_bvlshr0,rtl,combined,NA,yes,rtl,(bvslt (bvlshr (bvnot (bvneg t)) s) t)
 844,bvslt_bvlshr1,rtl,combined,NA,yes,rtl,(or (bvslt s t) (bvslt (_ bv0 4) t))
@@ -119,6 +120,7 @@
 1204,bvuge_bvshl1,rtl,combined,NA,yes,rtl,(or  (bvuge (bvshl s (_ bv0 4)) t) (bvuge (bvshl s (_ bv1 4)) t) (bvuge (bvshl s (_ bv2 4)) t) (bvuge (bvshl s (_ bv3 4)) t) (bvuge (bvshl s (_ bv4 4)) t))
 1206,bvuge_bvshl1,rtl,partial,NA,yes,rtl,(or  (bvuge (bvshl s (_ bv0 4)) t) (bvuge (bvshl s (_ bv1 4)) t) (bvuge (bvshl s (_ bv2 4)) t) (bvuge (bvshl s (_ bv3 4)) t) (bvuge (bvshl s (_ bv4 4)) t))
 1212,bvuge_bvudiv0,rtl,combined,NA,yes,rtl,(= (bvand (udivtotal (bvmul s t) t) s) s)
+1214,bvuge_bvudiv0,rtl,partial,NA,yes,rtl,(= (bvand (udivtotal (bvmul s t) t) s) s)
 1232,bvuge_bvudiv1,rtl,combined,NA,yes,rtl,true
 1233,bvuge_bvudiv1,rtl,full,NA,yes,rtl,true
 1234,bvuge_bvudiv1,rtl,partial,NA,yes,rtl,true
