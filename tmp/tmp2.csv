@@ -97,7 +97,7 @@
 95,bvsge_bvshl1,rtl,qf,no,False
 96,bvsge_bvudiv0,ltr,combined,yes,True
 97,bvsge_bvudiv0,ltr,full,yes,True
-98,bvsge_bvudiv0,ltr,partial,yes,True
+98,bvsge_bvudiv0,ltr,partial,no,True
 99,bvsge_bvudiv0,ltr,qf,no,False
 100,bvsge_bvudiv0,rtl,combined,yes,True
 101,bvsge_bvudiv0,rtl,full,yes,True
@@ -329,7 +329,7 @@
 327,bvsle_bvnot,rtl,qf,yes,False
 328,bvsle_bvor,ltr,combined,yes,True
 329,bvsle_bvor,ltr,full,no,True
-330,bvsle_bvor,ltr,partial,yes,True
+330,bvsle_bvor,ltr,partial,no,True
 331,bvsle_bvor,ltr,qf,no,False
 332,bvsle_bvor,rtl,combined,no,True
 333,bvsle_bvor,rtl,full,no,True
@@ -395,7 +395,7 @@
 393,bvslt_bvand,ltr,full,yes,True
 394,bvslt_bvand,ltr,partial,yes,True
 395,bvslt_bvand,ltr,qf,yes,False
-396,bvslt_bvand,rtl,combined,yes,True
+396,bvslt_bvand,rtl,combined,no,True
 397,bvslt_bvand,rtl,full,no,True
 398,bvslt_bvand,rtl,partial,no,True
 399,bvslt_bvand,rtl,qf,no,False
@@ -613,7 +613,7 @@
 611,bvuge_bvudiv0,ltr,qf,no,False
 612,bvuge_bvudiv0,rtl,combined,yes,True
 613,bvuge_bvudiv0,rtl,full,no,True
-614,bvuge_bvudiv0,rtl,partial,yes,True
+614,bvuge_bvudiv0,rtl,partial,no,True
 615,bvuge_bvudiv0,rtl,qf,no,False
 616,bvuge_bvudiv1,ltr,combined,yes,True
 617,bvuge_bvudiv1,ltr,full,yes,True
@@ -1152,7 +1152,7 @@
 1150,eq_bvurem1,rtl,partial,no,True
 1151,eq_bvurem1,rtl,qf,no,False
 1152,ne_bvadd,ltr,combined,yes,True
-1153,ne_bvadd,ltr,full,yes,True
+1153,ne_bvadd,ltr,full,no,True
 1154,ne_bvadd,ltr,partial,yes,True
 1155,ne_bvadd,ltr,qf,no,False
 1156,ne_bvadd,rtl,combined,yes,True
