@@ -596,7 +596,7 @@ def get_result(log_content):
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print('arg1: cluster results dir\narg2: tex-csv dir\narg3: translations file\noptional arg4: virtual timeout in seconds')
+        print('arg1: cluster results dir\narg2: tex-csv dir\narg3: translations file\noptional arg4: virtual timeout in seconds (-1 if none)')
         exit(1)
     results_dir = sys.argv[1]
     tex_csv_dir = sys.argv[2]

@@ -662,7 +662,7 @@ vampire,bvsge_bvor,rtl,no
 vampire,bvsge_bvshl0,ltr,no
 vampire,bvsge_bvshl0,rtl,no
 vampire,bvsge_bvshl1,ltr,no
-vampire,bvsge_bvshl1,rtl,yes
+vampire,bvsge_bvshl1,rtl,no
 vampire,bvsge_bvudiv0,ltr,no
 vampire,bvsge_bvudiv0,rtl,no
 vampire,bvsge_bvudiv1,ltr,no
@@ -694,7 +694,7 @@ vampire,bvsgt_bvor,rtl,no
 vampire,bvsgt_bvshl0,ltr,no
 vampire,bvsgt_bvshl0,rtl,no
 vampire,bvsgt_bvshl1,ltr,no
-vampire,bvsgt_bvshl1,rtl,yes
+vampire,bvsgt_bvshl1,rtl,no
 vampire,bvsgt_bvudiv0,ltr,no
 vampire,bvsgt_bvudiv0,rtl,no
 vampire,bvsgt_bvudiv1,ltr,no
@@ -1054,7 +1054,7 @@ z3_default,bvsle_bvudiv1,rtl,no
 z3_default,bvsle_bvurem0,ltr,no
 z3_default,bvsle_bvurem0,rtl,no
 z3_default,bvsle_bvurem1,ltr,yes
-z3_default,bvsle_bvurem1,rtl,yes
+z3_default,bvsle_bvurem1,rtl,no
 z3_default,bvslt_bvadd,ltr,no
 z3_default,bvslt_bvadd,rtl,yes
 z3_default,bvslt_bvand,ltr,yes

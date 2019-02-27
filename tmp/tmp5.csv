@@ -1893,7 +1893,7 @@
 1891,combined,vampire,bvult_bvurem0,ltr,no_inv,no
 1892,combined,vampire,bvult_bvurem0,rtl,NA,yes
 1893,combined,vampire,bvult_bvurem1,ltr,inv_a,no
-1894,combined,vampire,bvult_bvurem1,ltr,inv_g,no
+1894,combined,vampire,bvult_bvurem1,ltr,inv_g,yes
 1895,combined,vampire,bvult_bvurem1,ltr,inv_r,no
 1896,combined,vampire,bvult_bvurem1,ltr,no_inv,yes
 1897,combined,vampire,bvult_bvurem1,rtl,NA,yes
@@ -1932,7 +1932,7 @@
 1930,combined,vampire,eq_bvor,ltr,inv_r,yes
 1931,combined,vampire,eq_bvor,ltr,no_inv,yes
 1932,combined,vampire,eq_bvor,rtl,NA,no
-1933,combined,vampire,eq_bvshl0,ltr,inv_g,yes
+1933,combined,vampire,eq_bvshl0,ltr,inv_g,no
 1934,combined,vampire,eq_bvshl0,ltr,no_inv,no
 1935,combined,vampire,eq_bvshl0,rtl,NA,no
 1936,combined,vampire,eq_bvshl1,ltr,no_inv,no
@@ -4324,7 +4324,7 @@
 4322,full,vampire,bvuge_bvmul,ltr,no_inv,no
 4323,full,vampire,bvuge_bvmul,rtl,NA,no
 4324,full,vampire,bvuge_bvneg,ltr,inv_a,yes
-4325,full,vampire,bvuge_bvneg,ltr,inv_g,no
+4325,full,vampire,bvuge_bvneg,ltr,inv_g,yes
 4326,full,vampire,bvuge_bvneg,ltr,inv_r,yes
 4327,full,vampire,bvuge_bvneg,ltr,no_inv,no
 4328,full,vampire,bvuge_bvneg,rtl,NA,yes
@@ -4434,7 +4434,7 @@
 4432,full,vampire,bvugt_bvurem1,ltr,inv_g,yes
 4433,full,vampire,bvugt_bvurem1,ltr,inv_r,yes
 4434,full,vampire,bvugt_bvurem1,ltr,no_inv,yes
-4435,full,vampire,bvugt_bvurem1,rtl,NA,no
+4435,full,vampire,bvugt_bvurem1,rtl,NA,yes
 4436,full,vampire,bvule_bvadd,ltr,inv_a,yes
 4437,full,vampire,bvule_bvadd,ltr,inv_g,yes
 4438,full,vampire,bvule_bvadd,ltr,inv_r,yes
@@ -4586,7 +4586,7 @@
 4584,full,vampire,bvult_bvurem0,ltr,inv_a,no
 4585,full,vampire,bvult_bvurem0,ltr,inv_g,no
 4586,full,vampire,bvult_bvurem0,ltr,inv_r,no
-4587,full,vampire,bvult_bvurem0,ltr,no_inv,yes
+4587,full,vampire,bvult_bvurem0,ltr,no_inv,no
 4588,full,vampire,bvult_bvurem0,rtl,NA,yes
 4589,full,vampire,bvult_bvurem1,ltr,inv_a,no
 4590,full,vampire,bvult_bvurem1,ltr,inv_g,no
@@ -4900,7 +4900,7 @@
 4898,full,z3_default,bvsle_bvurem1,ltr,inv_g,no
 4899,full,z3_default,bvsle_bvurem1,ltr,inv_r,no
 4900,full,z3_default,bvsle_bvurem1,ltr,no_inv,no
-4901,full,z3_default,bvsle_bvurem1,rtl,NA,yes
+4901,full,z3_default,bvsle_bvurem1,rtl,NA,no
 4902,full,z3_default,bvslt_bvadd,ltr,inv_a,no
 4903,full,z3_default,bvslt_bvadd,ltr,inv_g,no
 4904,full,z3_default,bvslt_bvadd,ltr,inv_r,no
@@ -6785,7 +6785,7 @@
 6783,partial,vampire,bvsge_bvshl0,ltr,no_inv,no
 6784,partial,vampire,bvsge_bvshl0,rtl,NA,no
 6785,partial,vampire,bvsge_bvshl1,ltr,no_inv,no
-6786,partial,vampire,bvsge_bvshl1,rtl,NA,yes
+6786,partial,vampire,bvsge_bvshl1,rtl,NA,no
 6787,partial,vampire,bvsge_bvudiv0,ltr,no_inv,no
 6788,partial,vampire,bvsge_bvudiv0,rtl,NA,no
 6789,partial,vampire,bvsge_bvudiv1,ltr,no_inv,no
@@ -6844,7 +6844,7 @@
 6842,partial,vampire,bvsgt_bvshl0,ltr,no_inv,no
 6843,partial,vampire,bvsgt_bvshl0,rtl,NA,no
 6844,partial,vampire,bvsgt_bvshl1,ltr,no_inv,no
-6845,partial,vampire,bvsgt_bvshl1,rtl,NA,yes
+6845,partial,vampire,bvsgt_bvshl1,rtl,NA,no
 6846,partial,vampire,bvsgt_bvudiv0,ltr,no_inv,no
 6847,partial,vampire,bvsgt_bvudiv0,rtl,NA,no
 6848,partial,vampire,bvsgt_bvudiv1,ltr,no_inv,no
@@ -7114,7 +7114,7 @@
 7112,partial,vampire,bvugt_bvudiv0,ltr,inv_a,yes
 7113,partial,vampire,bvugt_bvudiv0,ltr,inv_g,yes
 7114,partial,vampire,bvugt_bvudiv0,ltr,inv_r,yes
-7115,partial,vampire,bvugt_bvudiv0,ltr,no_inv,yes
+7115,partial,vampire,bvugt_bvudiv0,ltr,no_inv,no
 7116,partial,vampire,bvugt_bvudiv0,rtl,NA,no
 7117,partial,vampire,bvugt_bvudiv1,ltr,inv_a,yes
 7118,partial,vampire,bvugt_bvudiv1,ltr,inv_g,yes
@@ -7277,7 +7277,7 @@
 7275,partial,vampire,bvult_bvudiv1,ltr,inv_a,yes
 7276,partial,vampire,bvult_bvudiv1,ltr,inv_g,yes
 7277,partial,vampire,bvult_bvudiv1,ltr,inv_r,yes
-7278,partial,vampire,bvult_bvudiv1,ltr,no_inv,yes
+7278,partial,vampire,bvult_bvudiv1,ltr,no_inv,no
 7279,partial,vampire,bvult_bvudiv1,rtl,NA,no
 7280,partial,vampire,bvult_bvurem0,ltr,inv_a,yes
 7281,partial,vampire,bvult_bvurem0,ltr,inv_g,yes
@@ -7330,7 +7330,7 @@
 7328,partial,vampire,eq_bvshl1,ltr,no_inv,no
 7329,partial,vampire,eq_bvshl1,rtl,NA,no
 7330,partial,vampire,eq_bvudiv0,ltr,inv_a,yes
-7331,partial,vampire,eq_bvudiv0,ltr,no_inv,yes
+7331,partial,vampire,eq_bvudiv0,ltr,no_inv,no
 7332,partial,vampire,eq_bvudiv0,rtl,NA,no
 7333,partial,vampire,eq_bvudiv1,ltr,no_inv,no
 7334,partial,vampire,eq_bvudiv1,rtl,NA,no
@@ -7373,7 +7373,7 @@
 7371,partial,vampire,ne_bvlshr1,ltr,no_inv,no
 7372,partial,vampire,ne_bvlshr1,rtl,NA,yes
 7373,partial,vampire,ne_bvmul,ltr,no_inv,no
-7374,partial,vampire,ne_bvmul,rtl,NA,no
+7374,partial,vampire,ne_bvmul,rtl,NA,yes
 7375,partial,vampire,ne_bvneg,ltr,inv_a,yes
 7376,partial,vampire,ne_bvneg,ltr,inv_g,yes
 7377,partial,vampire,ne_bvneg,ltr,inv_r,yes

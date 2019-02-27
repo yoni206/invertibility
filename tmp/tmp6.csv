@@ -915,7 +915,7 @@ combined,vampire,eq_bvnot,ltr,yes
 combined,vampire,eq_bvnot,rtl,yes
 combined,vampire,eq_bvor,ltr,yes
 combined,vampire,eq_bvor,rtl,no
-combined,vampire,eq_bvshl0,ltr,yes
+combined,vampire,eq_bvshl0,ltr,no
 combined,vampire,eq_bvshl0,rtl,no
 combined,vampire,eq_bvshl1,ltr,no
 combined,vampire,eq_bvshl1,rtl,no
@@ -2110,7 +2110,7 @@ full,vampire,bvugt_bvudiv1,rtl,yes
 full,vampire,bvugt_bvurem0,ltr,yes
 full,vampire,bvugt_bvurem0,rtl,yes
 full,vampire,bvugt_bvurem1,ltr,yes
-full,vampire,bvugt_bvurem1,rtl,no
+full,vampire,bvugt_bvurem1,rtl,yes
 full,vampire,bvule_bvadd,ltr,yes
 full,vampire,bvule_bvadd,rtl,yes
 full,vampire,bvule_bvand,ltr,no
@@ -2171,7 +2171,7 @@ full,vampire,bvult_bvudiv0,ltr,yes
 full,vampire,bvult_bvudiv0,rtl,yes
 full,vampire,bvult_bvudiv1,ltr,no
 full,vampire,bvult_bvudiv1,rtl,no
-full,vampire,bvult_bvurem0,ltr,yes
+full,vampire,bvult_bvurem0,ltr,no
 full,vampire,bvult_bvurem0,rtl,yes
 full,vampire,bvult_bvurem1,ltr,yes
 full,vampire,bvult_bvurem1,rtl,yes
@@ -2334,7 +2334,7 @@ full,z3_default,bvsle_bvudiv1,rtl,no
 full,z3_default,bvsle_bvurem0,ltr,no
 full,z3_default,bvsle_bvurem0,rtl,no
 full,z3_default,bvsle_bvurem1,ltr,no
-full,z3_default,bvsle_bvurem1,rtl,yes
+full,z3_default,bvsle_bvurem1,rtl,no
 full,z3_default,bvslt_bvadd,ltr,no
 full,z3_default,bvslt_bvadd,rtl,yes
 full,z3_default,bvslt_bvand,ltr,yes
@@ -3222,7 +3222,7 @@ partial,vampire,bvsge_bvor,rtl,no
 partial,vampire,bvsge_bvshl0,ltr,no
 partial,vampire,bvsge_bvshl0,rtl,no
 partial,vampire,bvsge_bvshl1,ltr,no
-partial,vampire,bvsge_bvshl1,rtl,yes
+partial,vampire,bvsge_bvshl1,rtl,no
 partial,vampire,bvsge_bvudiv0,ltr,no
 partial,vampire,bvsge_bvudiv0,rtl,no
 partial,vampire,bvsge_bvudiv1,ltr,no
@@ -3254,7 +3254,7 @@ partial,vampire,bvsgt_bvor,rtl,no
 partial,vampire,bvsgt_bvshl0,ltr,no
 partial,vampire,bvsgt_bvshl0,rtl,no
 partial,vampire,bvsgt_bvshl1,ltr,no
-partial,vampire,bvsgt_bvshl1,rtl,yes
+partial,vampire,bvsgt_bvshl1,rtl,no
 partial,vampire,bvsgt_bvudiv0,ltr,no
 partial,vampire,bvsgt_bvudiv0,rtl,no
 partial,vampire,bvsgt_bvudiv1,ltr,no
@@ -3500,7 +3500,7 @@ partial,vampire,ne_bvlshr0,rtl,no
 partial,vampire,ne_bvlshr1,ltr,no
 partial,vampire,ne_bvlshr1,rtl,yes
 partial,vampire,ne_bvmul,ltr,no
-partial,vampire,ne_bvmul,rtl,no
+partial,vampire,ne_bvmul,rtl,yes
 partial,vampire,ne_bvneg,ltr,yes
 partial,vampire,ne_bvneg,rtl,yes
 partial,vampire,ne_bvnot,ltr,yes
