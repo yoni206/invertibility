@@ -408,8 +408,8 @@ div_zero
 ; Main course: l and SC       ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(define-fun l ((k Int) (x Int) (s Int) (t Int)) Bool  (distinct (intor k x s) t))
-(define-fun SC ((k Int) (s Int) (t Int)) Bool (or (distinct s (intmax k)) (distinct t (intmax k)))
+(define-fun l ((k Int) (x Int) (s Int) (t Int)) Bool  (distinct (intand k x s) t))
+(define-fun SC ((k Int) (s Int) (t Int)) Bool (or (distinct s 0) (distinct t 0))
 
 )
 
@@ -445,10 +445,10 @@ div_zero
 ;general assertions
 (assert (range_assumptions k s t))
 (assert two_to_the_is_ok)
+(assert (and_is_ok k))
 
-(assert (or_is_ok k))
 
 
-(assert assertion_rtl)
+;(assert assertion_rtl)
 
 (check-sat)
