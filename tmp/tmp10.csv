@@ -4,11 +4,11 @@ cvc4_tplanes,bvsge_bvadd,rtl,yes
 cvc4_tplanes,bvsge_bvand,ltr,yes
 cvc4_tplanes,bvsge_bvand,rtl,no
 cvc4_tplanes,bvsge_bvashr0,ltr,yes
-cvc4_tplanes,bvsge_bvashr0,rtl,no
+cvc4_tplanes,bvsge_bvashr0,rtl,yes
 cvc4_tplanes,bvsge_bvashr1,ltr,no
 cvc4_tplanes,bvsge_bvashr1,rtl,yes
-cvc4_tplanes,bvsge_bvlshr0,ltr,yes
-cvc4_tplanes,bvsge_bvlshr0,rtl,yes
+cvc4_tplanes,bvsge_bvlshr0,ltr,no
+cvc4_tplanes,bvsge_bvlshr0,rtl,no
 cvc4_tplanes,bvsge_bvlshr1,ltr,yes
 cvc4_tplanes,bvsge_bvlshr1,rtl,yes
 cvc4_tplanes,bvsge_bvmul,ltr,no
@@ -21,7 +21,7 @@ cvc4_tplanes,bvsge_bvor,ltr,no
 cvc4_tplanes,bvsge_bvor,rtl,no
 cvc4_tplanes,bvsge_bvshl0,ltr,no
 cvc4_tplanes,bvsge_bvshl0,rtl,no
-cvc4_tplanes,bvsge_bvshl1,ltr,no
+cvc4_tplanes,bvsge_bvshl1,ltr,yes
 cvc4_tplanes,bvsge_bvshl1,rtl,yes
 cvc4_tplanes,bvsge_bvudiv0,ltr,no
 cvc4_tplanes,bvsge_bvudiv0,rtl,yes
@@ -36,7 +36,7 @@ cvc4_tplanes,bvsgt_bvadd,rtl,yes
 cvc4_tplanes,bvsgt_bvand,ltr,no
 cvc4_tplanes,bvsgt_bvand,rtl,no
 cvc4_tplanes,bvsgt_bvashr0,ltr,yes
-cvc4_tplanes,bvsgt_bvashr0,rtl,no
+cvc4_tplanes,bvsgt_bvashr0,rtl,yes
 cvc4_tplanes,bvsgt_bvashr1,ltr,no
 cvc4_tplanes,bvsgt_bvashr1,rtl,no
 cvc4_tplanes,bvsgt_bvlshr0,ltr,yes
@@ -53,7 +53,7 @@ cvc4_tplanes,bvsgt_bvor,ltr,no
 cvc4_tplanes,bvsgt_bvor,rtl,no
 cvc4_tplanes,bvsgt_bvshl0,ltr,no
 cvc4_tplanes,bvsgt_bvshl0,rtl,no
-cvc4_tplanes,bvsgt_bvshl1,ltr,no
+cvc4_tplanes,bvsgt_bvshl1,ltr,yes
 cvc4_tplanes,bvsgt_bvshl1,rtl,yes
 cvc4_tplanes,bvsgt_bvudiv0,ltr,no
 cvc4_tplanes,bvsgt_bvudiv0,rtl,yes
@@ -73,7 +73,7 @@ cvc4_tplanes,bvsle_bvashr1,ltr,no
 cvc4_tplanes,bvsle_bvashr1,rtl,yes
 cvc4_tplanes,bvsle_bvlshr0,ltr,yes
 cvc4_tplanes,bvsle_bvlshr0,rtl,yes
-cvc4_tplanes,bvsle_bvlshr1,ltr,no
+cvc4_tplanes,bvsle_bvlshr1,ltr,yes
 cvc4_tplanes,bvsle_bvlshr1,rtl,yes
 cvc4_tplanes,bvsle_bvmul,ltr,no
 cvc4_tplanes,bvsle_bvmul,rtl,yes
@@ -86,7 +86,7 @@ cvc4_tplanes,bvsle_bvor,rtl,no
 cvc4_tplanes,bvsle_bvshl0,ltr,no
 cvc4_tplanes,bvsle_bvshl0,rtl,yes
 cvc4_tplanes,bvsle_bvshl1,ltr,no
-cvc4_tplanes,bvsle_bvshl1,rtl,yes
+cvc4_tplanes,bvsle_bvshl1,rtl,no
 cvc4_tplanes,bvsle_bvudiv0,ltr,yes
 cvc4_tplanes,bvsle_bvudiv0,rtl,yes
 cvc4_tplanes,bvsle_bvudiv1,ltr,no
@@ -105,7 +105,7 @@ cvc4_tplanes,bvslt_bvashr1,ltr,no
 cvc4_tplanes,bvslt_bvashr1,rtl,yes
 cvc4_tplanes,bvslt_bvlshr0,ltr,yes
 cvc4_tplanes,bvslt_bvlshr0,rtl,yes
-cvc4_tplanes,bvslt_bvlshr1,ltr,no
+cvc4_tplanes,bvslt_bvlshr1,ltr,yes
 cvc4_tplanes,bvslt_bvlshr1,rtl,yes
 cvc4_tplanes,bvslt_bvmul,ltr,no
 cvc4_tplanes,bvslt_bvmul,rtl,no
@@ -181,7 +181,7 @@ cvc4_tplanes,bvugt_bvor,ltr,yes
 cvc4_tplanes,bvugt_bvor,rtl,yes
 cvc4_tplanes,bvugt_bvshl0,ltr,yes
 cvc4_tplanes,bvugt_bvshl0,rtl,no
-cvc4_tplanes,bvugt_bvshl1,ltr,no
+cvc4_tplanes,bvugt_bvshl1,ltr,yes
 cvc4_tplanes,bvugt_bvshl1,rtl,yes
 cvc4_tplanes,bvugt_bvudiv0,ltr,yes
 cvc4_tplanes,bvugt_bvudiv0,rtl,yes
@@ -199,9 +199,9 @@ cvc4_tplanes,bvule_bvashr0,ltr,yes
 cvc4_tplanes,bvule_bvashr0,rtl,yes
 cvc4_tplanes,bvule_bvashr1,ltr,no
 cvc4_tplanes,bvule_bvashr1,rtl,yes
-cvc4_tplanes,bvule_bvlshr0,ltr,no
+cvc4_tplanes,bvule_bvlshr0,ltr,yes
 cvc4_tplanes,bvule_bvlshr0,rtl,yes
-cvc4_tplanes,bvule_bvlshr1,ltr,no
+cvc4_tplanes,bvule_bvlshr1,ltr,yes
 cvc4_tplanes,bvule_bvlshr1,rtl,yes
 cvc4_tplanes,bvule_bvmul,ltr,yes
 cvc4_tplanes,bvule_bvmul,rtl,yes
@@ -213,7 +213,7 @@ cvc4_tplanes,bvule_bvor,ltr,yes
 cvc4_tplanes,bvule_bvor,rtl,yes
 cvc4_tplanes,bvule_bvshl0,ltr,yes
 cvc4_tplanes,bvule_bvshl0,rtl,yes
-cvc4_tplanes,bvule_bvshl1,ltr,no
+cvc4_tplanes,bvule_bvshl1,ltr,yes
 cvc4_tplanes,bvule_bvshl1,rtl,yes
 cvc4_tplanes,bvule_bvudiv0,ltr,yes
 cvc4_tplanes,bvule_bvudiv0,rtl,yes
@@ -231,9 +231,9 @@ cvc4_tplanes,bvult_bvashr0,ltr,yes
 cvc4_tplanes,bvult_bvashr0,rtl,yes
 cvc4_tplanes,bvult_bvashr1,ltr,no
 cvc4_tplanes,bvult_bvashr1,rtl,yes
-cvc4_tplanes,bvult_bvlshr0,ltr,no
+cvc4_tplanes,bvult_bvlshr0,ltr,yes
 cvc4_tplanes,bvult_bvlshr0,rtl,yes
-cvc4_tplanes,bvult_bvlshr1,ltr,no
+cvc4_tplanes,bvult_bvlshr1,ltr,yes
 cvc4_tplanes,bvult_bvlshr1,rtl,yes
 cvc4_tplanes,bvult_bvmul,ltr,yes
 cvc4_tplanes,bvult_bvmul,rtl,yes
@@ -245,7 +245,7 @@ cvc4_tplanes,bvult_bvor,ltr,yes
 cvc4_tplanes,bvult_bvor,rtl,yes
 cvc4_tplanes,bvult_bvshl0,ltr,yes
 cvc4_tplanes,bvult_bvshl0,rtl,yes
-cvc4_tplanes,bvult_bvshl1,ltr,no
+cvc4_tplanes,bvult_bvshl1,ltr,yes
 cvc4_tplanes,bvult_bvshl1,rtl,yes
 cvc4_tplanes,bvult_bvudiv0,ltr,yes
 cvc4_tplanes,bvult_bvudiv0,rtl,yes
@@ -265,7 +265,7 @@ cvc4_tplanes,eq_bvashr1,ltr,no
 cvc4_tplanes,eq_bvashr1,rtl,no
 cvc4_tplanes,eq_bvlshr0,ltr,yes
 cvc4_tplanes,eq_bvlshr0,rtl,yes
-cvc4_tplanes,eq_bvlshr1,ltr,no
+cvc4_tplanes,eq_bvlshr1,ltr,yes
 cvc4_tplanes,eq_bvlshr1,rtl,yes
 cvc4_tplanes,eq_bvmul,ltr,no
 cvc4_tplanes,eq_bvmul,rtl,no
@@ -293,7 +293,7 @@ cvc4_tplanes,ne_bvand,ltr,yes
 cvc4_tplanes,ne_bvand,rtl,yes
 cvc4_tplanes,ne_bvashr0,ltr,yes
 cvc4_tplanes,ne_bvashr0,rtl,yes
-cvc4_tplanes,ne_bvashr1,ltr,no
+cvc4_tplanes,ne_bvashr1,ltr,yes
 cvc4_tplanes,ne_bvashr1,rtl,yes
 cvc4_tplanes,ne_bvlshr0,ltr,yes
 cvc4_tplanes,ne_bvlshr0,rtl,yes
@@ -325,7 +325,7 @@ cvc4_tplanes_saturate_no_e_matching,bvsge_bvand,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvsge_bvand,rtl,no
 cvc4_tplanes_saturate_no_e_matching,bvsge_bvashr0,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvsge_bvashr0,rtl,no
-cvc4_tplanes_saturate_no_e_matching,bvsge_bvashr1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,bvsge_bvashr1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvsge_bvashr1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvsge_bvlshr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvsge_bvlshr0,rtl,no
@@ -369,7 +369,7 @@ cvc4_tplanes_saturate_no_e_matching,bvsgt_bvneg,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvsgt_bvneg,rtl,no
 cvc4_tplanes_saturate_no_e_matching,bvsgt_bvnot,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvsgt_bvnot,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,bvsgt_bvor,ltr,yes
+cvc4_tplanes_saturate_no_e_matching,bvsgt_bvor,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvsgt_bvor,rtl,no
 cvc4_tplanes_saturate_no_e_matching,bvsgt_bvshl0,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvsgt_bvshl0,rtl,no
@@ -417,7 +417,7 @@ cvc4_tplanes_saturate_no_e_matching,bvsle_bvurem1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvsle_bvurem1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvslt_bvadd,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvslt_bvadd,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,bvslt_bvand,ltr,yes
+cvc4_tplanes_saturate_no_e_matching,bvslt_bvand,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvslt_bvand,rtl,no
 cvc4_tplanes_saturate_no_e_matching,bvslt_bvashr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvslt_bvashr0,rtl,no
@@ -469,7 +469,7 @@ cvc4_tplanes_saturate_no_e_matching,bvuge_bvor,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvuge_bvor,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvuge_bvshl0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvuge_bvshl0,rtl,no
-cvc4_tplanes_saturate_no_e_matching,bvuge_bvshl1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,bvuge_bvshl1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvuge_bvshl1,rtl,no
 cvc4_tplanes_saturate_no_e_matching,bvuge_bvudiv0,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvuge_bvudiv0,rtl,yes
@@ -501,7 +501,7 @@ cvc4_tplanes_saturate_no_e_matching,bvugt_bvor,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvugt_bvor,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvugt_bvshl0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvugt_bvshl0,rtl,no
-cvc4_tplanes_saturate_no_e_matching,bvugt_bvshl1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,bvugt_bvshl1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvugt_bvshl1,rtl,no
 cvc4_tplanes_saturate_no_e_matching,bvugt_bvudiv0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvugt_bvudiv0,rtl,yes
@@ -519,9 +519,9 @@ cvc4_tplanes_saturate_no_e_matching,bvule_bvashr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvule_bvashr0,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvule_bvashr1,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvule_bvashr1,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,bvule_bvlshr0,ltr,no
+cvc4_tplanes_saturate_no_e_matching,bvule_bvlshr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvule_bvlshr0,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,bvule_bvlshr1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,bvule_bvlshr1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvule_bvlshr1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvule_bvmul,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvule_bvmul,rtl,yes
@@ -553,7 +553,7 @@ cvc4_tplanes_saturate_no_e_matching,bvult_bvashr1,ltr,no
 cvc4_tplanes_saturate_no_e_matching,bvult_bvashr1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvlshr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvlshr0,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,bvult_bvlshr1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,bvult_bvlshr1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvlshr1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvmul,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvmul,rtl,yes
@@ -570,7 +570,7 @@ cvc4_tplanes_saturate_no_e_matching,bvult_bvshl1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv0,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv1,ltr,yes
-cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv1,rtl,no
+cvc4_tplanes_saturate_no_e_matching,bvult_bvudiv1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvurem0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvurem0,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,bvult_bvurem1,ltr,yes
@@ -582,10 +582,10 @@ cvc4_tplanes_saturate_no_e_matching,eq_bvand,rtl,no
 cvc4_tplanes_saturate_no_e_matching,eq_bvashr0,ltr,no
 cvc4_tplanes_saturate_no_e_matching,eq_bvashr0,rtl,no
 cvc4_tplanes_saturate_no_e_matching,eq_bvashr1,ltr,no
-cvc4_tplanes_saturate_no_e_matching,eq_bvashr1,rtl,no
+cvc4_tplanes_saturate_no_e_matching,eq_bvashr1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,eq_bvlshr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,eq_bvlshr0,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,eq_bvlshr1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,eq_bvlshr1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,eq_bvlshr1,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,eq_bvmul,ltr,no
 cvc4_tplanes_saturate_no_e_matching,eq_bvmul,rtl,no
@@ -613,13 +613,13 @@ cvc4_tplanes_saturate_no_e_matching,ne_bvand,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvand,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvashr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvashr0,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,ne_bvashr1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,ne_bvashr1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvashr1,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,ne_bvlshr0,ltr,no
+cvc4_tplanes_saturate_no_e_matching,ne_bvlshr0,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvlshr0,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,ne_bvlshr1,ltr,no
+cvc4_tplanes_saturate_no_e_matching,ne_bvlshr1,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvlshr1,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,ne_bvmul,ltr,yes
+cvc4_tplanes_saturate_no_e_matching,ne_bvmul,ltr,no
 cvc4_tplanes_saturate_no_e_matching,ne_bvmul,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvneg,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvneg,rtl,yes
@@ -627,7 +627,7 @@ cvc4_tplanes_saturate_no_e_matching,ne_bvnot,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvnot,rtl,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvor,ltr,yes
 cvc4_tplanes_saturate_no_e_matching,ne_bvor,rtl,yes
-cvc4_tplanes_saturate_no_e_matching,ne_bvshl0,ltr,yes
+cvc4_tplanes_saturate_no_e_matching,ne_bvshl0,ltr,no
 cvc4_tplanes_saturate_no_e_matching,ne_bvshl0,rtl,no
 cvc4_tplanes_saturate_no_e_matching,ne_bvshl1,ltr,no
 cvc4_tplanes_saturate_no_e_matching,ne_bvshl1,rtl,yes
@@ -688,7 +688,7 @@ vampire,bvsgt_bvmul,rtl,no
 vampire,bvsgt_bvneg,ltr,no
 vampire,bvsgt_bvneg,rtl,no
 vampire,bvsgt_bvnot,ltr,no
-vampire,bvsgt_bvnot,rtl,yes
+vampire,bvsgt_bvnot,rtl,no
 vampire,bvsgt_bvor,ltr,no
 vampire,bvsgt_bvor,rtl,no
 vampire,bvsgt_bvshl0,ltr,no
@@ -790,7 +790,7 @@ vampire,bvuge_bvor,rtl,yes
 vampire,bvuge_bvshl0,ltr,yes
 vampire,bvuge_bvshl0,rtl,no
 vampire,bvuge_bvshl1,ltr,no
-vampire,bvuge_bvshl1,rtl,yes
+vampire,bvuge_bvshl1,rtl,no
 vampire,bvuge_bvudiv0,ltr,no
 vampire,bvuge_bvudiv0,rtl,no
 vampire,bvuge_bvudiv1,ltr,yes
@@ -839,9 +839,9 @@ vampire,bvule_bvashr0,ltr,no
 vampire,bvule_bvashr0,rtl,yes
 vampire,bvule_bvashr1,ltr,no
 vampire,bvule_bvashr1,rtl,no
-vampire,bvule_bvlshr0,ltr,no
+vampire,bvule_bvlshr0,ltr,yes
 vampire,bvule_bvlshr0,rtl,yes
-vampire,bvule_bvlshr1,ltr,no
+vampire,bvule_bvlshr1,ltr,yes
 vampire,bvule_bvlshr1,rtl,yes
 vampire,bvule_bvmul,ltr,yes
 vampire,bvule_bvmul,rtl,yes
@@ -858,7 +858,7 @@ vampire,bvule_bvshl1,rtl,yes
 vampire,bvule_bvudiv0,ltr,yes
 vampire,bvule_bvudiv0,rtl,yes
 vampire,bvule_bvudiv1,ltr,yes
-vampire,bvule_bvudiv1,rtl,no
+vampire,bvule_bvudiv1,rtl,yes
 vampire,bvule_bvurem0,ltr,yes
 vampire,bvule_bvurem0,rtl,yes
 vampire,bvule_bvurem1,ltr,yes
@@ -871,13 +871,13 @@ vampire,bvult_bvashr0,ltr,no
 vampire,bvult_bvashr0,rtl,no
 vampire,bvult_bvashr1,ltr,no
 vampire,bvult_bvashr1,rtl,no
-vampire,bvult_bvlshr0,ltr,no
+vampire,bvult_bvlshr0,ltr,yes
 vampire,bvult_bvlshr0,rtl,yes
-vampire,bvult_bvlshr1,ltr,no
+vampire,bvult_bvlshr1,ltr,yes
 vampire,bvult_bvlshr1,rtl,yes
 vampire,bvult_bvmul,ltr,no
 vampire,bvult_bvmul,rtl,yes
-vampire,bvult_bvneg,ltr,yes
+vampire,bvult_bvneg,ltr,no
 vampire,bvult_bvneg,rtl,yes
 vampire,bvult_bvnot,ltr,no
 vampire,bvult_bvnot,rtl,yes
@@ -889,7 +889,7 @@ vampire,bvult_bvshl1,ltr,no
 vampire,bvult_bvshl1,rtl,yes
 vampire,bvult_bvudiv0,ltr,yes
 vampire,bvult_bvudiv0,rtl,yes
-vampire,bvult_bvudiv1,ltr,yes
+vampire,bvult_bvudiv1,ltr,no
 vampire,bvult_bvudiv1,rtl,no
 vampire,bvult_bvurem0,ltr,yes
 vampire,bvult_bvurem0,rtl,yes
@@ -955,7 +955,7 @@ vampire,ne_bvudiv0,ltr,yes
 vampire,ne_bvudiv0,rtl,yes
 vampire,ne_bvudiv1,ltr,no
 vampire,ne_bvudiv1,rtl,yes
-vampire,ne_bvurem0,ltr,no
+vampire,ne_bvurem0,ltr,yes
 vampire,ne_bvurem0,rtl,yes
 vampire,ne_bvurem1,ltr,yes
 vampire,ne_bvurem1,rtl,yes
@@ -981,7 +981,7 @@ z3_default,bvsge_bvor,ltr,no
 z3_default,bvsge_bvor,rtl,no
 z3_default,bvsge_bvshl0,ltr,no
 z3_default,bvsge_bvshl0,rtl,no
-z3_default,bvsge_bvshl1,ltr,no
+z3_default,bvsge_bvshl1,ltr,yes
 z3_default,bvsge_bvshl1,rtl,yes
 z3_default,bvsge_bvudiv0,ltr,yes
 z3_default,bvsge_bvudiv0,rtl,no
@@ -995,7 +995,7 @@ z3_default,bvsgt_bvadd,ltr,no
 z3_default,bvsgt_bvadd,rtl,yes
 z3_default,bvsgt_bvand,ltr,no
 z3_default,bvsgt_bvand,rtl,no
-z3_default,bvsgt_bvashr0,ltr,no
+z3_default,bvsgt_bvashr0,ltr,yes
 z3_default,bvsgt_bvashr0,rtl,no
 z3_default,bvsgt_bvashr1,ltr,no
 z3_default,bvsgt_bvashr1,rtl,no
@@ -1013,7 +1013,7 @@ z3_default,bvsgt_bvor,ltr,no
 z3_default,bvsgt_bvor,rtl,no
 z3_default,bvsgt_bvshl0,ltr,no
 z3_default,bvsgt_bvshl0,rtl,no
-z3_default,bvsgt_bvshl1,ltr,no
+z3_default,bvsgt_bvshl1,ltr,yes
 z3_default,bvsgt_bvshl1,rtl,yes
 z3_default,bvsgt_bvudiv0,ltr,yes
 z3_default,bvsgt_bvudiv0,rtl,no
@@ -1054,7 +1054,7 @@ z3_default,bvsle_bvudiv1,rtl,no
 z3_default,bvsle_bvurem0,ltr,no
 z3_default,bvsle_bvurem0,rtl,no
 z3_default,bvsle_bvurem1,ltr,yes
-z3_default,bvsle_bvurem1,rtl,no
+z3_default,bvsle_bvurem1,rtl,yes
 z3_default,bvslt_bvadd,ltr,no
 z3_default,bvslt_bvadd,rtl,yes
 z3_default,bvslt_bvand,ltr,yes
@@ -1109,7 +1109,7 @@ z3_default,bvuge_bvor,ltr,yes
 z3_default,bvuge_bvor,rtl,yes
 z3_default,bvuge_bvshl0,ltr,yes
 z3_default,bvuge_bvshl0,rtl,no
-z3_default,bvuge_bvshl1,ltr,no
+z3_default,bvuge_bvshl1,ltr,yes
 z3_default,bvuge_bvshl1,rtl,yes
 z3_default,bvuge_bvudiv0,ltr,no
 z3_default,bvuge_bvudiv0,rtl,no
@@ -1141,7 +1141,7 @@ z3_default,bvugt_bvor,ltr,yes
 z3_default,bvugt_bvor,rtl,yes
 z3_default,bvugt_bvshl0,ltr,yes
 z3_default,bvugt_bvshl0,rtl,no
-z3_default,bvugt_bvshl1,ltr,no
+z3_default,bvugt_bvshl1,ltr,yes
 z3_default,bvugt_bvshl1,rtl,yes
 z3_default,bvugt_bvudiv0,ltr,yes
 z3_default,bvugt_bvudiv0,rtl,no
@@ -1159,9 +1159,9 @@ z3_default,bvule_bvashr0,ltr,no
 z3_default,bvule_bvashr0,rtl,yes
 z3_default,bvule_bvashr1,ltr,no
 z3_default,bvule_bvashr1,rtl,no
-z3_default,bvule_bvlshr0,ltr,no
+z3_default,bvule_bvlshr0,ltr,yes
 z3_default,bvule_bvlshr0,rtl,yes
-z3_default,bvule_bvlshr1,ltr,no
+z3_default,bvule_bvlshr1,ltr,yes
 z3_default,bvule_bvlshr1,rtl,yes
 z3_default,bvule_bvmul,ltr,yes
 z3_default,bvule_bvmul,rtl,yes
@@ -1173,7 +1173,7 @@ z3_default,bvule_bvor,ltr,yes
 z3_default,bvule_bvor,rtl,yes
 z3_default,bvule_bvshl0,ltr,yes
 z3_default,bvule_bvshl0,rtl,yes
-z3_default,bvule_bvshl1,ltr,no
+z3_default,bvule_bvshl1,ltr,yes
 z3_default,bvule_bvshl1,rtl,yes
 z3_default,bvule_bvudiv0,ltr,no
 z3_default,bvule_bvudiv0,rtl,no
@@ -1191,9 +1191,9 @@ z3_default,bvult_bvashr0,ltr,no
 z3_default,bvult_bvashr0,rtl,yes
 z3_default,bvult_bvashr1,ltr,no
 z3_default,bvult_bvashr1,rtl,no
-z3_default,bvult_bvlshr0,ltr,no
+z3_default,bvult_bvlshr0,ltr,yes
 z3_default,bvult_bvlshr0,rtl,yes
-z3_default,bvult_bvlshr1,ltr,no
+z3_default,bvult_bvlshr1,ltr,yes
 z3_default,bvult_bvlshr1,rtl,yes
 z3_default,bvult_bvmul,ltr,yes
 z3_default,bvult_bvmul,rtl,yes
@@ -1205,7 +1205,7 @@ z3_default,bvult_bvor,ltr,yes
 z3_default,bvult_bvor,rtl,yes
 z3_default,bvult_bvshl0,ltr,yes
 z3_default,bvult_bvshl0,rtl,yes
-z3_default,bvult_bvshl1,ltr,no
+z3_default,bvult_bvshl1,ltr,yes
 z3_default,bvult_bvshl1,rtl,yes
 z3_default,bvult_bvudiv0,ltr,yes
 z3_default,bvult_bvudiv0,rtl,yes
@@ -1221,11 +1221,11 @@ z3_default,eq_bvand,ltr,yes
 z3_default,eq_bvand,rtl,no
 z3_default,eq_bvashr0,ltr,no
 z3_default,eq_bvashr0,rtl,no
-z3_default,eq_bvashr1,ltr,no
+z3_default,eq_bvashr1,ltr,yes
 z3_default,eq_bvashr1,rtl,no
 z3_default,eq_bvlshr0,ltr,yes
 z3_default,eq_bvlshr0,rtl,no
-z3_default,eq_bvlshr1,ltr,no
+z3_default,eq_bvlshr1,ltr,yes
 z3_default,eq_bvlshr1,rtl,no
 z3_default,eq_bvmul,ltr,no
 z3_default,eq_bvmul,rtl,no
@@ -1237,7 +1237,7 @@ z3_default,eq_bvor,ltr,yes
 z3_default,eq_bvor,rtl,no
 z3_default,eq_bvshl0,ltr,yes
 z3_default,eq_bvshl0,rtl,no
-z3_default,eq_bvshl1,ltr,no
+z3_default,eq_bvshl1,ltr,yes
 z3_default,eq_bvshl1,rtl,yes
 z3_default,eq_bvudiv0,ltr,yes
 z3_default,eq_bvudiv0,rtl,yes

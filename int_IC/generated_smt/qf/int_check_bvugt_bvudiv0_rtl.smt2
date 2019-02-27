@@ -78,6 +78,30 @@
 )
 )
 
+;2^k>=1
+(define-fun always_positive () Bool
+(forall ((k Int))
+(!
+(=>
+(>= k 0)
+(>= (two_to_the k) 1)
+)
+:pattern ((instantiate_me k)))
+)
+)
+
+;x div 2^x is zero
+(define-fun div_zero () Bool
+(forall ((k Int))
+(!
+(=>
+(>= k 0)
+(= (div k (two_to_the k)) 0 )
+)
+:pattern ((instantiate_me k)))
+)
+)
+
 (define-fun two_to_the_is_ok_partial () Bool
 (and
 base_cases
@@ -85,6 +109,8 @@ weak_monotinicity
 strong_monotinicity
 modular_power
 never_even
+always_positive
+div_zero
 )
 )
 
