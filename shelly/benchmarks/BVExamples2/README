@@ -1,0 +1,10 @@
+Thanks a lot Clark!
+
+I ask to add a few more files. These represent very simple operations on bitvectors and overflow checking.
+
+ BVExamples2.tar.gz
+
+
+I guess we're hitting a known limitation here, but we see that multiplication/division is difficult: 
+The interesting files are: math8.cvc4.smt2, mathHard8.cvc4.smt2, and mathHard6.cvc4.smt2.
+We check some constraints that should suffice to avoid overflow, and then check that no such overflow occurred (the two expressions for overflow checking may be similar as in math8 or not similar as in mathHard6 and mathHard8).

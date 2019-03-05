@@ -1,0 +1,16 @@
+
+(set-option :produce-models true)
+(declare-fun certora_certoraAssumet1_1 () (_ BitVec 256))
+(declare-fun b_0 () (_ BitVec 256))
+(declare-fun certoraAssume_1 () Bool)
+(declare-fun certora_certoraAssert_0t1t1_1 () (_ BitVec 256))
+(declare-fun a_0 () (_ BitVec 256))
+(declare-fun certora_certoraAssert_0t1t2_1 () (_ BitVec 256))
+(declare-fun certoraDivisionByZero_1 () Bool)
+(declare-fun certora_certoraAssert_0t1_1 () (_ BitVec 256))
+(declare-fun certoraAssert_0_1 () Bool)
+(declare-fun OK_0_0_0_0_0_0_0 () Bool)
+
+(assert (not (=> (= OK_0_0_0_0_0_0_0 (=> (= certora_certoraAssumet1_1 b_0) (=> (= certoraAssume_1 (= certora_certoraAssumet1_1 (_ bv0 256))) (=> certoraAssume_1 (=> (= certora_certoraAssert_0t1t1_1 a_0) (=> (= certora_certoraAssert_0t1t2_1 b_0) (=> (= certoraDivisionByZero_1 (= certora_certoraAssert_0t1t2_1 (_ bv0 256))) (and (not certoraDivisionByZero_1) (=> (= certora_certoraAssert_0t1_1 (bvudiv certora_certoraAssert_0t1t1_1 certora_certoraAssert_0t1t2_1)) (=> (= certoraAssert_0_1 (bvugt certora_certoraAssert_0t1_1 (_ bv0 256))) (and certoraAssert_0_1 true))))))))))) OK_0_0_0_0_0_0_0)))
+(check-sat)
+(get-model)

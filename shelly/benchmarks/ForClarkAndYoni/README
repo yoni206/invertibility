@@ -1,0 +1,19 @@
+Hi Clark and Yoni,
+
+Attaching a file with 417 files (drive link):
+ BVExamples.tar.gz
+that we run with CVC4, currently with version 1.6.
+The formulas have a similar structure but vary on the distribution of different kind of expressions that are used (BV operations, array operations, operations on nested arrays, repeating store operations on same array).
+
+We would love to understand why some problems take significantly more time than others.
+
+For example, the following files (coming from a similar application) seem to be a huge challenge for CVC4. CVC4 terminated due to out-of-memory errors. 
+By the way, Boolector is challenged on these as well, running on the first 2 of those for about 3 days before producing a model.
+zeroex_bmc11.boolect.smt
+attempt2_zeroex_bmc11.boolect.smt
+simple0x.smt
+MultiAssetProxySpec1.cvc4.smt2
+For the other problems, they are running in reasonable times. Times are somewhat correlated with formula size, but nevertheless the larger problems taking longer time are still interesting to us, e.g., LiquidatorInstrumented1.cvc4.smt2.
+
+Thanks and best regards,
+Shelly

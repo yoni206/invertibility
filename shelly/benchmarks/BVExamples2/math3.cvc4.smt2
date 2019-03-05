@@ -1,0 +1,16 @@
+
+(set-option :produce-models true)
+(declare-fun certora_ct1_1 () (_ BitVec 256))
+(declare-fun a_0 () (_ BitVec 256))
+(declare-fun certora_ct2_1 () (_ BitVec 256))
+(declare-fun b_0 () (_ BitVec 256))
+(declare-fun certoraDummy_1 () Bool)
+(declare-fun lastAssignmentOverflown_2 () Bool)
+(declare-fun lastOverflow_1 () Bool)
+(declare-fun certora_certoraAssert_0t_1 () Bool)
+(declare-fun certoraAssert_0_1 () Bool)
+(declare-fun OK_0_0_0_0_0_0_0 () Bool)
+
+(assert (not (=> (= OK_0_0_0_0_0_0_0 (=> (= certora_ct1_1 a_0) (=> (= certora_ct2_1 b_0) (=> (= certoraDummy_1 (bvugt certora_ct2_1 certora_ct1_1)) (=> (= lastAssignmentOverflown_2 (or false certoraDummy_1)) (=> (= lastOverflow_1 lastAssignmentOverflown_2) (=> (= certora_certoraAssert_0t_1 lastOverflow_1) (=> (= certoraAssert_0_1 (not certora_certoraAssert_0t_1)) (and certoraAssert_0_1 true))))))))) OK_0_0_0_0_0_0_0)))
+(check-sat)
+(get-model)
