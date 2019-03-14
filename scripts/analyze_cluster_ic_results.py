@@ -146,6 +146,7 @@ def gen_enc_conf(config_cond_agg, translations_file, tex_csv_dir):
     #totals for configs
     g = c.groupby(["config", "ic_name", "direction"], as_index = False)
     a = g.agg({'proved': agg_yes})
+    a.to_csv("~/tmp.csv")
     g = a.groupby(["config"], as_index = True)
     b = g.agg({'proved': countyes})
     s = b["proved"]
@@ -272,7 +273,7 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     
     over_encs_gb = pivot.groupby(["ic_name"])
     over_encs = over_encs_gb.agg(agg_yes)
-    over_encs.to_csv("~/tmp.csv")
+    over_encs = over_encs.drop("encoding", axis=1)
     
 
     group_by = pivot.groupby(["encoding"]) 
