@@ -79,9 +79,6 @@
 (declare-fun k () Int)
 (declare-fun s () Int)
 (declare-fun t () Int)
-(assert (instantiate_me k))
-(assert (instantiate_me s))
-(assert (instantiate_me t))
 
 ;<BEGIN_LTR>
 (define-fun inv ((k Int) (s Int) (t Int)) Int (intlshr k t s))

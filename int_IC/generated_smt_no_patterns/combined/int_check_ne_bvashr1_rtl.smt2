@@ -79,15 +79,11 @@
 (declare-fun k () Int)
 (declare-fun s () Int)
 (declare-fun t () Int)
-(assert (instantiate_me k))
-(assert (instantiate_me s))
-(assert (instantiate_me t))
 
 
 ;<BEGIN_RTL>
 ;skolemized x for the right-to-left direction
 (declare-fun x0 () Int)
-(assert (instantiate_me x0))
 (assert (in_range k x0))
 
 (define-fun not_right_to_left ((k Int) (s Int) (t Int)) Bool (and (l k x0 s t) (not (SC k s t))))

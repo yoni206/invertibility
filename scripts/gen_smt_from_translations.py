@@ -71,11 +71,11 @@ IC_SUFFIX = '''
 '''
 
 
-def main(csv_path, dir_name, templates_dir, inverses_file, verified_inverses_file):
+def main(csv_path, dir_name, templates_dir, inverses_file, verified_inverses_file, use_patterns):
     files = os.listdir(templates_dir)
     verified_inverses = get_list_of_verified_inverses(verified_inverses_file)
     for f in files:
-        work_on_template(csv_path, dir_name, templates_dir + "/" + f, inverses_file, verified_inverses)
+        work_on_template(csv_path, dir_name, templates_dir + "/" + f, inverses_file, verified_inverses, use_patterns)
 
 def get_list_of_verified_inverses(verified_inverses_file):
     result = []
@@ -86,7 +86,7 @@ def get_list_of_verified_inverses(verified_inverses_file):
         result.append((syn, name))
     return result
 
-def work_on_template(csv_path, dir_name, template_path, inverses_file, verified_inverses):
+def work_on_template(csv_path, dir_name, template_path, inverses_file, verified_inverses, use_patterns):
     template_name = utils.get_file_or_dir_name_no_ext(template_path)
     directory = dir_name + "/" + template_name
     if os.path.exists(directory):
@@ -100,7 +100,7 @@ def work_on_template(csv_path, dir_name, template_path, inverses_file, verified_
     with open(csv_path) as f:
         lines = f.readlines()
     lines = filter_lines(lines)
-    process_lines(lines, directory, template, inverses_file, False, verified_inverses)
+    process_lines(lines, directory, template, inverses_file, False, verified_inverses, use_patterns)
 #   process_lines(lines, directory, template, inverses_file, True, verified_inverses)
 
 def filter_lines(lines):
@@ -129,12 +129,12 @@ def add_line_to_inverses_map(line, inv_map, syntaxes):
 
 #ind=true means we generate an inductive version
 #and put the generated file in directory_ind
-def process_lines(lines, directory, template, inverses_file, ind, verified_inverses):
+def process_lines(lines, directory, template, inverses_file, ind, verified_inverses, use_patterns):
     inverses = get_inverses(inverses_file)
     for line in lines:
-        process_line(line, directory, template, inverses, ind, verified_inverses)
+        process_line(line, directory, template, inverses, ind, verified_inverses, use_patterns)
 
-def process_line(line, directory, template, inverses, ind, verified_inverses):
+def process_line(line, directory, template, inverses, ind, verified_inverses, use_patterns):
     name, orig_l, orig_SC, new_l, new_SC = line.strip().split(",")
     if ind:
         d = directory + "_ind"
@@ -142,6 +142,8 @@ def process_line(line, directory, template, inverses, ind, verified_inverses):
         d = directory
     
     rtl_content = generate_content_rtl(name, template, new_l, new_SC, d, ind)
+    if not use_patterns:
+        rtl_content = remove_instantiate_me(rtl_content)
     rtl_fname = name + "_rtl.smt2"
     write_content_to_file(rtl_content, rtl_fname, d)
     
@@ -149,6 +151,8 @@ def process_line(line, directory, template, inverses, ind, verified_inverses):
     for ltr_subname in ltr_contents:
         ltr_fname = name + "_ltr_" +  ltr_subname + ".smt2"
         ltr_content = ltr_contents[ltr_subname]
+        if not use_patterns:
+            ltr_content = remove_instantiate_me(ltr_content)
         write_content_to_file(ltr_content, ltr_fname, d)
 
 def get_l_part_and_extra_definition(name, inv):
@@ -308,11 +312,13 @@ def massage_rec(content):
     return content
 
 def massage_qf(content):
+        return remove_instantiate_me(content)
+
+def remove_instantiate_me(content):
         lines = content.splitlines()
         lines = [l for l in lines if not "instantiate_me" in l]
         content = "\n".join(lines)
         return content
-
 
 def has_l_part_with_exists(content):
     lines = [l.strip() for l in content.split("\n")]
@@ -412,12 +418,16 @@ def write_content_to_file(content, filename, d):
     f.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) < 5:
-        print('arg1: csv file\narg2: generated files dir\narg3: templates dir\narg4: sygus inverses file\narg5: verified inverses file')
+    if len(sys.argv) < 6:
+        print('arg1: csv file\narg2: generated files dir\narg3: templates dir\narg4: sygus inverses file\narg5: verified inverses file\narg6: use patterns yes/no (optional, deafults to yes)')
         exit(1)
     csv = sys.argv[1]
     result_dir = sys.argv[2]
     templates_dir = sys.argv[3]
     inverses_file = sys.argv[4]
     verified_inverses_file = sys.argv[5]
-    main(csv, result_dir, templates_dir, inverses_file, verified_inverses_file)
+    if len(sys.argv) == 7 and sys.argv[6] == "no":
+        use_patterns = False
+    else:
+        use_patterns = True
+    main(csv, result_dir, templates_dir, inverses_file, verified_inverses_file, use_patterns)
