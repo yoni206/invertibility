@@ -53,8 +53,6 @@ IC_SUFFIX = '''
 (assert (instantiate_me x0))
 (assert (in_range k x0))
 
-;(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (l k x s t))) (SC k s t) ))
-;It is better to directly negate right_to_left in order to be able to use the skolem x0
 (define-fun not_right_to_left ((k Int) (s Int) (t Int)) Bool (and (l k x0 s t) (not (SC k s t))))
 
 (define-fun assertion_rtl () Bool (not_right_to_left k s t))

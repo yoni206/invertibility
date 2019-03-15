@@ -136,20 +136,20 @@ templates = {
 #        shared + 
 #        axioms["rec"]),
     "full": "\n".join(
-        [instantiate_me_line, pow_dec] + extract_definitions + [and_dec, or_dec, xor_dec, and_helper, or_helper, xor_helper] +
+        [instantiate_me_line, pow_dec] + [and_dec, or_dec, xor_dec] + extract_definitions + [and_helper, or_helper, xor_helper] +
         shared + 
         full_combined_shared_axioms +
         axioms["full"]
         ),
     "partial": "\n".join(
-        [instantiate_me_line, pow_dec] + extract_definitions + [and_dec, or_dec, xor_dec, and_helper, or_helper, xor_helper] +
+        [instantiate_me_line, pow_dec] + [and_dec, or_dec, xor_dec] + extract_definitions + [and_helper, or_helper, xor_helper] +
         shared + 
         qf_partial_combined_shared_axioms + 
         partial_combined_shared_axioms + 
         axioms["partial"]
         ),
     "combined": "\n".join(
-        [instantiate_me_line, pow_dec] + extract_definitions + [and_dec, or_dec, xor_dec, and_helper, or_helper, xor_helper] +
+        [instantiate_me_line, pow_dec] + [and_dec, or_dec, xor_dec] + extract_definitions + [and_helper, or_helper, xor_helper] +
         shared + 
         qf_partial_combined_shared_axioms + 
         full_combined_shared_axioms + 
@@ -157,14 +157,12 @@ templates = {
         axioms["combined"]
         ),
     "qf": "\n".join(
-        [pow_dec] + extract_definitions + [and_dec, or_dec, xor_dec] + 
+        [pow_dec] + [and_dec, or_dec, xor_dec] + extract_definitions + 
         shared + 
         qf_partial_combined_shared_axioms + 
         axioms["qf"]
         )
     }
-
-
 
 def main(templates_dir, with_patterns):
     if not with_patterns:
@@ -187,6 +185,10 @@ def remove_patterns_from(template):
                     template[bang + 1 : colon] + \
                     template[matching_rpar + 1:]
         bang = template.find("!")
+    #remove instantiate me
+    lines = template.splitlines()
+    lines = [l for l in lines if "instantiate_me" not in l]
+    template = "\n".join(lines)
     return template
 
 

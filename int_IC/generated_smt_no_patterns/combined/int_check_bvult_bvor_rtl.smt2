@@ -1,11 +1,10 @@
 (set-logic UFNIA)
-(declare-fun instantiate_me (Int) Bool)
 (declare-fun two_to_the (Int) Int)
-(define-fun bitof ((k Int) (l Int) (a Int)) Int (mod (div a (two_to_the l)) 2))
-(define-fun int_all_but_msb ((k Int) (a Int)) Int (mod a (two_to_the (- k 1))))
 (declare-fun intand (Int Int Int) Int)
 (declare-fun intor (Int Int Int) Int)
 (declare-fun intxor (Int Int Int) Int)
+(define-fun bitof ((k Int) (l Int) (a Int)) Int (mod (div a (two_to_the l)) 2))
+(define-fun int_all_but_msb ((k Int) (a Int)) Int (mod a (two_to_the (- k 1))))
 (define-fun intand_helper ((a Int) (b Int)) Int (ite (and (= a 1) (= b 1) ) 1 0))
 (define-fun intor_helper ((a Int) (b Int)) Int (ite (and (= a 0) (= b 0) ) 0 1))
 (define-fun intxor_helper ((a Int) (b Int)) Int (ite (or (and (= a 0) (=  b 1)) (and (= a 1) (= b 0))) 1 0))
@@ -91,8 +90,6 @@
 (assert (instantiate_me x0))
 (assert (in_range k x0))
 
-;(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (l k x s t))) (SC k s t) ))
-;It is better to directly negate right_to_left in order to be able to use the skolem x0
 (define-fun not_right_to_left ((k Int) (s Int) (t Int)) Bool (and (l k x0 s t) (not (SC k s t))))
 
 (define-fun assertion_rtl () Bool (not_right_to_left k s t))
