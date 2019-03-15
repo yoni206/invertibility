@@ -33,6 +33,7 @@ def main(results_dir, tex_csv_dir, translations_file, virtual_timeout):
     df["filename"] = df.path.apply(lambda x : x.split("/")[1])
     df["encoding"] = df.filename.apply(lambda x : x.split("-")[0])
     df["filename_clean"] = df.filename.apply(lambda x : x.split("-")[1].split(".")[0])
+    df.to_csv("~/tmp.csv")
     df["relation"] = df.filename_clean.apply(lambda x: x.split("_")[2])
     df["operator"] = df.filename_clean.apply(lambda x: x.split("_")[3])
     df["ic_name"] = df.filename_clean.apply(lambda x: "_".join(x.split("_")[2:4]))
@@ -146,7 +147,6 @@ def gen_enc_conf(config_cond_agg, translations_file, tex_csv_dir):
     #totals for configs
     g = c.groupby(["config", "ic_name", "direction"], as_index = False)
     a = g.agg({'proved': agg_yes})
-    a.to_csv("~/tmp.csv")
     g = a.groupby(["config"], as_index = True)
     b = g.agg({'proved': countyes})
     s = b["proved"]

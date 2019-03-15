@@ -16,20 +16,62 @@ AND_OP = "intand"
 OR_OP = "intor"
 USUAL_LOGIC = "(set-logic UFNIA)"
 QF_LOGIC = "(set-logic QF_UFNIA)"
-AND_IS_OK_FOR_DELETION = "and_is_ok"
-OR_IS_OK_FOR_DELETION = "or_is_ok"
 L_PART_PREFIX = "(define-fun l_part"
 SC_PREFIX = "(define-fun SC"
 BEGIN_LTR_SECTION = ";<BEGIN_LTR>"
 END_LTR_SECTION = ";<END_LTR>"
 BEGIN_RTL_SECTION = ";<BEGIN_RTL>"
 END_RTL_SECTION = ";<END_RTL>"
-AND_OK_ASSERTION = "(assert (and_is_ok k))"
-OR_OK_ASSERTION = "(assert (or_is_ok k))"
+AND_OK_ASSERTION = "(assert (and_ax k))"
+OR_OK_ASSERTION = "(assert (or_ax k))"
 DEFINE_FUN_PREFIX_REGEX = "\\(define-fun "
 DEFINE_FUN_REC_PREFIX_REGEX = "\\(define-fun-rec "
 DEFINE_FUN_PREFIX = "(define-fun "
 DEFINE_FUN_REC_PREFIX = "(define-fun-rec "
+IC_SUFFIX = '''
+(define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
+
+(define-fun l ((k Int) (x Int) (s Int) (t Int)) Bool <l>)
+(define-fun SC ((k Int) (s Int) (t Int)) Bool <SC>)
+
+(declare-fun k () Int)
+(declare-fun s () Int)
+(declare-fun t () Int)
+(assert (instantiate_me k))
+(assert (instantiate_me s))
+(assert (instantiate_me t))
+
+;<BEGIN_LTR>
+(define-fun l_part ((k Int) (s Int) (t Int)) Bool <l_part>)
+(define-fun left_to_right ((k Int) (s Int) (t Int)) Bool (=> (SC k s t) (l_part k s t)))
+(define-fun assertion_ltr () Bool (not (left_to_right k s t)))
+;<END_LTR>
+
+;<BEGIN_RTL>
+;skolemized x for the right-to-left direction
+(declare-fun x0 () Int)
+(assert (instantiate_me x0))
+(assert (in_range k x0))
+
+;(define-fun right_to_left ((k Int) (s Int) (t Int)) Bool (=> (exists ((x Int)) (and (in_range k x) (l k x s t))) (SC k s t) ))
+;It is better to directly negate right_to_left in order to be able to use the skolem x0
+(define-fun not_right_to_left ((k Int) (s Int) (t Int)) Bool (and (l k x0 s t) (not (SC k s t))))
+
+(define-fun assertion_rtl () Bool (not_right_to_left k s t))
+;<END_RTL>
+
+;general assertions
+(assert (range_assumptions k s t))
+(assert two_to_the_ax)
+(assert (and_ax k))
+(assert (or_ax k))
+
+(assert <assertion>)
+
+(check-sat)
+
+'''
+
 
 def main(csv_path, dir_name, templates_dir, inverses_file, verified_inverses_file):
     files = os.listdir(templates_dir)
@@ -56,6 +98,7 @@ def work_on_template(csv_path, dir_name, template_path, inverses_file, verified_
 #    os.makedirs(directory + "_ind")
     with open(template_path, 'r') as myfile:
         template = myfile.read()
+    template += IC_SUFFIX
     with open(csv_path) as f:
         lines = f.readlines()
     lines = filter_lines(lines)
@@ -94,7 +137,7 @@ def process_lines(lines, directory, template, inverses_file, ind, verified_inver
         process_line(line, directory, template, inverses, ind, verified_inverses)
 
 def process_line(line, directory, template, inverses, ind, verified_inverses):
-    name, orig_l, orig_SC, new_l, new_SC = line.split(",")
+    name, orig_l, orig_SC, new_l, new_SC = line.strip().split(",")
     if ind:
         d = directory + "_ind"
     else:
@@ -123,6 +166,21 @@ def get_inverses_for_name(name, inverses, verified_inverses):
     full_name = FIND_INV + name + SYGUS_SUFFIX
     inverses_for_name = inverses[full_name]
     inverses_for_name = {get_syntax_name(syntax): inverses_for_name[syntax] for syntax in inverses_for_name if inverses_for_name[syntax] != "unknown" and inverse_verified(syntax, name, verified_inverses)}
+    #remove duplicates
+    for_del = []
+    for syn1 in inverses_for_name:
+        for syn2 in inverses_for_name:
+            if syn1 == syn2:
+                continue
+            else:
+                if inverses_for_name[syn1] == inverses_for_name[syn2]:
+                    #prefer g
+                    if syn1 != "g":
+                        for_del.append(syn1)
+                    else:
+                        for_del.append(syn2)
+    for s in set(for_del):
+        del inverses_for_name[s]
     return inverses_for_name
 
 def inverse_verified(syntax, name, verified_inverses):
@@ -154,6 +212,8 @@ def gen_no_inv(name,template, new_l, new_SC, directory, ind):
     l_part = EXISTENTIAL_L
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion, l_part_PH: l_part})
     content = remove_rtl_stuff(content)
+    content = set_logic(content, directory, False)
+    content = massage(content, new_l, new_SC, directory)
     if is_rec(directory):
         content = massage_rec(content)
     return content
@@ -166,6 +226,8 @@ def gen_with_inv(name,template, new_l, new_SC, inv, directory, ind):
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion, l_part_PH: l_part})
     content = add_extra_definition_to_content(content, extra_definition)
     content = remove_rtl_stuff(content)
+    content = set_logic(content, directory, True)
+    content = massage(content, new_l, new_SC, directory)
     if is_rec(directory):
         content = massage_rec(content)
     return content
@@ -178,15 +240,22 @@ def generate_content_rtl(name, template, new_l, new_SC, directory, ind):
     content = utils.substitute(template, {l_PH: new_l, SC_PH: new_SC, assertion_PH: assertion})
     content = remove_ltr_stuff(content)
     content = massage(content, new_l, new_SC, directory)
+    content = set_logic(content, directory, "exists" not in new_SC)
     if is_rec(directory):
         content = massage_rec(content)
     return content
 
+def set_logic(content,directory, quantifier_free_problem):
+    if quantifier_free_problem and (directory.endswith("qf")):
+        content = "(set-logic QF_UFNIA)\n" + content
+    else:
+        content = "(set-logic UFNIA)\n" + content
+    return content
+
 def massage(content, new_l, new_SC, directory):
     content = try_to_eliminate_and_or(content, new_l, new_SC)
-    #if is_qf(directory):
-    #    content = massage_qf(content)
-    #TODO fix qf to use mathsat etc.
+    if is_qf(directory):
+        content = massage_qf(content)
     return content
 
 
@@ -241,8 +310,9 @@ def massage_rec(content):
     return content
 
 def massage_qf(content):
-        content = get_rid_of_quants_and_recs(content)
-        content = change_logic_if_possible(content)
+        lines = content.splitlines()
+        lines = [l for l in lines if not "instantiate_me" in l]
+        content = "\n".join(lines)
         return content
 
 
