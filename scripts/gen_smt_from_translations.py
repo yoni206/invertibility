@@ -29,8 +29,6 @@ DEFINE_FUN_REC_PREFIX_REGEX = "\\(define-fun-rec "
 DEFINE_FUN_PREFIX = "(define-fun "
 DEFINE_FUN_REC_PREFIX = "(define-fun-rec "
 IC_SUFFIX = '''
-(define-fun range_assumptions ((k Int) (s Int) (t Int)) Bool (and (>= k 1) (in_range k s) (in_range k t)))
-
 (define-fun l ((k Int) (x Int) (s Int) (t Int)) Bool <l>)
 (define-fun SC ((k Int) (s Int) (t Int)) Bool <SC>)
 
@@ -59,8 +57,10 @@ IC_SUFFIX = '''
 ;<END_RTL>
 
 ;general assertions
-(assert (range_assumptions k s t))
-(assert two_to_the_ax)
+(assert (>= k 1))
+(assert (in_range k s))
+(assert (in_range k t))
+(assert pow2_ax)
 (assert (and_ax k))
 (assert (or_ax k))
 
