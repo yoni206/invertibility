@@ -28,7 +28,7 @@
 (define-fun intsge ((k Int) (a Int) (b Int)) Bool (>= (unsigned_to_signed k a) (unsigned_to_signed k b)) )
 (define-fun pow2_base_cases () Bool (and (= (pow2 0) 1) (= (pow2 1) 2) (= (pow2 2) 4) (= (pow2 3) 8) ) )
 ;qf axioms
-(define-fun pow2_ax () Bool base_cases)
+(define-fun pow2_ax () Bool pow2_base_cases)
 (define-fun and_ax ((k Int)) Bool true)
 (define-fun or_ax ((k Int)) Bool true)
 (define-fun xor_ax ((k Int)) Bool true)
