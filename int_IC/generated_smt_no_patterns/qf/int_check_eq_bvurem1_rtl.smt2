@@ -1,4 +1,3 @@
-
 (set-info :smt-lib-version 2.6)
 (set-logic QF_UFNIA)
 (set-info :source |
