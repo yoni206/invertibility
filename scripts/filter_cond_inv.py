@@ -6,9 +6,9 @@ import os
 def main(input_file, output_file):
     raw = get_raw_data(input_file)
     raw.to_csv("~/tmp.csv")
-    raw["syntax"] = raw.BENCHMARK.apply(get_syntax)
-    raw["ic_name"] = raw.BENCHMARK.apply(get_name)
-    raw["width"] = raw.BENCHMARK.apply(get_width)
+    raw["syntax"] = raw["benchmark"].apply(get_syntax)
+    raw["ic_name"] = raw.benchmark.apply(get_name)
+    raw["width"] = raw.benchmark.apply(get_width)
     raw["proved"] = raw.apply(proved, axis=1)
     raw.to_csv("~/tmp1.csv")
     grouped = raw.groupby(['syntax', 'ic_name'])
@@ -25,7 +25,7 @@ def agg_all_true(values):
     return len(falses) == 0 
 
 def proved(row):
-    return row.STAT == "ok" and row.RES == "20"
+    return row.status == "ok" and (row.result == 20)
 
 def get_string_between_prefix_and_suffix_exclusive(s, prefix, suffix):
     n = s.find(prefix)
@@ -44,12 +44,12 @@ def get_width(bm_path):
     return result
 
 def get_syntax(benchmark_path):
-    return get_string_between_prefix_and_suffix_exclusive(benchmark_path, "syntax_", "-")
+    return get_string_between_prefix_and_suffix_exclusive(benchmark_path, "syntax_", "/")
 
 
 def get_raw_data(input_file):
     delete_first_row_if_redundent(input_file)
-    return ps.read_csv(input_file, sep=';')
+    return ps.read_csv(input_file, sep=',')
 
 #the cluster results file hav ehieracrchy. But I never compare more than one.
 def delete_first_row_if_redundent(input_file):

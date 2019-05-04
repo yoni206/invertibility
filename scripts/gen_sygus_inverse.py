@@ -15,12 +15,19 @@ skeleton = """
 (define-fun max () (BitVec 4) (bvnot min))
 (define-fun l ( (s (BitVec 4)) (t (BitVec 4))) Bool <l>)
 (define-fun SC ((s (BitVec 4)) (t (BitVec 4))) Bool <SC>)
-(constraint (=> (SC s t) (l s t)))
-(check-synth)
 
 """
 
-shared_syntax_lines = ["s", "t", "#x0", "#x1", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvshl Start Start)"]
+constraint = "(constraint (=> (SC s t) (l s t)))"
+check_synth = "(check-synth)"
+
+shared_syntaxes = {
+        "syntax_d1": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvshl Start Start)"],
+        "syntax_d2": ["s", "t", "#x0", "#x7", "#x8"],
+        "syntax_a": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvadd Start Start)", "(bvsub Start Start)", "(bvmul Start Start)"],
+        "syntax_g": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvadd Start Start)", "(bvsub Start Start)", "(bvand Start Start)", "(bvlshr Start Start)", "(bvor Start Start)", "(bvshl Start Start)"],
+        "syntax_r": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvand Start Start)", "(bvor Start Start)"]
+}
 
 #operators in each sygus file, regardless of the literal
 #for each op, what are the ops that are needed for the syntax?
@@ -45,19 +52,22 @@ def main(dir_of_SC_verification, generated_sygus_dir):
         return
     os.makedirs(generated_sygus_dir)
     l_name_to_l_sc = utils.map_l_to_sc(dir_of_SC_verification, "find_inv", True) #file_name -> <l,sc>
-    generate_sygus_files(l_name_to_l_sc, generated_sygus_dir)
+    for syn_name in shared_syntaxes:
+        generate_sygus_files(syn_name, l_name_to_l_sc, generated_sygus_dir, constraint)
 
 
-def generate_sygus_files(l_name_to_l_sc, generated_sygus_dir):
+def generate_sygus_files(syn_name, l_name_to_l_sc, generated_sygus_dir, constraint):
+        syntax_dir = generated_sygus_dir + "/" + syn_name 
+        os.makedirs(syntax_dir)
         for l_name in l_name_to_l_sc.keys():
             l, sc = l_name_to_l_sc[l_name]
-            syntax = gen_syntax(l_name)
-            sygus = generate_sygus(syntax, l, sc)
-            save_sygus(sygus, generated_sygus_dir, l_name)
+            syntax = gen_syntax(syn_name, l_name)
+            sygus = generate_sygus(syntax, l, sc, constraint)
+            save_sygus(sygus, syntax_dir, l_name)
 
-def gen_syntax(name):
-    op_name = name.split("_")[3].replace("0","").replace("1","")
-    syntax_lines = shared_syntax_lines + additional_syntax_lines[op_name]
+def gen_syntax(syn_name, l_name):
+    op_name = l_name.split("_")[3].replace("0","").replace("1","")
+    syntax_lines = shared_syntaxes[syn_name] + additional_syntax_lines[op_name]
     syntax_lines = list(dict.fromkeys(syntax_lines)) #remove duplicates
     syntax = "((Start (BitVec 4) ("
     syntax += "\n"
@@ -65,16 +75,18 @@ def gen_syntax(name):
     syntax += ")))"
     return syntax
 
-def generate_sygus(syntax, l, sc):
+def generate_sygus(syntax, l, sc, constraint):
     substitutions = {}
     substitutions["<syntax>"] = syntax
     substitutions["<l>"] = l
     substitutions["<SC>"] = sc
     result = utils.substitute(skeleton, substitutions)
+    result = result + constraint + "\n"
+    result = result + check_synth + "\n"
     return result
 
-def save_sygus(sygus, generated_sygus_dir, l_name):
-    smt_file_path = generated_sygus_dir + "/" + "/" +  l_name + ".sy"
+def save_sygus(sygus, syntax_dir, l_name):
+    smt_file_path = syntax_dir + "/" +  l_name + ".sy"
     smt_file = open(smt_file_path, "w")
     smt_file.write(sygus)
     smt_file.close()
