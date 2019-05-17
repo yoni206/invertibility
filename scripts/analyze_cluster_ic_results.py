@@ -33,7 +33,7 @@ def main(results_dir, tex_csv_dir, translations_file, virtual_timeout):
     df["filename"] = df.path.apply(lambda x : x.split("/")[1])
     df["encoding"] = df.filename.apply(lambda x : x.split("-")[0])
     df["filename_clean"] = df.filename.apply(lambda x : x.split("-")[1].split(".")[0])
-    df.to_csv("~/tmp.csv")
+    df.to_csv("~/tmp1.csv")
     df["relation"] = df.filename_clean.apply(lambda x: x.split("_")[2])
     df["operator"] = df.filename_clean.apply(lambda x: x.split("_")[3])
     df["ic_name"] = df.filename_clean.apply(lambda x: "_".join(x.split("_")[2:4]))
@@ -46,10 +46,12 @@ def main(results_dir, tex_csv_dir, translations_file, virtual_timeout):
     validate_consistency(df)
     validate_no_sat_except_qf_and_cond_inv(df)
     df["proved"] = df.result.apply(lambda x: "yes" if (x == "unsat") else "no")
+    df.to_csv("~/tmp1.csv")
     
     
     cond_grouped = df.groupby(["ic_name", "direction", "encoding", "cond_inv"], as_index=False)
     cond_agg = cond_grouped.agg({'proved' : agg_yes})
+    df.to_csv("~/tmp2.csv")
 
     yes_filter = df.loc[df["proved"] == "yes"]
     yes_grouped = yes_filter.groupby(["ic_name", "direction", "encoding", "cond_inv"], as_index=False)
@@ -92,8 +94,8 @@ def main(results_dir, tex_csv_dir, translations_file, virtual_timeout):
     red_encodings = andy_encodings(enc_agg)
     print("panda red encs", red_encodings)
 
-    print(keep_encodings(enc_agg, ["combined", "partial", "full"]))
-    print(keep_configs(only_combined, ["z3_default", "cvc4_tplanes", "vampire" ]))
+    #print(keep_encodings(enc_agg, ["combined", "partial", "full"]))
+    #print(keep_configs(only_combined, ["z3_default", "cvc4_tplanes", "vampire" ]))
 
 
     df.to_csv("tmp/tmp0.csv")
@@ -115,6 +117,7 @@ def main(results_dir, tex_csv_dir, translations_file, virtual_timeout):
 def tex_stuff(ic_agg, direction_agg, cond_agg, config_cond_agg, tex_csv_dir, translations_file):
     gen_IC_status_tables(direction_agg, tex_csv_dir)
     enc_conds = gen_encoding_cond_tables(cond_agg, tex_csv_dir)
+    enc_conds.to_csv("~/tmp3.csv")
     gen_rtl_yes_ics(cond_agg, tex_csv_dir, translations_file)
     gen_enc_conf(config_cond_agg, translations_file, tex_csv_dir)
     #gen_numbers(ic_agg, direction_agg, enc_conds, tex_csv_dir)
@@ -212,10 +215,13 @@ def concat_special(row):
         return direction + "_" + cond
 
 def cond_inv_yes(row):
-    if row["ltr_inv_a"] == "yes" or row["ltr_inv_g"] == "yes" or row["ltr_inv_r"] == "yes":
-        return "yes"
-    else:
-        return "no"
+    cond_invs_cols = row.to_dict().keys()
+    result = "no"
+    for k in cond_invs_cols:
+        if row[k] == "yes":
+            result = "yes"
+            break
+    return result
 
 def ltr_yes(row):
     if row["ltr_inv"] == "yes" or row["ltr_no_inv"] == "yes":
@@ -262,6 +268,7 @@ def no_inv_only(row):
 def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     cond_agg["direction_cond"] = cond_agg.apply(concat_special, axis=1)
     pivot = cond_agg.pivot_table(index = ["encoding", "ic_name"], columns = "direction_cond", values = "proved", aggfunc = lambda x : " ".join(x)).reset_index()
+    pivot.to_csv("~/tmp5.csv")
     pivot["ltr_inv"] = pivot.apply(cond_inv_yes, axis=1)
     pivot["ltr"] = pivot.apply(ltr_yes, axis=1)
     pivot["ltr_inv_only"] = pivot.apply(inv_only, axis=1)
@@ -306,9 +313,9 @@ def gen_encoding_cond_tables(cond_agg, tex_csv_dir):
     output.to_csv(tex_csv_dir + "/" + "cond_detailed.csv")
     output = output.drop("rtl", axis=1)
     output = output.drop("rtl-non-trivial", axis=1)
-    output = output.drop("ltr-inv-a", axis=1)
-    output = output.drop("ltr-inv-g", axis=1)
-    output = output.drop("ltr-inv-r", axis=1)
+    for c in output.columns:
+        if c.startswith("ltr-inv-"):
+            output = output.drop(c, axis=1)
     titles = ['fully-proved', 'nothing-proved', 'rtl-only', 'ltr-only', 'ltr-inv', 'ltr-no-inv']
     output = output.reindex(columns = titles)
     output.to_csv(tex_csv_dir + "/" + "cond.csv")
@@ -535,7 +542,7 @@ def cond_inv_info(s):
         if "_ltr_" not in s:
             assert(False)
         result = "_".join(s.split("_")[5:])
-        if result not in ["no_inv", "inv_a", "inv_g", "inv_r"]:
+        if result not in ["no_inv", "inv_a", "inv_g", "inv_r", "inv_d1", "inv_d2", "inv_d3"]:
             return result
     return result
 
@@ -589,6 +596,7 @@ def get_result(log_content):
     if len(good_lines) == 0 or "Memory limit exceeded" in "\n".join(good_lines): 
         return "no result"
     elif len(good_lines) > 1:
+        print("panda", lines)
         assert(False)
     else:
         good_line = good_lines[0]

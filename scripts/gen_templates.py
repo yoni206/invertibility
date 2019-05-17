@@ -119,6 +119,16 @@ axioms = {
             "(define-fun or_ax ((k Int)) Bool (and (or_ind_def k) (or_properties k)))",
             "(define-fun xor_ax ((k Int)) Bool (and (xor_ind_def k) (xor_properties k)))"
             ],
+            "ahmed": [
+            ";combined + ahmed's axiom",
+            "(define-fun ahmed1 () Bool (forall ((x Int) (i Int)) (! (>= (pow2 x) (+ (pow2 i) (* 2 x (pow2 (- i 1))) (* (- 1 ) (* i i (pow2 (- i 1)))) )) :pattern ((instantiate_me x) (instantiate_me i)))))",
+            "(define-fun ahmed2 () Bool (forall ((x Int) (i Int)) (! (= (and (> x 0) (< x i) (> i 0) ) (> (+ (* (- (pow2 i) 1) x) i) (* (pow2 x) i))) :pattern ((instantiate_me x) (instantiate_me i)))))",
+            "(define-fun ahmed () Bool (and ahmed1 ahmed2))",
+            "(define-fun pow2_ax () Bool (and pow2_ind_def pow2_properties ahmed))",
+            "(define-fun and_ax ((k Int)) Bool (and (and_ind_def k) (and_properties k)))",
+            "(define-fun or_ax ((k Int)) Bool (and (or_ind_def k) (or_properties k)))",
+            "(define-fun xor_ax ((k Int)) Bool (and (xor_ind_def k) (xor_properties k)))"
+            ],
             "qf": [
             ";qf axioms",
             "(define-fun pow2_ax () Bool pow2_base_cases)",
@@ -155,6 +165,14 @@ templates = {
         full_combined_shared_axioms + 
         partial_combined_shared_axioms + 
         axioms["combined"]
+        ),
+    "ahmed": "\n".join(
+        [instantiate_me_line, pow_dec] + [and_dec, or_dec, xor_dec] + extract_definitions + [and_helper, or_helper, xor_helper] +
+        shared + 
+        qf_partial_combined_shared_axioms + 
+        full_combined_shared_axioms + 
+        partial_combined_shared_axioms + 
+        axioms["ahmed"]
         ),
     "qf": "\n".join(
         [pow_dec] + [and_dec, or_dec, xor_dec] + extract_definitions + 

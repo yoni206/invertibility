@@ -3,7 +3,7 @@ import sys
 import os
 
 
-def main(input_file, output_file):
+def main(input_file, output_file, include_one_bit):
     raw = get_raw_data(input_file)
     raw.to_csv("~/tmp.csv")
     raw["syntax"] = raw["benchmark"].apply(get_syntax)
@@ -11,6 +11,9 @@ def main(input_file, output_file):
     raw["width"] = raw.benchmark.apply(get_width)
     raw["proved"] = raw.apply(proved, axis=1)
     raw.to_csv("~/tmp1.csv")
+    if not include_one_bit:
+        raw = raw.loc[raw["width"] != 1].copy()
+    raw = raw.loc[raw["width"] < 16].copy()
     grouped = raw.groupby(['syntax', 'ic_name'])
     df = grouped.agg({'proved': agg_all_true})
     df.to_csv("~/tmp2.csv")
@@ -70,8 +73,15 @@ def delete_first_row_from_file(input_file):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        print('arg1: cluster results csv (result of compare-smt-runs.py on the verification benchmarks)\narg2: output file\n')
+        print('arg1: cluster results csv (result of compare-smt-runs.py on the verification benchmarks)\narg2: output file\narg3 include one bit (defaults to yes)\n')
         exit(1)
     csv_file = sys.argv[1]
     output_file = sys.argv[2]
-    main(csv_file, output_file)
+    if (len(sys.argv) == 3):
+        include_one_bit = True
+    else:
+        if sys.argv[3] == "yes":
+            include_one_bit = True
+        else:
+            include_one_bit = False
+    main(csv_file, output_file, include_one_bit)

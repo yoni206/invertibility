@@ -25,6 +25,7 @@ substitutions = {
     "bvmul":"intmul k",
     "uremtotal":"intmodtotal k",
     "udivtotal":"intudivtotal k",
+    "bvudiv":"intudivtotal k",
     "bvconcat":"intconcat k1 k2",
 #    "extract":"intextract k",
     "(_ bv0 4)":"0",

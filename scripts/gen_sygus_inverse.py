@@ -22,11 +22,12 @@ constraint = "(constraint (=> (SC s t) (l s t)))"
 check_synth = "(check-synth)"
 
 shared_syntaxes = {
-        "syntax_d1": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvshl Start Start)"],
-        "syntax_d2": ["s", "t", "#x0", "#x7", "#x8"],
-        "syntax_a": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvadd Start Start)", "(bvsub Start Start)", "(bvmul Start Start)"],
-        "syntax_g": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvadd Start Start)", "(bvsub Start Start)", "(bvand Start Start)", "(bvlshr Start Start)", "(bvor Start Start)", "(bvshl Start Start)"],
-        "syntax_r": ["s", "t", "#x0", "#x7", "#x8", "(bvneg Start)", "(bvnot Start)", "(bvand Start Start)", "(bvor Start Start)"]
+        "syntax_d1": ["s", "t", "#x0", "#x8", "#x7", "(bvneg Start)", "(bvnot Start)", "(bvshl Start Start)"],
+        "syntax_d2": ["s", "t", "#x0", "#x8", "#x7", "(bvneg Start)", "(bvnot Start)"],
+        "syntax_d3": ["s", "t", "#x0", "#x8", "#x7"],
+        "syntax_a": ["s", "t", "#x0", "#x8", "#x7", "(bvneg Start)", "(bvnot Start)", "(bvadd Start Start)", "(bvsub Start Start)", "(bvmul Start Start)"],
+        "syntax_g": ["s", "t", "#x0", "#x8", "#x7", "(bvneg Start)", "(bvnot Start)", "(bvadd Start Start)", "(bvsub Start Start)", "(bvand Start Start)", "(bvlshr Start Start)", "(bvor Start Start)", "(bvshl Start Start)"],
+        "syntax_r": ["s", "t", "#x0", "#x8", "#x7", "(bvneg Start)", "(bvnot Start)", "(bvand Start Start)", "(bvor Start Start)"]
 }
 
 #operators in each sygus file, regardless of the literal
@@ -67,7 +68,11 @@ def generate_sygus_files(syn_name, l_name_to_l_sc, generated_sygus_dir, constrai
 
 def gen_syntax(syn_name, l_name):
     op_name = l_name.split("_")[3].replace("0","").replace("1","")
-    syntax_lines = shared_syntaxes[syn_name] + additional_syntax_lines[op_name]
+    #add relevant operators only for the dynamic syntaxes, not to the original a,g,r ones.
+    if syn_name in ["syntax_a", "syntax_g", "syntax_r"]:
+        syntax_lines = shared_syntaxes[syn_name]
+    else:
+        syntax_lines = shared_syntaxes[syn_name] + additional_syntax_lines[op_name]
     syntax_lines = list(dict.fromkeys(syntax_lines)) #remove duplicates
     syntax = "((Start (BitVec 4) ("
     syntax += "\n"
